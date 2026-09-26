@@ -1,0 +1,9 @@
+pandas
+numpy
+scipy
+statsmodels
+matplotlib
+seaborn
+python-docx
+markdown
+xhtml2pdf

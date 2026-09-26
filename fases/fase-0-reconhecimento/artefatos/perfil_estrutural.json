@@ -1,0 +1,277 @@
+{
+  "shape": {
+    "linhas": 740,
+    "colunas": 21
+  },
+  "colunas": [
+    "ID",
+    "Reason for absence",
+    "Month of absence",
+    "Day of the week",
+    "Seasons",
+    "Transportation expense",
+    "Distance from Residence to Work",
+    "Service time",
+    "Age",
+    "Work load Average/day",
+    "Hit target",
+    "Disciplinary failure",
+    "Education",
+    "Son",
+    "Social drinker",
+    "Social smoker",
+    "Pet",
+    "Weight",
+    "Height",
+    "Body mass index",
+    "Absenteeism time in hours"
+  ],
+  "dtypes": {
+    "ID": "int64",
+    "Reason for absence": "int64",
+    "Month of absence": "int64",
+    "Day of the week": "int64",
+    "Seasons": "int64",
+    "Transportation expense": "int64",
+    "Distance from Residence to Work": "int64",
+    "Service time": "int64",
+    "Age": "int64",
+    "Work load Average/day": "float64",
+    "Hit target": "int64",
+    "Disciplinary failure": "int64",
+    "Education": "int64",
+    "Son": "int64",
+    "Social drinker": "int64",
+    "Social smoker": "int64",
+    "Pet": "int64",
+    "Weight": "int64",
+    "Height": "int64",
+    "Body mass index": "int64",
+    "Absenteeism time in hours": "int64"
+  },
+  "nulos_por_coluna": {
+    "ID": 0,
+    "Reason for absence": 0,
+    "Month of absence": 0,
+    "Day of the week": 0,
+    "Seasons": 0,
+    "Transportation expense": 0,
+    "Distance from Residence to Work": 0,
+    "Service time": 0,
+    "Age": 0,
+    "Work load Average/day": 0,
+    "Hit target": 0,
+    "Disciplinary failure": 0,
+    "Education": 0,
+    "Son": 0,
+    "Social drinker": 0,
+    "Social smoker": 0,
+    "Pet": 0,
+    "Weight": 0,
+    "Height": 0,
+    "Body mass index": 0,
+    "Absenteeism time in hours": 0
+  },
+  "duplicatas_exatas": 34,
+  "n_ids_distintos": 36,
+  "linhas_por_id": {
+    "count": 36.0,
+    "mean": 20.555555555555557,
+    "std": 23.69501990406356,
+    "min": 1.0,
+    "25%": 5.0,
+    "50%": 9.0,
+    "75%": 29.25,
+    "max": 113.0
+  },
+  "constancia_atributos_por_id": {
+    "Transportation expense": {
+      "ids_com_mais_de_1_valor": 0,
+      "total_ids": 36
+    },
+    "Distance from Residence to Work": {
+      "ids_com_mais_de_1_valor": 1,
+      "total_ids": 36
+    },
+    "Service time": {
+      "ids_com_mais_de_1_valor": 1,
+      "total_ids": 36
+    },
+    "Age": {
+      "ids_com_mais_de_1_valor": 1,
+      "total_ids": 36
+    },
+    "Education": {
+      "ids_com_mais_de_1_valor": 1,
+      "total_ids": 36
+    },
+    "Son": {
+      "ids_com_mais_de_1_valor": 1,
+      "total_ids": 36
+    },
+    "Social drinker": {
+      "ids_com_mais_de_1_valor": 1,
+      "total_ids": 36
+    },
+    "Social smoker": {
+      "ids_com_mais_de_1_valor": 0,
+      "total_ids": 36
+    },
+    "Pet": {
+      "ids_com_mais_de_1_valor": 0,
+      "total_ids": 36
+    },
+    "Weight": {
+      "ids_com_mais_de_1_valor": 1,
+      "total_ids": 36
+    },
+    "Height": {
+      "ids_com_mais_de_1_valor": 1,
+      "total_ids": 36
+    },
+    "Body mass index": {
+      "ids_com_mais_de_1_valor": 1,
+      "total_ids": 36
+    }
+  },
+  "nivel_mes": {
+    "Work load Average/day": {
+      "valores_distintos_por_mes_describe": {
+        "count": 13.0,
+        "mean": 2.923076923076923,
+        "std": 0.6405126152203485,
+        "min": 1.0,
+        "25%": 3.0,
+        "50%": 3.0,
+        "75%": 3.0,
+        "max": 4.0
+      },
+      "meses_com_1_unico_valor": 1,
+      "total_meses": 13,
+      "exemplo_mes_valores_distintos": 3,
+      "exemplo_mes_n_linhas": 87
+    },
+    "Hit target": {
+      "valores_distintos_por_mes_describe": {
+        "count": 13.0,
+        "mean": 2.769230769230769,
+        "std": 0.7250110520819841,
+        "min": 1.0,
+        "25%": 3.0,
+        "50%": 3.0,
+        "75%": 3.0,
+        "max": 4.0
+      },
+      "meses_com_1_unico_valor": 1,
+      "total_meses": 13,
+      "exemplo_mes_valores_distintos": 3,
+      "exemplo_mes_n_linhas": 87
+    }
+  },
+  "circularidade_bmi": {
+    "residuo_max": 1.328746370407778,
+    "residuo_medio": 0.2154440794781794,
+    "pct_residuo_menor_que_1": 98.64864864864865
+  },
+  "reason_for_absence_contagem": {
+    "0": 43,
+    "1": 16,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 3,
+    "6": 8,
+    "7": 15,
+    "8": 6,
+    "9": 4,
+    "10": 25,
+    "11": 26,
+    "12": 8,
+    "13": 55,
+    "14": 19,
+    "15": 2,
+    "16": 3,
+    "17": 1,
+    "18": 21,
+    "19": 40,
+    "21": 6,
+    "22": 38,
+    "23": 149,
+    "24": 3,
+    "25": 31,
+    "26": 33,
+    "27": 69,
+    "28": 112
+  },
+  "month_of_absence_contagem": {
+    "0": 3,
+    "1": 50,
+    "2": 72,
+    "3": 87,
+    "4": 53,
+    "5": 64,
+    "6": 54,
+    "7": 67,
+    "8": 54,
+    "9": 53,
+    "10": 71,
+    "11": 63,
+    "12": 49
+  },
+  "day_of_week_contagem": {
+    "2": 161,
+    "3": 154,
+    "4": 156,
+    "5": 125,
+    "6": 144
+  },
+  "seasons_contagem": {
+    "1": 170,
+    "2": 192,
+    "3": 183,
+    "4": 195
+  },
+  "disciplinary_failure_contagem": {
+    "0": 700,
+    "1": 40
+  },
+  "absenteeism_hours_describe": {
+    "count": 740.0,
+    "mean": 6.924324324324324,
+    "std": 13.330998100978201,
+    "min": 0.0,
+    "25%": 2.0,
+    "50%": 3.0,
+    "75%": 8.0,
+    "max": 120.0
+  },
+  "absenteeism_hours_zeros": 44,
+  "absenteeism_hours_valores_distintos": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    16,
+    24,
+    32,
+    40,
+    48,
+    56,
+    64,
+    80,
+    104,
+    112,
+    120
+  ],
+  "cardinalidade_continuas": {
+    "Transportation expense": 24,
+    "Distance from Residence to Work": 25,
+    "Weight": 26,
+    "Height": 14,
+    "Work load Average/day": 38
+  }
+}
