@@ -28,15 +28,23 @@ th, td {{ border: 1px solid #999; padding: 4px 6px; text-align: left; }}
 th {{ background-color: #e8e8e8; }}
 code {{ background-color: #f0f0f0; padding: 1px 3px; font-family: "DejaVuMono"; }}
 pre {{ background-color: #f0f0f0; padding: 6px; font-family: "DejaVuMono"; font-size: 8.5pt; }}
+img {{ max-width: 100%; }}
 """
 
 
 def convert(md_path: Path, pdf_path: Path) -> None:
+    base_dir = md_path.resolve().parent
     text = md_path.read_text(encoding="utf-8")
     html_body = markdown.markdown(text, extensions=["tables", "fenced_code"])
     html = f"<html><head><meta charset='utf-8'><style>{CSS}</style></head><body>{html_body}</body></html>"
+
+    def link_callback(uri, rel):
+        if uri.startswith(("http://", "https://", "data:")):
+            return uri
+        return (base_dir / uri).as_posix()
+
     with open(pdf_path, "wb") as f:
-        result = pisa.CreatePDF(src=html, dest=f, encoding="utf-8")
+        result = pisa.CreatePDF(src=html, dest=f, encoding="utf-8", link_callback=link_callback)
     if result.err:
         raise RuntimeError(f"Falha ao gerar PDF: {result.err}")
 

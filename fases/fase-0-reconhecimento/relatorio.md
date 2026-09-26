@@ -32,6 +32,10 @@ fase (F9) — só estrutura, procedência e granularidade.
 
 ## 1 · SIPOC reverso
 
+![SIPOC reverso do processo de ausência — Fornecedor, Entrada, Processo, Saída e Cliente, com Processo e Saída evidentes no dado e as demais etapas inferidas](artefatos/sipoc.png)
+
+*Processo e Saída são evidentes no dado (colunas registradas); Fornecedor, Entrada e Cliente são inferência — o dado não registra essas etapas diretamente.*
+
 | Etapa | Descrição | Evidência |
 |---|---|---|
 | Fornecedor | O funcionário (gera o evento de ausência) e a área médica/administrativa da transportadora (registra e classifica) | [INFERÊNCIA] |

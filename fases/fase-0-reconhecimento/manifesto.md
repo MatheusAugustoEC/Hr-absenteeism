@@ -3,11 +3,14 @@
 | Arquivo | O que é | Gerado por | Usado em |
 |---|---|---|---|
 | scripts/00_reconhecimento.py | script de perfilamento estrutural (granularidade, circularidade, contagens) | escrito nesta fase | fase 0 (este relatório) |
+| scripts/00b_sipoc_diagrama.py | script que desenha o SIPOC reverso como imagem, distinguindo visualmente etapas evidentes no dado e etapas inferidas | escrito nesta fase | fase 0 (seção 1 do relatório) |
 | artefatos/00_reconhecimento.py | cópia congelada do script no estado em que gerou este checkpoint | scripts/00_reconhecimento.py | prova de reprodutibilidade |
 | artefatos/perfil_estrutural.json | saída completa do perfilamento (shape, dtypes, nulos, constância por ID, circularidade BMI, contagens de categóricas) | scripts/00_reconhecimento.py | fase 0, insumo de referência para Define e Measure 2A |
+| artefatos/sipoc.svg | diagrama do SIPOC reverso, vetorial | scripts/00b_sipoc_diagrama.py | referência para a Entrega |
+| artefatos/sipoc.png | diagrama do SIPOC reverso, raster, embutido no relatório | scripts/00b_sipoc_diagrama.py | seção 1 de relatorio.md e relatorio.pdf |
 | fases/fase-0-reconhecimento/relatorio.md | relatório desta fase | escrito nesta fase | Define, Entrega |
 | fases/fase-0-reconhecimento/relatorio.pdf | PDF do relatório, para leitura | scripts/md_to_pdf.py | leitura pelo responsável do projeto |
-| scripts/md_to_pdf.py | conversor reutilizável de relatorio.md para PDF (fontes DejaVu embutidas em scripts/fonts/) | escrito nesta fase | todas as fases seguintes |
+| scripts/md_to_pdf.py | conversor reutilizável de relatorio.md para PDF (fontes DejaVu embutidas em scripts/fonts/, resolve imagens relativas ao .md) | escrito nesta fase | todas as fases seguintes |
 
 ## Dado bruto usado (não copiado para artefatos/ — arquivo original)
 
