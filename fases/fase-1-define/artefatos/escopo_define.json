@@ -1,0 +1,110 @@
+{
+  "n_bruto": 740,
+  "excluidos": {
+    "administrativos_month0_hours0": [
+      {
+        "ID": 4,
+        "Reason for absence": 0,
+        "Month of absence": 0,
+        "Disciplinary failure": 0,
+        "Absenteeism time in hours": 0
+      },
+      {
+        "ID": 8,
+        "Reason for absence": 0,
+        "Month of absence": 0,
+        "Disciplinary failure": 0,
+        "Absenteeism time in hours": 0
+      },
+      {
+        "ID": 35,
+        "Reason for absence": 0,
+        "Month of absence": 0,
+        "Disciplinary failure": 0,
+        "Absenteeism time in hours": 0
+      }
+    ],
+    "id29_linha_minoritaria": [
+      {
+        "ID": 29,
+        "Reason for absence": 0,
+        "Age": 28,
+        "Height": 169,
+        "Weight": 69,
+        "Disciplinary failure": 1,
+        "Absenteeism time in hours": 0
+      }
+    ],
+    "total_excluido": 4
+  },
+  "n_limpo": 736,
+  "n_identidades_funcionario": 34,
+  "contagem_por_categoria": {
+    "B2_administravel": 402,
+    "CID": 262,
+    "B1_comportamental": 72
+  },
+  "proporcao_por_categoria_pct": {
+    "B2_administravel": 54.62,
+    "CID": 35.6,
+    "B1_comportamental": 9.78
+  },
+  "horas_describe_por_categoria": {
+    "count": {
+      "B1_comportamental": 72.0,
+      "B2_administravel": 402.0,
+      "CID": 262.0
+    },
+    "mean": {
+      "B1_comportamental": 3.3333333333333335,
+      "B2_administravel": 3.3358208955223883,
+      "CID": 13.522900763358779
+    },
+    "std": {
+      "B1_comportamental": 3.971731094538494,
+      "B2_administravel": 2.7350428332134786,
+      "CID": 20.48336981707139
+    },
+    "min": {
+      "B1_comportamental": 0.0,
+      "B2_administravel": 0.0,
+      "CID": 1.0
+    },
+    "25%": {
+      "B1_comportamental": 0.0,
+      "B2_administravel": 2.0,
+      "CID": 3.0
+    },
+    "50%": {
+      "B1_comportamental": 0.0,
+      "B2_administravel": 2.0,
+      "CID": 8.0
+    },
+    "75%": {
+      "B1_comportamental": 8.0,
+      "B2_administravel": 4.0,
+      "CID": 8.0
+    },
+    "max": {
+      "B1_comportamental": 16.0,
+      "B2_administravel": 24.0,
+      "CID": 120.0
+    }
+  },
+  "eventos_por_funcionario_describe": {
+    "count": 34.0,
+    "mean": 21.647058823529413,
+    "std": 23.941699837048834,
+    "min": 1.0,
+    "25%": 6.0,
+    "50%": 12.5,
+    "75%": 29.75,
+    "max": 113.0
+  },
+  "top3_funcionarios_mais_eventos": {
+    "3": 113,
+    "28": 76,
+    "34": 55
+  },
+  "b1_reason0_n_apos_exclusao": 39
+}

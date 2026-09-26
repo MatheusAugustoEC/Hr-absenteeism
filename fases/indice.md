@@ -3,7 +3,7 @@
 | Fase | Status | Tollgate | Relatório | Data |
 |---|---|---|---|---|
 | 0 · Reconhecimento | concluída | APROVADO com ressalvas | [relatório](fase-0-reconhecimento/relatorio.pdf) | 26/09/2026 |
-| 1 · Define | não iniciada | — | — | — |
+| 1 · Define | concluída | APROVADO | [relatório](fase-1-define/relatorio.pdf) · [pré-registro](fase-1-define/pre-registro.pdf) | 26/09/2026 |
 | 2A · Measure — qualidade | não iniciada | — | — | — |
 | 2B · Measure — baseline | não iniciada | — | — | — |
 | 3 · Analyze | não iniciada | — | — | — |
@@ -40,3 +40,8 @@ flowchart LR
 | 34 linhas duplicadas exatas, concentradas em 9 IDs | Fase 0 | Measure 2A decide se são coincidência plausível ou erro de digitação, e o tratamento de cada caso |
 | Crise financeira 2008–2009 (Selic 13,75%→8,75%; PIB -3,6% no 4º tri/2008) não é testável nesta base por falta de coluna de ano | Fase 0 | Só entra como explicação rival qualitativa no Analyze, nunca como achado |
 | Holdout: aleatório estratificado por ID de funcionário (mais fraco que corte temporal) | Contexto mestre | Proibido antes da fase Control |
+| Defeito B fechado em duas subcategorias — B1 comportamental/disciplinar (Reason 0,26) e B2 administrável na forma (Reason 22,23,24,25,27,28) — cada uma com Pareto separado | Fase 1 · Define | Measure 2B mede as duas separadamente; Improve recomenda ações diferentes para cada uma |
+| Excluídas 4 linhas: 3 administrativas sem evento real (IDs 4, 8, 35) + 1 linha corrompida do ID 29 (resolve a armadilha de granularidade E o padrão reason=0/0h ao mesmo tempo) | Fase 1 · Define | População de evento passa de 740 para 736; identidades de funcionário de 36 para 34 (IDs 4 e 35 tinham só essa linha) |
+| Métrica primária: proporção de eventos (contagem). Horas: métrica secundária/guardrail, nunca somada à contagem | Fase 1 · Define | Baseline da Fase 2B mede proporção com IC; horas reportadas separadamente por subcategoria |
+| 4 hipóteses pré-registradas e imutáveis em fase-1-define/pre-registro.md (H1 principal, H2 rival estrutural, H3 artefato de registro, H4 dia da semana) — correção Bonferroni, α=0,0125 | Fase 1 · Define | Analyze testa exatamente estas 4, nesta ordem (H2 antes de H1), nenhuma nova hipótese pode ser adicionada depois |
+| Holdout: aleatório por identidade de funcionário (34 identidades pós-exclusão), 75/25, semente fixa — ainda não materializado em arquivo | Fase 1 · Define | Control sorteia e congela; nenhum script antes disso pode gerar esse recorte |
