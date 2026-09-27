@@ -170,3 +170,36 @@ também — o pipeline (`dados_pagina.json`) segue intocado desde a v1.
 | A auditoria final rodou de novo, completa, com quantas rodadas precisou | OK | Rodada 5 (v3): 1 rodada, 0 achados bloqueantes |
 
 **Veredito: APROVADO.**
+
+## Adendo — v4, o Painel vira o enxerto real do arquivo (27/09/2026)
+
+A skill `entrega-dmaic` corrigiu `references/montador.md`: o Painel não
+pode ser recriado com os componentes desta skill usando as cores extraídas
+do arquivo — tem que ser a **marcação real** do HTML baixado do Montador,
+populada com os dados do projeto. A v3 ainda recriava os cinco blocos do
+Painel com `.card`/`.kpis`/gráficos SVG desta skill; nesta rodada o
+`<body>` inteiro de `artefatos/montador-clinica-aurora-operacao.html` foi
+transplantado para dentro do Painel — a mesma grade de 12 colunas, os
+mesmos cinco `<section>`, com os números e textos de exemplo trocados
+pelos do pipeline e `.sim`/`.tec` acrescentados a cada texto estático. Os
+dois gráficos (Pareto, Barras agrupadas) passaram a ser desenhados pelo
+motor original do arquivo (ECharts), não mais pelas funções SVG desta
+skill. Dashboard, Relatório e Slides não foram tocados. **Nenhum número
+mudou.** Detalhe completo, incluindo os 3 defeitos visuais achados e
+corrigidos testando ao vivo (rótulos do Pareto, "80%" duplicado, fundo
+claro vazando no cabeçalho da tabela), em `artefatos/escolhas-visuais.md`
+(adendo v4) e na Rodada 6 de `artefatos/relatorio-auditoria.md`.
+
+### Tollgate ENTREGA (visual) — v4
+
+| Critério | Veredito | Motivo |
+|---|---|---|
+| O Painel é a marcação real do arquivo baixado, não uma recriação com os componentes desta skill | OK | `<body>` de `montador-clinica-aurora-operacao.html` transplantado como está; só o `:root` virou `#painel-enxerto` (escopo, ver adendo) |
+| Nenhum resto de exemplo do gerador original; nenhum número digitado à mão | OK | Todos os 5 blocos lêem `paretoTaxa`/`TIPO`/`DIST`/`cubo` (as mesmas variáveis do Dashboard) |
+| Nenhum bloco vazio sem justificativa | OK | Os 5 espaços têm dado real — nenhum precisou de "— vazio —" |
+| Os dois registros de linguagem funcionam dentro do enxerto | OK | `.sim`/`.tec` em todo texto estático, controlados pelo `data-reg` já existente |
+| Dashboard, Relatório e Slides mantidos exatamente como estavam, só com os tokens | OK | Nenhuma edição fora do Painel nesta rodada |
+| Contraste conferido de novo, claro e escuro | OK | `importar_estilo.py` rerodado; Painel é sempre escuro por design (kit sem contraparte clara), documentado |
+| Auditoria final rodou de novo | OK | Rodada 6: 3 achados corrigidos na própria rodada, 8/8 checagens na repetição |
+
+**Veredito: APROVADO.**

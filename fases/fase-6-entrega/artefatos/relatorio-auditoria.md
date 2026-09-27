@@ -137,6 +137,48 @@ Checagens rodadas (`auditoria_v3_reconstrucao.py`):
 
 **Resultado: 1 rodada, 0 achados bloqueantes, 9/9 checagens aprovadas.**
 
+## Rodada 6 (v4 — o Painel vira o enxerto real do arquivo)
+
+Data: 27/09/2026. A skill corrigiu `references/montador.md`: o Painel não
+pode ser recriado com os componentes desta skill usando as cores do
+arquivo — tem que ser a marcação real do HTML baixado, com os dados do
+projeto dentro. A v3 (rodada 5) ainda recriava os cinco blocos com
+`.card`/`.kpis` e funções SVG desta skill; nesta rodada o `<body>` inteiro
+de `artefatos/montador-clinica-aurora-operacao.html` foi transplantado
+para o Painel, com os dois gráficos redesenhados no motor original do
+arquivo (ECharts, não mais SVG desta skill). Detalhe completo em
+`escolhas-visuais.md`, adendo v4.
+
+Testando ao vivo, 2 defeitos visuais foram achados e corrigidos na própria
+rodada:
+
+1. Rótulos do eixo X do Pareto (7 motivos) sendo escondidos/rotacionados de
+   forma ilegível pelo ECharts — corrigido com `interval:0`, rotação maior
+   e a abreviação já usada em outro gráfico do projeto.
+2. Rótulo "80%" duplicado (o da linha de referência em cima do rótulo
+   nativo do eixo) — corrigido desligando o rótulo da `markLine`.
+3. Cabeçalho da tabela do Painel puxando o fundo claro do `th{background:
+   var(--sunk)}` global da página (só visível no tema claro do site) —
+   corrigido com `background:transparent` explícito nos `<th>` do Painel.
+
+Checagens rodadas (`auditoria_v4_enxerto.py`), todas após as correções:
+
+- Os dois gráficos ECharts (Pareto, Barras agrupadas) renderizam com SVG
+  real, dados do pipeline.
+- Selo "achado promissor, não confirmado" presente no bloco Secundário.
+- Registro de idioma (Simples/Técnica) muda o texto dentro do enxerto —
+  confirmado comparando o texto do título antes/depois do clique.
+- Dashboard continua com filtro cruzado, seleção de matriz e downloads
+  intactos (nada nesses três modos foi tocado nesta rodada).
+- Download `.xlsx` e `.pptx` gerados (> 1 KB).
+- Zero erros de console/página.
+- Capturas em tema claro, escuro e mobile — o Painel aparece sempre escuro
+  (Dark Glass fixo, decisão documentada no adendo v4), sem rótulo sobre
+  dado em nenhuma largura.
+
+**Resultado: 1 rodada, 3 achados (todos corrigidos na mesma rodada), 8/8
+checagens aprovadas na repetição.**
+
 ## Conclusão
 
 V1: após 3 rodadas (2 com achado, 1 limpa), a página ficou pronta para
@@ -150,6 +192,13 @@ recolorido.
 
 V3 (reconstrução estrutural, quatro modos): 1 rodada, 0 achados. A grade e
 os componentes do Montador agora estruturam Painel, Dashboard, Relatório e
-Slides. Nenhum número mudou em relação à v1; toda a mecânica de interação
-(filtros, matriz, ordenação, downloads, zoom, registros de linguagem) foi
-retestada e continua igual.
+Slides. Escopo ainda insuficiente para o Painel — os blocos eram recriados
+com os componentes desta skill, não a marcação real do arquivo.
+
+V4 (Painel = enxerto real do arquivo): 1 rodada, 3 achados visuais
+corrigidos na própria rodada (rótulos do Pareto, "80%" duplicado, fundo do
+cabeçalho da tabela). O Painel agora é a marcação literal de
+`montador-clinica-aurora-operacao.html`, populada com os dados do projeto;
+os dois gráficos usam o motor original do arquivo (ECharts). Dashboard,
+Relatório e Slides não foram tocados nesta rodada. Nenhum número mudou em
+relação à v1.

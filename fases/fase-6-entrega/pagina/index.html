@@ -6,6 +6,72 @@
 <title>Absenteísmo evitável — Transportadora Brasília</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<style>
+/* ===== Enxerto do Montador — Painel (fases/fase-6-entrega/artefatos/montador-clinica-aurora-operacao.html) =====
+   Marcação e regras do arquivo baixado, como estão, só com os seletores escopados a
+   #painel-enxerto (para não vazar tokens/reset para o resto da página) — ver
+   artefatos/escolhas-visuais.md, adendo "enxerto real". Cores testadas por
+   assets/importar_estilo.py: só --acc-onaccent recebeu ajuste de luminosidade para
+   passar 4,5:1 como texto (ver adendo); o resto é exatamente o que veio do arquivo. */
+#painel-enxerto {
+  --bg: #07070e;
+  --plane: rgba(255,255,255,.055);
+  --plane-2: rgba(255,255,255,.03);
+  --stroke: rgba(255,255,255,.1);
+  --ink: #f5f6fb;
+  --ink-2: #b8bdd4;
+  --muted: #7c82a0;
+  --acc: #8b5cf6;
+  --acc-2: #22d3ee;
+  --good: #34d399;
+  --bad: #fb7185;
+  --warn: #fbbf24;
+  --good-bg: rgba(52,211,153,.14);
+  --bad-bg: rgba(251,113,133,.14);
+  --warn-bg: rgba(251,191,36,.14);
+  --track: rgba(255,255,255,.09);
+  --grid: rgba(255,255,255,.06);
+  --radius: 14px;
+  --bw: 1px;
+  --shadow: 0 20px 55px -22px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.5);
+  --font: 'Inter';
+  --display: 'Inter';
+  --mono: 'JetBrains Mono';
+  --c1: #8b5cf6;
+  --c2: #22d3ee;
+  --c3: #34d399;
+  --c4: #fbbf24;
+  --c5: #fb7185;
+  --on-acc: #0a0a12;
+  --on-cat: #0a0a12;
+  --on-good: #04150e;
+  background: var(--bg); color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 24px; border-radius: 18px; display: block;
+}
+#painel-enxerto, #painel-enxerto * { box-sizing: border-box; }
+#painel-enxerto .app { max-width: 1420px; margin: 0 auto; }
+#painel-enxerto .topo { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 22px; flex-wrap: wrap; }
+#painel-enxerto .marca h2 { font-family: var(--display), system-ui, sans-serif; font-size: 21px; font-weight: 700; letter-spacing: -.3px; margin: 0; }
+#painel-enxerto .marca p { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+#painel-enxerto .periodo { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border: var(--bw) solid var(--stroke);
+  border-radius: var(--radius); background: var(--plane); font-size: 13px; font-weight: 600; color: var(--ink); box-shadow: var(--shadow); }
+#painel-enxerto .grade { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+#painel-enxerto .grade > div { min-width: 0; display: flex; flex-direction: column; }
+#painel-enxerto .grade > div > * { flex: 1; }
+#painel-enxerto .grade section { box-sizing: border-box; }
+@media (max-width: 900px) { #painel-enxerto .grade > div { grid-column: span 12 !important; } }
+#painel-enxerto .grade section { position: relative; transition: transform .2s ease; }
+#painel-enxerto .grade section::before { content: ''; position: absolute; left: 16px; right: 16px; top: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--acc), transparent); opacity: .32; pointer-events: none; transition: opacity .2s ease; }
+#painel-enxerto .grade section:hover { transform: translateY(-2px); }
+#painel-enxerto .grade section:hover::before { opacity: .6; }
+@media (prefers-reduced-motion: reduce) { #painel-enxerto .grade section, #painel-enxerto .grade section::before { transition: none; } #painel-enxerto .grade section:hover { transform: none; } }
+#painel-enxerto .vazio { display:flex; align-items:center; justify-content:center; height:100%; min-height:120px; color:var(--muted); font-size:12.5px; text-align:center; padding:12px; }
+#painel-enxerto .capt { font-size:12px; color:var(--muted); margin-top:10px; line-height:1.5; }
+#painel-enxerto .badge-promissor2 { display:inline-block; font-family:var(--mono),monospace; font-size:10px; font-weight:700; letter-spacing:.05em; padding:3px 10px; border-radius:999px; background:rgba(139,92,246,.16); color:#c6adfc; border:1px solid var(--acc); text-transform:uppercase; white-space:nowrap; }
+</style>
 <style>
 :root{
   --paper:#E9EDF0; --surface:#FFFFFF; --sunk:#E1E7EB; --line:#D0D8DE; --line-2:#AEBBC4;
@@ -95,25 +161,8 @@ th[aria-sort] .arw{opacity:1; color:var(--accent)}
 .g6{grid-column:span 6; display:flex; flex-direction:column}
 .g6 > .card{flex:1}
 @media (max-width:860px){ .g6{grid-column:span 12} }
-.hero-card{padding:22px 24px}
-.hero{display:grid; grid-template-columns:minmax(260px,1.1fr) minmax(240px,1fr); gap:20px; align-items:end}
-.bignum{font-family:Inter,sans-serif; font-weight:800; font-size:clamp(56px,10vw,88px); line-height:.92; letter-spacing:-.03em; color:var(--accent)}
-.bignum span{font-size:.38em}
-.herometa{font-size:14px; color:var(--ink-2)}
-.herometa b{color:var(--ink)}
-.gap{display:inline-flex; align-items:baseline; gap:6px; background:var(--accent-soft); border-radius:var(--radius); padding:4px 11px; font-weight:600; color:var(--ink); font-size:13.5px}
-.guards{display:grid; grid-template-columns:repeat(auto-fit,minmax(166px,1fr)); gap:14px; margin:18px 0}
-.guard{padding:14px 16px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
-.guard .k{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
-.guard .v{font-family:Inter,sans-serif; font-weight:800; font-size:22px; margin-top:4px; font-variant-numeric:tabular-nums}
-.guard .d{font-size:12px; color:var(--good); margin-top:2px; font-weight:500}
 .disclaimer{margin-top:22px; border-left:3px solid var(--line-2); padding:2px 0 2px 14px; font-size:13px; color:var(--ink-3); max-width:74ch}
-.guardrail-box{background:var(--surface); border:2px solid var(--good); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px 18px; margin:18px 0; display:grid; grid-template-columns:auto auto 1fr; gap:6px 18px; align-items:start}
-.guardrail-box .grk{font-family:"JetBrains Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--good); grid-column:1/-1}
-.guardrail-box .grv{font-family:Inter,sans-serif; font-weight:700; font-size:30px; color:var(--good); line-height:1}
-.guardrail-box .grtxt{margin:0; font-size:13px; color:var(--ink-2); max-width:62ch; align-self:center}
 .badge-promissor{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.05em; padding:3px 10px; border-radius:999px; background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent); text-transform:uppercase; white-space:nowrap}
-@media (max-width:640px){ .guardrail-box{grid-template-columns:1fr} }
 
 /* dropdowns */
 .filters{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px 16px; margin-bottom:16px}
@@ -229,7 +278,7 @@ dd{margin:2px 0 0; color:var(--ink-2)}
 .cardhead{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap}
 .tctl{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:10px}
 svg{display:block; width:100%; height:auto}
-@media (max-width:640px){ .hero{grid-template-columns:1fr} .toc ol{columns:1} }
+@media (max-width:640px){ .toc ol{columns:1} }
 @media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important} }
 @media print{
   .topbar,.ribbon,.decknav,.printbar,.filters,.fbar,#tip,.toc,.zoom-bar{display:none!important}
@@ -262,91 +311,129 @@ svg{display:block; width:100%; height:auto}
   </div>
 </div></header>
 
-<!-- ===================== PAINEL ===================== -->
+<!-- ===================== PAINEL — enxerto real do Montador ===================== -->
 <section id="pane-painel" class="pane"><div class="wrap">
-  <div class="grade12">
-
-    <!-- Herói (faixa) · Número-herói -->
-    <div class="g12">
-      <div class="card hero-card">
-        <div class="eyebrow"><span class="sim">Quanto da ausência dá para evitar</span><span class="tec">Métrica primária · proporção de eventos evitáveis</span></div>
-        <div class="bignum">64,3<span>%</span></div>
-        <p class="herometa sim" style="margin-top:8px">Cerca de <b>6 em cada 10</b> ausências não têm atestado médico por trás. A medição tem margem: o valor real está entre <b class="mono">57,9%</b> e <b class="mono">69,1%</b>. Base: <b class="mono">733</b> eventos de <b class="mono">34</b> funcionários.</p>
-        <p class="herometa tec" style="margin-top:8px">IC 95% de <b class="mono">57,9%</b> a <b class="mono">69,1%</b> · n = <b class="mono">733</b> eventos, <b class="mono">34</b> clusters (funcionário) · bootstrap por cluster, não Wilson ingênuo. Sem carta de controle válida (M11: máximo 13 rótulos de mês, abaixo do mínimo de 20-25) — o gatilho de acompanhamento é a comparação direta contra este IC, ver tabela no rodapé.</p>
+  <div id="painel-enxerto">
+   <div class="app">
+    <div class="topo">
+      <div class="marca">
+        <h2><span class="sim">Quanto da ausência dá para evitar</span><span class="tec">Painel de controle · métrica primária</span></h2>
+        <p><span class="sim">transportadora em Brasília</span><span class="tec">proporção evitável, guardrail, concentração e distância</span></p>
       </div>
+      <span class="periodo"><span class="sim">jul/2007–jul/2010</span><span class="tec">janela completa · sem carta de controle (M11)</span></span>
     </div>
+    <div class="grade">
 
-    <!-- KPIs (faixa) · Faixa de KPIs -->
-    <div class="g12">
-      <div class="kpis">
-        <div class="kpi kpi-guard">
-          <div class="k"><span class="sim">Atestado médico</span><span class="tec">Guardrail</span></div>
-          <div class="v">35,7%</div>
-          <div class="s sim">não é para reduzir</div>
-          <div class="s tec">guardrail permanente (D5)</div>
-        </div>
-        <div class="kpi">
-          <div class="k"><span class="sim">Distância da meta interna</span><span class="tec">Gap vs. meta</span></div>
-          <div class="v">+30,9 pp</div>
-          <div class="s sim">meta = melhor quartil (33,4%), não benchmark</div>
-          <div class="s tec">meta interna 33,4%, sem referência de mercado</div>
-        </div>
-        <div class="kpi">
-          <div class="k">Eventos</div>
-          <div class="v">733</div>
-          <div class="s">de 34 funcionários · jul/2007–jul/2010</div>
-        </div>
-        <div class="kpi">
-          <div class="k"><span class="sim">Redução potencial</span><span class="tec">Ganho de capabilidade</span></div>
-          <div class="v">~6,3<span style="font-size:.55em">/mês</span></div>
-          <div class="s sim">eventos evitáveis a menos, se no nível do melhor quartil</div>
-          <div class="s tec">eventos evitáveis/mês, nível-alvo do melhor quartil</div>
+      <!-- Herói (faixa, 12) · Número-herói -->
+      <div style="grid-column: span 12">
+        <section style="background:var(--plane);border:var(--bw) solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;display:flex;flex-direction:column;justify-content:center">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px">
+            <div><b style="font-size:14px;font-weight:600;color:var(--ink)"><span class="sim">Quanto da ausência dá para evitar</span><span class="tec">Proporção de eventos evitáveis</span></b></div>
+          </div>
+          <div style="font-size:46px;font-weight:800;letter-spacing:-1.8px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums">64,3%</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap">
+            <span style="font-size:13px;font-weight:700;padding:5px 10px;border-radius:var(--radius);color:#c6adfc;background:rgba(139,92,246,.16)">IC 95% 57,9–69,1%</span>
+            <span style="font-size:12.5px;color:var(--muted)"><span class="sim">733 eventos de 34 funcionários · bootstrap por cluster</span><span class="tec">n=733/34 clusters · não Wilson ingênuo · M11: sem carta de controle válida</span></span>
+          </div>
+        </section>
+      </div>
+
+      <!-- KPIs (faixa, 12) · Faixa de KPIs -->
+      <div style="grid-column: span 12">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:14px;align-content:center;height:100%;box-sizing:border-box">
+          <div style="background:var(--plane-2);border:var(--bw) solid var(--stroke);border-radius:var(--radius);padding:14px 16px">
+            <div style="font-size:11.5px;color:var(--muted)"><span class="sim">Atestado médico</span><span class="tec">Guardrail</span></div>
+            <div style="font-size:22px;font-weight:700;margin-top:6px;letter-spacing:-.6px;color:var(--good);font-variant-numeric:tabular-nums">35,7%</div>
+            <div style="font-size:11.5px;font-weight:600;margin-top:4px;color:var(--muted)"><span class="sim">não é para reduzir</span><span class="tec">guardrail permanente (D5)</span></div>
+          </div>
+          <div style="background:var(--plane-2);border:var(--bw) solid var(--stroke);border-radius:var(--radius);padding:14px 16px">
+            <div style="font-size:11.5px;color:var(--muted)"><span class="sim">Distância da meta interna</span><span class="tec">Gap vs. meta</span></div>
+            <div style="font-size:22px;font-weight:700;margin-top:6px;letter-spacing:-.6px;color:var(--ink);font-variant-numeric:tabular-nums">+30,9 pp</div>
+            <div style="font-size:11.5px;font-weight:600;margin-top:4px;color:var(--muted)"><span class="sim">meta = melhor quartil (33,4%)</span><span class="tec">meta interna 33,4%, sem benchmark</span></div>
+          </div>
+          <div style="background:var(--plane-2);border:var(--bw) solid var(--stroke);border-radius:var(--radius);padding:14px 16px">
+            <div style="font-size:11.5px;color:var(--muted)">Eventos</div>
+            <div style="font-size:22px;font-weight:700;margin-top:6px;letter-spacing:-.6px;color:var(--ink);font-variant-numeric:tabular-nums">733</div>
+            <div style="font-size:11.5px;font-weight:600;margin-top:4px;color:var(--muted)">de 34 funcionários</div>
+          </div>
+          <div style="background:var(--plane-2);border:var(--bw) solid var(--stroke);border-radius:var(--radius);padding:14px 16px">
+            <div style="font-size:11.5px;color:var(--muted)"><span class="sim">Redução potencial</span><span class="tec">Ganho de capabilidade</span></div>
+            <div style="font-size:22px;font-weight:700;margin-top:6px;letter-spacing:-.6px;color:var(--ink);font-variant-numeric:tabular-nums">~6,3/mês</div>
+            <div style="font-size:11.5px;font-weight:600;margin-top:4px;color:var(--muted)"><span class="sim">se no nível do melhor quartil</span><span class="tec">nível-alvo do melhor quartil</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Principal · Pareto (taxa por motivo, onde se concentra) -->
-    <div class="g6">
-      <div class="card">
-        <div class="eyebrow" style="color:var(--accent)"><span class="sim">Onde a ausência evitável concentra</span><span class="tec">Pareto · taxa por motivo</span></div>
-        <div id="chart-pareto"></div>
-        <div class="legend">
-          <span><i class="lg-bar"></i><span class="sim">participação de cada motivo</span><span class="tec">% do total evitável</span></span>
-          <span><i class="lg-line"></i><span class="sim">soma acumulada</span><span class="tec">% acumulado</span></span>
-          <span><i class="lg-dash"></i><span class="sim">marca de 80%</span><span class="tec">referência 80%</span></span>
-        </div>
-        <p class="cardnote"><span class="sim">Consulta médica e odontológica já somam mais da metade da parte evitável.</span><span class="tec">Ordenado por participação no total de eventos evitáveis (7 motivos, taxa).</span></p>
+      <!-- Principal (6) · Pareto -->
+      <div style="grid-column: span 6">
+        <section style="background:var(--plane);border:var(--bw) solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px">
+            <div><b style="font-size:14px;font-weight:600;color:var(--ink)"><span class="sim">Onde a ausência evitável concentra</span><span class="tec">Pareto · taxa por motivo</span></b><div style="font-size:12px;color:var(--muted);margin-top:3px"><span class="sim">participação por motivo</span><span class="tec">pareto, 7 motivos</span></div></div>
+          </div>
+          <div id="chart-pareto-enx" style="height:240px"></div>
+          <p class="capt"><span class="sim">Consulta médica e odontológica já somam mais da metade da parte evitável.</span><span class="tec">Ordenado por participação no total de eventos evitáveis.</span></p>
+        </section>
       </div>
-    </div>
 
-    <!-- Secundário · Barras agrupadas (achado de distância, H1) -->
-    <div class="g6">
-      <div class="card">
-        <div class="eyebrow" style="color:var(--accent)"><span class="sim">Quem mora mais longe</span><span class="tec">Tipo × grupo de distância</span> <span class="badge-promissor">achado promissor, não confirmado</span></div>
-        <div id="chart-h1"></div>
-        <div class="legend" id="legend-h1"></div>
-        <p class="cardnote sim">Sinal na direção esperada — mais ausência administrável entre quem mora mais longe — mas testado com <b>poder estatístico muito baixo (~3%, 34 funcionários)</b> e checado numa segunda amostra separada, que apontou na mesma direção sem confirmar.</p>
-        <p class="cardnote tec">H1 pré-registrada: 16,4 p.p. na exploração (IC 95% 3,76–24,33; p=0,0178 acima do α de Bonferroni 0,0125; poder ≈3%), reforçado por 9,48 p.p. na confirmação (IC 95% 0,0–32,16; n=8). Rival estrutural testado antes, não descartou o efeito.</p>
+      <!-- Secundário (6) · Barras agrupadas -->
+      <div style="grid-column: span 6">
+        <section style="background:var(--plane);border:var(--bw) solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap">
+            <div><b style="font-size:14px;font-weight:600;color:var(--ink)"><span class="sim">Quem mora mais longe</span><span class="tec">Tipo × grupo de distância</span></b><div style="font-size:12px;color:var(--muted);margin-top:3px"><span class="sim">perto vs. longe, por tipo</span><span class="tec">barras agrupadas</span></div></div>
+            <span class="badge-promissor2">achado promissor, não confirmado</span>
+          </div>
+          <div id="chart-barras-enx" style="height:240px"></div>
+          <p class="capt sim">Sinal na direção esperada — mas testado com poder estatístico muito baixo (~3%, 34 funcionários) e checado numa segunda amostra separada, que apontou na mesma direção sem confirmar.</p>
+          <p class="capt tec">H1 pré-registrada: 16,4 p.p. na exploração (IC 95% 3,76–24,33; p=0,0178 acima do α de Bonferroni 0,0125; poder ≈3%), reforçado por 9,48 p.p. na confirmação (IC 95% 0,0–32,16; n=8).</p>
+        </section>
       </div>
-    </div>
 
-    <!-- Rodapé · Tabela densa (plano de controle) -->
-    <div class="g12">
-      <div class="tbox">
-        <table>
-          <thead><tr><th><span class="sim">O que acompanhar</span><span class="tec">Métrica</span></th><th><span class="sim">Alarme em</span><span class="tec">Limite</span></th><th>Frequência</th><th>Responsável</th><th><span class="sim">O que fazer se passar</span><span class="tec">Ação ao sair do limite</span></th></tr></thead>
-          <tbody>
-            <tr><td><span class="sim">Ausência evitável</span><span class="tec">Proporção de eventos evitáveis</span></td><td class="mono">fora de 57,9–69,1%</td><td>Mensal</td><td>Ger. RH/Operações</td><td>Se sustentado por 2+ meses, investigar causa antes de agir</td></tr>
-            <tr><td><span class="sim">Atestado médico (guardrail)</span><span class="tec">Proporção de eventos com atestado médico</span></td><td class="mono">qualquer queda junto da evitável</td><td>Mensal</td><td>Ger. RH/Operações</td><td>Suspender a mudança de processo e investigar supressão de atestado</td></tr>
-            <tr><td><span class="sim">Código de registro fora do padrão</span><span class="tec">Reason for absence fora de 1–28</span></td><td class="mono">&gt; 0 ocorrências</td><td>Mensal</td><td>TI / RH</td><td>Alerta imediato — sinal de que a correção de sistema falhou</td></tr>
-          </tbody>
-        </table>
+      <!-- Rodapé (12) · Tabela densa -->
+      <div style="grid-column: span 12">
+        <section style="background:var(--plane);border:var(--bw) solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px">
+            <div><b style="font-size:14px;font-weight:600;color:var(--ink)"><span class="sim">Como acompanhar</span><span class="tec">Plano de controle</span></b><div style="font-size:12px;color:var(--muted);margin-top:3px"><span class="sim">o que olhar, quando agir</span><span class="tec">indicador, limite, frequência, ação</span></div></div>
+          </div>
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr>
+              <th style="text-align:left;font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:0 8px 10px 0;border-bottom:var(--bw) solid var(--stroke);background:transparent"><span class="sim">O que acompanhar</span><span class="tec">Métrica</span></th>
+              <th style="text-align:left;font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:0 8px 10px 0;border-bottom:var(--bw) solid var(--stroke);background:transparent"><span class="sim">Alarme em</span><span class="tec">Limite</span></th>
+              <th style="text-align:left;font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:0 8px 10px 0;border-bottom:var(--bw) solid var(--stroke);background:transparent">Frequência</th>
+              <th style="text-align:left;font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:0 8px 10px 0;border-bottom:var(--bw) solid var(--stroke);background:transparent">Responsável</th>
+              <th style="text-align:left;font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:0 8px 10px 0;border-bottom:var(--bw) solid var(--stroke);background:transparent"><span class="sim">O que fazer se passar</span><span class="tec">Ação</span></th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink)"><span class="sim">Ausência evitável</span><span class="tec">Proporção de eventos evitáveis</span></td>
+                <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13px;color:var(--ink-2);font-family:var(--mono),monospace">fora de 57,9–69,1%</td>
+                <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink-2)">Mensal</td>
+                <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink-2)">Ger. RH/Operações</td>
+                <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink-2)">Se sustentado por 2+ meses, investigar causa antes de agir</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink)"><span class="sim">Atestado médico (guardrail)</span><span class="tec">Proporção com atestado médico</span></td>
+                <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13px;color:var(--ink-2);font-family:var(--mono),monospace">qualquer queda junto da evitável</td>
+                <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink-2)">Mensal</td>
+                <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink-2)">Ger. RH/Operações</td>
+                <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink-2)">Suspender a mudança de processo e investigar supressão de atestado</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 8px 11px 0;font-size:13.5px;color:var(--ink)"><span class="sim">Código de registro fora do padrão</span><span class="tec">Reason for absence fora de 1–28</span></td>
+                <td style="padding:11px 8px 11px 0;font-size:13px;color:var(--ink-2);font-family:var(--mono),monospace">&gt; 0 ocorrências</td>
+                <td style="padding:11px 8px 11px 0;font-size:13.5px;color:var(--ink-2)">Mensal</td>
+                <td style="padding:11px 8px 11px 0;font-size:13.5px;color:var(--ink-2)">TI / RH</td>
+                <td style="padding:11px 8px 11px 0;font-size:13.5px;color:var(--ink-2)">Alerta imediato — sinal de que a correção de sistema falhou</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </div>
-    </div>
 
+    </div>
+   </div>
   </div>
 
-  <p class="disclaimer"><span class="sim">Dados de jul/2007 a jul/2010, de uma transportadora real em Brasília (base pública, UCI Machine Learning Repository), que não mudam mais. <b>Não é um monitor ao vivo</b> — mostra como o acompanhamento funcionaria rodando na empresa. O gestor de RH mencionado é um perfil hipotético usado para guiar as decisões, não uma pessoa real consultada. O gráfico de motivo por mês (não temporal) e o Pareto de impacto em horas continuam completos no Dashboard e no Relatório.</span><span class="tec">Recorte jul/2007–jul/2010, 733 eventos de 34 funcionários (pós-exclusões de qualidade). <b>Não é monitoramento ao vivo</b>: demonstra o plano de controle da fase Control. Stakeholder simulado; premissas em fases/fase-1-define/relatorio.md. Tabela não-temporal por mês e Pareto de horas: Dashboard e Relatório (seções 6-7).</span></p>
+  <p class="disclaimer"><span class="sim">Dados de jul/2007 a jul/2010, de uma transportadora real em Brasília (base pública, UCI Machine Learning Repository), que não mudam mais. <b>Não é um monitor ao vivo</b> — mostra como o acompanhamento funcionaria rodando na empresa. O gestor de RH mencionado é um perfil hipotético usado para guiar as decisões, não uma pessoa real consultada. O painel acima é o arquivo baixado do Montador de Dashboards, com estes dados — ver artefatos/escolhas-visuais.md. O gráfico de motivo por mês (não temporal) e o Pareto de impacto em horas continuam completos no Dashboard e no Relatório.</span><span class="tec">Recorte jul/2007–jul/2010, 733 eventos de 34 funcionários (pós-exclusões de qualidade). <b>Não é monitoramento ao vivo</b>: demonstra o plano de controle da fase Control. Stakeholder simulado; premissas em fases/fase-1-define/relatorio.md. Enxerto da marcação de artefatos/montador-clinica-aurora-operacao.html (references/montador.md da entrega-dmaic) — nenhum bloco ficou vazio, todos os cinco espaços do Painel de controle têm dado do pipeline. Tabela não-temporal por mês e Pareto de horas: Dashboard e Relatório (seções 6-7).</span></p>
 </div></section>
 
 <!-- ===================== DASHBOARD ===================== -->
@@ -3319,86 +3406,77 @@ sob adesão de 80% ............................................. 18,1 horas evit
     el.innerHTML=s+'</svg>'; wireTips(el);
   }
 
-  /* Pareto em % (bar = participacao do motivo, linha = acumulado) - eixo unico
-     0-100%, porque os valores de entrada ja sao percentual (somam ~100),
-     diferente de paretoAcum (horas) que precisa de eixo duplo. */
-  function paretoPct(el,rows){
-    var W=460,H=256,L=40,R=16,T=16,B=52;
-    var pw=W-L-R, ph=H-T-B, n=rows.length;
-    var slot=pw/n, bw=Math.min(40,slot*0.6), acc=0, ramp=RAMP();
-    var s=sv(W,H);
-    [0,25,50,75,100].forEach(function(g){
-      var yy=T+ph-(ph*g)/100;
-      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="9.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+g+'%</text>';
-      s+='<line x1="'+L+'" y1="'+yy+'" x2="'+(W-R)+'" y2="'+yy+'" stroke="'+c('--line')+'" stroke-width="1"/>';
-    });
-    var y80=T+ph*0.2;
-    s+='<line x1="'+L+'" y1="'+y80+'" x2="'+(W-R)+'" y2="'+y80+'" stroke="'+c('--line-2')+'" stroke-width="1.2" stroke-dasharray="4 3"/>';
-    var pts=[];
-    rows.forEach(function(r,i){
-      var x=L+slot*i+(slot-bw)/2, h=(ph*r[1])/100, y=T+ph-h;
-      acc+=r[1];
-      var tp=esc(r[0])+'<br><b>'+nf(r[1],1)+'%</b> '+(simples()?'dos eventos evitáveis':'de participação')+'<br>'+nf(r[2],0)+' eventos';
-      s+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+ramp[Math.min(i,ramp.length-1)]+'" data-tip="'+attr(tp)+'"/>';
-      pts.push([x+bw/2, T+ph-(ph*acc/100), acc, r[0]]);
-      var palavras=r[0].split(' '), rotuloCurto=palavras[0]+(palavras[1]?' '+palavras[1].charAt(0).toUpperCase()+'.':'');
-      s+='<text x="'+(x+bw/2).toFixed(1)+'" y="'+(T+ph+14)+'" text-anchor="middle" font-size="9.5" fill="'+c('--ink-3')+'">'+esc(rotuloCurto)+'</text>';
-    });
-    var d=pts.map(function(p,i){return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join('');
-    s+='<path d="'+d+'" fill="none" stroke="'+c('--crit')+'" stroke-width="2" pointer-events="none"/>';
-    pts.forEach(function(p){
-      var tp=(simples()?'Somando até ':'Acumulado até ')+esc(p[3])+'<br><b>'+nf(p[2],1)+'%</b> do total';
-      s+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="7" fill="transparent" data-tip="'+attr(tp)+'"/>';
-      s+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.4" fill="'+c('--crit')+'" pointer-events="none"/>';
-    });
-    el.innerHTML=s+'</svg>'; wireTips(el);
+  /* ================= Painel — enxerto do Montador =================
+     O Painel NAO usa os graficos SVG desta skill: e' a marcacao real de
+     artefatos/montador-clinica-aurora-operacao.html, com os dois blocos de
+     grafico redesenhados no motor original do arquivo (ECharts) - so a
+     funcao de dados muda, a especificacao visual (cores, eixos, tooltip,
+     linha de 80%) e' a mesma que veio do Montador. Tokens fixos (o enxerto
+     nao segue o claro/escuro do resto da pagina - e' o arquivo como
+     baixado, sempre Dark Glass). Ver escolhas-visuais.md, adendo "enxerto real". */
+  var PAINEL_T = {
+    bg:'#07070e', plane:'rgba(255,255,255,.055)', 'plane-2':'rgba(255,255,255,.03)',
+    stroke:'rgba(255,255,255,.1)', ink:'#f5f6fb', 'ink-2':'#b8bdd4', muted:'#7c82a0',
+    acc:'#8b5cf6', 'acc-2':'#22d3ee', good:'#34d399', bad:'#fb7185', warn:'#fbbf24',
+    'good-bg':'rgba(52,211,153,.14)', 'bad-bg':'rgba(251,113,133,.14)', 'warn-bg':'rgba(251,191,36,.14)',
+    track:'rgba(255,255,255,.09)', grid:'rgba(255,255,255,.06)',
+    c1:'#8b5cf6', c2:'#22d3ee', c3:'#34d399', c4:'#fbbf24', c5:'#fb7185'
+  };
+  var PAINEL_F = "Inter, system-ui, sans-serif";
+  var painelCharts = null;
+
+  function painelParetoSpec(T,F){
+    var itens = paretoTaxa.map(function(r){ return {nome:r[0], valor:r[1]}; }); // [motivo,pct,n]
+    var acc=0, acumulado = itens.map(function(r){ acc+=r.valor; return +acc.toFixed(1); });
+    function eixoY(extra){ return Object.assign({type:'value',splitLine:{lineStyle:{color:T.grid,type:'dashed'}},axisLine:{show:false},axisTick:{show:false},axisLabel:{color:T.muted,fontSize:11,fontFamily:F}}, extra||{}); }
+    return {
+      textStyle:{fontFamily:F,color:T['ink-2']},
+      grid:{left:4,right:16,top:16,bottom:46,containLabel:true},
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:T.ink,borderWidth:0,padding:[9,12],textStyle:{color:T.bg,fontSize:12,fontFamily:F},extraCssText:'border-radius:6px'},
+      xAxis:{type:'category',data:itens.map(function(r){return r.nome;}),axisLine:{lineStyle:{color:T.stroke}},axisTick:{show:false},axisLabel:{color:T.muted,fontSize:9.5,fontFamily:F,rotate:32,interval:0,
+        formatter:function(v){ var p=v.split(' '); return p[0]+(p[1]?' '+p[1].charAt(0).toUpperCase()+'.':''); }}},
+      yAxis:[eixoY({axisLabel:{color:T.muted,fontSize:11,fontFamily:F,formatter:function(v){return v+'%';}}}),eixoY({max:100,splitLine:{show:false},axisLabel:{color:T.muted,fontSize:11,fontFamily:F,formatter:function(v){return v+'%';}}})],
+      series:[
+        {name:simples()?'Participação':'% do total evitável',type:'bar',itemStyle:{color:T.c1,borderRadius:[3,3,0,0]},data:itens.map(function(r){return r.valor;}),tooltip:{valueFormatter:function(v){return nf(v,1)+'%';}}},
+        {name:simples()?'Acumulado':'% acumulado',type:'line',yAxisIndex:1,smooth:.2,symbolSize:6,lineStyle:{color:T.warn,width:2},itemStyle:{color:T.warn},data:acumulado,tooltip:{valueFormatter:function(v){return nf(v,1)+'%';}},
+          markLine:{silent:true,symbol:'none',lineStyle:{color:T.warn,type:'dashed',width:1.2},label:{show:false},data:[{yAxis:80}]}}
+      ]
+    };
   }
 
-  /* Barras agrupadas: participacao (%) de cada tipo dentro de cada grupo de
-     distancia - mesma normalizacao por coluna da matriz do Dashboard (cada
-     grupo de distancia soma 100% entre os 3 tipos), so que em barras lado a
-     lado em vez de celulas de matriz. Estatico (Painel nao filtra). */
-  function barrasAgrupadas(el,catLabels,series){
-    var W=460,H=256,L=36,R=16,T=16,B=40;
-    var pw=W-L-R, ph=H-T-B, nCat=catLabels.length, nSer=series.length;
-    var groupW=pw/nCat, barW=Math.min(34,groupW/(nSer+1.4));
-    var s=sv(W,H);
-    [0,25,50,75,100].forEach(function(g){
-      var yy=T+ph-(ph*g)/100;
-      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="9.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+g+'%</text>';
-      s+='<line x1="'+L+'" y1="'+yy+'" x2="'+(W-R)+'" y2="'+yy+'" stroke="'+c('--line')+'" stroke-width="1"/>';
-    });
-    catLabels.forEach(function(lab,gi){
-      var gx=L+groupW*gi;
-      series.forEach(function(ser,si){
-        var v=ser.vals[gi], n=ser.ns[gi];
-        var bx=gx+(groupW-nSer*barW)/2+si*barW, h=(ph*v)/100, y=T+ph-h;
-        var tp=esc(ser.label)+' · '+esc(lab)+'<br><b>'+nf(v,1)+'%</b> '+(simples()?'desse grupo de distância':'de participação na coluna')+'<br>'+nf(n,0)+' eventos';
-        s+='<rect x="'+bx.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+(barW-2)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+ser.color+'" data-tip="'+attr(tp)+'"/>';
-      });
-      s+='<text x="'+(gx+groupW/2).toFixed(1)+'" y="'+(T+ph+18)+'" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-2')+'">'+esc(lab)+'</text>';
-    });
-    el.innerHTML=s+'</svg>'; wireTips(el);
-  }
-
-  /* Monta e desenha o achado de distancia (H1) do Painel: agrega o cubo
-     completo (sem filtro - o Painel e' estatico) na mesma normalizacao da
-     matriz tipo x distancia do Dashboard, e escreve a legenda de cores. */
-  function desenhaH1(el,legendEl){
-    var seriesH1=TIPO.map(function(lab,i){
-      var vals=[],ns=[];
-      DIST.forEach(function(_,j){
+  function painelBarrasSpec(T,F){
+    var seriesTipo = TIPO.map(function(lab,i){
+      var vals = DIST.map(function(_,j){
         var celula=soma(cubo.filter(function(x){return x.ti===i&&x.di===j;}));
         var colTotal=soma(cubo.filter(function(x){return x.di===j;}));
-        vals.push(colTotal.it?100*celula.it/colTotal.it:0); ns.push(celula.it);
+        return colTotal.it?+(100*celula.it/colTotal.it).toFixed(1):0;
       });
-      var cor = i===0?c('--good'):(i===1?c('--accent'):c('--warn'));
-      return {label:lab,color:cor,vals:vals,ns:ns};
+      return {nome:lab, valores:vals};
     });
-    barrasAgrupadas(el,DIST,seriesH1);
-    if(legendEl) legendEl.innerHTML = seriesH1.map(function(ser){
-      return '<span><i style="width:12px;height:10px;border-radius:2px;background:'+ser.color+';display:inline-block"></i>'+esc(ser.label)+'</span>';
-    }).join('');
+    var cores=[T.good,T.acc,T.warn];
+    return {
+      textStyle:{fontFamily:F,color:T['ink-2']},
+      grid:{left:4,right:12,top:14,bottom:44,containLabel:true},
+      legend:{bottom:0,itemWidth:10,itemHeight:10,icon:'roundRect',textStyle:{color:T['ink-2'],fontSize:11,fontFamily:F}},
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:T.ink,borderWidth:0,padding:[9,12],textStyle:{color:T.bg,fontSize:12,fontFamily:F},valueFormatter:function(v){return nf(v,1)+'%';}},
+      xAxis:{type:'category',data:DIST,axisLine:{lineStyle:{color:T.stroke}},axisTick:{show:false},axisLabel:{color:T.muted,fontSize:11,fontFamily:F}},
+      yAxis:{type:'value',max:100,splitLine:{lineStyle:{color:T.grid,type:'dashed'}},axisLine:{show:false},axisTick:{show:false},axisLabel:{color:T.muted,fontSize:11,fontFamily:F,formatter:function(v){return v+'%';}}},
+      series:seriesTipo.map(function(s,i){ return {name:s.nome,type:'bar',barGap:'12%',itemStyle:{color:cores[i%3],borderRadius:[3,3,0,0]},data:s.valores}; })
+    };
+  }
+
+  function desenharPainelEnxerto(){
+    if(typeof echarts==='undefined') return;
+    if(document.getElementById('pane-painel').hidden) return;
+    var elP=document.getElementById('chart-pareto-enx'), elB=document.getElementById('chart-barras-enx');
+    if(!elP||!elB) return;
+    if(!painelCharts){
+      painelCharts={pareto:echarts.init(elP,null,{renderer:'svg'}),barras:echarts.init(elB,null,{renderer:'svg'})};
+      window.addEventListener('resize',function(){ painelCharts.pareto.resize(); painelCharts.barras.resize(); });
+    }
+    painelCharts.pareto.setOption(painelParetoSpec(PAINEL_T,PAINEL_F));
+    painelCharts.barras.setOption(painelBarrasSpec(PAINEL_T,PAINEL_F));
+    painelCharts.pareto.resize(); painelCharts.barras.resize();
   }
 
   /* Grafico descritivo por rotulo de mes - SEM ordem cronologica confiavel
@@ -3721,8 +3799,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
 
   /* ================= desenho geral ================= */
   function draw(){
-    paretoPct(document.getElementById('chart-pareto'),paretoTaxa);
-    desenhaH1(document.getElementById('chart-h1'),document.getElementById('legend-h1'));
+    desenharPainelEnxerto();
     if(!document.getElementById('pane-relatorio').hidden){
       mesBar(document.getElementById('rep-mes'),MESES_NT);
       paretoAcum(document.getElementById('rep-pareto'),paretoImp);

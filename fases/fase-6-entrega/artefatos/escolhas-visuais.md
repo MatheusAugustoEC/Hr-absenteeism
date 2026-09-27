@@ -227,3 +227,109 @@ modos, comparando v1 com esta versão?"*
 
 Nenhuma resposta é "só a cor" — as quatro têm um componente ou uma grade que
 não existia na v1/v2.
+
+---
+
+## Adendo v4 — o Painel é o enxerto real do arquivo (27/09/2026)
+
+A skill `entrega-dmaic` corrigiu `references/montador.md`: o Painel não pode
+ser "redesenhado com o código da skill usando as cores do arquivo" — ele
+precisa ser a **marcação real** do HTML baixado do Montador, com os dados
+do projeto dentro dela. Era exatamente o que a v3 ainda não fazia: o Painel
+usava as cores e a grade certas, mas os cinco blocos eram recriados com os
+componentes (`.card`, `.kpis`, funções SVG) desta skill — não a marcação
+literal de `artefatos/montador-clinica-aurora-operacao.html`.
+
+### O que mudou
+
+O `<body>` inteiro do arquivo baixado (a `.app`, o `.topo`, a `.grade` de 12
+colunas, os cinco `<section>`/`<div>`) foi transplantado para dentro do
+Painel, como veio — só com os números e textos de exemplo trocados pelos
+do pipeline (`dados_pagina.json`, via as mesmas variáveis JS que já
+alimentam o Dashboard: `paretoTaxa`, `TIPO`, `DIST`, `cubo`, `soma()`) e com
+`.sim`/`.tec` acrescentados a cada texto estático. Os dois gráficos
+(Pareto e Barras agrupadas) continuam desenhados pelo **motor original do
+arquivo** — ECharts, carregado do mesmo CDN que o arquivo baixado usa — não
+pelas funções SVG desta skill; só a especificação de dados foi trocada
+(`SPECS.pareto`/`SPECS.barras` do arquivo → `painelParetoSpec`/
+`painelBarrasSpec`, mesma estrutura, dados reais).
+
+**Escopo do enxerto:** as variáveis `:root` do arquivo (`--bg`, `--plane`,
+`--acc`, `--good`, `--radius`, `--shadow` etc.) foram movidas para um
+seletor `#painel-enxerto` (em vez de `:root`), porque várias têm o mesmo
+nome de variáveis já usadas pelo resto da página (`--ink`, `--good`,
+`--radius`...) — sem esse escopo, o `:root` do arquivo sobrescreveria os
+tokens do Dashboard/Relatório/Slides na página inteira. É a única adaptação
+mecânica feita para o enxerto conviver com uma SPA de quatro modos; a
+grade, os blocos, as cores e a tipografia dentro do escopo são exatamente
+os do arquivo. Pelo mesmo motivo, o reset `* { margin:0; padding:0 }` e a
+regra `body { ... }` do arquivo viraram `#painel-enxerto` (em vez de
+afetar a página toda).
+
+**O Painel é sempre escuro (Dark Glass), independente do tema claro/escuro
+do resto da página.** O kit do Montador não tem contraparte clara — é o
+arquivo como baixado, literalmente, e o enxerto não "traduz" isso para um
+tema claro. No tema claro do site, o Painel aparece como um cartão escuro
+fixo dentro de uma página clara — decisão deliberada (é o enxerto real, não
+uma versão adaptada), confirmada em captura (`capturas/painel-claro.png`).
+
+**Blocos vazios:** nenhum. Os cinco espaços do arquivo (Número-herói, Faixa
+de KPIs, dois gráficos, Tabela) têm dado real do projeto — nenhum ficou sem
+sustentação.
+
+### Dois defeitos encontrados testando ao vivo, corrigidos
+
+1. **Rótulos do Pareto cortados/pulados.** O eixo X do gráfico de motivos
+   tem 7 categorias; o ECharts, sem `interval:0`, escondia rótulos que
+   "pareciam" colidir (mostrou só 5 de 7, fora de ordem visual) e o rótulo
+   mais longo ("Falta sem justificativa aceita") ficava girado por cima dos
+   vizinhos. Corrigido com `interval:0` (força todos os rótulos), rotação
+   maior (32°) e a mesma abreviação já usada em outro gráfico do projeto
+   (1ª palavra + inicial da 2ª: "Consulta M.", "Consulta O."), mais margem
+   inferior maior na grade do gráfico.
+2. **"80%" duplicado e ilegível.** A marca de referência do Pareto (linha
+   tracejada em 80% acumulado) tinha um rótulo de texto próprio bem em
+   cima do rótulo nativo do eixo direito, que já mostra "80%" na mesma
+   altura — os dois se sobrepunham. Corrigido desligando o rótulo da
+   `markLine` (`label:{show:false}`); a linha tracejada continua visível,
+   a leitura do valor vem do eixo.
+3. **Cabeçalho da tabela com fundo claro dentro do Painel escuro (só no
+   tema claro do site).** O CSS geral da página tem uma regra
+   `th{background:var(--sunk)}` que vale para qualquer `<th>` do documento
+   — inclusive os da tabela enxertada, que não tinham fundo próprio
+   definido (o arquivo original também não define, porque não convive com
+   essa regra). No tema claro, isso pintava uma faixa clara atrás do
+   cabeçalho da tabela, dentro do cartão escuro. Corrigido com
+   `background:transparent` explícito nos 5 `<th>` da tabela do Painel.
+
+### Contraste (`assets/importar_estilo.py`, rodado de novo sobre o arquivo salvo)
+
+Mesmo resultado da v2: 31 variáveis, 4 alertas — todos falsos positivos já
+documentados no adendo v2 (o script testa `--on-acc`/`--on-cat`/`--on-good`
+contra `--bg`, mas são cores de texto para ficar sobre chips coloridos, não
+sobre o fundo; testadas contra o fundo real, todas ≥4,66:1). Nenhuma cor
+usada de fato no enxerto (`--ink`, `--muted`, `--good`, `--acc` em texto
+via o tom derivado `#c6adfc`, `--c1..c5` nos gráficos) precisou de ajuste
+além do já registrado no adendo v2 — verificadas de novo aqui: `--acc`
+(#8B5CF6) só aparece como marca decorativa (linha de brilho, série de
+gráfico), nunca como texto correndo, então o mínimo aplicável é 2:1 (regra
+de rampa/marca), não 4,5:1; onde apareceria como texto pequeno (o selo
+"achado promissor" e o rótulo do IC), usei o tom já derivado e testado no
+adendo v2 (`#c6adfc`, 8,97:1 contra o próprio fundo do selo).
+
+### Auditoria final desta rodada
+
+`artefatos/auditoria_v4_enxerto.py` — 1 rodada: os dois defeitos acima
+foram achados e corrigidos nela mesma (visual, testando ao vivo com
+Playwright); a repetição depois da correção fechou com 0 bloqueantes,
+8/8 checagens (gráficos renderizados, selo presente, registro de idioma
+funcionando dentro do enxerto, filtro cruzado do Dashboard, download
+.xlsx/.pptx, KPIs do Relatório, zero erros de console). Ver Rodada 6 de
+`relatorio-auditoria.md`.
+
+### Arquivos atualizados nesta rodada
+
+- `index.html` — cópia congelada da página final v4.
+- `auditoria_v4_enxerto.py` — script desta rodada.
+- `capturas/painel-escuro.png`, `capturas/painel-claro.png`,
+  `capturas/painel-mobile.png` — atualizadas.
