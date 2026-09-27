@@ -145,3 +145,28 @@ abaixo, adendo ao veredito original.
 | Auditoria final rodou de novo, terminou sem bloqueante | OK | Rodada 4: 1 achado de contraste, corrigido, 10/10 checagens funcionais na repetição |
 
 **Veredito: APROVADO.**
+
+## Adendo — v3, reconstrução estrutural (27/09/2026)
+
+A v2 só recolori Dashboard, Relatório e Slides sobre o esqueleto antigo
+(`assets/molde.html` da skill) — o Montador entrou como fonte de variáveis
+de cor, não como molde estrutural. O usuário apontou que isso não cumpria o
+pedido: "a primeira diferença" entre a v1 e a v2 em três dos quatro modos
+era só a cor. Corrigido tratando
+`artefatos/montador-clinica-aurora-operacao.html` como o molde estrutural
+real desta entrega — a grade de 12 colunas, o cartão de vidro (borda, raio,
+sombra, brilho no topo) e o chip arredondado do Montador agora estruturam
+os quatro modos, não só o Painel. Detalhe completo, por modo, no adendo v3
+de `artefatos/escolhas-visuais.md`. **Nenhum número mudou** nesta rodada
+também — o pipeline (`dados_pagina.json`) segue intocado desde a v1.
+
+### Tollgate ENTREGA (visual) — v3
+
+| Critério | Veredito | Motivo |
+|---|---|---|
+| Dashboard, Relatório e Slides usam a linguagem visual do Montador na estrutura dos componentes, não só nas variáveis de cor | OK | Dashboard: grade de 12 colunas (`grade12`) igual ao Painel, KPIs em cartões individuais. Relatório: faixa de KPIs nova no topo, badges de severidade no FMEA. Slides: chip de contexto sob cada número-destaque, contador de página em badge, brilho no topo do card |
+| A resposta à pergunta "qual é a primeira diferença visual" está registrada para os quatro modos | OK | `escolhas-visuais.md`, seção "Resposta à pergunta de validação do prompt" — nenhuma resposta é "só a cor" |
+| Nenhum número, filtro, download ou regra de interação quebrou na reconstrução | OK | Filtro cruzado, seleção da matriz, ordenação de tabela, download .xlsx/.pptx e navegação de slides retestados após a reestruturação — 9/9 checagens aprovadas |
+| A auditoria final rodou de novo, completa, com quantas rodadas precisou | OK | Rodada 5 (v3): 1 rodada, 0 achados bloqueantes |
+
+**Veredito: APROVADO.**

@@ -9,7 +9,7 @@
 | 3 · Analyze | concluída | APROVADO | [relatório](fase-3-analyze/relatorio.pdf) | 26/09/2026 |
 | 4 · Improve | concluída | APROVADO | [relatório](fase-4-improve/relatorio.pdf) | 26/09/2026 |
 | 5 · Control | concluída | APROVADO com ressalva | [relatório](fase-5-control/relatorio.pdf) | 26/09/2026 |
-| 6 · Entrega | concluída | APROVADO (v2 — identidade visual) | [relatório](fase-6-entrega/relatorio.pdf) · [página](fase-6-entrega/pagina/index.html) · [escolhas visuais](fase-6-entrega/artefatos/escolhas-visuais.md) | 27/09/2026 |
+| 6 · Entrega | concluída | APROVADO (v3 — reconstrução estrutural, 4 modos) | [relatório](fase-6-entrega/relatorio.pdf) · [página](fase-6-entrega/pagina/index.html) · [escolhas visuais](fase-6-entrega/artefatos/escolhas-visuais.md) | 27/09/2026 |
 | 7 · Revisão por banca | não iniciada | — | — | — |
 | 8 · Fechamento | não iniciada | — | — | — |
 
@@ -71,3 +71,4 @@ flowchart LR
 | Página de entrega publicada (fases/fase-6-entrega/pagina/index.html): Painel, Dashboard, Relatório e Slides, com nomenclatura descritiva (sem B1/B2/CID fora do glossário) | Fase 6 · Entrega | É a fonte oficial de apresentação do projeto — Fase 7 (banca) recebe só o link, sem os bastidores |
 | Auditoria com navegador real (Playwright): 3 rodadas, 3 rótulos de gráfico corrigidos na rodada 2, rodada 3 limpa | Fase 6 · Entrega | Relatório completo em fases/fase-6-entrega/artefatos/relatorio-auditoria.md |
 | v2 — identidade visual pelo Montador de Dashboards: Template Clínica médica, Estilo Dark Glass, Layout Painel de controle, 5 Peças (Número-herói, Faixa de KPIs, Pareto, Barras agrupadas, Tabela densa). Nenhum número recalculado | Fase 6 · Entrega — v2, 27/09/2026 | Justificativas em fase-6-entrega/artefatos/escolhas-visuais.md; 1 defeito de contraste (texto sobre botão de acento) encontrado e corrigido, documentado na Rodada 4 de relatorio-auditoria.md |
+| v3 — a v2 só recolorira Dashboard/Relatório/Slides sobre o molde antigo da skill; corrigido tratando o HTML do Montador como molde estrutural real (grade de 12 colunas, cartão de vidro, chips arredondados) nos 4 modos, não só no Painel. Nenhum número recalculado | Fase 6 · Entrega — v3, 27/09/2026 | Mudança estrutural por modo registrada em fase-6-entrega/artefatos/escolhas-visuais.md (adendo v3); Rodada 5 de relatorio-auditoria.md, 0 achados |

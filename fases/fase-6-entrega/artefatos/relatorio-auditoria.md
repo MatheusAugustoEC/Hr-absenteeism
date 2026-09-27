@@ -105,14 +105,51 @@ Checagens rodadas (`auditoria_v2_visual.py` + `auditoria_v2_funcional.py`):
 **Resultado: 1 rodada, 1 achado de contraste (corrigido), 10/10 checagens
 funcionais aprovadas na repetição após a correção.**
 
+## Rodada 5 (v3 — reconstrução estrutural sobre o molde do Montador)
+
+Data: 27/09/2026. Escopo: a v2 só recolori Dashboard/Relatório/Slides sobre
+o esqueleto antigo (`assets/molde.html`) — o usuário apontou que isso não
+cumpria o pedido de adotar o Montador como base visual. Nesta rodada, a
+grade de 12 colunas, os cartões de vidro (`--radius`/`--shadow`/brilho no
+topo) e o padrão de chip arredondado do HTML baixado do Montador foram
+propagados para os quatro modos. Detalhe de cada mudança em
+`escolhas-visuais.md`, adendo v3. Nenhum número recalculado.
+
+Checagens rodadas (`auditoria_v3_reconstrucao.py`):
+
+- Zero erros de console/página nos 4 modos, após a reconstrução.
+- `#dash-body` confirmado usando a classe `grade12` (mesma grade do Painel).
+- Faixa de KPIs do Relatório presente (`#pane-relatorio .kpis`) e badges de
+  severidade do FMEA presentes (`.sevpill`).
+- Slide 1 confirmado com o chip de contexto (`.fpill`) sob o número-destaque.
+- Filtro cruzado do Dashboard (dropdown → chip → remoção), seleção por
+  clique na matriz tipo×distância, e ordenação de coluna da tabela — todos
+  retestados depois da reestruturação em grade, sem regressão.
+- Download `.xlsx` e `.pptx` gerados (> 1 KB cada) depois da reconstrução.
+- Navegação de slides chega a 9/9.
+- Busca literal de B1/B2/CID no DOM renderizado: 1+1+2 ocorrências, todas
+  dentro do glossário — mesma contagem da v1/v2, nenhuma vazou para a nova
+  marcação.
+- Manchete (64,3%) idêntica entre Painel e Slides.
+- Capturas novas dos quatro modos (claro, escuro e mobile) — nenhum rótulo
+  sobre dado, grade de 12 colunas colapsando para 1 coluna em telas
+  estreitas nos quatro modos.
+
+**Resultado: 1 rodada, 0 achados bloqueantes, 9/9 checagens aprovadas.**
+
 ## Conclusão
 
 V1: após 3 rodadas (2 com achado, 1 limpa), a página ficou pronta para
 entrega, com os quatro modos funcionais, os números idênticos nos dois
 registros, e nenhum resto de conteúdo do molde.
 
-V2 (identidade visual): 1 rodada com 1 achado de contraste, corrigido e
-reverificado. Nenhum número mudou em relação à v1; a auditoria funcional
-completa (18 checagens da rodada 1 original) segue válida, já que a
-estrutura de dados, filtros e downloads não foram tocados — só cor,
-tipografia e a grade/blocos do Painel.
+V2 (identidade visual, só Painel): 1 rodada com 1 achado de contraste,
+corrigido e reverificado. Escopo insuficiente — só o Painel usou a grade do
+Montador; Dashboard/Relatório/Slides ficaram com o esqueleto antigo
+recolorido.
+
+V3 (reconstrução estrutural, quatro modos): 1 rodada, 0 achados. A grade e
+os componentes do Montador agora estruturam Painel, Dashboard, Relatório e
+Slides. Nenhum número mudou em relação à v1; toda a mecânica de interação
+(filtros, matriz, ordenação, downloads, zoom, registros de linguagem) foi
+retestada e continua igual.
