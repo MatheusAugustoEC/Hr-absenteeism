@@ -1,0 +1,363 @@
+{
+  "n_linhas": 736,
+  "n_ids": 34,
+  "contagem_por_categoria": {
+    "B2_administravel": 402,
+    "CID": 262,
+    "B1_comportamental": 72
+  },
+  "eventos_por_id_describe": {
+    "count": 34.0,
+    "mean": 21.647058823529413,
+    "std": 23.941699837048834,
+    "min": 1.0,
+    "25%": 6.0,
+    "50%": 12.5,
+    "75%": 29.75,
+    "max": 113.0
+  },
+  "confirmacao_exclusoes_define": {
+    "id4_presente": false,
+    "id35_presente": false,
+    "id29_linha_jovem_presente": false,
+    "linhas_month0_hours0_presentes": 0
+  },
+  "completude": {
+    "nulos_por_coluna": {
+      "ID": 0,
+      "Reason for absence": 0,
+      "Month of absence": 0,
+      "Day of the week": 0,
+      "Seasons": 0,
+      "Transportation expense": 0,
+      "Distance from Residence to Work": 0,
+      "Service time": 0,
+      "Age": 0,
+      "Work load Average/day": 0,
+      "Hit target": 0,
+      "Disciplinary failure": 0,
+      "Education": 0,
+      "Son": 0,
+      "Social drinker": 0,
+      "Social smoker": 0,
+      "Pet": 0,
+      "Weight": 0,
+      "Height": 0,
+      "Body mass index": 0,
+      "Absenteeism time in hours": 0,
+      "categoria_defeito": 0
+    },
+    "veredito": "APROVADO",
+    "nota": "Month of absence=0 e Reason for absence=0 sao categorias validas (codigos), nao nulos."
+  },
+  "unicidade": {
+    "n_linhas_em_grupo_duplicado": 60,
+    "n_grupos_duplicados": 26,
+    "veredito_por_grupo": [
+      {
+        "ID": 3,
+        "Reason for absence": 23,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 19,
+        "K_r_suporte_empirico": 109,
+        "p_colisao_aproximada": 0.7917,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 3,
+        "Reason for absence": 27,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 38,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 1.0,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 3,
+        "Reason for absence": 27,
+        "tamanho_grupo": 4,
+        "n_eventos_deste_id_desta_reason": 38,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 1.0,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 3,
+        "Reason for absence": 27,
+        "tamanho_grupo": 3,
+        "n_eventos_deste_id_desta_reason": 38,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 1.0,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 3,
+        "Reason for absence": 27,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 38,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 1.0,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 3,
+        "Reason for absence": 27,
+        "tamanho_grupo": 3,
+        "n_eventos_deste_id_desta_reason": 38,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 1.0,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 3,
+        "Reason for absence": 27,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 38,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 1.0,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 3,
+        "Reason for absence": 27,
+        "tamanho_grupo": 3,
+        "n_eventos_deste_id_desta_reason": 38,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 1.0,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 3,
+        "Reason for absence": 27,
+        "tamanho_grupo": 3,
+        "n_eventos_deste_id_desta_reason": 38,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 1.0,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 3,
+        "Reason for absence": 28,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 26,
+        "K_r_suporte_empirico": 91,
+        "p_colisao_aproximada": 0.9719,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 5,
+        "Reason for absence": 23,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 2,
+        "K_r_suporte_empirico": 109,
+        "p_colisao_aproximada": 0.0091,
+        "veredito": "SUSPEITO_ERRO_DIGITACAO"
+      },
+      {
+        "ID": 10,
+        "Reason for absence": 22,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 11,
+        "K_r_suporte_empirico": 28,
+        "p_colisao_aproximada": 0.8597,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 15,
+        "Reason for absence": 28,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 16,
+        "K_r_suporte_empirico": 91,
+        "p_colisao_aproximada": 0.7325,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 22,
+        "Reason for absence": 23,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 11,
+        "K_r_suporte_empirico": 109,
+        "p_colisao_aproximada": 0.3962,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 22,
+        "Reason for absence": 27,
+        "tamanho_grupo": 4,
+        "n_eventos_deste_id_desta_reason": 15,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 0.9502,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 22,
+        "Reason for absence": 27,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 15,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 0.9502,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 24,
+        "Reason for absence": 28,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 10,
+        "K_r_suporte_empirico": 91,
+        "p_colisao_aproximada": 0.3901,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 24,
+        "Reason for absence": 28,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 10,
+        "K_r_suporte_empirico": 91,
+        "p_colisao_aproximada": 0.3901,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 27,
+        "Reason for absence": 23,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 5,
+        "K_r_suporte_empirico": 109,
+        "p_colisao_aproximada": 0.0877,
+        "veredito": "SUSPEITO_ERRO_DIGITACAO"
+      },
+      {
+        "ID": 28,
+        "Reason for absence": 23,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 33,
+        "K_r_suporte_empirico": 109,
+        "p_colisao_aproximada": 0.9921,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 28,
+        "Reason for absence": 23,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 33,
+        "K_r_suporte_empirico": 109,
+        "p_colisao_aproximada": 0.9921,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 34,
+        "Reason for absence": 23,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 9,
+        "K_r_suporte_empirico": 109,
+        "p_colisao_aproximada": 0.2813,
+        "veredito": "SUSPEITO_ERRO_DIGITACAO"
+      },
+      {
+        "ID": 34,
+        "Reason for absence": 27,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 12,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 0.8483,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 34,
+        "Reason for absence": 27,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 12,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 0.8483,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 34,
+        "Reason for absence": 27,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 12,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 0.8483,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      },
+      {
+        "ID": 34,
+        "Reason for absence": 27,
+        "tamanho_grupo": 2,
+        "n_eventos_deste_id_desta_reason": 12,
+        "K_r_suporte_empirico": 35,
+        "p_colisao_aproximada": 0.8483,
+        "veredito": "PLAUSIVEL_POR_ACASO"
+      }
+    ],
+    "n_grupos_plausiveis": 23,
+    "n_grupos_suspeitos": 3
+  },
+  "validade": {
+    "day_of_week_fora_dominio": 0,
+    "seasons_fora_dominio": 0,
+    "education_fora_dominio": 0,
+    "reason_fora_dominio": 0,
+    "Disciplinary failure_fora_dominio": 0,
+    "Social drinker_fora_dominio": 0,
+    "Social smoker_fora_dominio": 0,
+    "veredito": "APROVADO"
+  },
+  "consistencia": {
+    "nivel_periodo": {
+      "Work load Average/day": {
+        "media_valores_distintos_por_mes": 3.083,
+        "meses_com_1_unico_valor": 0,
+        "total_meses": 12
+      },
+      "Hit target": {
+        "media_valores_distintos_por_mes": 2.917,
+        "meses_com_1_unico_valor": 0,
+        "total_meses": 12
+      }
+    },
+    "circularidade_bmi": {
+      "residuo_max": 1.328746370407778,
+      "residuo_medio": 0.21554219351777268,
+      "pct_residuo_menor_que_1": 98.6413043478261,
+      "regra_operacional": "Weight e Height sao as colunas-fonte; Body mass index e derivada (IMC=Weight/(Height/100)^2, arredondado). Nas fases seguintes, tratar as tres como UMA evidencia - nunca usar Body mass index como preditor concorrente de Weight/Height na mesma analise."
+    }
+  },
+  "acuracia": {
+    "veredito": "NAO_AUDITAVEL",
+    "motivo": "Nao ha valor total independente (ex.: soma de horas de um sistema de ponto) para conferir contra a base. Nenhuma regra de fechamento e auditavel aqui - declarado, nao forcado."
+  },
+  "pontualidade": {
+    "eventos_por_mes": {
+      "1": 50,
+      "2": 72,
+      "3": 87,
+      "4": 53,
+      "5": 64,
+      "6": 54,
+      "7": 67,
+      "8": 54,
+      "9": 52,
+      "10": 71,
+      "11": 63,
+      "12": 49
+    },
+    "veredito": "NAO_AUDITAVEL_PARA_ATRASO",
+    "motivo": "Sem timestamp de registro nao ha como medir atraso. A concentracao por mes ja e coberta pela checagem de duplicata (dimensao Unicidade); nenhum mes mostra contagem que sugira lote fora do que a duplicata ja capturou."
+  },
+  "vieses": {
+    "selecao": "Populacao = funcionarios com >=1 evento no periodo. Funcionarios sem nenhuma ausencia nao aparecem - nao ha denominador para taxa de funcionarios que faltam.",
+    "vazamento": "Disciplinary failure e Absenteeism time in hours sao pos-evento - nao usar como preditor de Reason for absence nem um do outro.",
+    "nao_representado": "Funcionarios sem ausencia no periodo inteiro existem na empresa mas nao na base."
+  },
+  "erro_indetectavel": "Reason for absence registrado incorretamente por conveniencia (ex.: falta sem justificativa lancada como consulta medica) nao deixa rastro estrutural - so seria visivel com o atestado fisico, que nao existe nesta base.",
+  "resolucao_duplicatas": {
+    "criterio": "p_colisao_aproximada < 0.30 => remover extras, manter 1a ocorrencia",
+    "linhas_removidas_indices_originais": [
+      67,
+      131,
+      304
+    ],
+    "n_linhas_removidas": 3,
+    "n_linhas_final": 733
+  }
+}

@@ -4,7 +4,7 @@
 |---|---|---|---|---|
 | 0 · Reconhecimento | concluída | APROVADO com ressalvas | [relatório](fase-0-reconhecimento/relatorio.pdf) | 26/09/2026 |
 | 1 · Define | concluída | APROVADO | [relatório](fase-1-define/relatorio.pdf) · [pré-registro](fase-1-define/pre-registro.pdf) | 26/09/2026 |
-| 2A · Measure — qualidade | não iniciada | — | — | — |
+| 2A · Measure — qualidade | concluída | APROVADO | [relatório](fase-2a-measure-qualidade/relatorio.pdf) | 26/09/2026 |
 | 2B · Measure — baseline | não iniciada | — | — | — |
 | 3 · Analyze | não iniciada | — | — | — |
 | 4 · Improve | não iniciada | — | — | — |
@@ -46,3 +46,6 @@ flowchart LR
 | 4 hipóteses pré-registradas e imutáveis em fase-1-define/pre-registro.md (H1 principal, H2 rival estrutural, H3 artefato de registro, H4 dia da semana) — correção Bonferroni, α=0,0125 | Fase 1 · Define | Analyze testa exatamente estas 4, nesta ordem (H2 antes de H1), nenhuma nova hipótese pode ser adicionada depois |
 | Holdout: aleatório por identidade de funcionário (34 identidades pós-exclusão), 75/25, semente fixa — ainda não materializado em arquivo | Fase 1 · Define | Control sorteia e congela; nenhum script antes disso pode gerar esse recorte |
 | **Correção (adendo datado):** pre-registro.md original citava "36 identidades" por engano; corrigido para 34, com o split do holdout ajustado para ~26/8 (não 27/9) | Fase 1 · Define — adendo de 26/09/2026 | Sorteio do holdout na Control deve usar 34 identidades e a proporção ~26/8, conforme o adendo em pre-registro.md |
+| Duplicatas resolvidas com modelo de colisão por acaso (limiar p<0,30): 23/26 grupos mantidos (coincidência plausível), 3 removidos (erro de digitação provável) | Fase 2A · Measure | Base final = `data/processed/eventos_qualidade.csv` (733 eventos, 34 identidades) — usar esta base a partir da Fase 2B, não mais `eventos_limpos.csv` |
+| Regra travada: Weight e Height são as colunas-fonte; Body mass index é derivada — nunca as três como preditores concorrentes | Fase 2A · Measure | Vale para Analyze e qualquer modelagem futura |
+| Erro indetectável nomeado: Reason for absence por conveniência (ex. falta disciplinar lançada como consulta médica) não deixa rastro estrutural — adjacente à hipótese H3 | Fase 2A · Measure | Se H3 for refutada no Analyze, este erro indetectável vira explicação alternativa a mencionar no README |
