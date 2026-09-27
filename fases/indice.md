@@ -9,7 +9,7 @@
 | 3 · Analyze | concluída | APROVADO | [relatório](fase-3-analyze/relatorio.pdf) | 26/09/2026 |
 | 4 · Improve | concluída | APROVADO | [relatório](fase-4-improve/relatorio.pdf) | 26/09/2026 |
 | 5 · Control | concluída | APROVADO com ressalva | [relatório](fase-5-control/relatorio.pdf) | 26/09/2026 |
-| 6 · Entrega | não iniciada | — | — | — |
+| 6 · Entrega | concluída | APROVADO | [relatório](fase-6-entrega/relatorio.pdf) · [página](fase-6-entrega/pagina/index.html) | 27/09/2026 |
 | 7 · Revisão por banca | não iniciada | — | — | — |
 | 8 · Fechamento | não iniciada | — | — | — |
 
@@ -68,3 +68,5 @@ flowchart LR
 | Decisão final sobre H1: não implementar como regra ativa; continuar coletando dados ou aceitar piloto informal com monitoramento cuidadoso do guardrail CID | Fase 5 · Control | Entrega/README devem apresentar H1 como candidato não confirmado, nunca como achado decidido |
 | 14 testes automáticos de qualidade (tests/test_qualidade.py) travam forma, domínio e volume (733 eventos, 34 identidades) da base final | Fase 5 · Control | Qualquer mudança futura no dado de entrada que quebre esses testes exige investigação antes de reusar os resultados |
 | Pendência de reprodutibilidade: requirements.txt sem versões pinadas; scripts das Fases 2A-4 não importam config.py (constantes duplicadas) | Fase 5 · Control | Resolver antes de reexecutar o pipeline em outra máquina/ambiente |
+| Página de entrega publicada (fases/fase-6-entrega/pagina/index.html): Painel, Dashboard, Relatório e Slides, com nomenclatura descritiva (sem B1/B2/CID fora do glossário) | Fase 6 · Entrega | É a fonte oficial de apresentação do projeto — Fase 7 (banca) recebe só o link, sem os bastidores |
+| Auditoria com navegador real (Playwright): 3 rodadas, 3 rótulos de gráfico corrigidos na rodada 2, rodada 3 limpa | Fase 6 · Entrega | Relatório completo em fases/fase-6-entrega/artefatos/relatorio-auditoria.md |
