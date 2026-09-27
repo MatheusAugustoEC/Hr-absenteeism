@@ -17,11 +17,12 @@
 |---|---|
 | data/raw/Absenteeism_at_work.csv | 41930631aa5b14f91fde29ae595cefad2beac464ddf837bf8150487e40038320 |
 
-## Hash do pré-registro no momento em que se tornou imutável
+## Hash do pré-registro — histórico (imutabilidade preserva o histórico, não substitui)
 
-| Arquivo | Hash SHA-256 (26/09/2026) |
-|---|---|
-| fases/fase-1-define/pre-registro.md | e5a3a86dd132ea7a162060f19f906e5c29ed31231f758a2c905ca1548cacb149 |
+| Versão | Hash SHA-256 | Momento |
+|---|---|---|
+| Original | e5a3a86dd132ea7a162060f19f906e5c29ed31231f758a2c905ca1548cacb149 | 26/09/2026 — registro original. **Continha erro**: "36 identidades de funcionário" em duas ocorrências (deveria ser 34) |
+| Após adendo | 90115cbb2aa50a3cfa65868086544d9e5a78d19b39c692d73e26f9fdf37b4b60 | 26/09/2026 — adendo datado ao final do arquivo corrigindo o número de identidades (34) e sua propagação ao cálculo do holdout (26/8, não 27/9). O corpo original do texto não foi editado; a correção está inteiramente no adendo |
 
 ## Holdout
 

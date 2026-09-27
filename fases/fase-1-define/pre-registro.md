@@ -130,3 +130,42 @@ período), já é o achado metodológico central — é o que a maioria dos
 notebooks públicos deste dataset não faz (Fase 0, seção 10, Saturação). Um
 resultado nulo em H1/H4, documentado com o mesmo rigor, vale mais para o
 portfólio do que uma confirmação conveniente.
+
+---
+
+## Adendo datado — correção de número (26/09/2026, mesmo dia do registro original)
+
+**Erro encontrado.** As duas ocorrências de "36 identidades de funcionário"
+acima (na declaração da população final, e na definição operacional do
+holdout) estão **erradas**. O número correto, recontado agora a partir de
+`fases/fase-1-define/artefatos/escopo_define.json` (`n_identidades_funcionario`),
+é **34**, não 36.
+
+**Causa.** A exclusão das 3 linhas administrativas (IDs 4, 8 e 35 — Month of
+absence = 0, Absenteeism time in hours = 0) remove a única linha que os IDs 4
+e 35 tinham na base inteira. Ao excluir essas linhas por não representarem
+evento real (decisão registrada em `relatorio.md`, item 3), esses dois IDs
+deixam de existir na população de evento. Restam 34 identidades com pelo
+menos 1 evento, não 36. O texto original já registrava esse efeito colateral
+em `relatorio.md` ("por isso 34, não 36, identidades") — o erro ficou só nas
+duas menções acima, que não foram atualizadas quando o `relatorio.md` foi
+corrigido.
+
+**Efeito sobre o holdout.** O sorteio aleatório estratificado por identidade
+de funcionário deve ser feito sobre **34 identidades**, não 36. Na proporção
+75/25 já definida, isso dá aproximadamente **26 funcionários na janela de
+exploração e 8 na quarentena de confirmação** (34 × 0,75 ≈ 25,5 → 26; 34 − 26
+= 8) — não 27/9 como o texto original calculava a partir do número errado.
+Nenhum sorteio foi executado ainda (o holdout continua fechado até a fase
+Control), então não há recorte já gerado para refazer — só a regra a seguir
+quando o sorteio for feito está corrigida aqui.
+
+**O que não muda.** As 4 hipóteses (H1–H4), a correção de Bonferroni
+(α=0,0125), a proporção 75/25, a semente fixa (a ser definida no momento do
+sorteio) e o critério de sucesso permanecem como registrados acima — nada
+além do número de identidades e sua propagação ao cálculo do holdout foi
+alterado por este adendo.
+
+Hash SHA-256 deste arquivo **antes** deste adendo (histórico, não descartado):
+`e5a3a86dd132ea7a162060f19f906e5c29ed31231f758a2c905ca1548cacb149` — ver
+`manifesto.md` para o hash após este adendo.
