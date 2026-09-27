@@ -9,7 +9,7 @@
 | 3 · Analyze | concluída | APROVADO | [relatório](fase-3-analyze/relatorio.pdf) | 26/09/2026 |
 | 4 · Improve | concluída | APROVADO | [relatório](fase-4-improve/relatorio.pdf) | 26/09/2026 |
 | 5 · Control | concluída | APROVADO com ressalva | [relatório](fase-5-control/relatorio.pdf) | 26/09/2026 |
-| 6 · Entrega | concluída | APROVADO (v4 — Painel é o enxerto real do arquivo) | [relatório](fase-6-entrega/relatorio.pdf) · [página](fase-6-entrega/pagina/index.html) · [escolhas visuais](fase-6-entrega/artefatos/escolhas-visuais.md) | 27/09/2026 |
+| 6 · Entrega | não iniciada | — | — | — |
 | 7 · Revisão por banca | não iniciada | — | — | — |
 | 8 · Fechamento | não iniciada | — | — | — |
 
