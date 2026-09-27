@@ -1,0 +1,100 @@
+{
+  "mediana_distancia": 25.5,
+  "n_funcionarios_longe": 17,
+  "n_funcionarios_perto": 17,
+  "H2a_exclusao_top3": {
+    "3": {
+      "efeito_bruto_pp": 13.05,
+      "efeito_ponderado_pp": 14.47
+    },
+    "28": {
+      "efeito_bruto_pp": 15.6,
+      "efeito_ponderado_pp": 14.78
+    },
+    "34": {
+      "efeito_bruto_pp": 18.29,
+      "efeito_ponderado_pp": 17.26
+    }
+  },
+  "H2b_bruto_vs_ponderado": {
+    "efeito_bruto_pp": 16.39,
+    "efeito_ponderado_por_funcionario_pp": 15.85,
+    "diverge_muito_ou_inverte": false
+  },
+  "H2_veredito": {
+    "cai_abaixo_10pp_em_alguma_exclusao": false,
+    "inverte_sinal_bruto_vs_ponderado": false,
+    "H1_considerada_nao_sustentada_composicao_de_mix": false
+  },
+  "H1_teste": {
+    "efeito_observado_pp": 16.39,
+    "ic_98_75_bootstrap_cluster": [
+      0.63,
+      26.4
+    ],
+    "ic_95_bootstrap_cluster": [
+      3.76,
+      24.33
+    ],
+    "p_valor_permutacao_por_funcionario": 0.0178,
+    "alpha": 0.0125,
+    "significativo_no_alpha": false,
+    "efeito_minimo_pre_registrado_pp": 10,
+    "n_clusters": 33
+  },
+  "H3_teste": {
+    "n_eventos_reason0": 39,
+    "n_ids_distintos": 20,
+    "distribuicao_por_id": {
+      "36": 6,
+      "5": 5,
+      "20": 3,
+      "23": 3,
+      "18": 2,
+      "15": 2,
+      "2": 2,
+      "7": 2,
+      "13": 2,
+      "11": 2,
+      "3": 1,
+      "1": 1,
+      "19": 1,
+      "8": 1,
+      "24": 1,
+      "21": 1,
+      "28": 1,
+      "30": 1,
+      "31": 1,
+      "33": 1
+    },
+    "top5_ids_concentracao_pct": 48.72,
+    "criterio_refutacao": "mais de 5 IDs distintos E top5 respondem por mais de 50%",
+    "H3_refutada_comportamento_concentrado": false,
+    "veredito": "NAO REFUTADA - dispersao consistente com artefato de registro"
+  },
+  "H4_teste": {
+    "n_funcionarios_com_ambos_tipos": 33,
+    "efeito_medio_pp_por_funcionario": 3.95,
+    "ic_98_75_bootstrap": [
+      -11.73,
+      20.6
+    ],
+    "ic_95_bootstrap": [
+      -8.76,
+      16.67
+    ],
+    "p_valor_permutacao_sinal": 0.5546,
+    "alpha": 0.0125,
+    "significativo_no_alpha": false,
+    "efeito_minimo_pre_registrado_pp": 8
+  },
+  "quantificacao": {
+    "baseline_prop_B": 0.6426,
+    "eventos_B_por_mes_aprox": 13.08,
+    "H1_explica": "Nao validado com confianca (poder ~3%; ver H1_teste) - efeito observado nao pode ser atribuido com seguranca a causa",
+    "H2_explica": "Rival estrutural nao descartou H1 automaticamente, mas tambem nao a confirma - ver H2_veredito",
+    "H3_explica": "NAO REFUTADA - dispersao consistente com artefato de registro",
+    "H4_explica": "Nao validado com confianca (mesmo poder baixo) - ver H4_teste",
+    "resumo": "Dado o poder de deteccao de aproximadamente 3% para H1 e H4, a maior parte do baseline de 64,26% de eventos B permanece SEM causa validada com confianca estatistica nesta fase. Isso e esperado e declarado, nao suavizado (A15)."
+  }
+}

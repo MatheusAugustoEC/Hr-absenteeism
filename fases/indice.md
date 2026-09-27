@@ -6,7 +6,7 @@
 | 1 · Define | concluída | APROVADO | [relatório](fase-1-define/relatorio.pdf) · [pré-registro](fase-1-define/pre-registro.pdf) | 26/09/2026 |
 | 2A · Measure — qualidade | concluída | APROVADO | [relatório](fase-2a-measure-qualidade/relatorio.pdf) | 26/09/2026 |
 | 2B · Measure — baseline | concluída | APROVADO | [relatório](fase-2b-measure-baseline/relatorio.pdf) · [baseline congelado](fase-2b-measure-baseline/baseline-congelado.pdf) | 26/09/2026 |
-| 3 · Analyze | não iniciada | — | — | — |
+| 3 · Analyze | concluída | APROVADO | [relatório](fase-3-analyze/relatorio.pdf) | 26/09/2026 |
 | 4 · Improve | não iniciada | — | — | — |
 | 5 · Control | não iniciada | — | — | — |
 | 6 · Entrega | não iniciada | — | — | — |
@@ -54,3 +54,8 @@ flowchart LR
 | Pareto de impacto em horas só cobre B2 (6 códigos) — B1 tem 100% dos eventos com 0h e usa o Pareto de taxa como régua | Fase 2B · Measure | Toda menção a B1 daqui em diante precisa citar contagem de eventos, nunca horas, como medida de impacto |
 | Poder estatístico muito baixo para H1 e H4 (~3%, n efetivo=34 funcionários) | Fase 2B · Measure | Analyze deve reportar efeito+IC, nunca só p-valor; "não significativo" é inconclusivo, não refutação |
 | Correção: relatorio.md da Fase 1 tinha erro de digitação na soma B1+B2 (54,4%→64,4%) — corrigido diretamente (não é artefato imutável) | Fase 2B · Measure | Nenhuma decisão do Define mudou; só a prosa do número preliminar |
+| H2 (rival estrutural) não refuta H1: efeito de 16,4 p.p. sobrevive à exclusão dos 3 funcionários mais frequentes e à ponderação por funcionário | Fase 3 · Analyze | H1 segue candidata para Improve/Control — não descartada como composição de mix |
+| H1: efeito grande (16,4 p.p., > mínimo de 10 p.p.) mas não significativo no α=0,0125 (p=0,0178) — dado o poder ~3%, é INCONCLUSIVO, não refutação | Fase 3 · Analyze | Nenhuma recomendação da Improve pode tratar H1 como confirmada; precisa de confirmação formal no holdout (Control) |
+| H3 não refutada: 39 eventos reason=0 vêm de 20 funcionários, top-5 concentram 48,72% (<50%) — consistente com atalho administrativo disperso, não comportamento concentrado | Fase 3 · Analyze | B1 deve ser tratado como correção de processo (usar código 26, não 0, para falta disciplinar), não como ação sobre funcionários específicos |
+| H4 descartada: efeito de 3,95 p.p., abaixo do mínimo de 8 p.p., p=0,555 | Fase 3 · Analyze | Dia da semana não entra como fator na Improve |
+| Causalidade reversa para H1 (rota alocada por gestão antes do histórico de ausência) não pode ser descartada com esta base | Fase 3 · Analyze | Toda menção a H1 no README/Entrega precisa citar este limite |
