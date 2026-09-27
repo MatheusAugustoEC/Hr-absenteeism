@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Aurora · operação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500;700&family=Archivo:wght@400;600;800&family=Source+Sans+3:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Syne:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<style>
+/* ---- KIT: Dark Glass · tokens (camada 1) ---- */
+:root {
+  --bg: #07070e;
+  --plane: rgba(255,255,255,.055);
+  --plane-2: rgba(255,255,255,.03);
+  --stroke: rgba(255,255,255,.1);
+  --ink: #f5f6fb;
+  --ink-2: #b8bdd4;
+  --muted: #7c82a0;
+  --acc: #8b5cf6;
+  --acc-2: #22d3ee;
+  --good: #34d399;
+  --bad: #fb7185;
+  --warn: #fbbf24;
+  --good-bg: rgba(52,211,153,.14);
+  --bad-bg: rgba(251,113,133,.14);
+  --warn-bg: rgba(251,191,36,.14);
+  --track: rgba(255,255,255,.09);
+  --grid: rgba(255,255,255,.06);
+  --radius: 14px;
+  --bw: 1px;
+  --shadow: 0 20px 55px -22px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.5);
+  --font: 'Inter';
+  --display: 'Inter';
+  --mono: 'JetBrains Mono';
+  --c1: #8b5cf6;
+  --c2: #22d3ee;
+  --c3: #34d399;
+  --c4: #fbbf24;
+  --c5: #fb7185;
+  --on-acc: #0a0a12;
+  --on-cat: #0a0a12;
+  --on-good: #04150e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 28px;
+}
+.app { max-width: 1420px; margin: 0 auto; }
+.topo { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 22px; flex-wrap: wrap; }
+.marca h1 { font-family: var(--display), system-ui, sans-serif; font-size: 21px; font-weight: 700; letter-spacing: -.3px; }
+.marca p { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+.periodo { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border: var(--bw) solid var(--stroke);
+  border-radius: var(--radius); background: var(--plane); font-size: 13px; font-weight: 600; color: var(--ink); box-shadow: var(--shadow); }
+/* ---- LAYOUT: Painel de controle (camada 3) ---- */
+.grade { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+.grade > div { min-width: 0; display: flex; flex-direction: column; }
+.grade > div > * { flex: 1; }
+.grade section { box-sizing: border-box; }
+@media (max-width: 900px) { .grade > div { grid-column: span 12 !important; } }
+/* ---- assinatura glass: fio de luz + hover (só kits escuros) ---- */
+.grade section { position: relative; transition: transform .2s ease; }
+.grade section::before { content: ''; position: absolute; left: 16px; right: 16px; top: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--acc), transparent); opacity: .32; pointer-events: none; transition: opacity .2s ease; }
+.grade section:hover { transform: translateY(-2px); }
+.grade section:hover::before { opacity: .6; }
+@media (prefers-reduced-motion: reduce) { .grade section, .grade section::before { transition: none; } .grade section:hover { transform: none; } }
+</style>
+</head>
+<body>
+  <div class="app">
+    <div class="topo">
+      <div class="marca">
+        <h1>Clínica Aurora · operação</h1>
+        <p>agenda, ocupação e receita</p>
+      </div>
+      <span class="periodo">Este mês</span>
+    </div>
+    <div class="grade">
+      <div style="grid-column: span 12">
+        <section style="background:var(--plane);border:var(--bw) solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;display:flex;flex-direction:column;justify-content:center">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px">
+      <div><b style="font-size:14px;font-weight:600;color:var(--ink)">Receita do mês</b></div>
+    </div>
+    
+    <div style="font-size:46px;font-weight:800;letter-spacing:-1.8px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums">R$ 684.300</div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:14px">
+      <span style="font-size:13px;font-weight:700;padding:5px 10px;border-radius:var(--radius);color:var(--good);background:var(--good-bg)">▲ 5,4%</span>
+      <span style="font-size:12.5px;color:var(--muted)">vs. mês anterior</span>
+    </div>
+  </section>
+      </div>
+      <div style="grid-column: span 12">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:14px;align-content:center;height:100%;box-sizing:border-box"><div style="background:var(--plane-2);border:var(--bw) solid var(--stroke);border-radius:var(--radius);padding:14px 16px">
+      <div style="font-size:11.5px;color:var(--muted)">Ticket médio</div>
+      <div style="font-size:22px;font-weight:700;margin-top:6px;letter-spacing:-.6px;color:var(--ink);font-variant-numeric:tabular-nums">R$ 187</div>
+      <div style="font-size:11.5px;font-weight:600;margin-top:4px;color:var(--good)">▲ 4,1%</div>
+    </div><div style="background:var(--plane-2);border:var(--bw) solid var(--stroke);border-radius:var(--radius);padding:14px 16px">
+      <div style="font-size:11.5px;color:var(--muted)">Conversão</div>
+      <div style="font-size:22px;font-weight:700;margin-top:6px;letter-spacing:-.6px;color:var(--ink);font-variant-numeric:tabular-nums">24,3%</div>
+      <div style="font-size:11.5px;font-weight:600;margin-top:4px;color:var(--bad)">▼ 1,1 pp</div>
+    </div><div style="background:var(--plane-2);border:var(--bw) solid var(--stroke);border-radius:var(--radius);padding:14px 16px">
+      <div style="font-size:11.5px;color:var(--muted)">Pedidos</div>
+      <div style="font-size:22px;font-weight:700;margin-top:6px;letter-spacing:-.6px;color:var(--ink);font-variant-numeric:tabular-nums">11.482</div>
+      <div style="font-size:11.5px;font-weight:600;margin-top:4px;color:var(--good)">▲ 6,8%</div>
+    </div><div style="background:var(--plane-2);border:var(--bw) solid var(--stroke);border-radius:var(--radius);padding:14px 16px">
+      <div style="font-size:11.5px;color:var(--muted)">Devoluções</div>
+      <div style="font-size:22px;font-weight:700;margin-top:6px;letter-spacing:-.6px;color:var(--ink);font-variant-numeric:tabular-nums">2,1%</div>
+      <div style="font-size:11.5px;font-weight:600;margin-top:4px;color:var(--good)">▼ 0,3 pp</div>
+    </div></div>
+      </div>
+      <div style="grid-column: span 6">
+        <section style="background:var(--plane);border:var(--bw) solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px">
+      <div><b style="font-size:14px;font-weight:600;color:var(--ink)">Concentração de receita</b><div style="font-size:12px;color:var(--muted);margin-top:3px">pareto</div></div>
+    </div>
+    <div data-chart="pareto" style="height:240px"></div>
+  </section>
+      </div>
+      <div style="grid-column: span 6">
+        <section style="background:var(--plane);border:var(--bw) solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px">
+      <div><b style="font-size:14px;font-weight:600;color:var(--ink)">Receita por canal</b><div style="font-size:12px;color:var(--muted);margin-top:3px">este ano vs. anterior</div></div>
+    </div>
+    <div data-chart="barras" style="height:240px"></div>
+  </section>
+      </div>
+      <div style="grid-column: span 12">
+        <section style="background:var(--plane);border:var(--bw) solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px">
+      <div><b style="font-size:14px;font-weight:600;color:var(--ink)">Convênios</b><div style="font-size:12px;color:var(--muted);margin-top:3px">faturamento e glosa</div></div>
+    </div>
+    <table style="width:100%;border-collapse:collapse">
+      <thead><tr><th style="text-align:left;font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:0 8px 10px 0;border-bottom:var(--bw) solid var(--stroke);">Convênio</th><th style="text-align:left;font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:0 8px 10px 0;border-bottom:var(--bw) solid var(--stroke);text-align:right;padding:0 8px 10px">Faturado</th><th style="text-align:left;font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:0 8px 10px 0;border-bottom:var(--bw) solid var(--stroke);text-align:right;padding:0 8px 10px">Glosa</th></tr></thead>
+      <tbody><tr>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink)">Particular</td>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink);text-align:right;font-family:var(--mono),monospace;font-size:13px">242.000</td>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink);text-align:right"><span style="font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:var(--radius);color:var(--good);background:var(--good-bg)">0%</span></td>
+    </tr><tr>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink)">Unimed</td>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink);text-align:right;font-family:var(--mono),monospace;font-size:13px">196.000</td>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink);text-align:right"><span style="font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:var(--radius);color:var(--good);background:var(--good-bg)">2,4%</span></td>
+    </tr><tr>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink)">Bradesco Saúde</td>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink);text-align:right;font-family:var(--mono),monospace;font-size:13px">138.000</td>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink);text-align:right"><span style="font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:var(--radius);color:var(--warn);background:var(--warn-bg)">6,1%</span></td>
+    </tr><tr>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink)">SulAmérica</td>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink);text-align:right;font-family:var(--mono),monospace;font-size:13px">108.300</td>
+      <td style="padding:11px 8px 11px 0;border-bottom:var(--bw) solid var(--stroke);font-size:13.5px;color:var(--ink);text-align:right"><span style="font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:var(--radius);color:var(--bad);background:var(--bad-bg)">11,3%</span></td>
+    </tr></tbody>
+      <tfoot><tr>
+        <td style="padding:14px 8px 0 0;font-size:13px;font-weight:700;color:var(--ink);border-top:2px solid var(--ink)">Total</td>
+        <td style="padding:14px 8px 0;text-align:right;font-family:var(--mono),monospace;font-size:14px;font-weight:700;color:var(--ink);border-top:2px solid var(--ink)">684.300</td>
+        <td style="padding:14px 0 0 8px;text-align:right;font-size:13px;font-weight:700;color:var(--ink);border-top:2px solid var(--ink)">4,8%</td>
+      </tr></tfoot>
+    </table>
+  </section>
+      </div>
+    </div>
+  </div>
+<script>
+function __name(f){return f;} // shim keepNames — mantém o arquivo autocontido
+const T = {
+  "bg": "#07070e",
+  "plane": "rgba(255,255,255,.055)",
+  "plane-2": "rgba(255,255,255,.03)",
+  "stroke": "rgba(255,255,255,.1)",
+  "ink": "#f5f6fb",
+  "ink-2": "#b8bdd4",
+  "muted": "#7c82a0",
+  "acc": "#8b5cf6",
+  "acc-2": "#22d3ee",
+  "good": "#34d399",
+  "bad": "#fb7185",
+  "warn": "#fbbf24",
+  "good-bg": "rgba(52,211,153,.14)",
+  "bad-bg": "rgba(251,113,133,.14)",
+  "warn-bg": "rgba(251,191,36,.14)",
+  "track": "rgba(255,255,255,.09)",
+  "grid": "rgba(255,255,255,.06)",
+  "radius": "14px",
+  "bw": "1px",
+  "shadow": "0 20px 55px -22px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.5)",
+  "font": "'Inter'",
+  "display": "'Inter'",
+  "mono": "'JetBrains Mono'",
+  "c1": "#8b5cf6",
+  "c2": "#22d3ee",
+  "c3": "#34d399",
+  "c4": "#fbbf24",
+  "c5": "#fb7185",
+  "on-acc": "#0a0a12",
+  "on-cat": "#0a0a12",
+  "on-good": "#04150e"
+};
+const F = "Inter, system-ui, sans-serif";
+const DADOS = {};
+const SPECS = {
+  "pareto": (function(){ const R = {"itens":[{"nome":"SKU-118","valor":402000},{"nome":"SKU-042","valor":288000},{"nome":"SKU-207","valor":246000},{"nome":"SKU-091","valor":148000},{"nome":"SKU-330","valor":96000},{"nome":"SKU-014","valor":74000},{"nome":"SKU-256","valor":42000}]}; return function gt(e,t,n){let r=Object.assign({},R,n||{}),i=e=>`R$ `+Number(e).toLocaleString(`pt-BR`),a=r.itens.reduce((e,t)=>e+t.valor,0),o=0,s=r.itens.map(e=>(o+=e.valor,+(o/a*100).toFixed(1))),c=n=>Object.assign({type:`value`,splitLine:{lineStyle:{color:e.grid,type:`dashed`}},axisLine:{show:!1},axisTick:{show:!1},axisLabel:{color:e.muted,fontSize:11,fontFamily:t}},n||{});return{textStyle:{fontFamily:t,color:e[`ink-2`]},grid:{left:4,right:16,top:16,bottom:4,containLabel:!0},tooltip:{trigger:`axis`,axisPointer:{type:`shadow`},backgroundColor:e.ink,borderWidth:0,padding:[9,12],textStyle:{color:e.bg,fontSize:12,fontFamily:t},extraCssText:`border-radius:6px`},xAxis:{type:`category`,data:r.itens.map(e=>e.nome),axisLine:{lineStyle:{color:e.stroke}},axisTick:{show:!1},axisLabel:{color:e.muted,fontSize:11,fontFamily:t}},yAxis:[c({axisLabel:{color:e.muted,fontSize:11,fontFamily:t,formatter:e=>e/1e3+`K`}}),c({max:100,splitLine:{show:!1},axisLabel:{color:e.muted,fontSize:11,fontFamily:t,formatter:e=>e+`%`}})],series:[{name:`Valor`,type:`bar`,itemStyle:{color:e.c1,borderRadius:[3,3,0,0]},data:r.itens.map(e=>e.valor),tooltip:{valueFormatter:e=>i(e)}},{name:`Acumulado`,type:`line`,yAxisIndex:1,smooth:.2,symbolSize:6,lineStyle:{color:e.warn,width:2},itemStyle:{color:e.warn},data:s,tooltip:{valueFormatter:e=>e+`%`},markLine:{silent:!0,symbol:`none`,lineStyle:{color:e.warn,type:`dashed`,width:1.2},label:{formatter:`80%`,color:e.warn,fontSize:10.5,fontFamily:t},data:[{yAxis:80}]}}]}}; })(),
+  "barras": (function(){ const j = {"eixo":["Meta","Google","YouTube","E-mail","Orgânico"],"series":[{"nome":"2025","valores":[438000,291000,122000,78000,214000]},{"nome":"2024","valores":[352000,268000,96000,61000,188000]}]}; return function He(e,t,n){let r=Object.assign({},j,n||{}),i=e=>`R$ `+Number(e).toLocaleString(`pt-BR`),a=[e.c1,e.c2,e.c3,e.c4,e.c5];return{textStyle:{fontFamily:t,color:e[`ink-2`]},grid:{left:4,right:12,top:14,bottom:30,containLabel:!0},legend:{bottom:0,itemWidth:10,itemHeight:10,icon:`roundRect`,textStyle:{color:e[`ink-2`],fontSize:11.5,fontFamily:t}},tooltip:{trigger:`axis`,axisPointer:{type:`shadow`},backgroundColor:e.ink,borderWidth:0,padding:[9,12],textStyle:{color:e.bg,fontSize:12,fontFamily:t},extraCssText:`border-radius:6px`,valueFormatter:e=>i(e)},xAxis:{type:`category`,data:r.eixo,axisLine:{lineStyle:{color:e.stroke}},axisTick:{show:!1},axisLabel:{color:e.muted,fontSize:11,fontFamily:t}},yAxis:{type:`value`,splitLine:{lineStyle:{color:e.grid,type:`dashed`}},axisLine:{show:!1},axisTick:{show:!1},axisLabel:{color:e.muted,fontSize:11,fontFamily:t,formatter:e=>e/1e3+`K`}},series:r.series.map((e,t)=>({name:e.nome,type:`bar`,barGap:`12%`,itemStyle:{color:a[t%5],opacity:t?.55:1,borderRadius:[3,3,0,0]},data:e.valores}))}}; })()
+};
+
+function desenhar(){
+  Object.keys(SPECS).forEach(function(id){
+    var el = document.querySelector('[data-chart="' + id + '"]');
+    if (!el) return;
+    var c = echarts.init(el, null, {renderer: 'svg'});
+    c.setOption(SPECS[id](T, F, DADOS[id] || {}));
+    window.addEventListener('resize', function(){ c.resize(); });
+  });
+}
+desenhar();
+</script>
+</body>
+</html>

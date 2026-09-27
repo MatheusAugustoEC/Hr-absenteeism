@@ -10,8 +10,11 @@
 | artefatos/06_entrega_dados.py | cópia congelada do script | scripts/06_entrega_dados.py | prova de reprodutibilidade |
 | artefatos/dados_pagina.json | todos os números da página, consolidados | scripts/06_entrega_dados.py | pagina/index.html (embutido) |
 | artefatos/index.html, pptxgen.bundle.js | cópia congelada da página entregue | pagina/ | prova de reprodutibilidade |
-| artefatos/relatorio-auditoria.md | relatório da auditoria final (3 rodadas, achados e correções) | auditoria com Playwright | este relatório |
-| artefatos/capturas/*.png | capturas da página (Painel claro/escuro, Dashboard, slide 1) usadas na auditoria visual | Playwright | artefatos/relatorio-auditoria.md |
+| artefatos/relatorio-auditoria.md | relatório da auditoria final (v1: 3 rodadas; v2: +1 rodada de identidade visual) | auditoria com Playwright | este relatório |
+| artefatos/capturas/*.png | capturas da página (Painel claro/escuro, Dashboard, slide 1), atualizadas na v2 (Dark Glass) | Playwright | artefatos/relatorio-auditoria.md |
+| artefatos/auditoria_v2_visual.py, auditoria_v2_funcional.py | scripts Playwright da auditoria v2 (visual + funcional) | escritos nesta rodada | artefatos/relatorio-auditoria.md |
+| artefatos/montador-clinica-aurora-operacao.html | HTML baixado do Montador de Dashboards, como está, sem edição | dashbuilder.asimov.academy | artefatos/escolhas-visuais.md |
+| artefatos/escolhas-visuais.md | Template/Estilo/Layout/Peças escolhidos, justificativas, ajustes de contraste | escrito nesta rodada | fases/indice.md |
 
 ## Dados de entrada (não copiados — arquivos já existentes, com hash)
 

@@ -116,3 +116,32 @@ limpa.
 A Fase 7 (revisão por banca) recebe o link da página publicada — numa
 conversa nova, sem os bastidores deste projeto. A Fase 8 (Fechamento) recebe
 esta página como fonte dos números finais do README.
+
+## Adendo — v2, identidade visual (27/09/2026)
+
+A skill `entrega-dmaic` ganhou o fluxo do Montador de Dashboards
+(`references/montador.md`). Nesta rodada, só a identidade visual da página
+mudou — Template **Clínica médica**, Estilo **Dark Glass**, Layout **Painel
+de controle**, com as Peças Número-herói/Faixa de KPIs/Pareto/Barras
+agrupadas/Tabela densa. Justificativa completa de cada escolha, a correção de
+contraste encontrada ao importar os tokens (texto quase invisível sobre botões
+de acento, corrigido trocando `--surface` translúcido por `--paper` sólido em
+quatro pontos de CSS/JS) e a repetição da auditoria estão em
+`artefatos/escolhas-visuais.md` e na Rodada 4 de
+`artefatos/relatorio-auditoria.md`. **Nenhum número mudou** em relação à v1;
+nenhuma decisão de conteúdo foi reaberta. Tollgate desta rodada: ver seção
+abaixo, adendo ao veredito original.
+
+### Tollgate ENTREGA (visual) — v2
+
+| Critério | Veredito | Motivo |
+|---|---|---|
+| Recomendação mostrada e fase parada antes do HTML devolvido | OK | Template/Estilo/Layout/Peças recomendados e discutidos com o usuário antes de qualquer construção |
+| HTML baixado e folha de escolhas salvos intactos em artefatos/ | OK | `montador-clinica-aurora-operacao.html` (sem edição) + `escolhas-visuais.md` |
+| Toda cor importada passa no contraste mínimo (2:1 rampa, 4,5:1 texto) | OK | `escolhas-visuais.md` — 1 ajuste de acento derivado (mesmo matiz, luminosidade maior) e 1 defeito de reaproveitamento de variável corrigido, ambos documentados com antes/depois |
+| Painel usa a grade e os blocos escolhidos, todos alimentados pelo pipeline | OK | `dados_pagina.json` inalterado; grade `Painel de controle` com as 5 peças recomendadas |
+| Nenhuma ocorrência de B1/B2/CID fora do glossário | OK | Busca literal confirma: mesmo estado da v1 |
+| Nenhum número mudou em relação à versão anterior da página | OK | `06_entrega_dados.py` e `dados_pagina.json` não tocados nesta rodada |
+| Auditoria final rodou de novo, terminou sem bloqueante | OK | Rodada 4: 1 achado de contraste, corrigido, 10/10 checagens funcionais na repetição |
+
+**Veredito: APROVADO.**

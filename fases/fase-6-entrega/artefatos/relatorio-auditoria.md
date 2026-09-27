@@ -6,9 +6,12 @@ Data: 27/09/2026 · Ferramenta: Playwright (Chromium real, headless), servindo a
 
 Diferente de uma auditoria só de leitura de código, esta rodou a página de
 verdade num navegador: os quatro modos, os dois registros de linguagem, os
-dois temas, e duas larguras (desktop 1280px e mobile 390px). Os scripts de
-auditoria estão em `artefatos/` desta fase (`auditoria_playwright.py`,
-`auditoria2.py`) para reprodução.
+dois temas, e duas larguras (desktop 1280px e mobile 390px). As rodadas 1-3
+(v1) usaram scripts equivalentes a `auditoria_v2_visual.py`/
+`auditoria_v2_funcional.py`, mas as cópias originais não foram salvas em
+`artefatos/` nessa época — inconsistência do relatório da v1, registrada aqui
+e corrigida a partir da rodada da v2 (scripts desta rodada estão salvos em
+`artefatos/`, reprodutíveis).
 
 ## Rodada 1 — funcional (18 checagens)
 
@@ -60,8 +63,56 @@ terminou inteira sem achado — não precisou de uma quarta rodada.
 - `requirements.txt` do projeto (Python) sem versões pinadas — já registrado
   como dívida técnica na Fase 5, não específico desta página.
 
+## Rodada 4 (v2 — identidade visual, Montador de Dashboards)
+
+Data: 27/09/2026. Escopo: só o refresh visual (Template Clínica médica,
+Estilo Dark Glass, Layout Painel de controle) — ver `escolhas-visuais.md`
+para as escolhas e justificativas. Nenhum número foi recalculado.
+
+**Achado durante a checagem de contraste (não bloqueante para a auditoria
+funcional, mas corrigido antes de fechar a rodada):** ao trocar `--surface`
+de sólido para translúcido (efeito "glass"), quatro pontos que reaproveitavam
+essa variável como cor de texto sobre fundo cheio de `--accent` (aba ativa do
+menu de modo/registro, marca do checkbox nos dropdowns, botões de download
+`.xlsx`/`.pptx`/PDF, e a função `textOn()` usada pela matriz tipo×distância
+do Dashboard) ficaram com texto quase invisível (contraste ~1:1, verificado
+via `getComputedStyle` no Playwright). Corrigido trocando as quatro
+referências para um token sempre sólido (`--paper`), verificado em 6,81:1
+(escuro) e 7,58:1 (claro) contra `--accent`.
+
+Checagens rodadas (`auditoria_v2_visual.py` + `auditoria_v2_funcional.py`):
+
+- Zero erros de console/página nos 4 modos.
+- Selo "achado promissor, não confirmado" e KPI de guardrail presentes no
+  Painel.
+- Gráficos novos (Pareto do Principal, Barras agrupadas do Secundário)
+  renderizam com a contagem certa de elementos (7 barras do Pareto = 7
+  motivos; 6 barras agrupadas = 3 tipos × 2 grupos de distância) e legenda
+  de cores do achado de distância presente.
+- Dropdown do Dashboard abre, filtra, gera chip removível, atualiza contador.
+- Seleção por clique na matriz tipo×distância aplica e remove o contorno de
+  seleção.
+- Ordenação de coluna da tabela aplica `aria-sort`.
+- Download `.xlsx` gerado (> 1 KB) e `.pptx` gerado (> 1 KB).
+- Navegação de slides chega a 9/9 e para (botão desabilitado no último).
+- Manchete (64,3%) idêntica entre Painel e Slides.
+- Busca literal de B1/B2/CID: só as duas ocorrências do glossário (mesmo
+  estado da v1) — confirmado.
+- Capturas em tema claro, escuro e largura mobile (390px): nenhum rótulo
+  sobre dado, cards com contraste de texto ≥4,5:1 verificado nos tons
+  extremos da rampa (ver `escolhas-visuais.md`).
+
+**Resultado: 1 rodada, 1 achado de contraste (corrigido), 10/10 checagens
+funcionais aprovadas na repetição após a correção.**
+
 ## Conclusão
 
-Após 3 rodadas (2 com achado, 1 limpa), a página está pronta para entrega,
-com os quatro modos funcionais, os números idênticos nos dois registros, e
-nenhum resto de conteúdo do molde.
+V1: após 3 rodadas (2 com achado, 1 limpa), a página ficou pronta para
+entrega, com os quatro modos funcionais, os números idênticos nos dois
+registros, e nenhum resto de conteúdo do molde.
+
+V2 (identidade visual): 1 rodada com 1 achado de contraste, corrigido e
+reverificado. Nenhum número mudou em relação à v1; a auditoria funcional
+completa (18 checagens da rodada 1 original) segue válida, já que a
+estrutura de dados, filtros e downloads não foram tocados — só cor,
+tipografia e a grade/blocos do Painel.

@@ -5,41 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Absenteísmo evitável — Transportadora Brasília</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
 :root{
   --paper:#E9EDF0; --surface:#FFFFFF; --sunk:#E1E7EB; --line:#D0D8DE; --line-2:#AEBBC4;
   --ink:#0E1618; --ink-2:#3B4B54; --ink-3:#6B7C86;
-  --accent:#17476B; --accent-soft:#DDE7EE;
-  --crit:#A33024; --warn:#9A6A0C; --good:#2C6A50;
-  --s1:#8FAEC4; --s2:#6F94B0; --s3:#4E7B9B; --s4:#2F6184; --s5:#17476B;
-  --band:#E6EEF4; --tipbg:#0E1618; --tipink:#FFFFFF;
+  --accent:#4B0CD9; --accent-soft:#E6E0F6;
+  --crit:#E60627; --warn:#846002; --good:#1D845F;
+  --s1:#9F78F8; --s2:#7C47F5; --s3:#5A17F2; --s4:#460BCB; --s5:#35099B;
+  --band:#EFE9FC; --tipbg:#0E1618; --tipink:#FFFFFF;
+  --radius:14px; --shadow:0 10px 28px -14px rgba(14,22,24,.18);
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --paper:#0B1113; --surface:#121A1E; --sunk:#0E1518; --line:#233036; --line-2:#3A4B53;
-  --ink:#E4EBEE; --ink-2:#AEBFC7; --ink-3:#7C8F99;
-  --accent:#74B2D8; --accent-soft:#12262F;
-  --crit:#E2796C; --warn:#D6A63F; --good:#5FB08C;
-  --s1:#2E5569; --s2:#3E7695; --s3:#5A9BBE; --s4:#76B3D6; --s5:#9CCCE8;
-  --band:#132630; --tipbg:#E4EBEE; --tipink:#0B1113;
+  --paper:#07070E; --surface:rgba(255,255,255,.055); --sunk:rgba(255,255,255,.03); --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.18);
+  --ink:#F5F6FB; --ink-2:#B8BDD4; --ink-3:#7C82A0;
+  --accent:#A681F8; --accent-soft:rgba(139,92,246,.14);
+  --crit:#FB7185; --warn:#FBBF24; --good:#34D399;
+  --s1:#470BD0; --s2:#5D1CF2; --s3:#804CF5; --s4:#9F78F8; --s5:#C1A8FA;
+  --band:rgba(139,92,246,.08); --tipbg:#F5F6FB; --tipink:#07070E;
+  --shadow:0 20px 55px -22px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.5);
 }}
 :root[data-theme="dark"]{
-  --paper:#0B1113; --surface:#121A1E; --sunk:#0E1518; --line:#233036; --line-2:#3A4B53;
-  --ink:#E4EBEE; --ink-2:#AEBFC7; --ink-3:#7C8F99;
-  --accent:#74B2D8; --accent-soft:#12262F;
-  --crit:#E2796C; --warn:#D6A63F; --good:#5FB08C;
-  --s1:#2E5569; --s2:#3E7695; --s3:#5A9BBE; --s4:#76B3D6; --s5:#9CCCE8;
-  --band:#132630; --tipbg:#E4EBEE; --tipink:#0B1113;
+  --paper:#07070E; --surface:rgba(255,255,255,.055); --sunk:rgba(255,255,255,.03); --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.18);
+  --ink:#F5F6FB; --ink-2:#B8BDD4; --ink-3:#7C82A0;
+  --accent:#A681F8; --accent-soft:rgba(139,92,246,.14);
+  --crit:#FB7185; --warn:#FBBF24; --good:#34D399;
+  --s1:#470BD0; --s2:#5D1CF2; --s3:#804CF5; --s4:#9F78F8; --s5:#C1A8FA;
+  --band:rgba(139,92,246,.08); --tipbg:#F5F6FB; --tipink:#07070E;
+  --shadow:0 20px 55px -22px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.5);
 }
 *{box-sizing:border-box}
 body{background:var(--paper); color:var(--ink); margin:0;
-  font-family:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   font-size:15.5px; line-height:1.62; -webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:Fraunces,Georgia,serif; font-weight:700; margin:0; line-height:1.16; text-wrap:balance; letter-spacing:-.01em}
+h1,h2,h3,h4{font-family:Inter,-apple-system,sans-serif; font-weight:800; margin:0; line-height:1.16; text-wrap:balance; letter-spacing:-.01em}
 p{margin:0 0 1em}
 .wrap{max-width:1080px; margin:0 auto; padding-inline:20px}
-.mono{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
-.eyebrow{font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
 #app[data-reg="simples"] .tec{display:none!important}
 #app[data-reg="tecnica"] .sim{display:none!important}
 
@@ -49,28 +52,32 @@ p{margin:0 0 1em}
 
 .topbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:60; background:color-mix(in srgb,var(--paper) 93%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
 .topbar .wrap{display:flex; align-items:center; gap:12px; min-height:54px; flex-wrap:wrap; padding-block:9px}
-.brandmark{font-family:Fraunces,serif; font-weight:700; font-size:14.5px; white-space:nowrap}
-.brandmark small{display:block; font-family:"IBM Plex Mono",monospace; font-size:9.5px; font-weight:500; letter-spacing:.1em; color:var(--ink-3); text-transform:uppercase; margin-top:1px}
+.brandmark{font-family:Inter,sans-serif; font-weight:700; font-size:14.5px; white-space:nowrap}
+.brandmark small{display:block; font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:500; letter-spacing:.1em; color:var(--ink-3); text-transform:uppercase; margin-top:1px}
 .seg{display:flex; border:1px solid var(--line-2); background:var(--surface)}
-.seg button{font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; padding:8px 12px; border:0; border-right:1px solid var(--line); background:transparent; color:var(--ink-3); cursor:pointer}
+.seg button{font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; padding:8px 12px; border:0; border-right:1px solid var(--line); background:transparent; color:var(--ink-3); cursor:pointer}
 .seg button:last-child{border-right:0}
-.seg button[aria-pressed="true"]{background:var(--accent); color:var(--surface)}
+.seg button[aria-pressed="true"]{background:var(--accent); color:var(--paper)}
 .seg button:focus-visible,.dd-btn:focus-visible,.act:focus-visible,.chk:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 .modes{margin-left:auto}
-.reglabel{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
+.reglabel{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
 
 [hidden]{display:none!important}
 section[hidden]{display:none!important}
 .pane{padding-block:28px 64px}
-.card{background:var(--surface); border:1px solid var(--line); padding:18px}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; position:relative; transition:transform .2s ease}
+.card::before{content:''; position:absolute; left:16px; right:16px; top:0; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:.28; pointer-events:none; transition:opacity .2s ease; border-radius:var(--radius) var(--radius) 0 0}
+.card:hover{transform:translateY(-2px)}
+.card:hover::before{opacity:.55}
+@media (prefers-reduced-motion:reduce){ .card,.card::before{transition:none} .card:hover{transform:none} }
 .card > h3{font-size:15px; margin-bottom:3px}
 .card .eyebrow{margin-bottom:9px}
 .cardnote{font-size:12.5px; color:var(--ink-3); margin-top:10px; line-height:1.55}
 .two{display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:16px; margin-top:16px}
 .three{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin-top:16px}
-.tbox{overflow-x:auto; border:1px solid var(--line); background:var(--surface); margin-top:16px}
+.tbox{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); background:var(--surface); margin-top:16px}
 table{width:100%; border-collapse:collapse; font-size:13.5px}
-th{text-align:left; font-family:"IBM Plex Mono",monospace; font-size:9.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); padding:10px 13px; border-bottom:1px solid var(--line-2); background:var(--sunk); white-space:nowrap}
+th{text-align:left; font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); padding:10px 13px; border-bottom:1px solid var(--line-2); background:var(--sunk); white-space:nowrap}
 td{padding:9px 13px; border-bottom:1px solid var(--line); color:var(--ink-2); vertical-align:top}
 tr:last-child td{border-bottom:0}
 td:first-child{color:var(--ink); font-weight:500}
@@ -80,57 +87,64 @@ th .arw{opacity:.35; margin-left:4px}
 th[aria-sort] .arw{opacity:1; color:var(--accent)}
 
 /* painel */
-.hero{display:grid; grid-template-columns:minmax(260px,1.1fr) minmax(240px,1fr); gap:20px; align-items:end; margin-bottom:22px}
-.bignum{font-family:Fraunces,serif; font-weight:700; font-size:clamp(56px,10vw,88px); line-height:.92; letter-spacing:-.03em; color:var(--accent)}
+.grade12{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+.g12{grid-column:span 12}
+.g6{grid-column:span 6; display:flex; flex-direction:column}
+.g6 > .card{flex:1}
+@media (max-width:860px){ .g6{grid-column:span 12} }
+.hero-card{padding:22px 24px}
+.hero{display:grid; grid-template-columns:minmax(260px,1.1fr) minmax(240px,1fr); gap:20px; align-items:end}
+.bignum{font-family:Inter,sans-serif; font-weight:800; font-size:clamp(56px,10vw,88px); line-height:.92; letter-spacing:-.03em; color:var(--accent)}
 .bignum span{font-size:.38em}
 .herometa{font-size:14px; color:var(--ink-2)}
 .herometa b{color:var(--ink)}
 .gap{display:inline-flex; align-items:baseline; gap:6px; background:var(--accent-soft); padding:3px 9px; font-weight:600; color:var(--ink); font-size:13.5px}
-.guards{display:grid; grid-template-columns:repeat(auto-fit,minmax(166px,1fr)); border:1px solid var(--line); background:var(--surface); margin:18px 0}
+.guards{display:grid; grid-template-columns:repeat(auto-fit,minmax(166px,1fr)); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); background:var(--surface); margin:18px 0}
 .guard{padding:14px 16px; border-right:1px solid var(--line)}
 .guard:last-child{border-right:0}
-.guard .k{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
-.guard .v{font-family:Fraunces,serif; font-weight:700; font-size:22px; margin-top:4px; font-variant-numeric:tabular-nums}
+.guard .k{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
+.guard .v{font-family:Inter,sans-serif; font-weight:800; font-size:22px; margin-top:4px; font-variant-numeric:tabular-nums}
 .guard .d{font-size:12px; color:var(--good); margin-top:2px; font-weight:500}
 .disclaimer{margin-top:22px; border-left:3px solid var(--line-2); padding:2px 0 2px 14px; font-size:13px; color:var(--ink-3); max-width:74ch}
-.guardrail-box{background:var(--surface); border:2px solid var(--good); padding:16px 18px; margin:18px 0; display:grid; grid-template-columns:auto auto 1fr; gap:6px 18px; align-items:start}
-.guardrail-box .grk{font-family:"IBM Plex Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--good); grid-column:1/-1}
-.guardrail-box .grv{font-family:Fraunces,serif; font-weight:700; font-size:30px; color:var(--good); line-height:1}
+.guardrail-box{background:var(--surface); border:2px solid var(--good); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px 18px; margin:18px 0; display:grid; grid-template-columns:auto auto 1fr; gap:6px 18px; align-items:start}
+.guardrail-box .grk{font-family:"JetBrains Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--good); grid-column:1/-1}
+.guardrail-box .grv{font-family:Inter,sans-serif; font-weight:700; font-size:30px; color:var(--good); line-height:1}
 .guardrail-box .grtxt{margin:0; font-size:13px; color:var(--ink-2); max-width:62ch; align-self:center}
-.badge-promissor{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.05em; padding:2px 8px; background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent); text-transform:uppercase; white-space:nowrap}
+.badge-promissor{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.05em; padding:2px 8px; background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent); text-transform:uppercase; white-space:nowrap}
 @media (max-width:640px){ .guardrail-box{grid-template-columns:1fr} }
 
 /* dropdowns */
-.filters{background:var(--surface); border:1px solid var(--line); padding:14px 16px; margin-bottom:16px}
+.filters{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px 16px; margin-bottom:16px}
 .ddrow{display:flex; gap:10px; flex-wrap:wrap; align-items:flex-start}
 .dd{position:relative; flex:1 1 200px; min-width:180px}
-.dd-lab{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); display:block; margin-bottom:5px}
+.dd-lab{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); display:block; margin-bottom:5px}
 .dd-btn{width:100%; text-align:left; font-family:inherit; font-size:13.5px; padding:9px 30px 9px 12px; border:1px solid var(--line-2); background:var(--paper); color:var(--ink); cursor:pointer; position:relative}
 .dd-btn::after{content:"▾"; position:absolute; right:11px; top:50%; transform:translateY(-50%); color:var(--ink-3); font-size:11px}
 .dd-btn[aria-expanded="true"]{border-color:var(--accent); box-shadow:inset 0 -2px 0 var(--accent)}
-.dd-panel{position:absolute; z-index:50; top:calc(100% + 4px); left:0; right:0; background:var(--surface); border:1px solid var(--line-2); box-shadow:0 8px 24px rgba(14,22,24,.14); max-height:290px; overflow:auto; padding:6px}
+.dd-panel{position:absolute; z-index:50; top:calc(100% + 4px); left:0; right:0; background:var(--surface); border:1px solid var(--line-2); border-radius:var(--radius); box-shadow:var(--shadow); max-height:290px; overflow:auto; padding:6px}
 .dd-quick{display:flex; gap:6px; padding:4px 4px 8px; border-bottom:1px solid var(--line); margin-bottom:5px}
-.dd-quick button{flex:1; font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:600; padding:6px; border:1px solid var(--line-2); background:transparent; color:var(--ink-2); cursor:pointer}
+.dd-quick button{flex:1; font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:600; padding:6px; border:1px solid var(--line-2); background:transparent; color:var(--ink-2); cursor:pointer}
 .chk{display:flex; align-items:center; gap:9px; width:100%; text-align:left; font-family:inherit; font-size:13.5px; padding:7px 9px; border:0; background:transparent; color:var(--ink-2); cursor:pointer}
 .chk:hover{background:var(--sunk)}
-.chk .bx{width:15px; height:15px; border:1.5px solid var(--line-2); flex:0 0 15px; display:grid; place-items:center; font-size:11px; color:var(--surface); line-height:1}
+.chk .bx{width:15px; height:15px; border:1.5px solid var(--line-2); flex:0 0 15px; display:grid; place-items:center; font-size:11px; color:var(--paper); line-height:1}
 .chk[aria-pressed="true"] .bx{background:var(--accent); border-color:var(--accent)}
 .chk[aria-pressed="true"]{color:var(--ink); font-weight:500}
 .fbar{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:13px; padding-top:12px; border-top:1px solid var(--line)}
 .fcount{font-size:13px; color:var(--ink-2)}
-.fcount b{color:var(--ink); font-family:"IBM Plex Mono",monospace}
-.reset{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; padding:7px 13px; border:1px solid var(--line-2); background:transparent; color:var(--ink-2); cursor:pointer}
-.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); border:1px solid var(--line); background:var(--surface); margin-bottom:16px}
+.fcount b{color:var(--ink); font-family:"JetBrains Mono",monospace}
+.reset{margin-left:auto; font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:600; padding:7px 13px; border:1px solid var(--line-2); background:transparent; color:var(--ink-2); cursor:pointer}
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); background:var(--surface); margin-bottom:16px}
 .kpi{padding:15px 16px; border-right:1px solid var(--line)}
 .kpi:last-child{border-right:0}
-.kpi .k{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
-.kpi .v{font-family:Fraunces,serif; font-weight:700; font-size:26px; margin-top:4px; color:var(--accent); font-variant-numeric:tabular-nums}
+.kpi .k{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
+.kpi .v{font-family:Inter,sans-serif; font-weight:800; font-size:26px; margin-top:4px; color:var(--accent); font-variant-numeric:tabular-nums}
+.kpi.kpi-guard .v{color:var(--good)}
 .kpi .s{font-size:12px; color:var(--ink-3); margin-top:2px}
-.empty{padding:30px; text-align:center; color:var(--ink-3); font-size:14px; background:var(--surface); border:1px solid var(--line)}
+.empty{padding:30px; text-align:center; color:var(--ink-3); font-size:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius)}
 .hint{font-size:12.5px; color:var(--ink-3); margin-top:8px}
 [data-tip]{cursor:pointer}
 #tip{position:fixed; z-index:200; background:var(--tipbg); color:var(--tipink); font-size:12.5px; line-height:1.45; padding:9px 12px; pointer-events:none; max-width:270px; box-shadow:0 6px 20px rgba(0,0,0,.22)}
-#tip b{font-family:"IBM Plex Mono",monospace}
+#tip b{font-family:"JetBrains Mono",monospace}
 .zoom-bar{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:4px; min-height:22px}
 .zoom-hint{font-size:11px; color:var(--ink-3)}
 .zoom-reset{font:inherit; font-size:11.5px; font-weight:600; color:var(--accent); background:var(--accent-soft); border:1px solid var(--line); padding:3px 10px; cursor:pointer}
@@ -140,47 +154,47 @@ th[aria-sort] .arw{opacity:1; color:var(--accent)}
 /* relatorio */
 .report{max-width:70ch; margin:0 auto}
 .report h1{font-size:clamp(29px,5vw,41px); margin-bottom:16px}
-.answer{font-size:clamp(18px,3vw,22px); line-height:1.42; font-family:Fraunces,serif; font-weight:600; border-left:4px solid var(--accent); padding-left:16px; margin:0 0 26px; color:var(--ink)}
+.answer{font-size:clamp(18px,3vw,22px); line-height:1.42; font-family:Inter,sans-serif; font-weight:600; border-left:4px solid var(--accent); padding-left:16px; margin:0 0 26px; color:var(--ink)}
 .report h2{font-size:20px; margin:38px 0 10px; padding-top:20px; border-top:1px solid var(--line); scroll-margin-top:80px}
 .report h3{font-size:16px; margin:22px 0 6px}
-.toc{background:var(--surface); border:1px solid var(--line); padding:14px 18px; margin-bottom:30px; font-size:13.5px}
+.toc{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px 18px; margin-bottom:30px; font-size:13.5px}
 .toc ol{margin:8px 0 0; padding-left:20px; columns:2; column-gap:26px}
 .toc li{margin-bottom:4px; break-inside:avoid}
 .toc a{color:var(--ink-2); text-decoration:none}
 .toc a:hover{color:var(--accent); text-decoration:underline}
-.report figure{margin:22px 0; background:var(--surface); border:1px solid var(--line); padding:16px}
+.report figure{margin:22px 0; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px}
 .report figcaption{font-size:12.5px; color:var(--ink-3); margin-top:10px; line-height:1.55}
-.keyfig{background:var(--surface); border:1px solid var(--line-2); padding:18px 20px; margin:22px 0}
-.keyfig .n{font-family:Fraunces,serif; font-weight:700; font-size:33px; color:var(--accent); line-height:1}
+.keyfig{background:var(--surface); border:1px solid var(--line-2); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px 20px; margin:22px 0}
+.keyfig .n{font-family:Inter,sans-serif; font-weight:800; font-size:33px; color:var(--accent); line-height:1}
 .keyfig p{margin:8px 0 0; font-size:14px; color:var(--ink-2)}
 .report ul,.report ol{padding-left:20px; margin:0 0 1em}
 .report li{margin-bottom:.45em}
-.calc{font-family:"IBM Plex Mono",monospace; font-size:12.5px; background:var(--sunk); border:1px solid var(--line); padding:14px 16px; margin:18px 0; overflow-x:auto; line-height:1.75}
+.calc{font-family:"JetBrains Mono",monospace; font-size:12.5px; background:var(--sunk); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; margin:18px 0; overflow-x:auto; line-height:1.75}
 .calc b{color:var(--accent)}
-details{border:1px solid var(--line); background:var(--surface); padding:12px 16px; margin-top:22px}
+details{border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:12px 16px; margin-top:22px}
 summary{cursor:pointer; font-weight:600; font-size:14px}
 dl{margin:12px 0 0; font-size:13.5px}
 dt{font-weight:600; margin-top:10px; color:var(--ink)}
 dd{margin:2px 0 0; color:var(--ink-2)}
-.flag{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:600; letter-spacing:.06em; padding:2px 7px; background:var(--accent-soft); color:var(--ink)}
+.flag{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:600; letter-spacing:.06em; padding:2px 7px; background:var(--accent-soft); color:var(--ink)}
 
 /* slides */
-.deck{background:var(--surface); border:1px solid var(--line); aspect-ratio:16/9; display:flex; flex-direction:column; justify-content:center; padding:clamp(22px,4vw,52px); position:relative; overflow:hidden}
+.deck{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); aspect-ratio:16/9; display:flex; flex-direction:column; justify-content:center; padding:clamp(22px,4vw,52px); position:relative; overflow:hidden}
 .frame{display:none}
 .frame.on{display:block}
 .frame h2{font-size:clamp(19px,3.2vw,33px); margin-bottom:13px; max-width:24ch}
 .frame p{font-size:clamp(12.5px,1.55vw,15.5px); color:var(--ink-2); max-width:58ch}
-.framenum{position:absolute; right:clamp(18px,3vw,34px); bottom:clamp(14px,2.5vw,26px); font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3); letter-spacing:.1em}
+.framenum{position:absolute; right:clamp(18px,3vw,34px); bottom:clamp(14px,2.5vw,26px); font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-3); letter-spacing:.1em}
 .decknav{display:flex; align-items:center; gap:10px; margin-top:14px}
-.decknav button{font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600; padding:8px 14px; border:1px solid var(--line-2); background:var(--surface); color:var(--ink-2); cursor:pointer}
+.decknav button{font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:600; padding:8px 14px; border:1px solid var(--line-2); background:var(--surface); color:var(--ink-2); cursor:pointer}
 .decknav button:disabled{opacity:.35; cursor:default}
 .dots{display:flex; gap:6px; margin-left:auto}
 .dots i{width:7px; height:7px; background:var(--line-2); display:block; border-radius:50%}
 .dots i.on{background:var(--accent)}
-.fstat{font-family:Fraunces,serif; font-weight:700; font-size:clamp(36px,6.2vw,60px); color:var(--accent); line-height:1; margin:9px 0}
+.fstat{font-family:Inter,sans-serif; font-weight:700; font-size:clamp(36px,6.2vw,60px); color:var(--accent); line-height:1; margin:9px 0}
 
 .actionbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:30px; padding-top:20px; border-top:1px solid var(--line)}
-.act{font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600; padding:10px 16px; border:1px solid var(--accent); background:var(--accent); color:var(--surface); cursor:pointer}
+.act{font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:600; padding:10px 16px; border:1px solid var(--accent); background:var(--accent); color:var(--paper); cursor:pointer}
 .act.ghost{background:transparent; color:var(--accent)}
 .acthint{font-size:12px; color:var(--ink-3); flex:1 1 220px; min-width:0}
 
@@ -204,7 +218,7 @@ dd{margin:2px 0 0; color:var(--ink-2)}
 .achip:hover{border-color:var(--accent)}
 .achip b{font-weight:600; color:var(--ink-3)}
 .noflt{font-size:12.5px; color:var(--ink-3)}
-.mini{font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; padding:6px 11px; border:1px solid var(--line-2); background:transparent; color:var(--ink-2); cursor:pointer}
+.mini{font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:600; padding:6px 11px; border:1px solid var(--line-2); background:transparent; color:var(--ink-2); cursor:pointer}
 .mini:hover{border-color:var(--accent); color:var(--accent)}
 .cardhead{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap}
 .tctl{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:10px}
@@ -244,69 +258,89 @@ svg{display:block; width:100%; height:auto}
 
 <!-- ===================== PAINEL ===================== -->
 <section id="pane-painel" class="pane"><div class="wrap">
-  <div class="hero">
-    <div>
-      <div class="eyebrow"><span class="sim">Quanto da ausência dá para evitar</span><span class="tec">Métrica primária · proporção de eventos evitáveis</span></div>
-      <div class="bignum">64,3<span>%</span></div>
-      <p class="herometa sim" style="margin-top:8px">Cerca de <b>6 em cada 10</b> ausências não têm atestado médico por trás. A medição tem margem: o valor real está entre <b class="mono">57,9%</b> e <b class="mono">69,1%</b>. Base: <b class="mono">733</b> eventos de <b class="mono">34</b> funcionários.</p>
-      <p class="herometa tec" style="margin-top:8px">IC 95% de <b class="mono">57,9%</b> a <b class="mono">69,1%</b> · n = <b class="mono">733</b> eventos, <b class="mono">34</b> clusters (funcionário) · bootstrap por cluster, não Wilson ingênuo.</p>
+  <div class="grade12">
+
+    <!-- Herói (faixa) · Número-herói -->
+    <div class="g12">
+      <div class="card hero-card">
+        <div class="eyebrow"><span class="sim">Quanto da ausência dá para evitar</span><span class="tec">Métrica primária · proporção de eventos evitáveis</span></div>
+        <div class="bignum">64,3<span>%</span></div>
+        <p class="herometa sim" style="margin-top:8px">Cerca de <b>6 em cada 10</b> ausências não têm atestado médico por trás. A medição tem margem: o valor real está entre <b class="mono">57,9%</b> e <b class="mono">69,1%</b>. Base: <b class="mono">733</b> eventos de <b class="mono">34</b> funcionários.</p>
+        <p class="herometa tec" style="margin-top:8px">IC 95% de <b class="mono">57,9%</b> a <b class="mono">69,1%</b> · n = <b class="mono">733</b> eventos, <b class="mono">34</b> clusters (funcionário) · bootstrap por cluster, não Wilson ingênuo. Sem carta de controle válida (M11: máximo 13 rótulos de mês, abaixo do mínimo de 20-25) — o gatilho de acompanhamento é a comparação direta contra este IC, ver tabela no rodapé.</p>
+      </div>
     </div>
-    <div>
-      <div class="eyebrow"><span class="sim">Distância da meta interna</span><span class="tec">Distância da meta interna</span></div>
-      <div style="margin-top:10px"><span class="gap"><span class="mono" style="font-size:19px">+30,9 pp</span><span class="sim">acima do nível do quartil de melhor desempenho (33,4%)</span><span class="tec">acima de 33,4%</span></span></div>
-      <p class="herometa sim" style="margin-top:12px">A meta de 33,4% <b>não veio do mercado</b> — é a média dos 25% de funcionários com melhor desempenho nesta própria base. Não existe "taxa de absenteísmo" publicada comparável: a base não registra dias trabalhados.</p>
-      <p class="herometa tec" style="margin-top:12px">Meta proposta: média do quartil de funcionários com menor proporção evitável, na própria amostra. <b>Não é referência de mercado</b> — sem denominador de dias trabalhados, a métrica não é uma taxa anualizável.</p>
-      <div class="herometa" style="margin-top:8px"><span class="sim">Redução potencial:</span><span class="tec">Ganho de capabilidade:</span> <b class="mono">~6,3 eventos evitáveis a menos por mês</b> <span class="sim">se todo funcionário estivesse no nível do melhor quartil</span></div>
+
+    <!-- KPIs (faixa) · Faixa de KPIs -->
+    <div class="g12">
+      <div class="kpis">
+        <div class="kpi kpi-guard">
+          <div class="k"><span class="sim">Atestado médico</span><span class="tec">Guardrail</span></div>
+          <div class="v">35,7%</div>
+          <div class="s sim">não é para reduzir</div>
+          <div class="s tec">guardrail permanente (D5)</div>
+        </div>
+        <div class="kpi">
+          <div class="k"><span class="sim">Distância da meta interna</span><span class="tec">Gap vs. meta</span></div>
+          <div class="v">+30,9 pp</div>
+          <div class="s sim">meta = melhor quartil (33,4%), não benchmark</div>
+          <div class="s tec">meta interna 33,4%, sem referência de mercado</div>
+        </div>
+        <div class="kpi">
+          <div class="k">Eventos</div>
+          <div class="v">733</div>
+          <div class="s">de 34 funcionários · jul/2007–jul/2010</div>
+        </div>
+        <div class="kpi">
+          <div class="k"><span class="sim">Redução potencial</span><span class="tec">Ganho de capabilidade</span></div>
+          <div class="v">~6,3<span style="font-size:.55em">/mês</span></div>
+          <div class="s sim">eventos evitáveis a menos, se no nível do melhor quartil</div>
+          <div class="s tec">eventos evitáveis/mês, nível-alvo do melhor quartil</div>
+        </div>
+      </div>
     </div>
+
+    <!-- Principal · Pareto (taxa por motivo, onde se concentra) -->
+    <div class="g6">
+      <div class="card">
+        <div class="eyebrow" style="color:var(--accent)"><span class="sim">Onde a ausência evitável concentra</span><span class="tec">Pareto · taxa por motivo</span></div>
+        <div id="chart-pareto"></div>
+        <div class="legend">
+          <span><i class="lg-bar"></i><span class="sim">participação de cada motivo</span><span class="tec">% do total evitável</span></span>
+          <span><i class="lg-line"></i><span class="sim">soma acumulada</span><span class="tec">% acumulado</span></span>
+          <span><i class="lg-dash"></i><span class="sim">marca de 80%</span><span class="tec">referência 80%</span></span>
+        </div>
+        <p class="cardnote"><span class="sim">Consulta médica e odontológica já somam mais da metade da parte evitável.</span><span class="tec">Ordenado por participação no total de eventos evitáveis (7 motivos, taxa).</span></p>
+      </div>
+    </div>
+
+    <!-- Secundário · Barras agrupadas (achado de distância, H1) -->
+    <div class="g6">
+      <div class="card">
+        <div class="eyebrow" style="color:var(--accent)"><span class="sim">Quem mora mais longe</span><span class="tec">Tipo × grupo de distância</span> <span class="badge-promissor">achado promissor, não confirmado</span></div>
+        <div id="chart-h1"></div>
+        <div class="legend" id="legend-h1"></div>
+        <p class="cardnote sim">Sinal na direção esperada — mais ausência administrável entre quem mora mais longe — mas testado com <b>poder estatístico muito baixo (~3%, 34 funcionários)</b> e checado numa segunda amostra separada, que apontou na mesma direção sem confirmar.</p>
+        <p class="cardnote tec">H1 pré-registrada: 16,4 p.p. na exploração (IC 95% 3,76–24,33; p=0,0178 acima do α de Bonferroni 0,0125; poder ≈3%), reforçado por 9,48 p.p. na confirmação (IC 95% 0,0–32,16; n=8). Rival estrutural testado antes, não descartou o efeito.</p>
+      </div>
+    </div>
+
+    <!-- Rodapé · Tabela densa (plano de controle) -->
+    <div class="g12">
+      <div class="tbox">
+        <table>
+          <thead><tr><th><span class="sim">O que acompanhar</span><span class="tec">Métrica</span></th><th><span class="sim">Alarme em</span><span class="tec">Limite</span></th><th>Frequência</th><th>Responsável</th><th><span class="sim">O que fazer se passar</span><span class="tec">Ação ao sair do limite</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="sim">Ausência evitável</span><span class="tec">Proporção de eventos evitáveis</span></td><td class="mono">fora de 57,9–69,1%</td><td>Mensal</td><td>Ger. RH/Operações</td><td>Se sustentado por 2+ meses, investigar causa antes de agir</td></tr>
+            <tr><td><span class="sim">Atestado médico (guardrail)</span><span class="tec">Proporção de eventos com atestado médico</span></td><td class="mono">qualquer queda junto da evitável</td><td>Mensal</td><td>Ger. RH/Operações</td><td>Suspender a mudança de processo e investigar supressão de atestado</td></tr>
+            <tr><td><span class="sim">Código de registro fora do padrão</span><span class="tec">Reason for absence fora de 1–28</span></td><td class="mono">&gt; 0 ocorrências</td><td>Mensal</td><td>TI / RH</td><td>Alerta imediato — sinal de que a correção de sistema falhou</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 
-  <div class="card">
-    <div class="eyebrow"><span class="sim">Por que não tem carta de controle aqui</span><span class="tec">Fase Measure/Control · estabilidade</span></div>
-    <h3 class="sim">A base não tem ano — não dá para montar uma carta confiável</h3>
-    <h3 class="tec">Sem carta de controle válida (M11)</h3>
-    <p class="cardnote sim">Os eventos só têm o número do mês (1 a 12), sem o ano — e a base cobre três anos. Mesmo ignorando essa mistura, o máximo seriam 13 pontos, bem abaixo do mínimo de 20-25 que uma carta de controle exige para ter limites confiáveis. Por isso o gráfico abaixo é só descritivo, <b>sem ordem cronológica confiável</b> — serve para ver se algum mês concentra mais evento evitável, nunca para dizer se piorou ou melhorou ao longo do tempo.</p>
-    <p class="cardnote tec">No máximo 13 rótulos de mês possíveis, abaixo do mínimo de 20-25 subgrupos (M11) — mesmo sem considerar que cada rótulo mistura até 3 anos calendário. Tabela descritiva no lugar da carta; o gatilho de controle é a comparação direta contra o IC do baseline (seção 3 da tabela abaixo), sustentada por 2+ períodos.</p>
-    <div id="chart-mes"></div>
-  </div>
-
-  <div class="guardrail-box">
-    <div class="grk"><span class="sim">Guardrail — este número não é para reduzir</span><span class="tec">Guardrail permanente</span></div>
-    <div class="grv mono">35,7%</div>
-    <p class="grtxt sim">É a proporção de ausências <b>com atestado médico</b>. Se ela cair junto com a parte evitável, é sinal de que alguém está deixando de tirar atestado por pressão — o oposto do objetivo deste projeto. Este indicador tem selo próprio, separado dos indicadores de problema, porque ele não deve diminuir.</p>
-    <p class="grtxt tec">Proporção de eventos com atestado médico. Guardrail contra otimização local (D5): nenhuma contramedida pode reduzir a parte evitável às custas de supressão de ausência médica legítima.</p>
-  </div>
-
-  <div class="two">
-    <div class="card">
-      <div class="eyebrow" style="color:var(--accent)"><span class="sim">Onde a ausência evitável concentra</span><span class="tec">Pareto A · taxa por motivo</span></div>
-      <div id="chart-pa"></div>
-      <p class="cardnote"><span class="sim">A fatia de cada motivo dentro da parte evitável.</span><span class="tec">Ordena por participação no total de eventos evitáveis.</span></p>
-    </div>
-    <div class="card">
-      <div class="eyebrow" style="color:var(--accent)"><span class="sim">Onde está o tempo perdido</span><span class="tec">Pareto B · impacto em horas</span></div>
-      <div id="chart-pb"></div>
-      <div class="legend">
-      <span><i class="lg-bar"></i><span class="sim">horas de ausência, por motivo</span><span class="tec">horas por motivo</span></span>
-      <span><i class="lg-line"></i><span class="sim">soma acumulada, em % do total</span><span class="tec">% acumulado</span></span>
-      <span><i class="lg-dash"></i><span class="sim">marca de 80% do total</span><span class="tec">referência 80%</span></span>
-    </div>
-      <p class="cardnote sim"><b>"Falta sem justificativa aceita" não aparece aqui</b> — esses eventos têm sempre 0 hora registrada. Para esse motivo, a régua é o Pareto de taxa (ao lado), não horas.</p>
-      <p class="cardnote tec">Restrito aos 6 motivos administráveis: falta sem justificativa aceita tem Absenteeism time in hours = 0 em 100% dos casos e não pode ser representada num Pareto de horas sem esconder o problema.</p>
-    </div>
-  </div>
-
-  <div class="tbox">
-    <table>
-      <thead><tr><th><span class="sim">O que acompanhar</span><span class="tec">Métrica</span></th><th><span class="sim">Alarme em</span><span class="tec">Limite</span></th><th>Frequência</th><th>Responsável</th><th><span class="sim">O que fazer se passar</span><span class="tec">Ação ao sair do limite</span></th></tr></thead>
-      <tbody>
-        <tr><td><span class="sim">Ausência evitável</span><span class="tec">Proporção de eventos evitáveis</span></td><td class="mono">fora de 57,9–69,1%</td><td>Mensal</td><td>Ger. RH/Operações</td><td>Se sustentado por 2+ meses, investigar causa antes de agir</td></tr>
-        <tr><td><span class="sim">Atestado médico (guardrail)</span><span class="tec">Proporção de eventos com atestado médico</span></td><td class="mono">qualquer queda junto da evitável</td><td>Mensal</td><td>Ger. RH/Operações</td><td>Suspender a mudança de processo e investigar supressão de atestado</td></tr>
-        <tr><td><span class="sim">Código de registro fora do padrão</span><span class="tec">Reason for absence fora de 1–28</span></td><td class="mono">&gt; 0 ocorrências</td><td>Mensal</td><td>TI / RH</td><td>Alerta imediato — sinal de que a correção de sistema falhou</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p class="disclaimer"><span class="sim">Dados de jul/2007 a jul/2010, de uma transportadora real em Brasília (base pública, UCI Machine Learning Repository), que não mudam mais. <b>Não é um monitor ao vivo</b> — mostra como o acompanhamento funcionaria rodando na empresa. O gestor de RH mencionado é um perfil hipotético usado para guiar as decisões, não uma pessoa real consultada.</span><span class="tec">Recorte jul/2007–jul/2010, 733 eventos de 34 funcionários (pós-exclusões de qualidade). <b>Não é monitoramento ao vivo</b>: demonstra o plano de controle da fase Control. Stakeholder simulado; premissas em fases/fase-1-define/relatorio.md.</span></p>
+  <p class="disclaimer"><span class="sim">Dados de jul/2007 a jul/2010, de uma transportadora real em Brasília (base pública, UCI Machine Learning Repository), que não mudam mais. <b>Não é um monitor ao vivo</b> — mostra como o acompanhamento funcionaria rodando na empresa. O gestor de RH mencionado é um perfil hipotético usado para guiar as decisões, não uma pessoa real consultada. O gráfico de motivo por mês (não temporal) e o Pareto de impacto em horas continuam completos no Dashboard e no Relatório.</span><span class="tec">Recorte jul/2007–jul/2010, 733 eventos de 34 funcionários (pós-exclusões de qualidade). <b>Não é monitoramento ao vivo</b>: demonstra o plano de controle da fase Control. Stakeholder simulado; premissas em fases/fase-1-define/relatorio.md. Tabela não-temporal por mês e Pareto de horas: Dashboard e Relatório (seções 6-7).</span></p>
 </div></section>
 
 <!-- ===================== DASHBOARD ===================== -->
@@ -2995,9 +3029,9 @@ sob adesão de 80% ............................................. 18,1 horas evit
   function simples(){return app.getAttribute('data-reg')==='simples';}
   /* Cor do texto sobre um fundo da rampa: a que der mais contraste. */
   function lumHex(h){ h=h.replace('#',''); var v=[0,2,4].map(function(i){ var x=parseInt(h.substr(i,2),16)/255; return x<=0.04045?x/12.92:Math.pow((x+0.055)/1.055,2.4); }); return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2]; }
-  function textOn(bg){ var lb=lumHex(bg), a=lumHex(c('--ink')), b=lumHex(c('--surface'));
+  function textOn(bg){ var lb=lumHex(bg), a=lumHex(c('--ink')), b=lumHex(c('--paper'));
     function cr(x,y){ return (Math.max(x,y)+0.05)/(Math.min(x,y)+0.05); }
-    return cr(lb,a)>=cr(lb,b) ? c('--ink') : c('--surface'); }
+    return cr(lb,a)>=cr(lb,b) ? c('--ink') : c('--paper'); }
   function RAMP(){return [c('--s5'),c('--s4'),c('--s3'),c('--s2'),c('--s1'),c('--s1')];}
 
   /* ================= entrega de arquivo =================
@@ -3138,7 +3172,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
   var TIPO=DADOS.TIPO_LABELS, MOTIVO=DADOS.MOTIVO_LABELS, DIST=DADOS.DIST_LABELS, DIA=DADOS.DIA_LABELS, ESTACAO=DADOS.ESTACAO_LABELS;
   var cubo=DADOS.cubo; // {ti,mo,di,da,es,it,h} - ti=tipo, mo=motivo, di=distancia, da=dia, es=estacao
   var FUNCIONARIOS=DADOS.funcionarios; // [{rotulo,n,prop}], ja ordenado por prop crescente
-  var paretoTaxa=DADOS.pareto_taxa_motivo.map(function(r){return [r.motivo,r.pct];});
+  var paretoTaxa=DADOS.pareto_taxa_motivo.map(function(r){return [r.motivo,r.pct,r.n];});
   var paretoImp=DADOS.pareto_impacto_motivo.map(function(r){return [r.motivo,r.horas];});
   var MESES_NT=DADOS.baseline.tabela_nao_temporal_por_mes; // nao-temporal, so descritivo
 
@@ -3216,7 +3250,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
       var flt=o.key?' data-flt="'+o.key+':'+r[3]+'"':'';
       s+='<text x="'+(L-10)+'" y="'+(y+rowH/2+4)+'" text-anchor="end" font-size="11" font-weight="'+(any&&on?600:400)+'" fill="'+(on?c('--ink-2'):c('--ink-3'))+'">'+esc(r[0])+'</text>';
       s+='<rect x="'+L+'" y="'+(y+7)+'" width="'+bw.toFixed(1)+'" height="'+(rowH-15)+'" rx="3" fill="'+ramp[Math.min(i,ramp.length-1)]+'" fill-opacity="'+(on?1:0.25)+'"'+(any&&on?' stroke="'+c('--ink')+'" stroke-width="1.5"':'')+' data-tip="'+attr(tp)+'"'+flt+'/>';
-      s+='<text x="'+(L+bw+8).toFixed(1)+'" y="'+(y+rowH/2+4.5)+'" font-size="11" font-weight="600" font-family="IBM Plex Mono,monospace" fill="'+(on?c('--ink'):c('--ink-3'))+'" pointer-events="none">'+esc(o.fmt(r[1]))+'</text>';
+      s+='<text x="'+(L+bw+8).toFixed(1)+'" y="'+(y+rowH/2+4.5)+'" font-size="11" font-weight="600" font-family="JetBrains Mono,monospace" fill="'+(on?c('--ink'):c('--ink-3'))+'" pointer-events="none">'+esc(o.fmt(r[1]))+'</text>';
     });
     el.innerHTML=s+'</svg>'; wireTips(el);
   }
@@ -3229,13 +3263,13 @@ sob adesão de 80% ............................................. 18,1 horas evit
     var s=sv(W,H);
     [0,0.5,1].forEach(function(q){
       var yy=T+ph-(ph*q);
-      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="9.5" font-family="IBM Plex Mono,monospace" fill="'+c('--ink-3')+'">'+nf(max*q,0)+'h</text>';
-      s+='<text x="'+(W-R+6)+'" y="'+(yy+3.5)+'" font-size="9.5" font-family="IBM Plex Mono,monospace" fill="'+c('--crit')+'">'+(q*100)+'%</text>';
+      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="9.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+nf(max*q,0)+'h</text>';
+      s+='<text x="'+(W-R+6)+'" y="'+(yy+3.5)+'" font-size="9.5" font-family="JetBrains Mono,monospace" fill="'+c('--crit')+'">'+(q*100)+'%</text>';
       s+='<line x1="'+L+'" y1="'+yy+'" x2="'+(W-R)+'" y2="'+yy+'" stroke="'+c('--line')+'" stroke-width="1"/>';
     });
     var y80=T+ph*0.2;
     s+='<line x1="'+L+'" y1="'+y80+'" x2="'+(W-R)+'" y2="'+y80+'" stroke="'+c('--line-2')+'" stroke-width="1.2" stroke-dasharray="4 3"/>';
-    s+='<text x="'+(W-R+6)+'" y="'+(y80+3.5)+'" font-size="9.5" font-family="IBM Plex Mono,monospace" fill="'+c('--ink-3')+'">80%</text>';
+    s+='<text x="'+(W-R+6)+'" y="'+(y80+3.5)+'" font-size="9.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">80%</text>';
     var pts=[];
     rows.forEach(function(r,i){
       var x=L+slot*i+(slot-bw)/2, h=(ph*r[1])/max, y=T+ph-h;
@@ -3258,6 +3292,88 @@ sob adesão de 80% ............................................. 18,1 horas evit
     el.innerHTML=s+'</svg>'; wireTips(el);
   }
 
+  /* Pareto em % (bar = participacao do motivo, linha = acumulado) - eixo unico
+     0-100%, porque os valores de entrada ja sao percentual (somam ~100),
+     diferente de paretoAcum (horas) que precisa de eixo duplo. */
+  function paretoPct(el,rows){
+    var W=460,H=256,L=40,R=16,T=16,B=52;
+    var pw=W-L-R, ph=H-T-B, n=rows.length;
+    var slot=pw/n, bw=Math.min(40,slot*0.6), acc=0, ramp=RAMP();
+    var s=sv(W,H);
+    [0,25,50,75,100].forEach(function(g){
+      var yy=T+ph-(ph*g)/100;
+      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="9.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+g+'%</text>';
+      s+='<line x1="'+L+'" y1="'+yy+'" x2="'+(W-R)+'" y2="'+yy+'" stroke="'+c('--line')+'" stroke-width="1"/>';
+    });
+    var y80=T+ph*0.2;
+    s+='<line x1="'+L+'" y1="'+y80+'" x2="'+(W-R)+'" y2="'+y80+'" stroke="'+c('--line-2')+'" stroke-width="1.2" stroke-dasharray="4 3"/>';
+    var pts=[];
+    rows.forEach(function(r,i){
+      var x=L+slot*i+(slot-bw)/2, h=(ph*r[1])/100, y=T+ph-h;
+      acc+=r[1];
+      var tp=esc(r[0])+'<br><b>'+nf(r[1],1)+'%</b> '+(simples()?'dos eventos evitáveis':'de participação')+'<br>'+nf(r[2],0)+' eventos';
+      s+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+ramp[Math.min(i,ramp.length-1)]+'" data-tip="'+attr(tp)+'"/>';
+      pts.push([x+bw/2, T+ph-(ph*acc/100), acc, r[0]]);
+      var palavras=r[0].split(' '), rotuloCurto=palavras[0]+(palavras[1]?' '+palavras[1].charAt(0).toUpperCase()+'.':'');
+      s+='<text x="'+(x+bw/2).toFixed(1)+'" y="'+(T+ph+14)+'" text-anchor="middle" font-size="9.5" fill="'+c('--ink-3')+'">'+esc(rotuloCurto)+'</text>';
+    });
+    var d=pts.map(function(p,i){return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join('');
+    s+='<path d="'+d+'" fill="none" stroke="'+c('--crit')+'" stroke-width="2" pointer-events="none"/>';
+    pts.forEach(function(p){
+      var tp=(simples()?'Somando até ':'Acumulado até ')+esc(p[3])+'<br><b>'+nf(p[2],1)+'%</b> do total';
+      s+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="7" fill="transparent" data-tip="'+attr(tp)+'"/>';
+      s+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.4" fill="'+c('--crit')+'" pointer-events="none"/>';
+    });
+    el.innerHTML=s+'</svg>'; wireTips(el);
+  }
+
+  /* Barras agrupadas: participacao (%) de cada tipo dentro de cada grupo de
+     distancia - mesma normalizacao por coluna da matriz do Dashboard (cada
+     grupo de distancia soma 100% entre os 3 tipos), so que em barras lado a
+     lado em vez de celulas de matriz. Estatico (Painel nao filtra). */
+  function barrasAgrupadas(el,catLabels,series){
+    var W=460,H=256,L=36,R=16,T=16,B=40;
+    var pw=W-L-R, ph=H-T-B, nCat=catLabels.length, nSer=series.length;
+    var groupW=pw/nCat, barW=Math.min(34,groupW/(nSer+1.4));
+    var s=sv(W,H);
+    [0,25,50,75,100].forEach(function(g){
+      var yy=T+ph-(ph*g)/100;
+      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="9.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+g+'%</text>';
+      s+='<line x1="'+L+'" y1="'+yy+'" x2="'+(W-R)+'" y2="'+yy+'" stroke="'+c('--line')+'" stroke-width="1"/>';
+    });
+    catLabels.forEach(function(lab,gi){
+      var gx=L+groupW*gi;
+      series.forEach(function(ser,si){
+        var v=ser.vals[gi], n=ser.ns[gi];
+        var bx=gx+(groupW-nSer*barW)/2+si*barW, h=(ph*v)/100, y=T+ph-h;
+        var tp=esc(ser.label)+' · '+esc(lab)+'<br><b>'+nf(v,1)+'%</b> '+(simples()?'desse grupo de distância':'de participação na coluna')+'<br>'+nf(n,0)+' eventos';
+        s+='<rect x="'+bx.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+(barW-2)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+ser.color+'" data-tip="'+attr(tp)+'"/>';
+      });
+      s+='<text x="'+(gx+groupW/2).toFixed(1)+'" y="'+(T+ph+18)+'" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-2')+'">'+esc(lab)+'</text>';
+    });
+    el.innerHTML=s+'</svg>'; wireTips(el);
+  }
+
+  /* Monta e desenha o achado de distancia (H1) do Painel: agrega o cubo
+     completo (sem filtro - o Painel e' estatico) na mesma normalizacao da
+     matriz tipo x distancia do Dashboard, e escreve a legenda de cores. */
+  function desenhaH1(el,legendEl){
+    var seriesH1=TIPO.map(function(lab,i){
+      var vals=[],ns=[];
+      DIST.forEach(function(_,j){
+        var celula=soma(cubo.filter(function(x){return x.ti===i&&x.di===j;}));
+        var colTotal=soma(cubo.filter(function(x){return x.di===j;}));
+        vals.push(colTotal.it?100*celula.it/colTotal.it:0); ns.push(celula.it);
+      });
+      var cor = i===0?c('--good'):(i===1?c('--accent'):c('--warn'));
+      return {label:lab,color:cor,vals:vals,ns:ns};
+    });
+    barrasAgrupadas(el,DIST,seriesH1);
+    if(legendEl) legendEl.innerHTML = seriesH1.map(function(ser){
+      return '<span><i style="width:12px;height:10px;border-radius:2px;background:'+ser.color+';display:inline-block"></i>'+esc(ser.label)+'</span>';
+    }).join('');
+  }
+
   /* Grafico descritivo por rotulo de mes - SEM ordem cronologica confiavel
      (a base mistura 3 anos calendario). Sem crosshair de serie temporal, sem
      zoom: barras soltas, o aviso vai no proprio titulo do card no HTML. */
@@ -3268,18 +3384,18 @@ sob adesão de 80% ............................................. 18,1 horas evit
     for(var g=0;g<=100;g+=25){
       var yy=T+ph-(ph*g)/100;
       s+='<line x1="'+L+'" y1="'+yy+'" x2="'+(W-R)+'" y2="'+yy+'" stroke="'+c('--line')+'" stroke-width="1"/>';
-      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="10" font-family="IBM Plex Mono,monospace" fill="'+c('--ink-3')+'">'+g+'%</text>';
+      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="10" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+g+'%</text>';
     }
     var yBase=T+ph-(ph*TXBASE)/100;
     s+='<line x1="'+L+'" y1="'+yBase+'" x2="'+(W-R)+'" y2="'+yBase+'" stroke="'+c('--crit')+'" stroke-width="1.3" stroke-dasharray="5 4"/>';
     /* rotulo da media fora da area de barras (na margem direita), nunca sobre
        um dado - a linha ja cruza os dados, o texto nao precisa cruzar tambem */
-    s+='<text x="'+(W-R+8)+'" y="'+(yBase+3.5)+'" text-anchor="start" font-size="10" font-weight="600" font-family="IBM Plex Mono,monospace" fill="'+c('--crit')+'">'+(simples()?'média geral':'baseline')+'<tspan x="'+(W-R+8)+'" dy="12">'+nf(TXBASE,1)+'%</tspan></text>';
+    s+='<text x="'+(W-R+8)+'" y="'+(yBase+3.5)+'" text-anchor="start" font-size="10" font-weight="600" font-family="JetBrains Mono,monospace" fill="'+c('--crit')+'">'+(simples()?'média geral':'baseline')+'<tspan x="'+(W-R+8)+'" dy="12">'+nf(TXBASE,1)+'%</tspan></text>';
     rows.forEach(function(r,i){
       var v=r.proporcao_B*100, x=X(i)-bw/2, h=(ph*v)/100, y=T+ph-h;
       var tp=(simples()?'Mês (rótulo) ':'Month of absence ')+r["Month of absence"]+'<br><b>'+nf(v,1)+'%</b> evitável<br>'+nf(r.n_eventos,0)+' eventos';
       s+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+c('--s4')+'" data-tip="'+attr(tp)+'"/>';
-      s+='<text x="'+X(i).toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10.5" font-family="IBM Plex Mono,monospace" fill="'+c('--ink-3')+'">'+r["Month of absence"]+'</text>';
+      s+='<text x="'+X(i).toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+r["Month of absence"]+'</text>';
     });
     s+='<text x="'+(L+pw/2)+'" y="12" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="0.04em" fill="'+c('--crit')+'">'+(simples()?'SEM ORDEM CRONOLÓGICA CONFIÁVEL — mistura 3 anos':'NÃO TEMPORAL — rótulos misturam 3 anos calendário')+'</text>';
     el.innerHTML=s+'</svg>'; wireTips(el);
@@ -3298,7 +3414,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
       s+='<rect x="'+L+'" y="'+(y+1.5)+'" width="'+Math.max(1.5,bw).toFixed(1)+'" height="'+(rowH-3)+'" fill="'+cor+'" fill-opacity="0.9" data-tip="'+attr(tp)+'"/>';
     });
     s+='<line x1="'+xMeta.toFixed(1)+'" y1="'+T+'" x2="'+xMeta.toFixed(1)+'" y2="'+(T+rows.length*rowH)+'" stroke="'+c('--crit')+'" stroke-width="1.5" stroke-dasharray="4 3"/>';
-    s+='<text x="'+xMeta.toFixed(1)+'" y="'+(T+rows.length*rowH+14)+'" text-anchor="middle" font-size="10.5" font-weight="700" font-family="IBM Plex Mono,monospace" fill="'+c('--crit')+'">'+(simples()?'meta '+nf(meta*100,0)+'%':'meta interna '+nf(meta*100,1)+'%')+'</text>';
+    s+='<text x="'+xMeta.toFixed(1)+'" y="'+(T+rows.length*rowH+14)+'" text-anchor="middle" font-size="10.5" font-weight="700" font-family="JetBrains Mono,monospace" fill="'+c('--crit')+'">'+(simples()?'meta '+nf(meta*100,0)+'%':'meta interna '+nf(meta*100,1)+'%')+'</text>';
     el.innerHTML=s+'</svg>'; wireTips(el);
   }
 
@@ -3311,7 +3427,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
     var s=sv(W,H);
     colLabels.forEach(function(lab,j){
       var hi=sel.di.indexOf(j)>=0;
-      s+='<text x="'+(L+cw*j+cw/2)+'" y="16" text-anchor="middle" font-size="10" font-weight="'+(hi?700:600)+'" font-family="IBM Plex Mono,monospace" fill="'+(hi?c('--ink'):c('--ink-3'))+'">'+esc(lab)+'</text>';
+      s+='<text x="'+(L+cw*j+cw/2)+'" y="16" text-anchor="middle" font-size="10" font-weight="'+(hi?700:600)+'" font-family="JetBrains Mono,monospace" fill="'+(hi?c('--ink'):c('--ink-3'))+'">'+esc(lab)+'</text>';
     });
     rows.forEach(function(r,i){
       var y=T+i*rh, tiOn=!sel.ti.length||sel.ti.indexOf(r.ti)>=0;
@@ -3323,7 +3439,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
         var idx=Math.min(4,Math.floor(5*v/100.001));
         var tp=esc(r.k)+' · '+esc(colLabels[j])+'<br><b>'+nf(v,1)+'%</b> '+(simples()?'dos eventos desse grupo de distância':'de participação na coluna')+'<br>'+nf(r.n[j],0)+' eventos'+clickHint(picked);
         s+='<rect x="'+(L+cw*j+2)+'" y="'+(y+2)+'" width="'+(cw-4)+'" height="'+(rh-4)+'" fill="'+ramp[idx]+'" fill-opacity="'+(active?1:0.28)+'"'+(picked?' stroke="'+c('--ink')+'" stroke-width="2.5"':'')+' data-tip="'+attr(tp)+'" data-flt="mtx:'+key+'"/>';
-        s+='<text x="'+(L+cw*j+cw/2)+'" y="'+(y+rh/2+4)+'" text-anchor="middle" font-size="12" font-weight="600" font-family="IBM Plex Mono,monospace" fill="'+(active?textOn(ramp[idx]):c('--ink'))+'" fill-opacity="'+(active?1:0.5)+'" pointer-events="none">'+nf(v,1)+'</text>';
+        s+='<text x="'+(L+cw*j+cw/2)+'" y="'+(y+rh/2+4)+'" text-anchor="middle" font-size="12" font-weight="600" font-family="JetBrains Mono,monospace" fill="'+(active?textOn(ramp[idx]):c('--ink'))+'" fill-opacity="'+(active?1:0.5)+'" pointer-events="none">'+nf(v,1)+'</text>';
       });
     });
     el.innerHTML=s+'</svg>'; wireTips(el);
@@ -3349,10 +3465,10 @@ sob adesão de 80% ............................................. 18,1 horas evit
       var y=T+i*rowH, bw=(pw*r[1])/max;
       s+='<text x="'+(L-12)+'" y="'+(y+rowH/2+5)+'" text-anchor="end" font-size="11.5" fill="'+(r[2]?c('--ink-2'):c('--ink'))+'">'+esc(r[0])+'</text>';
       s+='<rect x="'+L+'" y="'+(y+8)+'" width="'+bw.toFixed(1)+'" height="'+(rowH-18)+'" rx="3" fill="'+(r[2]?c('--s3'):c('--accent'))+'" data-tip="'+attr(esc(r[0])+'<br><b>'+nf(r[1],1)+' pp</b>')+'"/>';
-      s+='<text x="'+(L+bw+9).toFixed(1)+'" y="'+(y+rowH/2+5)+'" font-size="12" font-weight="700" font-family="IBM Plex Mono,monospace" fill="'+c('--ink')+'">'+nf(r[1],1)+' pp</text>';
+      s+='<text x="'+(L+bw+9).toFixed(1)+'" y="'+(y+rowH/2+5)+'" font-size="12" font-weight="700" font-family="JetBrains Mono,monospace" fill="'+c('--ink')+'">'+nf(r[1],1)+' pp</text>';
     });
     s+='<line x1="'+xMin.toFixed(1)+'" y1="'+(T-2)+'" x2="'+xMin.toFixed(1)+'" y2="'+(T+rows.length*rowH)+'" stroke="'+c('--crit')+'" stroke-width="1.3" stroke-dasharray="4 3"/>';
-    s+='<text x="'+xMin.toFixed(1)+'" y="'+(T+rows.length*rowH+14)+'" text-anchor="middle" font-size="10" font-weight="700" font-family="IBM Plex Mono,monospace" fill="'+c('--crit')+'">'+(simples()?'mínimo p/ agir: 10 pp':'efeito mínimo 10 pp')+'</text>';
+    s+='<text x="'+xMin.toFixed(1)+'" y="'+(T+rows.length*rowH+14)+'" text-anchor="middle" font-size="10" font-weight="700" font-family="JetBrains Mono,monospace" fill="'+c('--crit')+'">'+(simples()?'mínimo p/ agir: 10 pp':'efeito mínimo 10 pp')+'</text>';
     el.innerHTML=s+'</svg>'; wireTips(el);
   }
 
@@ -3578,9 +3694,8 @@ sob adesão de 80% ............................................. 18,1 horas evit
 
   /* ================= desenho geral ================= */
   function draw(){
-    mesBar(document.getElementById('chart-mes'),MESES_NT);
-    barrasH(document.getElementById('chart-pa'),paretoTaxa.map(function(r,i){return [r[0],r[1],'',i];}),{fmt:function(v){return nf(v,1)+'%';}});
-    paretoAcum(document.getElementById('chart-pb'),paretoImp);
+    paretoPct(document.getElementById('chart-pareto'),paretoTaxa);
+    desenhaH1(document.getElementById('chart-h1'),document.getElementById('legend-h1'));
     if(!document.getElementById('pane-relatorio').hidden){
       mesBar(document.getElementById('rep-mes'),MESES_NT);
       paretoAcum(document.getElementById('rep-pareto'),paretoImp);
