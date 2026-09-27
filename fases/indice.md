@@ -5,7 +5,7 @@
 | 0 · Reconhecimento | concluída | APROVADO com ressalvas | [relatório](fase-0-reconhecimento/relatorio.pdf) | 26/09/2026 |
 | 1 · Define | concluída | APROVADO | [relatório](fase-1-define/relatorio.pdf) · [pré-registro](fase-1-define/pre-registro.pdf) | 26/09/2026 |
 | 2A · Measure — qualidade | concluída | APROVADO | [relatório](fase-2a-measure-qualidade/relatorio.pdf) | 26/09/2026 |
-| 2B · Measure — baseline | não iniciada | — | — | — |
+| 2B · Measure — baseline | concluída | APROVADO | [relatório](fase-2b-measure-baseline/relatorio.pdf) · [baseline congelado](fase-2b-measure-baseline/baseline-congelado.pdf) | 26/09/2026 |
 | 3 · Analyze | não iniciada | — | — | — |
 | 4 · Improve | não iniciada | — | — | — |
 | 5 · Control | não iniciada | — | — | — |
@@ -49,3 +49,8 @@ flowchart LR
 | Duplicatas resolvidas com modelo de colisão por acaso (limiar p<0,30): 23/26 grupos mantidos (coincidência plausível), 3 removidos (erro de digitação provável) | Fase 2A · Measure | Base final = `data/processed/eventos_qualidade.csv` (733 eventos, 34 identidades) — usar esta base a partir da Fase 2B, não mais `eventos_limpos.csv` |
 | Regra travada: Weight e Height são as colunas-fonte; Body mass index é derivada — nunca as três como preditores concorrentes | Fase 2A · Measure | Vale para Analyze e qualquer modelagem futura |
 | Erro indetectável nomeado: Reason for absence por conveniência (ex. falta disciplinar lançada como consulta médica) não deixa rastro estrutural — adjacente à hipótese H3 | Fase 2A · Measure | Se H3 for refutada no Analyze, este erro indetectável vira explicação alternativa a mencionar no README |
+| Baseline congelado: proporção de eventos B = 64,26% [57,95%;69,13%] IC por bootstrap de 34 clusters (não Wilson ingênuo sobre 733 eventos) | Fase 2B · Measure — imutável | Improve e Control medem ganho contra este número; nenhuma fase pode recalcular o baseline |
+| Sem carta de controle por regra (M11: máximo 13 pontos possíveis) — tabela descritiva não temporal no lugar | Fase 2B · Measure | Nenhuma leitura de "mês" pode virar conclusão de tendência ou sazonalidade |
+| Pareto de impacto em horas só cobre B2 (6 códigos) — B1 tem 100% dos eventos com 0h e usa o Pareto de taxa como régua | Fase 2B · Measure | Toda menção a B1 daqui em diante precisa citar contagem de eventos, nunca horas, como medida de impacto |
+| Poder estatístico muito baixo para H1 e H4 (~3%, n efetivo=34 funcionários) | Fase 2B · Measure | Analyze deve reportar efeito+IC, nunca só p-valor; "não significativo" é inconclusivo, não refutação |
+| Correção: relatorio.md da Fase 1 tinha erro de digitação na soma B1+B2 (54,4%→64,4%) — corrigido diretamente (não é artefato imutável) | Fase 2B · Measure | Nenhuma decisão do Define mudou; só a prosa do número preliminar |

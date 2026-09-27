@@ -54,8 +54,12 @@ real.
 "Em **736 eventos de ausência de 34 funcionários com pelo menos um evento no
 período** (jul/2007–jul/2010, sem coluna de ano), **a proporção de eventos sem
 lastro médico (defeito B)** está em **[a medir com intervalo de confiança na
-Fase 2B — contagem bruta preliminar: 54,4% do total, sendo 9,8 p.p. B1
-comportamental e 44,6 p.p. B2 administrável; DADO, sem IC]** quando a meta é
+Fase 2B — contagem bruta preliminar: 64,4% do total, sendo 9,8 p.p. B1
+comportamental e 54,6 p.p. B2 administrável; DADO, sem IC. Correção de
+26/09/2026, feita ao escrever a Fase 2B: a versão original deste relatório
+somava errado (54,4%/44,6%) por erro de digitação — os números de
+`artefatos/escopo_define.json` sempre estiveram corretos (B2=54,62%), só a
+soma em prosa aqui estava errada]** quando a meta é
 **[origem: benchmark externo de taxa não se aplica — não há dias trabalhados
 para calcular taxa (Fase 0, seção 7); proponho meta interna — reduzir B2 ao
 nível do melhor quartil de funcionário observado, mantendo B1 estável ou em

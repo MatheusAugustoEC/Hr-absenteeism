@@ -1,0 +1,210 @@
+{
+  "n_total_eventos": 733,
+  "n_identidades": 34,
+  "baseline_proporcoes": {
+    "B_total": {
+      "n_eventos": 471,
+      "proporcao": 0.6426,
+      "wilson_ic95_naive_733_eventos_independentes": [
+        0.6072,
+        0.6764
+      ],
+      "bootstrap_cluster_ic95_34_funcionarios": [
+        0.5795,
+        0.6913
+      ],
+      "dpmo": 642564.8,
+      "nivel_sigma_sem_deslocamento": -0.365,
+      "nivel_sigma_com_deslocamento_1_5": 1.135
+    },
+    "B1": {
+      "n_eventos": 72,
+      "proporcao": 0.0982,
+      "wilson_ic95_naive_733_eventos_independentes": [
+        0.0787,
+        0.1219
+      ],
+      "bootstrap_cluster_ic95_34_funcionarios": [
+        0.0552,
+        0.1619
+      ],
+      "dpmo": 98226.5,
+      "nivel_sigma_sem_deslocamento": 1.292,
+      "nivel_sigma_com_deslocamento_1_5": 2.792
+    },
+    "B2": {
+      "n_eventos": 399,
+      "proporcao": 0.5443,
+      "wilson_ic95_naive_733_eventos_independentes": [
+        0.5081,
+        0.5801
+      ],
+      "bootstrap_cluster_ic95_34_funcionarios": [
+        0.4468,
+        0.6175
+      ],
+      "dpmo": 544338.3,
+      "nivel_sigma_sem_deslocamento": -0.111,
+      "nivel_sigma_com_deslocamento_1_5": 1.389
+    }
+  },
+  "horas_por_subcategoria": {
+    "B1_comportamental": {
+      "n": 72,
+      "media": 3.33,
+      "mediana": 0.0,
+      "desvio_padrao": 3.97,
+      "min": 0.0,
+      "p25": 0.0,
+      "p75": 8.0,
+      "max": 16.0
+    },
+    "B2_administravel": {
+      "n": 399,
+      "media": 3.34,
+      "mediana": 2.0,
+      "desvio_padrao": 2.74,
+      "min": 0.0,
+      "p25": 2.0,
+      "p75": 4.0,
+      "max": 24.0
+    },
+    "CID": {
+      "n": 262,
+      "media": 13.52,
+      "mediana": 8.0,
+      "desvio_padrao": 20.48,
+      "min": 1.0,
+      "p25": 3.0,
+      "p75": 8.0,
+      "max": 120.0
+    }
+  },
+  "tabela_nao_temporal_por_mes": [
+    {
+      "Month of absence": 1,
+      "n_eventos": 49,
+      "n_B": 35,
+      "proporcao_B": 0.7143
+    },
+    {
+      "Month of absence": 2,
+      "n_eventos": 72,
+      "n_B": 54,
+      "proporcao_B": 0.75
+    },
+    {
+      "Month of absence": 3,
+      "n_eventos": 87,
+      "n_B": 51,
+      "proporcao_B": 0.5862
+    },
+    {
+      "Month of absence": 4,
+      "n_eventos": 53,
+      "n_B": 30,
+      "proporcao_B": 0.566
+    },
+    {
+      "Month of absence": 5,
+      "n_eventos": 64,
+      "n_B": 34,
+      "proporcao_B": 0.5312
+    },
+    {
+      "Month of absence": 6,
+      "n_eventos": 54,
+      "n_B": 31,
+      "proporcao_B": 0.5741
+    },
+    {
+      "Month of absence": 7,
+      "n_eventos": 67,
+      "n_B": 40,
+      "proporcao_B": 0.597
+    },
+    {
+      "Month of absence": 8,
+      "n_eventos": 54,
+      "n_B": 35,
+      "proporcao_B": 0.6481
+    },
+    {
+      "Month of absence": 9,
+      "n_eventos": 52,
+      "n_B": 42,
+      "proporcao_B": 0.8077
+    },
+    {
+      "Month of absence": 10,
+      "n_eventos": 69,
+      "n_B": 49,
+      "proporcao_B": 0.7101
+    },
+    {
+      "Month of absence": 11,
+      "n_eventos": 63,
+      "n_B": 36,
+      "proporcao_B": 0.5714
+    },
+    {
+      "Month of absence": 12,
+      "n_eventos": 49,
+      "n_B": 34,
+      "proporcao_B": 0.6939
+    }
+  ],
+  "capabilidade": {
+    "baseline_agregado_prop_B": 0.6426,
+    "n_funcionarios_no_quartil_superior": 8,
+    "meta_interna_prop_B_quartil_superior": 0.3336,
+    "prop_por_funcionario_describe": {
+      "count": 34.0,
+      "mean": 0.5754546282712312,
+      "std": 0.1781520440296483,
+      "min": 0.2,
+      "25%": 0.5,
+      "50%": 0.579192546583851,
+      "75%": 0.6979166666666667,
+      "max": 1.0
+    },
+    "eventos_B_por_mes_observado_aprox": 13.08,
+    "eventos_B_por_mes_na_meta_aprox": 6.79,
+    "reducao_eventos_B_por_mes_aprox": 6.29,
+    "nota_meses_periodo": "36 meses e aproximacao (jul/2007-jul/2010); sem coluna de ano exata, o denominador de meses e estimado, nao contado."
+  },
+  "pareto": {
+    "total_eventos_B": 471,
+    "total_horas_B2": 1334.0,
+    "pareto_taxa_pct_por_codigo": {
+      "23": 31.0,
+      "28": 23.78,
+      "27": 14.65,
+      "0": 8.28,
+      "22": 8.07,
+      "26": 7.01,
+      "25": 6.58,
+      "24": 0.64
+    },
+    "pareto_impacto_horas_pct_por_codigo_B2_apenas": {
+      "23": 31.26,
+      "28": 25.11,
+      "22": 21.96,
+      "27": 11.77,
+      "25": 8.1,
+      "24": 1.8
+    },
+    "nota_B1": "Reason 0 e 26 (B1) tem Absenteeism time in hours = 0 em 100% dos eventos - nao entram no Pareto de impacto em horas. Regua alternativa para B1: o proprio Pareto de taxa (contagem de eventos), ja reportado acima."
+  },
+  "poder": {
+    "n_clusters_total": 34,
+    "n_por_grupo_aprox_split_mediana": 17,
+    "alpha_bonferroni": 0.0125,
+    "poder_aproximado_H1_10pp": 0.029,
+    "poder_aproximado_H4_8pp": 0.027,
+    "nota": "Poder calculado com n efetivo = numero de FUNCIONARIOS por grupo (~17), nao o numero de eventos - a unidade de aleatorizacao/comparacao e o funcionario para H1 (Distance e constante por funcionario). Baseline de proporcao usado no calculo de h e ilustrativo (Cohen's h depende do nivel base), nao e o baseline real da hipotese.",
+    "recortes_sem_n_suficiente_menos_de_15_eventos": {
+      "24": 3
+    }
+  }
+}
