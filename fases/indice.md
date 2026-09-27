@@ -7,7 +7,7 @@
 | 2A · Measure — qualidade | concluída | APROVADO | [relatório](fase-2a-measure-qualidade/relatorio.pdf) | 26/09/2026 |
 | 2B · Measure — baseline | concluída | APROVADO | [relatório](fase-2b-measure-baseline/relatorio.pdf) · [baseline congelado](fase-2b-measure-baseline/baseline-congelado.pdf) | 26/09/2026 |
 | 3 · Analyze | concluída | APROVADO | [relatório](fase-3-analyze/relatorio.pdf) | 26/09/2026 |
-| 4 · Improve | não iniciada | — | — | — |
+| 4 · Improve | concluída | APROVADO | [relatório](fase-4-improve/relatorio.pdf) | 26/09/2026 |
 | 5 · Control | não iniciada | — | — | — |
 | 6 · Entrega | não iniciada | — | — | — |
 | 7 · Revisão por banca | não iniciada | — | — | — |
@@ -59,3 +59,8 @@ flowchart LR
 | H3 não refutada: 39 eventos reason=0 vêm de 20 funcionários, top-5 concentram 48,72% (<50%) — consistente com atalho administrativo disperso, não comportamento concentrado | Fase 3 · Analyze | B1 deve ser tratado como correção de processo (usar código 26, não 0, para falta disciplinar), não como ação sobre funcionários específicos |
 | H4 descartada: efeito de 3,95 p.p., abaixo do mínimo de 8 p.p., p=0,555 | Fase 3 · Analyze | Dia da semana não entra como fator na Improve |
 | Causalidade reversa para H1 (rota alocada por gestão antes do histórico de ausência) não pode ser descartada com esta base | Fase 3 · Analyze | Toda menção a H1 no README/Entrega precisa citar este limite |
+| H3: recomendação firme (poka-yoke) — eliminar código 0 da lista de motivos, forçar uso do código 26 para falta disciplinar | Fase 4 · Improve | Entra no plano de controle da Control como regra de sistema pronta |
+| H1: recomendação condicional/piloto — política de agendamento priorizando distância > 25,5km, NÃO ativa até confirmação | Fase 4 · Improve | Control decide se confirma via holdout; Entrega deve marcar como piloto, nunca como decisão tomada |
+| Ponto de indiferença de H1: 35,4% de adesão para empatar com custo de RH assumido (8h/mês, premissa ilustrativa) | Fase 4 · Improve | Número principal da recomendação — não o ganho bruto; substituir premissa por dado real antes de decisão de negócio |
+| Experimento formal de H1 (rota como unidade) exigiria ~550 unidades/grupo para 80% de poder — 32x mais que as 17 disponíveis | Fase 4 · Improve | Experimento controlado inviável nesta operação; via realista é o holdout observacional (mais fraco) da Control |
+| Guardrail do experimento: nenhuma queda em B2 pode vir com queda em CID (sinalizaria supressão de atestado médico) | Fase 4 · Improve | Critério de aceite obrigatório em qualquer avaliação de H1 na Control |

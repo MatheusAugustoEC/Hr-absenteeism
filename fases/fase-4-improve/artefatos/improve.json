@@ -1,0 +1,37 @@
+{
+  "mediana_distancia_km": 25.5,
+  "n_funcionarios_longe": 17,
+  "n_funcionarios_perto": 17,
+  "n_eventos_B2_total": 399,
+  "n_eventos_B2_longe": 271,
+  "n_funcionarios_longe_com_evento_B2": 16,
+  "horas_mediana_B2_longe": 3.0,
+  "horas_mediana_B2_geral_fase2b": 2.0,
+  "horas_total_B2_longe_janela": 938.0,
+  "cenarios_ganho": {
+    "adesao_20pct": {
+      "eventos_evitados_por_mes": 1.51,
+      "horas_evitadas_por_mes": 4.52
+    },
+    "adesao_50pct": {
+      "eventos_evitados_por_mes": 3.76,
+      "horas_evitadas_por_mes": 11.29
+    },
+    "adesao_80pct": {
+      "eventos_evitados_por_mes": 6.02,
+      "horas_evitadas_por_mes": 18.07
+    }
+  },
+  "eventos_B2_longe_por_mes_aprox": 7.528,
+  "ponto_de_indiferenca": {
+    "custo_rh_assumido_horas_por_mes_PREMISSA": 8.0,
+    "fracao_de_adesao_para_empatar": 0.3542,
+    "interpretacao": "Se menos desta fracao dos eventos B2 elegiveis migrar para fora do expediente, a politica custa mais tempo de RH do que economiza em horas de ausencia evitada - dado o custo assumido acima."
+  },
+  "experimento": {
+    "n_por_grupo_necessario_poder_80pct_alpha_0125": 550.1,
+    "n_rotas_longas_disponiveis_aprox": 17,
+    "viavel_com_operacao_atual": false,
+    "razao_necessario_vs_disponivel": 32.4
+  }
+}
