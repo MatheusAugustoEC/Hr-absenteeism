@@ -1,0 +1,3497 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Absenteísmo evitável — Transportadora Brasília</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+:root{
+  --paper:#E9EDF0; --surface:#FFFFFF; --sunk:#E1E7EB; --line:#D0D8DE; --line-2:#AEBBC4;
+  --ink:#0E1618; --ink-2:#3B4B54; --ink-3:#6B7C86;
+  --accent:#4B0CD9; --accent-soft:#E6E0F6;
+  --crit:#E60627; --warn:#846002; --good:#1D845F;
+  --crit-soft:rgba(230,6,39,.03); --warn-soft:rgba(132,96,2,.12);
+  --s1:#9F78F8; --s2:#7C47F5; --s3:#5A17F2; --s4:#460BCB; --s5:#35099B;
+  --band:#EFE9FC; --tipbg:#0E1618; --tipink:#FFFFFF;
+  --radius:14px; --shadow:0 10px 28px -14px rgba(14,22,24,.18);
+  --sidebar-w:250px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#07070E; --surface:rgba(255,255,255,.055); --sunk:rgba(255,255,255,.03); --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.18);
+  --ink:#F5F6FB; --ink-2:#B8BDD4; --ink-3:#7C82A0;
+  --accent:#A681F8; --accent-soft:rgba(139,92,246,.14);
+  --crit:#FB7185; --warn:#FBBF24; --good:#34D399;
+  --crit-soft:rgba(251,113,133,.16); --warn-soft:rgba(251,191,36,.16);
+  --s1:#470BD0; --s2:#5D1CF2; --s3:#804CF5; --s4:#9F78F8; --s5:#C1A8FA;
+  --band:rgba(139,92,246,.08); --tipbg:#F5F6FB; --tipink:#07070E;
+  --shadow:0 20px 55px -22px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  --paper:#07070E; --surface:rgba(255,255,255,.055); --sunk:rgba(255,255,255,.03); --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.18);
+  --ink:#F5F6FB; --ink-2:#B8BDD4; --ink-3:#7C82A0;
+  --accent:#A681F8; --accent-soft:rgba(139,92,246,.14);
+  --crit:#FB7185; --warn:#FBBF24; --good:#34D399;
+  --crit-soft:rgba(251,113,133,.16); --warn-soft:rgba(251,191,36,.16);
+  --s1:#470BD0; --s2:#5D1CF2; --s3:#804CF5; --s4:#9F78F8; --s5:#C1A8FA;
+  --band:rgba(139,92,246,.08); --tipbg:#F5F6FB; --tipink:#07070E;
+  --shadow:0 20px 55px -22px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--paper); color:var(--ink); margin:0;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:15.5px; line-height:1.62; -webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:Inter,-apple-system,sans-serif; font-weight:800; margin:0; line-height:1.16; text-wrap:balance; letter-spacing:-.01em}
+p{margin:0 0 1em}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
+svg{display:block; width:100%; height:auto}
+
+/* ---- casca: lateral + conteudo ---- */
+.shell{display:flex; align-items:flex-start; min-height:100vh}
+.sidebar{position:sticky; top:0; width:var(--sidebar-w); flex:0 0 var(--sidebar-w); height:100vh; overflow-y:auto;
+  background:var(--surface); border-right:1px solid var(--line); padding:20px 16px; display:flex; flex-direction:column; gap:22px}
+.brandmark{font-family:Inter,sans-serif; font-weight:800; font-size:15.5px; line-height:1.25}
+.brandmark small{display:block; font-family:"JetBrains Mono",monospace; font-size:9px; font-weight:500; letter-spacing:.08em; color:var(--ink-3); text-transform:uppercase; margin-top:4px}
+.nav{display:flex; flex-direction:column; gap:4px}
+.nav button{font-family:Inter,sans-serif; font-size:14px; font-weight:600; text-align:left; padding:10px 12px; border-radius:var(--radius);
+  border:1px solid transparent; background:transparent; color:var(--ink-2); cursor:pointer}
+.nav button:hover{background:var(--sunk)}
+.nav button[aria-pressed="true"]{background:var(--accent); color:var(--paper); box-shadow:var(--shadow)}
+.side-filtros{display:flex; flex-direction:column; gap:12px; padding-top:14px; border-top:1px solid var(--line)}
+.side-filtros .eyebrow{margin-bottom:2px}
+.dd{position:relative}
+.dd-lab{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); display:block; margin-bottom:5px}
+.dd-btn{width:100%; text-align:left; font-family:inherit; font-size:13px; padding:9px 26px 9px 11px; border:1px solid var(--line-2); border-radius:var(--radius); background:var(--paper); color:var(--ink); cursor:pointer; position:relative}
+.dd-btn::after{content:"▾"; position:absolute; right:10px; top:50%; transform:translateY(-50%); color:var(--ink-3); font-size:10px}
+.dd-btn[aria-expanded="true"]{border-color:var(--accent); box-shadow:inset 0 -2px 0 var(--accent)}
+.dd-panel{position:absolute; z-index:80; top:calc(100% + 4px); left:0; right:0; background:var(--surface); border:1px solid var(--line-2); border-radius:var(--radius); box-shadow:var(--shadow); max-height:240px; overflow:auto; padding:6px}
+.dd-quick{display:flex; gap:6px; padding:4px 4px 8px; border-bottom:1px solid var(--line); margin-bottom:5px}
+.dd-quick button{flex:1; font-family:"JetBrains Mono",monospace; font-size:10px; font-weight:600; padding:6px; border:1px solid var(--line-2); border-radius:8px; background:transparent; color:var(--ink-2); cursor:pointer}
+.chk{display:flex; align-items:center; gap:9px; width:100%; text-align:left; font-family:inherit; font-size:13px; padding:7px 9px; border:0; background:transparent; color:var(--ink-2); cursor:pointer}
+.chk:hover{background:var(--sunk)}
+.chk .bx{width:15px; height:15px; border:1.5px solid var(--line-2); flex:0 0 15px; display:grid; place-items:center; font-size:11px; color:var(--paper); line-height:1}
+.chk[aria-pressed="true"] .bx{background:var(--accent); border-color:var(--accent)}
+.chk[aria-pressed="true"]{color:var(--ink); font-weight:500}
+.active{display:flex; gap:6px; flex-wrap:wrap}
+.achip{font-family:inherit; font-size:11.5px; padding:5px 8px 5px 11px; border-radius:999px; background:var(--accent-soft); border:1px solid var(--line-2); color:var(--ink); display:inline-flex; gap:6px; align-items:center; cursor:pointer}
+.achip:hover{border-color:var(--accent)}
+.noflt{font-size:12px; color:var(--ink-3)}
+.reset{font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:600; padding:7px 12px; border:1px solid var(--line-2); border-radius:999px; background:transparent; color:var(--ink-2); cursor:pointer}
+.fcount{font-size:12px; color:var(--ink-2)}
+.fcount b{color:var(--ink); font-family:"JetBrains Mono",monospace}
+
+.content{flex:1; min-width:0; padding:26px 28px 70px}
+.wrap{max-width:1080px; margin:0 auto}
+.pane{max-width:1080px; margin:0 auto}
+
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; position:relative; transition:transform .2s ease}
+.card::before{content:''; position:absolute; left:16px; right:16px; top:0; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:.28; pointer-events:none; transition:opacity .2s ease; border-radius:var(--radius) var(--radius) 0 0}
+.card:hover{transform:translateY(-2px)}
+.card:hover::before{opacity:.55}
+@media (prefers-reduced-motion:reduce){ .card,.card::before{transition:none} .card:hover{transform:none} }
+.card > h3{font-size:15px; margin-bottom:3px}
+.card .eyebrow{margin-bottom:9px}
+.cardnote{font-size:12.5px; color:var(--ink-3); margin-top:10px; line-height:1.55}
+.insight{font-size:13px; color:var(--ink-2); margin-top:10px; line-height:1.55; padding:9px 12px; background:var(--sunk); border-left:3px solid var(--accent); border-radius:0 8px 8px 0}
+.insight b{color:var(--ink)}
+
+.grade12{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+.g12{grid-column:span 12}
+.g6{grid-column:span 6; display:flex; flex-direction:column}
+.g6>.card{flex:1}
+@media (max-width:860px){ .g6{grid-column:span 12} }
+
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-bottom:16px}
+.kpi{padding:15px 16px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+.kpi .k{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
+.kpi .v{font-family:Inter,sans-serif; font-weight:800; font-size:24px; margin-top:4px; color:var(--accent); font-variant-numeric:tabular-nums}
+.kpi.kpi-guard .v{color:var(--good)}
+.kpi .s{font-size:11.5px; color:var(--ink-3); margin-top:2px}
+
+.hero{display:flex; flex-direction:column; gap:6px}
+.bignum{font-family:Inter,sans-serif; font-weight:800; font-size:clamp(48px,8vw,74px); line-height:.95; letter-spacing:-.03em; color:var(--accent)}
+.bignum span{font-size:.4em}
+.gap{display:inline-flex; align-items:baseline; gap:6px; background:var(--accent-soft); border-radius:var(--radius); padding:4px 11px; font-weight:600; color:var(--ink); font-size:13px}
+
+.tbox{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); background:var(--surface); margin-top:16px}
+table{width:100%; border-collapse:collapse; font-size:13.5px}
+th{text-align:left; font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); padding:10px 13px; border-bottom:1px solid var(--line-2); background:var(--sunk); white-space:nowrap}
+td{padding:9px 13px; border-bottom:1px solid var(--line); color:var(--ink-2); vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--ink); font-weight:500}
+th.sortable{cursor:pointer; user-select:none}
+th.sortable:hover{color:var(--ink)}
+th .arw{opacity:.35; margin-left:4px}
+th[aria-sort] .arw{opacity:1; color:var(--accent)}
+
+.badge-promissor{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.05em; padding:3px 10px; border-radius:999px; background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent); text-transform:uppercase; white-space:nowrap}
+.sevpill{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; padding:3px 10px; border-radius:999px}
+.sev-alta{background:var(--crit-soft); color:var(--crit)}
+.sev-media{background:var(--warn-soft); color:var(--warn)}
+.flag{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:600; letter-spacing:.06em; padding:3px 9px; border-radius:999px; background:var(--accent-soft); color:var(--ink)}
+.mini{font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:600; padding:6px 12px; border:1px solid var(--line-2); border-radius:999px; background:transparent; color:var(--ink-2); cursor:pointer}
+.mini:hover{border-color:var(--accent); color:var(--accent)}
+.cardhead{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap}
+.legend{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:12px; color:var(--ink-2); margin-top:10px; align-items:center}
+.legend>span{display:inline-flex; align-items:center; gap:6px}
+.legend i{display:inline-block; flex:0 0 auto}
+.lg-bar{width:12px; height:10px; background:var(--s4); border-radius:2px}
+.lg-line{width:18px; border-top:2px solid var(--crit)}
+.lg-dash{width:18px; border-top:1.5px dashed var(--line-2)}
+.lg-grad{width:84px; height:10px; background:linear-gradient(90deg,var(--s1),var(--s3),var(--s5))}
+.lg-sel{width:14px; height:10px; border:2.5px solid var(--ink)}
+.lg-dim{width:14px; height:10px; background:var(--s3); opacity:.3}
+.empty{padding:30px; text-align:center; color:var(--ink-3); font-size:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius)}
+.hint{font-size:12px; color:var(--ink-3); margin-top:8px}
+[data-tip]{cursor:pointer}
+#tip{position:fixed; z-index:200; background:var(--tipbg); color:var(--tipink); font-size:12.5px; line-height:1.45; padding:9px 12px; pointer-events:none; max-width:270px; box-shadow:0 6px 20px rgba(0,0,0,.22); border-radius:8px}
+#tip b{font-family:"JetBrains Mono",monospace}
+.disclaimer{margin-top:22px; border-left:3px solid var(--line-2); padding:2px 0 2px 14px; font-size:13px; color:var(--ink-3); max-width:74ch}
+
+/* relatorio */
+.report{max-width:70ch}
+.report h1{font-size:clamp(27px,4.6vw,38px); margin-bottom:14px}
+.answer{font-size:clamp(17px,2.8vw,20px); line-height:1.45; font-family:Inter,sans-serif; font-weight:600; border-left:4px solid var(--accent); padding-left:16px; margin:0 0 22px; color:var(--ink)}
+.report h2{font-size:19px; margin:36px 0 10px; padding-top:20px; border-top:1px solid var(--line); scroll-margin-top:20px}
+.report h3{font-size:15.5px; margin:20px 0 6px}
+.toc{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px 18px; margin-bottom:28px; font-size:13.5px}
+.toc ol{margin:8px 0 0; padding-left:20px; columns:2; column-gap:26px}
+.toc li{margin-bottom:4px; break-inside:avoid}
+.toc a{color:var(--ink-2); text-decoration:none}
+.toc a:hover{color:var(--accent); text-decoration:underline}
+.report figure{margin:20px 0; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px}
+.report figcaption{font-size:12px; color:var(--ink-3); margin-top:10px; line-height:1.55}
+.keyfig{background:var(--surface); border:1px solid var(--line-2); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px 20px; margin:20px 0}
+.keyfig .n{font-family:Inter,sans-serif; font-weight:800; font-size:31px; color:var(--accent); line-height:1}
+.keyfig p{margin:8px 0 0; font-size:13.5px; color:var(--ink-2)}
+.report ul,.report ol{padding-left:20px; margin:0 0 1em}
+.report li{margin-bottom:.45em}
+.calc{font-family:"JetBrains Mono",monospace; font-size:12px; background:var(--sunk); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; margin:16px 0; overflow-x:auto; line-height:1.75}
+.calc b{color:var(--accent)}
+details{border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:12px 16px; margin-top:20px}
+summary{cursor:pointer; font-weight:600; font-size:13.5px}
+dl{margin:12px 0 0; font-size:13px}
+dt{font-weight:600; margin-top:10px; color:var(--ink)}
+dd{margin:2px 0 0; color:var(--ink-2)}
+.actionbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:28px; padding-top:18px; border-top:1px solid var(--line)}
+.act{font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:600; padding:10px 18px; border:1px solid var(--accent); border-radius:999px; background:var(--accent); color:var(--paper); cursor:pointer}
+.acthint{font-size:12px; color:var(--ink-3); flex:1 1 220px; min-width:0}
+
+/* slides */
+.deck{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); aspect-ratio:16/9; display:flex; flex-direction:column; justify-content:center; padding:clamp(20px,4vw,48px); position:relative; overflow:hidden}
+.deck::before{content:''; position:absolute; left:24px; right:24px; top:0; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:.4; pointer-events:none}
+.frame{display:none}
+.frame.on{display:block}
+.frame h2{font-size:clamp(18px,3vw,30px); margin-bottom:12px; max-width:26ch}
+.frame p{font-size:clamp(12.5px,1.5vw,15px); color:var(--ink-2); max-width:58ch}
+.fpill{display:inline-flex; align-items:baseline; gap:6px; background:var(--accent-soft); border-radius:var(--radius); padding:4px 11px; font-weight:600; color:var(--ink); font-size:13px; margin-top:10px}
+.framenum{position:absolute; right:clamp(16px,3vw,30px); bottom:clamp(12px,2.5vw,24px); font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:600; color:var(--ink-2); letter-spacing:.1em; background:var(--sunk); border:1px solid var(--line); border-radius:999px; padding:5px 11px}
+.decknav{display:flex; align-items:center; gap:10px; margin-top:14px}
+.decknav button{font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:600; padding:8px 14px; border:1px solid var(--line-2); background:var(--surface); color:var(--ink-2); cursor:pointer; border-radius:999px}
+.decknav button:disabled{opacity:.35; cursor:default}
+.dots{display:flex; gap:6px; margin-left:auto}
+.dots i{width:7px; height:7px; background:var(--line-2); display:block; border-radius:50%}
+.dots i.on{background:var(--accent)}
+.fstat{font-family:Inter,sans-serif; font-weight:800; font-size:clamp(34px,5.6vw,54px); color:var(--accent); line-height:1; margin:9px 0}
+
+@media (max-width:900px){
+  .shell{flex-direction:column}
+  .sidebar{position:relative; width:100%; height:auto; flex-basis:auto; border-right:0; border-bottom:1px solid var(--line); flex-direction:row; flex-wrap:wrap; align-items:center; gap:12px 20px}
+  .brandmark{flex:1 1 auto}
+  .nav{flex-direction:row; flex-wrap:wrap}
+  .side-filtros{flex-basis:100%; border-top:1px solid var(--line)}
+  .content{padding:20px 16px 60px}
+  .deck{aspect-ratio:auto; min-height:300px}
+  .framenum{position:static; display:inline-block; margin-top:14px}
+}
+@media print{
+  .sidebar,.decknav,.printbar,#tip{display:none!important}
+  body{background:#fff; color:#000; font-size:11pt}
+  .shell{display:block}
+  .content{padding:0}
+  .report{max-width:none}
+  .report h2{break-after:avoid}
+  figure,.card,.keyfig,.tbox,.kpis,.calc{break-inside:avoid}
+  .frame{display:block!important; break-after:page}
+  .deck{aspect-ratio:auto; border:0; padding:0 0 24px}
+  .framenum{position:static; display:block; margin-top:14px}
+  details{border:0; padding:0} details>summary{display:none} dl{margin-top:0}
+}
+</style>
+</head>
+<body>
+<div id="app">
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brandmark">Absenteísmo evitável no trabalho<small>Transportadora em Brasília · jul 2007 – jul 2010</small></div>
+    <nav class="nav" role="group" aria-label="Modo">
+      <button id="m-dashboard" aria-pressed="true">Dashboard</button>
+      <button id="m-relatorio" aria-pressed="false">Relatório</button>
+      <button id="m-slides" aria-pressed="false">Slides</button>
+    </nav>
+    <div class="side-filtros" id="side-filtros">
+      <div class="eyebrow">Filtrar o dashboard</div>
+      <div class="dd"><span class="dd-lab">Tipo de ausência</span><div id="dd-tipo"></div></div>
+      <div class="dd"><span class="dd-lab">Motivo</span><div id="dd-motivo"></div></div>
+      <div class="dd"><span class="dd-lab">Distância de casa ao trabalho</span><div id="dd-dist"></div></div>
+      <div class="dd"><span class="dd-lab">Dia da semana</span><div id="dd-dia"></div></div>
+      <div class="dd"><span class="dd-lab">Estação</span><div id="dd-estacao"></div></div>
+      <div class="active" id="active"></div>
+      <div class="fcount" id="fcount"></div>
+      <button class="reset" id="f-reset">Limpar filtros</button>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <!-- ===================== DASHBOARD ===================== -->
+    <section id="pane-dashboard" class="pane">
+      <div class="grade12">
+
+        <div class="g12">
+          <div class="card hero">
+            <div class="eyebrow">Quanto da ausência dá para evitar</div>
+            <div class="bignum">64,3<span>%</span></div>
+            <p style="margin-top:8px;max-width:62ch">Cerca de <b>6 em cada 10</b> ausências registradas nesta transportadora não têm atestado médico por trás. Essa medida tem uma margem de erro — o valor real está entre <b class="mono">57,9%</b> e <b class="mono">69,1%</b>. Base: <b class="mono">733</b> eventos de <b class="mono">34</b> funcionários, entre julho de 2007 e julho de 2010.</p>
+          </div>
+        </div>
+
+        <div class="g12">
+          <div class="kpis">
+            <div class="kpi kpi-guard">
+              <div class="k">Atestado médico</div>
+              <div class="v">35,7%</div>
+              <div class="s">esse número não deve cair</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Distância da meta interna</div>
+              <div class="v">+30,9 pp</div>
+              <div class="s">meta = melhor quartil de funcionários (33,4%)</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Eventos no período</div>
+              <div class="v">733</div>
+              <div class="s">de 34 funcionários</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Redução potencial</div>
+              <div class="v">~6,3<span style="font-size:.6em">/mês</span></div>
+              <div class="s">eventos a menos, se todos estivessem no nível do melhor quartil</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g12">
+          <div class="card">
+            <div class="eyebrow">Como a ausência se divide</div>
+            <h3>Atestado médico, administrável e sem justificativa</h3>
+            <div id="d-tipo"></div>
+            <p class="hint">Clique numa barra para filtrar por ela; clique de novo para remover.</p>
+            <p class="insight">Quase dois terços dos eventos não têm atestado médico — a maior fatia é <b>ausência administrável</b> (consulta, exame, procedimento que poderia ser agendado fora do expediente).</p>
+          </div>
+        </div>
+
+        <div class="g6">
+          <div class="card">
+            <div class="eyebrow">Onde a ausência evitável concentra</div>
+            <h3>Participação por motivo</h3>
+            <div id="d-motivo"></div>
+            <p class="insight">Consulta médica e consulta odontológica, sozinhas, já somam mais da metade da parte evitável.</p>
+          </div>
+        </div>
+        <div class="g6">
+          <div class="card">
+            <div class="eyebrow">Onde está o tempo perdido</div>
+            <h3>Horas por motivo</h3>
+            <div id="d-motivo-horas"></div>
+            <p class="cardnote">Só os motivos administráveis têm horas — "falta sem justificativa aceita" tem sempre 0h, por isso não aparece aqui.</p>
+            <p class="insight">Em horas, o ranking quase não muda: consulta médica e odontológica continuam liderando o tempo perdido.</p>
+          </div>
+        </div>
+
+        <div class="g12">
+          <div class="card">
+            <div class="cardhead">
+              <div>
+                <div class="eyebrow">Tipo e distância, cruzados <span class="badge-promissor">achado promissor, não confirmado</span></div>
+                <h3>Quem mora mais longe tem mais ausência administrável?</h3>
+              </div>
+              <button type="button" class="mini" id="heat-clear" hidden>Limpar seleção</button>
+            </div>
+            <div id="d-heat" style="margin-top:8px"></div>
+            <div class="legend">
+              <span>menos participação <i class="lg-grad"></i> mais participação</span>
+              <span><i class="lg-sel"></i>célula selecionada</span>
+              <span><i class="lg-dim"></i>fora do filtro atual</span>
+            </div>
+            <p class="insight">Sinal na direção esperada — mas testado com <b>poder estatístico muito baixo</b> (só 34 funcionários), e checado numa segunda amostra separada que apontou na mesma direção sem confirmar. Os detalhes completos, com margem de erro, estão no Relatório. <b>Clique numa célula para selecionar.</b></p>
+          </div>
+        </div>
+
+        <div class="g12">
+          <div class="card">
+            <div class="eyebrow">Por funcionário (anonimizado)</div>
+            <h3>Quem está mais perto ou mais longe da meta</h3>
+            <div id="d-func"></div>
+            <p class="insight">Cada barra é um funcionário (numerado, nunca identificado). A linha marca a meta interna de 33,4% — os funcionários em verde já estão nela ou abaixo.</p>
+          </div>
+        </div>
+
+        <div class="g12">
+          <div class="tbox">
+            <table id="d-tab">
+              <thead><tr>
+                <th class="sortable" data-k="mo">Motivo<span class="arw">↕</span></th>
+                <th class="sortable" data-k="di">Distância<span class="arw">↕</span></th>
+                <th class="sortable" data-k="da">Dia<span class="arw">↕</span></th>
+                <th class="sortable" data-k="it" style="text-align:right">Eventos<span class="arw">↕</span></th>
+                <th class="sortable" data-k="h" style="text-align:right">Horas<span class="arw">↕</span></th>
+              </tr></thead>
+              <tbody id="d-tabela"></tbody>
+            </table>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px">
+            <button type="button" class="mini" id="t-all">Mostrar todas</button>
+            <button type="button" class="mini" id="t-xlsx">Baixar planilha (.xlsx)</button>
+            <span class="hint" id="t-hint" style="margin:0">Clique no título de uma coluna para ordenar; de novo para inverter. A planilha abre no Excel já formatada, com os filtros aplicados descritos numa segunda aba.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="empty" id="d-empty" hidden>Nenhum dado com esses filtros. Libere alguma opção na lateral.</div>
+
+      <p class="disclaimer">Este dashboard trabalha sobre um resumo dos dados — as combinações de tipo, motivo, distância, dia da semana e estação. Não é a base bruta, então não dá para descer até o funcionário individual (só o bloco anonimizado por funcionário mostra esse nível, sem identificar ninguém). Dados de jul/2007 a jul/2010, de uma transportadora real em Brasília (base pública, UCI Machine Learning Repository), que não mudam mais — não é um monitor ao vivo.</p>
+    </section>
+
+    <!-- ===================== RELATORIO ===================== -->
+    <section id="pane-relatorio" class="pane" hidden><div class="report">
+      <div class="eyebrow">Relatório completo · projeto DMAIC</div>
+      <h1>O que alonga a ausência evitável nesta transportadora</h1>
+      <p class="answer">64% das ausências não têm atestado médico por trás. A maior parte é consulta, exame ou procedimento que poderia ser agendado fora do expediente; uma fatia menor é falta sem justificativa — e essa parte se mostrou, sobretudo, um atalho de registro administrativo, não indisciplina espalhada entre funcionários.</p>
+
+      <div class="kpis" style="margin-top:6px">
+        <div class="kpi"><div class="k">Ausência evitável</div><div class="v">64,3%</div><div class="s">margem: 57,9% a 69,1%</div></div>
+        <div class="kpi kpi-guard"><div class="k">Atestado médico</div><div class="v">35,7%</div><div class="s">não deve cair</div></div>
+        <div class="kpi"><div class="k">Base</div><div class="v">733</div><div class="s">eventos de 34 funcionários</div></div>
+        <div class="kpi"><div class="k">Meta interna</div><div class="v">33,4%</div><div class="s">melhor quartil, sem referência de mercado</div></div>
+      </div>
+
+      <nav class="toc">
+        <b>Neste relatório</b>
+        <ol>
+          <li><a href="#s1">O tamanho do problema</a></li>
+          <li><a href="#s2">A recomendação</a></li>
+          <li><a href="#s3">O que descobri</a></li>
+          <li><a href="#s4">De onde vêm os dados</a></li>
+          <li><a href="#s5">O que encontrei na qualidade</a></li>
+          <li><a href="#s6">O processo é estável?</a></li>
+          <li><a href="#s7">Por que acontece</a></li>
+          <li><a href="#s8">A explicação que quase me enganou</a></li>
+          <li><a href="#s9">O que ficou sem explicação</a></li>
+          <li><a href="#s10">O experimento que eu proporia</a></li>
+          <li><a href="#s11">O que pode dar errado</a></li>
+          <li><a href="#s12">Como sustentar</a></li>
+          <li><a href="#s13">A prova final</a></li>
+          <li><a href="#s14">O que eu não sei</a></li>
+          <li><a href="#s15">Notas técnicas</a></li>
+          <li><a href="#s16">Glossário</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="s1">1. O tamanho do problema</h2>
+      <p>De julho de 2007 a julho de 2010, <b class="mono">64,3%</b> dos eventos de ausência registrados por esta transportadora não têm atestado médico por trás — cerca de <b>6 a cada 10</b>. Essa medida tem margem de erro: o valor real está entre <b class="mono">57,9%</b> e <b class="mono">69,1%</b> (os detalhes de como calculei essa margem estão nas Notas técnicas, seção 15). O quartil de funcionários com melhor desempenho fica em <b class="mono">33,4%</b>.</p>
+      <p>Essa meta <b>não veio de comparação com o mercado</b>, e isso é proposital: a base não registra dias trabalhados, então não dá para calcular uma taxa de absenteísmo comparável a nenhuma publicação setorial. Comparar seria erro grosseiro — preferi uma referência interna defensável a uma externa inválida. A meta é uma <span class="flag">proposta</span>, não uma referência de mercado.</p>
+
+      <h2 id="s2">2. A recomendação</h2>
+      <p>Duas ações, com confiança diferente porque as duas causas por trás delas estão em estágios diferentes de confirmação.</p>
+      <div class="tbox" style="margin-bottom:16px">
+        <table>
+          <thead><tr><th>Ação</th><th>Tipo</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Tirar o código administrativo da lista de motivos de ausência, forçando o uso do código oficial de "sem justificativa"</td><td>Trava no sistema</td><td><b>Pronta, sem custo real de implementação</b></td></tr>
+            <tr><td>Priorizar agendamento de consulta/exame fora do expediente para quem mora mais longe</td><td>Reduz a variação</td><td><b>Piloto proposto — depende de mais confirmação, não está ativa</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A primeira ataca uma causa já confirmada (seção 7): o código usado para falta sem justificativa é, na maior parte das vezes, um atalho de registro administrativo, disperso entre 20 funcionários — não concentrado em poucas pessoas. Tirar a opção errada da tela resolve isso sem depender de ninguém lembrar da regra.</p>
+      <p>A segunda ataca um sinal promissor, mas <b>ainda não confirmado</b>: funcionários que moram mais longe parecem ter mais ausência do tipo administrável. Por isso ela não é uma regra ativa — é uma proposta de piloto, condicionada ao que a segunda amostra de confirmação mostrar (ela já mostrou reforço na mesma direção, não confirmação — seção 13).</p>
+      <p>Toda estimativa de ganho deve poder ser contestada linha a linha. Esta é a minha, só para a segunda recomendação:</p>
+      <div class="calc">funcionários que moram mais longe da mediana ................ 17
+eventos administráveis desses funcionários, no período ....... 271
+eventos administráveis por mês (aproximação) .................. 7,53
+duração mediana desses eventos, neste grupo .................. 3 horas
+sob adesão de 20% ............................................. 4,5 horas evitadas/mês
+sob adesão de 50% ............................................. 11,3 horas evitadas/mês
+sob adesão de 80% ............................................. 18,1 horas evitadas/mês</div>
+      <p>Mas essa conta tem uma premissa que prefiro declarar a esconder: <b>ela assume que a ausência realmente deixaria de acontecer</b> se fosse possível agendar fora do expediente. Não há como confirmar isso — a base não registra o que aconteceria sem a ausência.</p>
+      <div class="keyfig">
+        <div class="eyebrow">O número que decide</div>
+        <div class="n mono">35,4%</div>
+        <p>Assumindo um custo estimado de 8 horas de RH por mês para coordenar a nova agenda (uma premissa a substituir por um número real antes de qualquer decisão), a política só compensa se pelo menos <b>1 em cada 3</b> eventos elegíveis migrar de fato. <b>É este número que decide, não a economia de horas.</b></p>
+      </div>
+
+      <h2 id="s3">3. O que descobri</h2>
+      <figure><div id="rep-pareto"></div><div class="legend">
+          <span><i class="lg-bar"></i>horas de ausência, por motivo</span>
+          <span><i class="lg-line"></i>soma acumulada, em % do total</span>
+          <span><i class="lg-dash"></i>marca de 80% do total</span>
+        </div><figcaption>Horas de ausência administrável por motivo, com o acumulado. Consulta médica e consulta odontológica somam mais da metade das horas.</figcaption></figure>
+      <p>Aqui está uma armadilha que este projeto quase caiu: <b>existem dois rankings possíveis, e um deles esconderia a falta sem justificativa por completo.</b></p>
+      <div class="tbox" style="margin-bottom:16px">
+        <table>
+          <thead><tr><th>Motivo</th><th style="text-align:right">Participação</th><th style="text-align:right">Horas</th></tr></thead>
+          <tbody>
+            <tr><td>Consulta médica</td><td style="text-align:right" class="mono">31,0%</td><td style="text-align:right" class="mono">31,3% das horas</td></tr>
+            <tr><td>Consulta odontológica</td><td style="text-align:right" class="mono">23,8%</td><td style="text-align:right" class="mono">25,1% das horas</td></tr>
+            <tr><td>Fisioterapia</td><td style="text-align:right" class="mono">14,7%</td><td style="text-align:right" class="mono">11,8% das horas</td></tr>
+            <tr><td>Falta sem justificativa aceita</td><td style="text-align:right" class="mono">15,3%</td><td style="text-align:right" class="mono">— (sempre 0h)</td></tr>
+            <tr><td>Acompanhamento</td><td style="text-align:right" class="mono">8,1%</td><td style="text-align:right" class="mono">22,0% das horas</td></tr>
+            <tr><td>Exame laboratorial</td><td style="text-align:right" class="mono">6,6%</td><td style="text-align:right" class="mono">8,1% das horas</td></tr>
+            <tr><td>Doação de sangue</td><td style="text-align:right" class="mono">0,6%</td><td style="text-align:right" class="mono">1,8% das horas</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><b>Falta sem justificativa aceita</b> é o segundo maior motivo em participação (15,3% dos eventos evitáveis) — mas <b>desaparece</b> de qualquer ranking feito só por horas, porque tem sempre 0 hora registrada. Um projeto que olhasse só o ranking de horas concluiria, errado, que esse motivo não importa. Para os motivos administráveis, os dois rankings concordam nos dois primeiros lugares (consulta médica e odontológica) — a recomendação pode mirar esses dois com confiança dupla.</p>
+
+      <h2 id="s4">4. De onde vêm os dados</h2>
+      <p>Registros reais de ausência de uma transportadora de Brasília, entre julho de 2007 e julho de 2010 (base pública, UCI Machine Learning Repository). Cada linha é um evento de ausência de um funcionário — o mesmo funcionário aparece em várias linhas, com atributos fixos repetidos.</p>
+      <p>Duas decisões de tratamento mudam todos os números deste relatório, e por isso ficam declaradas aqui:</p>
+      <ul>
+        <li><b>Um funcionário tinha o número de identificação reaproveitado por duas pessoas diferentes.</b> Idade, altura e peso incompatíveis na mesma identidade — uma delas foi excluída (1 evento em 740).</li>
+        <li><b>3 linhas não tinham nenhum evento de ausência de fato</b> (sem mês, sem duração, sem enquadramento) — excluídas.</li>
+      </ul>
+
+      <h2 id="s5">5. O que encontrei na qualidade</h2>
+      <p>Antes de medir qualquer coisa, auditei se o dado merece confiança. Seis dimensões, cada uma com um teste concreto:</p>
+      <div class="tbox" style="margin-bottom:16px">
+        <table>
+          <thead><tr><th>Dimensão</th><th>Resultado</th><th>Consequência</th></tr></thead>
+          <tbody>
+            <tr><td>Está tudo preenchido?</td><td class="mono">0 nulos</td><td>Aprovado — mês=0 e código administrativo são categorias, não ausência de dado</td></tr>
+            <tr><td>Há repetidos?</td><td class="mono">3 de 26 grupos suspeitos</td><td>Removidos por teste de colisão por acaso (limiar 30%)</td></tr>
+            <tr><td>Os valores fazem sentido?</td><td class="mono">0 fora de domínio</td><td>Aprovado em todas as colunas categóricas</td></tr>
+            <tr><td>As colunas concordam?</td><td class="mono">IMC batendo em 98,6%</td><td>Peso e altura são a fonte; IMC é derivada — nunca 3 preditores</td></tr>
+            <tr><td>Bate com alguma fonte?</td><td>Não auditável</td><td>Declarado como limitação</td></tr>
+            <tr><td>Está em dia?</td><td>Não auditável</td><td>Declarado como limitação</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>O achado mais importante não é de uma dimensão só: um funcionário tinha o registro corrompido (item 4), e o código usado para falta sem justificativa não é o oficial (item 7). Nenhum dos dois aparece numa auditoria automática comum — precisaram de inspeção estrutural.</p>
+
+      <h2 id="s6">6. O processo é estável?</h2>
+      <p>Essa pergunta vem antes de "por quê", e quase ninguém faz. Aqui a resposta é diferente do usual: <b>não dá para responder com confiança</b>, porque a base não tem coluna de ano — só o número do mês (1 a 12), que mistura três anos calendário diferentes. Por isso o gráfico abaixo é só descritivo, <b>sem ordem cronológica confiável</b>.</p>
+      <figure><div id="rep-mes"></div><figcaption>Proporção de ausência evitável por rótulo de mês (1 a 12). Sem ordem cronológica confiável — os rótulos misturam três anos calendário.</figcaption></figure>
+      <p>A proporção varia de 53% a 81% conforme o mês — variação real, mas sem significado cronológico atribuível. Nenhum mês é tratado como sinal de alerta isolado; o gatilho de acompanhamento é a comparação direta contra a margem do número principal (seção 12), sustentada por dois meses seguidos.</p>
+
+      <h2 id="s7">7. Por que acontece</h2>
+      <p>Uma causa passou no teste de evidência com confiança; outra é promissora, mas não confirmada. Nenhuma entrou como causa por ser plausível — as duas têm número e margem.</p>
+      <h3>1. Um atalho de registro, não indisciplina — confirmada</h3>
+      <p>39 eventos usam um código de motivo que nem sequer está na lista oficial da base — e vêm de <b class="mono">20</b> funcionários diferentes. Os 5 mais frequentes somam só <b class="mono">48,7%</b> dos casos, abaixo do limiar que indicaria concentração num pequeno grupo.</p>
+      <h3>2. Quem mora mais longe tem mais ausência administrável — promissora, não confirmada</h3>
+      <p>Funcionários com distância acima da mediana (25,5 km) respondem por uma fatia maior dos eventos administráveis do que dos eventos com atestado médico — uma diferença de <b class="mono">16,4 pontos percentuais</b> na amostra principal. É um efeito grande, mas o teste estatístico não teve dados suficientes para confirmar com segurança (só 34 funcionários) — detalhes completos nas Notas técnicas.</p>
+
+      <h2 id="s8">8. A explicação que quase me enganou</h2>
+      <p>Esta é a parte mais importante desta seção, e a que decide se o sinal de distância merece virar piloto.</p>
+      <p>A leitura óbvia é: quem mora mais longe tem mais ausência administrável. Mas existe uma explicação concorrente, e eu a testei <b>antes</b> de aceitar a principal: e se o efeito não for da distância, e sim de <b>poucos funcionários com muitos eventos no total</b>, que por acaso também moram mais longe?</p>
+      <figure><div id="rep-rival"></div><figcaption>O efeito da distância, excluindo cada um dos 3 funcionários mais frequentes, e comparado com a versão que conta cada funcionário uma vez só.</figcaption></figure>
+      <div class="keyfig">
+        <div class="eyebrow">O efeito não depende de poucos funcionários</div>
+        <div class="n mono">14,5–17,3 pp</div>
+        <p>Excluindo cada um dos 3 funcionários mais frequentes, um de cada vez, o efeito continua entre 14,5 e 17,3 pontos — nunca cai abaixo do mínimo que justificaria ação.</p>
+      </div>
+      <p>A consequência é prática: o piloto de agendamento (seção 2) pode seguir proposto, porque a explicação concorrente não o derrubou — mas continua marcado como condicional, não decidido.</p>
+
+      <h2 id="s9">9. O que ficou sem explicação</h2>
+      <p>Dado o pouco poder estatístico disponível nesta amostra, a maior parte do número principal de 64,3% permanece <b>sem causa validada com confiança estatística</b>. Isso é esperado, não uma falha de execução, e prefiro dizer isso claramente a parecer mais completo do que a análise sustenta.</p>
+
+      <h2 id="s10">10. O experimento que eu proporia</h2>
+      <p>Como não posso implementar nada, entrego o desenho do teste que provaria — ou derrubaria — o piloto de agendamento.</p>
+      <div class="tbox" style="margin-bottom:16px">
+        <table>
+          <tbody>
+            <tr><td style="width:34%">O que se divide</td><td>Rota ou turno, não funcionário — a distância é fixa por pessoa e não pode ser manipulada</td></tr>
+            <tr><td>Quem entra</td><td>Funcionários com distância acima da mediana (25,5 km)</td></tr>
+            <tr><td>Por quanto tempo</td><td>Pelo menos um ciclo de escala completo (mensal)</td></tr>
+            <tr><td>Quantos precisam</td><td class="mono">~550 por grupo — contra 17 disponíveis nesta operação</td></tr>
+            <tr><td>O que decide</td><td>Proporção de eventos administráveis por grupo de distância</td></tr>
+            <tr><td>O que não pode piorar</td><td>Proporção de eventos com atestado médico</td></tr>
+            <tr><td>O que pode invalidar</td><td>Contaminação entre rotas do mesmo supervisor; efeito de estar sendo observado</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>O número que decide viabilidade é o quarto: seriam necessárias <b>32 vezes mais</b> rotas do que a operação tem hoje. <b>Este experimento é desenhável, mas não viável no tamanho atual da operação</b> — a via realista de confirmação é a segunda amostra observada, mais fraca (seção 13).</p>
+
+      <h2 id="s11">11. O que pode dar errado</h2>
+      <div class="tbox" style="margin-bottom:16px">
+        <table>
+          <thead><tr><th>O que pode acontecer</th><th>Severidade</th><th>Como reduzir o risco</th></tr></thead>
+          <tbody>
+            <tr><td>Comunicação do piloto de agendamento é lida como pressão para não tirar atestado médico</td><td><span class="sevpill sev-alta">Alta</span></td><td>Comunicar citando só os motivos administráveis (consulta, exame), nunca "reduzir ausência" de forma genérica</td></tr>
+            <tr><td>Alguém troca o código de falta sem justificativa por outro código válido</td><td><span class="sevpill sev-media">Média</span></td><td>Auditoria cruzando falta sem justificativa com o código realmente usado</td></tr>
+            <tr><td>Funcionários que moram longe percebem a priorização como discriminação</td><td><span class="sevpill sev-media">Média</span></td><td>Comunicar a razão operacional (fricção de deslocamento), não o resultado do teste estatístico</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="s12">12. Como sustentar</h2>
+      <p>Três indicadores, cada um com limite, frequência, responsável e a ação escrita <b>antes</b> do problema acontecer — incluindo o guardrail do atestado médico.</p>
+      <div class="tbox" style="margin-bottom:16px">
+        <table>
+          <thead><tr><th>O que acompanhar</th><th>Alarme em</th><th>Frequência</th><th>Responsável</th><th>O que fazer se passar</th></tr></thead>
+          <tbody>
+            <tr><td>Ausência evitável</td><td class="mono">fora de 57,9–69,1%</td><td>Mensal</td><td>Ger. RH/Operações</td><td>Se sustentado por 2+ meses, investigar causa antes de agir</td></tr>
+            <tr><td>Atestado médico (guardrail)</td><td class="mono">qualquer queda junto da evitável</td><td>Mensal</td><td>Ger. RH/Operações</td><td>Suspender a mudança de processo e investigar supressão de atestado</td></tr>
+            <tr><td>Código de registro fora do padrão</td><td class="mono">&gt; 0 ocorrências</td><td>Mensal</td><td>TI / RH</td><td>Alerta imediato — sinal de que a correção de sistema falhou</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Sem carta de controle possível (motivo nas Notas técnicas), o gatilho de alerta exige <b>dois períodos seguidos</b> fora da margem, não um único ponto — a variação natural aqui é grande (53% a 81% só entre rótulos de mês).</p>
+
+      <h2 id="s13">13. A prova final</h2>
+      <p>Antes de testar a hipótese da distância, separei 8 dos 34 funcionários e não olhei para eles. Só abri esse grupo no fim, uma única vez, para checar se o sinal se sustentava em dados que não participaram de nenhuma decisão.</p>
+      <p style="background:var(--sunk); border-left:3px solid var(--ink-3); padding:10px 14px; border-radius:0 8px 8px 0">Aviso escrito <b>antes</b> de calcular este resultado: com só 8 funcionários no grupo de confirmação, o teste teria ainda menos condição de detectar o efeito do que o já demonstrado. Um resultado nulo aqui não seria uma refutação mais forte — seria a mesma limitação, numa amostra menor.</p>
+      <div class="tbox" style="margin-bottom:16px">
+        <table>
+          <thead><tr><th>O que verifiquei</th><th>Amostra principal (34)</th><th>Segunda amostra (8)</th><th>Resultado</th></tr></thead>
+          <tbody>
+            <tr><td>Efeito da distância na ausência administrável</td><td class="mono">+16,4 pp</td><td class="mono">+9,5 pp</td><td style="color:var(--accent)">Mesma direção — reforço, não confirmação</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>O efeito não inverteu, e não caiu a zero. Mas a margem de erro dessa segunda medição é muito larga, dado o tamanho da amostra, e isto <b>não é confirmação estatística</b> — é um segundo ponto de dado, pequeno, apontando na mesma direção do primeiro. O piloto de agendamento continua na mesma condição em que estava: proposto, não decidido.</p>
+
+      <h2 id="s14">14. O que eu não sei</h2>
+      <ul>
+        <li><b>733 eventos vêm de só 34 funcionários.</b> Qualquer estatística por funcionário considera isso — nenhum teste trata os eventos como 733 pessoas diferentes.</li>
+        <li><b>Não existe uma "taxa de absenteísmo" de verdade aqui.</b> Falta o denominador de dias trabalhados — toda métrica é condicional a "dado que uma ausência ocorreu".</li>
+        <li><b>A base não tem o ano de cada evento.</b> Não dá para confirmar se algum padrão por mês é real ou coincidência dos três anos misturados.</li>
+        <li><b>Nenhuma simulação de ganho tem como confirmar o resultado exato.</b> Não há como saber "o que teria acontecido sem a ausência" — por isso o número principal da recomendação de agendamento é o ponto de equilíbrio (35,4% de adesão), não um ganho prometido.</li>
+        <li><b>O sinal sobre distância é pequeno demais na amostra para confirmar com total confiança</b> — foi checado de novo numa segunda amostra separada e apontou na mesma direção, o que reforça mas não confirma.</li>
+        <li><b>A causalidade pode estar invertida.</b> É possível que funcionários que já geravam mais ausência evitável tenham sido alocados a rotas mais distantes antes — não o contrário. A base não tem como descartar isso.</li>
+      </ul>
+
+      <h2 id="s15">15. Notas técnicas</h2>
+      <p>Esta seção reúne, num só lugar, os números e métodos que sustentam as afirmações acima — para quem quiser conferir linha a linha.</p>
+      <ul>
+        <li><b>Margem de erro (IC 95%) do número principal:</b> 57,95%–69,13%, calculada reamostrando funcionários inteiros (não eventos) 5.000 vezes — bootstrap por cluster, não Wilson ingênuo sobre as 733 linhas. Reamostrar eventos trataria pessoas com muitos eventos como se fossem várias pessoas independentes.</li>
+        <li><b>Hipótese da distância (H1):</b> efeito bruto de 16,39 pp (IC 95% 3,76–24,33 pp; p=0,0178, acima do α ajustado de Bonferroni de 0,0125). Poder de detecção estimado em ≈3% para o efeito mínimo pré-registrado de 10 pp, com 34 funcionários — por isso um resultado "não significativo" aqui é inconclusivo, não uma refutação.</li>
+        <li><b>Hipótese rival estrutural (H2):</b> testada antes da principal, por desenho. Efeito ponderado por funcionário: 15,85 pp. Excluindo cada um dos 3 funcionários mais frequentes: 14,47 / 14,78 / 17,26 pp. Não refuta H1.</li>
+        <li><b>Hipótese do atalho de registro (H3):</b> 39 eventos com o código fora da lista oficial, 20 identidades distintas, top-5 = 48,72% (abaixo do limiar de 50% pré-registrado). Não refutada.</li>
+        <li><b>Hipótese do dia da semana (H4):</b> efeito de 3,95 pp (p=0,5546), abaixo do mínimo pré-registrado de 8 pp. Descartada.</li>
+        <li><b>Confirmação no holdout:</b> 9,48 pp (IC 95% 0,0–32,16 pp), n=8 (3 longe, 5 perto). Bootstrap de cluster, mesma direção do efeito bruto — reforço qualitativo, não confirmação estatística.</li>
+        <li><b>Sem carta de controle:</b> no máximo 13 rótulos de mês possíveis, abaixo do mínimo de 20–25 subgrupos exigido para limites confiáveis — mesmo sem considerar que cada rótulo mistura até 3 anos calendário.</li>
+        <li><b>Experimento formal:</b> n necessário ≈550 por grupo (poder de 80%, α=0,0125, efeito mínimo 10 pp, via NormalIndPower) contra 17 rotas disponíveis — razão 32,4×.</li>
+        <li><b>Regra fonte/derivada:</b> peso e altura são as colunas-fonte; IMC é derivada (bate em 98,6% das linhas) — as três nunca entram como preditores concorrentes.</li>
+        <li><b>Duplicatas:</b> removidas por teste de colisão por acaso (limiar de probabilidade 30%) — só as estatisticamente improváveis.</li>
+      </ul>
+
+      <details id="s16">
+        <summary>Glossário — o que cada termo significa</summary>
+        <dl>
+          <dt>Ausência evitável</dt><dd>Ausência sem atestado médico por trás — administrável (consulta, exame) ou sem justificativa aceita. Internamente chamada de "defeito B" nos relatórios técnicos de fase.</dd>
+          <dt>Atestado médico</dt><dd>Ausência com motivo classificado por um capítulo da Classificação Internacional de Doenças (CID).</dd>
+          <dt>Falta sem justificativa aceita</dt><dd>Reúne dois códigos internos da base — um deles é literalmente "sem justificativa", o outro é um código reservado usado como atalho administrativo.</dd>
+          <dt>Margem de erro (intervalo de confiança, IC 95%)</dt><dd>Toda medição feita sobre parte dos dados tem imprecisão. O intervalo diz entre que valores o número real provavelmente está.</dd>
+          <dt>pp — ponto percentual</dt><dd>A diferença entre duas porcentagens. De 20% para 25% são 5 pontos percentuais, não 5%.</dd>
+          <dt>Poder estatístico</dt><dd>A chance de um teste detectar um efeito real, se ele existir. Poder baixo significa que "não deu diferença" pode só significar "não tinha como ver".</dd>
+          <dt>Ponto de indiferença</dt><dd>O valor a partir do qual o custo de uma medida anula o seu benefício.</dd>
+          <dt>Holdout</dt><dd>Parte dos dados guardada e não olhada durante a análise, aberta uma única vez no fim para checar se as conclusões se sustentam.</dd>
+          <dt>Hipótese rival</dt><dd>Uma explicação concorrente, escrita antes do teste, que compete com a explicação principal. Testá-la primeiro evita confirmar o que se queria acreditar.</dd>
+          <dt>Guardrail</dt><dd>Um indicador que não pode piorar como efeito colateral de melhorar o indicador principal.</dd>
+        </dl>
+      </details>
+
+      <div class="actionbar printbar">
+        <button class="act" id="print-rel">Baixar relatório em PDF</button>
+        <span class="acthint">Abre a impressão em retrato. Escolha <b>Salvar como PDF</b>. O glossário entra aberto.</span>
+      </div>
+    </div></section>
+
+    <!-- ===================== SLIDES ===================== -->
+    <section id="pane-slides" class="pane" hidden>
+      <div class="deck" id="deck">
+        <div class="frame on"><div class="eyebrow">01 · O problema</div>
+          <h2>6 em cada 10 ausências não têm atestado médico por trás</h2>
+          <div class="fstat mono">64,3%</div>
+          <div class="fpill mono">margem: 57,9% a 69,1%</div>
+          <p>733 eventos de ausência de 34 funcionários, jul/2007 a jul/2010. A meta interna (melhor quartil de funcionário) é 33,4%.</p>
+          <div class="framenum">1 / 9</div></div>
+        <div class="frame"><div class="eyebrow">02 · O que fazer</div>
+          <h2>Corrigir o registro (pronto) e testar o agendamento (condicional)</h2>
+          <p>Tirar da tela o código usado como atalho para falta sem justificativa — sem custo real de implementação. E propor, como piloto a testar, priorizar agendamento fora do expediente para quem mora mais longe.</p>
+          <div class="framenum">2 / 9</div></div>
+        <div class="frame"><div class="eyebrow">03 · Onde concentra</div>
+          <h2>A maior parte é consulta e exame — só uma fatia menor é falta sem justificativa</h2>
+          <p>Consulta médica e consulta odontológica sozinhas já são mais da metade das horas de ausência administrável.</p>
+          <div class="framenum">3 / 9</div></div>
+        <div class="frame"><div class="eyebrow">04 · A causa da falta sem justificativa</div>
+          <h2>É um atalho de registro, disperso entre 20 funcionários — não indisciplina</h2>
+          <div class="fstat mono">20</div>
+          <div class="fpill mono">top-5 = 48,7% dos casos</div>
+          <p>39 eventos usam um código que nem está na lista oficial da base. Os 5 funcionários mais frequentes somam só 48,7% dos casos — não é comportamento de poucas pessoas.</p>
+          <div class="framenum">4 / 9</div></div>
+        <div class="frame"><div class="eyebrow">05 · O sinal sobre distância</div>
+          <h2>Quem mora mais longe parece ter mais ausência administrável — mas ainda não confirmado</h2>
+          <div class="fstat mono">16,4 pp</div>
+          <div class="fpill mono">margem: 3,76 a 24,33 pp</div>
+          <p>Testei a explicação concorrente (poucos funcionários com muitos eventos) antes de aceitar esta — o efeito se sustentou.</p>
+          <div class="framenum">5 / 9</div></div>
+        <div class="frame"><div class="eyebrow">06 · A conta do agendamento</div>
+          <h2>Priorizar agenda para quem mora longe só compensa acima de 1 em cada 3 casos</h2>
+          <div class="fstat mono">35,4%</div>
+          <div class="fpill mono">custo assumido: 8h de RH/mês</div>
+          <p>É este número que decide, não a economia de horas prometida — porque a base não tem como confirmar quanto do ganho é real.</p>
+          <div class="framenum">6 / 9</div></div>
+        <div class="frame"><div class="eyebrow">07 · O experimento que provaria</div>
+          <h2>Seria preciso 32 vezes mais rotas do que a operação tem hoje</h2>
+          <p>Um experimento controlado para confirmar o efeito da distância é desenhável — mas não viável no tamanho desta operação. A via realista é a segunda amostra observada, mais fraca.</p>
+          <div class="framenum">7 / 9</div></div>
+        <div class="frame"><div class="eyebrow">08 · A segunda checagem</div>
+          <h2>Abri uma segunda amostra guardada — mesma direção, ainda não confirma</h2>
+          <p>O sinal não inverteu nem sumiu. Mas com só 8 funcionários nessa segunda amostra, isso é reforço, não confirmação — e está registrado assim, não maquiado.</p>
+          <div class="framenum">8 / 9</div></div>
+        <div class="frame"><div class="eyebrow">09 · Os limites</div>
+          <h2>Sem taxa, sem ano, sem contrafactual, e com poucos dados para confirmar tudo</h2>
+          <p>Não dá para calcular uma taxa de absenteísmo de verdade, nem separar os três anos misturados nos rótulos de mês, nem saber o que aconteceria sem cada ausência. E o efeito da distância ainda não está confirmado.</p>
+          <div class="framenum">9 / 9</div></div>
+      </div>
+      <div class="decknav">
+        <button id="prev">← Anterior</button><button id="next">Próximo →</button>
+        <div class="dots" id="dots"></div>
+      </div>
+      <div class="actionbar printbar">
+        <button class="act" id="dl-pptx">Baixar apresentação (.pptx)</button>
+        <span class="acthint" id="pptx-hint">O <b>.pptx</b> abre no PowerPoint, Keynote ou Google Slides e é editável.</span>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div>
+<div id="tip" hidden></div>
+
+<script src="pptxgen.bundle.js"></script>
+<script type="application/json" id="dados-projeto">
+{
+  "TIPO_LABELS": [
+    "Atestado médico",
+    "Ausência administrável",
+    "Falta sem justificativa aceita"
+  ],
+  "MOTIVO_LABELS": [
+    "Atestado médico",
+    "Consulta médica",
+    "Consulta odontológica",
+    "Fisioterapia",
+    "Acompanhamento",
+    "Exame laboratorial",
+    "Doação de sangue",
+    "Falta sem justificativa aceita"
+  ],
+  "DIST_LABELS": [
+    "Mais perto (até a mediana)",
+    "Mais longe (acima da mediana)"
+  ],
+  "DIA_LABELS": [
+    "Segunda",
+    "Terça",
+    "Quarta",
+    "Quinta",
+    "Sexta"
+  ],
+  "ESTACAO_LABELS": [
+    "Estação 1",
+    "Estação 2",
+    "Estação 3",
+    "Estação 4"
+  ],
+  "cubo": [
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 0,
+      "es": 0,
+      "it": 6,
+      "h": 160
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 0,
+      "es": 1,
+      "it": 8,
+      "h": 115
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 0,
+      "es": 2,
+      "it": 11,
+      "h": 141
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 0,
+      "es": 3,
+      "it": 7,
+      "h": 187
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 1,
+      "es": 0,
+      "it": 8,
+      "h": 173
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 1,
+      "es": 1,
+      "it": 11,
+      "h": 253
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 1,
+      "es": 2,
+      "it": 5,
+      "h": 35
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 1,
+      "es": 3,
+      "it": 4,
+      "h": 136
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 2,
+      "es": 0,
+      "it": 4,
+      "h": 51
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 2,
+      "es": 1,
+      "it": 3,
+      "h": 32
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 2,
+      "es": 2,
+      "it": 17,
+      "h": 362
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 2,
+      "es": 3,
+      "it": 5,
+      "h": 37
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 3,
+      "es": 0,
+      "it": 4,
+      "h": 23
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 3,
+      "es": 1,
+      "it": 2,
+      "h": 16
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 3,
+      "es": 2,
+      "it": 6,
+      "h": 61
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 3,
+      "es": 3,
+      "it": 6,
+      "h": 33
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 4,
+      "es": 0,
+      "it": 3,
+      "h": 18
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 4,
+      "es": 1,
+      "it": 4,
+      "h": 38
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 4,
+      "es": 2,
+      "it": 8,
+      "h": 55
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 0,
+      "da": 4,
+      "es": 3,
+      "it": 5,
+      "h": 34
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 0,
+      "es": 0,
+      "it": 11,
+      "h": 132
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 0,
+      "es": 1,
+      "it": 8,
+      "h": 59
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 0,
+      "es": 2,
+      "it": 11,
+      "h": 196
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 0,
+      "es": 3,
+      "it": 9,
+      "h": 155
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 1,
+      "es": 0,
+      "it": 4,
+      "h": 136
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 1,
+      "es": 1,
+      "it": 8,
+      "h": 75
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 1,
+      "es": 2,
+      "it": 7,
+      "h": 42
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 1,
+      "es": 3,
+      "it": 6,
+      "h": 68
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 2,
+      "es": 0,
+      "it": 8,
+      "h": 67
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 2,
+      "es": 1,
+      "it": 7,
+      "h": 52
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 2,
+      "es": 2,
+      "it": 8,
+      "h": 90
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 2,
+      "es": 3,
+      "it": 7,
+      "h": 112
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 3,
+      "es": 0,
+      "it": 7,
+      "h": 39
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 3,
+      "es": 1,
+      "it": 8,
+      "h": 66
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 3,
+      "es": 2,
+      "it": 5,
+      "h": 35
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 3,
+      "es": 3,
+      "it": 7,
+      "h": 49
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 4,
+      "es": 0,
+      "it": 4,
+      "h": 21
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 4,
+      "es": 1,
+      "it": 1,
+      "h": 40
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 4,
+      "es": 2,
+      "it": 4,
+      "h": 130
+    },
+    {
+      "ti": 0,
+      "mo": 0,
+      "di": 1,
+      "da": 4,
+      "es": 3,
+      "it": 5,
+      "h": 19
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 0,
+      "es": 0,
+      "it": 2,
+      "h": 7
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 0,
+      "es": 1,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 0,
+      "es": 2,
+      "it": 4,
+      "h": 10
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 0,
+      "es": 3,
+      "it": 4,
+      "h": 15
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 1,
+      "es": 0,
+      "it": 3,
+      "h": 7
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 1,
+      "es": 1,
+      "it": 4,
+      "h": 9
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 1,
+      "es": 2,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 1,
+      "es": 3,
+      "it": 7,
+      "h": 27
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 2,
+      "es": 0,
+      "it": 5,
+      "h": 9
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 2,
+      "es": 2,
+      "it": 4,
+      "h": 20
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 2,
+      "es": 3,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 3,
+      "es": 0,
+      "it": 4,
+      "h": 23
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 3,
+      "es": 1,
+      "it": 1,
+      "h": 3
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 3,
+      "es": 2,
+      "it": 3,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 3,
+      "es": 3,
+      "it": 1,
+      "h": 1
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 4,
+      "es": 0,
+      "it": 2,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 4,
+      "es": 1,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 4,
+      "es": 2,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 0,
+      "da": 4,
+      "es": 3,
+      "it": 1,
+      "h": 1
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 0,
+      "es": 0,
+      "it": 6,
+      "h": 11
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 0,
+      "es": 3,
+      "it": 3,
+      "h": 11
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 1,
+      "es": 0,
+      "it": 5,
+      "h": 14
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 1,
+      "es": 1,
+      "it": 6,
+      "h": 17
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 1,
+      "es": 2,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 1,
+      "es": 3,
+      "it": 8,
+      "h": 18
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 2,
+      "es": 0,
+      "it": 4,
+      "h": 9
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 2,
+      "es": 1,
+      "it": 5,
+      "h": 17
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 2,
+      "es": 2,
+      "it": 3,
+      "h": 7
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 2,
+      "es": 3,
+      "it": 10,
+      "h": 28
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 3,
+      "es": 0,
+      "it": 5,
+      "h": 10
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 3,
+      "es": 1,
+      "it": 2,
+      "h": 10
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 3,
+      "es": 2,
+      "it": 3,
+      "h": 9
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 3,
+      "es": 3,
+      "it": 10,
+      "h": 39
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 4,
+      "es": 0,
+      "it": 7,
+      "h": 25
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 4,
+      "es": 1,
+      "it": 5,
+      "h": 9
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 4,
+      "es": 2,
+      "it": 1,
+      "h": 3
+    },
+    {
+      "ti": 1,
+      "mo": 1,
+      "di": 1,
+      "da": 4,
+      "es": 3,
+      "it": 9,
+      "h": 24
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 0,
+      "es": 0,
+      "it": 1,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 0,
+      "es": 2,
+      "it": 3,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 0,
+      "es": 3,
+      "it": 1,
+      "h": 1
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 1,
+      "es": 0,
+      "it": 10,
+      "h": 31
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 1,
+      "es": 1,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 1,
+      "es": 2,
+      "it": 6,
+      "h": 13
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 1,
+      "es": 3,
+      "it": 2,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 2,
+      "es": 2,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 2,
+      "es": 3,
+      "it": 1,
+      "h": 3
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 3,
+      "es": 1,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 3,
+      "es": 2,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 3,
+      "es": 3,
+      "it": 2,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 4,
+      "es": 0,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 4,
+      "es": 1,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 0,
+      "da": 4,
+      "es": 2,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 0,
+      "es": 0,
+      "it": 3,
+      "h": 7
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 0,
+      "es": 1,
+      "it": 5,
+      "h": 25
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 0,
+      "es": 2,
+      "it": 5,
+      "h": 36
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 0,
+      "es": 3,
+      "it": 4,
+      "h": 6
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 1,
+      "es": 0,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 1,
+      "es": 1,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 1,
+      "es": 3,
+      "it": 4,
+      "h": 10
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 2,
+      "es": 0,
+      "it": 1,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 2,
+      "es": 1,
+      "it": 1,
+      "h": 1
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 2,
+      "es": 2,
+      "it": 4,
+      "h": 17
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 2,
+      "es": 3,
+      "it": 5,
+      "h": 9
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 3,
+      "es": 0,
+      "it": 5,
+      "h": 11
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 3,
+      "es": 1,
+      "it": 2,
+      "h": 5
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 3,
+      "es": 2,
+      "it": 3,
+      "h": 6
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 3,
+      "es": 3,
+      "it": 3,
+      "h": 7
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 4,
+      "es": 0,
+      "it": 5,
+      "h": 24
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 4,
+      "es": 1,
+      "it": 5,
+      "h": 14
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 4,
+      "es": 2,
+      "it": 10,
+      "h": 39
+    },
+    {
+      "ti": 1,
+      "mo": 2,
+      "di": 1,
+      "da": 4,
+      "es": 3,
+      "it": 10,
+      "h": 26
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 0,
+      "da": 0,
+      "es": 1,
+      "it": 3,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 0,
+      "da": 1,
+      "es": 1,
+      "it": 3,
+      "h": 5
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 0,
+      "da": 2,
+      "es": 1,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 0,
+      "da": 3,
+      "es": 1,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 0,
+      "da": 4,
+      "es": 1,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 0,
+      "da": 4,
+      "es": 3,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 1,
+      "da": 0,
+      "es": 1,
+      "it": 7,
+      "h": 16
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 1,
+      "da": 1,
+      "es": 1,
+      "it": 3,
+      "h": 6
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 1,
+      "da": 1,
+      "es": 2,
+      "it": 1,
+      "h": 3
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 1,
+      "da": 2,
+      "es": 1,
+      "it": 15,
+      "h": 36
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 1,
+      "da": 2,
+      "es": 2,
+      "it": 3,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 1,
+      "da": 3,
+      "es": 1,
+      "it": 9,
+      "h": 23
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 1,
+      "da": 3,
+      "es": 2,
+      "it": 1,
+      "h": 3
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 1,
+      "da": 4,
+      "es": 1,
+      "it": 11,
+      "h": 27
+    },
+    {
+      "ti": 1,
+      "mo": 3,
+      "di": 1,
+      "da": 4,
+      "es": 2,
+      "it": 7,
+      "h": 14
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 0,
+      "da": 0,
+      "es": 0,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 0,
+      "da": 0,
+      "es": 1,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 0,
+      "da": 0,
+      "es": 2,
+      "it": 2,
+      "h": 12
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 0,
+      "da": 0,
+      "es": 3,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 0,
+      "da": 1,
+      "es": 1,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 0,
+      "da": 2,
+      "es": 2,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 0,
+      "da": 4,
+      "es": 2,
+      "it": 2,
+      "h": 16
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 0,
+      "es": 0,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 0,
+      "es": 1,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 0,
+      "es": 2,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 0,
+      "es": 3,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 1,
+      "es": 0,
+      "it": 2,
+      "h": 24
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 1,
+      "es": 1,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 1,
+      "es": 3,
+      "it": 2,
+      "h": 16
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 2,
+      "es": 0,
+      "it": 3,
+      "h": 19
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 2,
+      "es": 1,
+      "it": 2,
+      "h": 16
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 2,
+      "es": 2,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 2,
+      "es": 3,
+      "it": 2,
+      "h": 16
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 3,
+      "es": 0,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 3,
+      "es": 1,
+      "it": 1,
+      "h": 3
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 3,
+      "es": 2,
+      "it": 2,
+      "h": 16
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 4,
+      "es": 0,
+      "it": 3,
+      "h": 24
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 4,
+      "es": 1,
+      "it": 2,
+      "h": 11
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 4,
+      "es": 2,
+      "it": 2,
+      "h": 16
+    },
+    {
+      "ti": 1,
+      "mo": 4,
+      "di": 1,
+      "da": 4,
+      "es": 3,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 0,
+      "es": 0,
+      "it": 3,
+      "h": 6
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 0,
+      "es": 1,
+      "it": 3,
+      "h": 11
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 1,
+      "es": 0,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 1,
+      "es": 1,
+      "it": 2,
+      "h": 6
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 1,
+      "es": 3,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 2,
+      "es": 1,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 3,
+      "es": 1,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 3,
+      "es": 3,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 4,
+      "es": 0,
+      "it": 2,
+      "h": 10
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 4,
+      "es": 1,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 0,
+      "da": 4,
+      "es": 2,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 1,
+      "da": 0,
+      "es": 0,
+      "it": 3,
+      "h": 14
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 1,
+      "da": 0,
+      "es": 2,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 1,
+      "da": 1,
+      "es": 1,
+      "it": 1,
+      "h": 2
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 1,
+      "da": 2,
+      "es": 2,
+      "it": 1,
+      "h": 3
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 1,
+      "da": 3,
+      "es": 0,
+      "it": 2,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 5,
+      "di": 1,
+      "da": 3,
+      "es": 1,
+      "it": 3,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 6,
+      "di": 1,
+      "da": 0,
+      "es": 3,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 6,
+      "di": 1,
+      "da": 1,
+      "es": 0,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 1,
+      "mo": 6,
+      "di": 1,
+      "da": 2,
+      "es": 3,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 0,
+      "es": 0,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 0,
+      "es": 1,
+      "it": 2,
+      "h": 12
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 0,
+      "es": 2,
+      "it": 2,
+      "h": 4
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 0,
+      "es": 3,
+      "it": 2,
+      "h": 12
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 1,
+      "es": 0,
+      "it": 3,
+      "h": 16
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 1,
+      "es": 2,
+      "it": 2,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 1,
+      "es": 3,
+      "it": 4,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 2,
+      "es": 0,
+      "it": 1,
+      "h": 4
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 2,
+      "es": 1,
+      "it": 1,
+      "h": 0
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 2,
+      "es": 2,
+      "it": 4,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 2,
+      "es": 3,
+      "it": 5,
+      "h": 16
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 3,
+      "es": 0,
+      "it": 1,
+      "h": 0
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 3,
+      "es": 1,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 3,
+      "es": 2,
+      "it": 3,
+      "h": 0
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 3,
+      "es": 3,
+      "it": 2,
+      "h": 0
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 4,
+      "es": 0,
+      "it": 2,
+      "h": 12
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 4,
+      "es": 2,
+      "it": 2,
+      "h": 12
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 0,
+      "da": 4,
+      "es": 3,
+      "it": 6,
+      "h": 24
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 0,
+      "es": 0,
+      "it": 1,
+      "h": 4
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 0,
+      "es": 1,
+      "it": 2,
+      "h": 24
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 0,
+      "es": 2,
+      "it": 2,
+      "h": 0
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 0,
+      "es": 3,
+      "it": 3,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 1,
+      "es": 0,
+      "it": 4,
+      "h": 12
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 1,
+      "es": 3,
+      "it": 5,
+      "h": 0
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 2,
+      "es": 0,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 2,
+      "es": 1,
+      "it": 1,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 2,
+      "es": 2,
+      "it": 2,
+      "h": 0
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 2,
+      "es": 3,
+      "it": 2,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 3,
+      "es": 0,
+      "it": 2,
+      "h": 8
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 4,
+      "es": 2,
+      "it": 1,
+      "h": 0
+    },
+    {
+      "ti": 2,
+      "mo": 7,
+      "di": 1,
+      "da": 4,
+      "es": 3,
+      "it": 2,
+      "h": 8
+    }
+  ],
+  "funcionarios": [
+    {
+      "rotulo": "Funcionário 1",
+      "n": 5,
+      "prop": 0.2
+    },
+    {
+      "rotulo": "Funcionário 2",
+      "n": 8,
+      "prop": 0.25
+    },
+    {
+      "rotulo": "Funcionário 3",
+      "n": 7,
+      "prop": 0.2857142857142857
+    },
+    {
+      "rotulo": "Funcionário 4",
+      "n": 3,
+      "prop": 0.3333333333333333
+    },
+    {
+      "rotulo": "Funcionário 5",
+      "n": 3,
+      "prop": 0.3333333333333333
+    },
+    {
+      "rotulo": "Funcionário 6",
+      "n": 5,
+      "prop": 0.4
+    },
+    {
+      "rotulo": "Funcionário 7",
+      "n": 20,
+      "prop": 0.4
+    },
+    {
+      "rotulo": "Funcionário 8",
+      "n": 30,
+      "prop": 0.4666666666666667
+    },
+    {
+      "rotulo": "Funcionário 9",
+      "n": 16,
+      "prop": 0.5
+    },
+    {
+      "rotulo": "Funcionário 10",
+      "n": 10,
+      "prop": 0.5
+    },
+    {
+      "rotulo": "Funcionário 11",
+      "n": 4,
+      "prop": 0.5
+    },
+    {
+      "rotulo": "Funcionário 12",
+      "n": 6,
+      "prop": 0.5
+    },
+    {
+      "rotulo": "Funcionário 13",
+      "n": 2,
+      "prop": 0.5
+    },
+    {
+      "rotulo": "Funcionário 14",
+      "n": 29,
+      "prop": 0.5172413793103449
+    },
+    {
+      "rotulo": "Funcionário 15",
+      "n": 40,
+      "prop": 0.55
+    },
+    {
+      "rotulo": "Funcionário 16",
+      "n": 23,
+      "prop": 0.5652173913043478
+    },
+    {
+      "rotulo": "Funcionário 17",
+      "n": 7,
+      "prop": 0.5714285714285714
+    },
+    {
+      "rotulo": "Funcionário 18",
+      "n": 46,
+      "prop": 0.5869565217391305
+    },
+    {
+      "rotulo": "Funcionário 19",
+      "n": 8,
+      "prop": 0.625
+    },
+    {
+      "rotulo": "Funcionário 20",
+      "n": 34,
+      "prop": 0.6470588235294118
+    },
+    {
+      "rotulo": "Funcionário 21",
+      "n": 54,
+      "prop": 0.6481481481481481
+    },
+    {
+      "rotulo": "Funcionário 22",
+      "n": 6,
+      "prop": 0.6666666666666666
+    },
+    {
+      "rotulo": "Funcionário 23",
+      "n": 15,
+      "prop": 0.6666666666666666
+    },
+    {
+      "rotulo": "Funcionário 24",
+      "n": 3,
+      "prop": 0.6666666666666666
+    },
+    {
+      "rotulo": "Funcionário 25",
+      "n": 6,
+      "prop": 0.6666666666666666
+    },
+    {
+      "rotulo": "Funcionário 26",
+      "n": 24,
+      "prop": 0.7083333333333334
+    },
+    {
+      "rotulo": "Funcionário 27",
+      "n": 24,
+      "prop": 0.7083333333333334
+    },
+    {
+      "rotulo": "Funcionário 28",
+      "n": 42,
+      "prop": 0.7142857142857143
+    },
+    {
+      "rotulo": "Funcionário 29",
+      "n": 76,
+      "prop": 0.7236842105263158
+    },
+    {
+      "rotulo": "Funcionário 30",
+      "n": 8,
+      "prop": 0.75
+    },
+    {
+      "rotulo": "Funcionário 31",
+      "n": 113,
+      "prop": 0.7699115044247787
+    },
+    {
+      "rotulo": "Funcionário 32",
+      "n": 37,
+      "prop": 0.8108108108108109
+    },
+    {
+      "rotulo": "Funcionário 33",
+      "n": 18,
+      "prop": 0.8333333333333334
+    },
+    {
+      "rotulo": "Funcionário 34",
+      "n": 1,
+      "prop": 1.0
+    }
+  ],
+  "pareto_taxa_motivo": [
+    {
+      "motivo": "Consulta médica",
+      "n": 146,
+      "pct": 31.0
+    },
+    {
+      "motivo": "Consulta odontológica",
+      "n": 112,
+      "pct": 23.78
+    },
+    {
+      "motivo": "Falta sem justificativa aceita",
+      "n": 72,
+      "pct": 15.29
+    },
+    {
+      "motivo": "Fisioterapia",
+      "n": 69,
+      "pct": 14.65
+    },
+    {
+      "motivo": "Acompanhamento",
+      "n": 38,
+      "pct": 8.07
+    },
+    {
+      "motivo": "Exame laboratorial",
+      "n": 31,
+      "pct": 6.58
+    },
+    {
+      "motivo": "Doação de sangue",
+      "n": 3,
+      "pct": 0.64
+    }
+  ],
+  "pareto_impacto_motivo": [
+    {
+      "motivo": "Consulta médica",
+      "horas": 417,
+      "pct": 31.26
+    },
+    {
+      "motivo": "Consulta odontológica",
+      "horas": 335,
+      "pct": 25.11
+    },
+    {
+      "motivo": "Acompanhamento",
+      "horas": 293,
+      "pct": 21.96
+    },
+    {
+      "motivo": "Fisioterapia",
+      "horas": 157,
+      "pct": 11.77
+    },
+    {
+      "motivo": "Exame laboratorial",
+      "horas": 108,
+      "pct": 8.1
+    },
+    {
+      "motivo": "Doação de sangue",
+      "horas": 24,
+      "pct": 1.8
+    }
+  ],
+  "mediana_distancia_km": 25.5,
+  "baseline": {
+    "n_total": 733,
+    "n_identidades": 34,
+    "prop_evitavel": 0.6426,
+    "prop_evitavel_ic95": [
+      0.5795,
+      0.6913
+    ],
+    "prop_administravel": 0.5443,
+    "prop_administravel_ic95": [
+      0.4468,
+      0.6175
+    ],
+    "prop_sem_justificativa": 0.0982,
+    "prop_sem_justificativa_ic95": [
+      0.0552,
+      0.1619
+    ],
+    "meta_interna": 0.3336,
+    "eventos_evitaveis_mes_atual": 13.08,
+    "eventos_evitaveis_mes_meta": 6.79,
+    "reducao_potencial_mes": 6.29,
+    "tabela_nao_temporal_por_mes": [
+      {
+        "Month of absence": 1,
+        "n_eventos": 49,
+        "n_B": 35,
+        "proporcao_B": 0.7143
+      },
+      {
+        "Month of absence": 2,
+        "n_eventos": 72,
+        "n_B": 54,
+        "proporcao_B": 0.75
+      },
+      {
+        "Month of absence": 3,
+        "n_eventos": 87,
+        "n_B": 51,
+        "proporcao_B": 0.5862
+      },
+      {
+        "Month of absence": 4,
+        "n_eventos": 53,
+        "n_B": 30,
+        "proporcao_B": 0.566
+      },
+      {
+        "Month of absence": 5,
+        "n_eventos": 64,
+        "n_B": 34,
+        "proporcao_B": 0.5312
+      },
+      {
+        "Month of absence": 6,
+        "n_eventos": 54,
+        "n_B": 31,
+        "proporcao_B": 0.5741
+      },
+      {
+        "Month of absence": 7,
+        "n_eventos": 67,
+        "n_B": 40,
+        "proporcao_B": 0.597
+      },
+      {
+        "Month of absence": 8,
+        "n_eventos": 54,
+        "n_B": 35,
+        "proporcao_B": 0.6481
+      },
+      {
+        "Month of absence": 9,
+        "n_eventos": 52,
+        "n_B": 42,
+        "proporcao_B": 0.8077
+      },
+      {
+        "Month of absence": 10,
+        "n_eventos": 69,
+        "n_B": 49,
+        "proporcao_B": 0.7101
+      },
+      {
+        "Month of absence": 11,
+        "n_eventos": 63,
+        "n_B": 36,
+        "proporcao_B": 0.5714
+      },
+      {
+        "Month of absence": 12,
+        "n_eventos": 49,
+        "n_B": 34,
+        "proporcao_B": 0.6939
+      }
+    ]
+  },
+  "achados": {
+    "H1_efeito_pp": 16.39,
+    "H1_ic": [
+      3.76,
+      24.33
+    ],
+    "H1_p": 0.0178,
+    "H1_alpha": 0.0125,
+    "H1_n_clusters": 33,
+    "H1_n_longe": 17,
+    "H1_n_perto": 17,
+    "H2_nao_refuta": true,
+    "H3_n_casos": 39,
+    "H3_n_ids": 20,
+    "H3_top5_pct": 48.72,
+    "H3_refutada": false,
+    "H4_efeito_pp": 3.95,
+    "H4_p": 0.5546,
+    "H2_bruto_pp": 16.39,
+    "H2_ponderado_pp": 15.85,
+    "H2_exclusoes": [
+      14.47,
+      14.78,
+      17.26
+    ]
+  },
+  "holdout": {
+    "n_confirmacao": 8,
+    "n_longe": 3,
+    "n_perto": 5,
+    "efeito_pp": 9.48,
+    "ic95": [
+      0.0,
+      32.16
+    ],
+    "mesma_direcao": true
+  },
+  "improve": {
+    "n_funcionarios_longe_com_evento_administravel": 16,
+    "n_eventos_administravel_longe": 271,
+    "horas_mediana_administravel_longe": 3.0,
+    "cenarios": {
+      "adesao_20pct": {
+        "eventos_evitados_por_mes": 1.51,
+        "horas_evitadas_por_mes": 4.52
+      },
+      "adesao_50pct": {
+        "eventos_evitados_por_mes": 3.76,
+        "horas_evitadas_por_mes": 11.29
+      },
+      "adesao_80pct": {
+        "eventos_evitados_por_mes": 6.02,
+        "horas_evitadas_por_mes": 18.07
+      }
+    },
+    "custo_rh_assumido_horas_mes": 8.0,
+    "fracao_indiferenca": 0.3542,
+    "n_necessario_experimento": 550.1,
+    "n_disponivel_experimento": 17,
+    "razao_necessario_disponivel": 32.4
+  }
+}
+</script>
+<script>
+(function(){
+  "use strict";
+  var css=getComputedStyle(document.documentElement);
+  function c(n){return css.getPropertyValue(n).trim();}
+  var app=document.getElementById('app');
+  var NS='http://www.w3.org/2000/svg';
+  function nf(v,d){return v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+  function sv(w,h){return '<svg viewBox="0 0 '+w+' '+h+'" role="img" preserveAspectRatio="xMidYMid meet">';}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function attr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;');}
+  function lumHex(h){ h=h.replace('#',''); var v=[0,2,4].map(function(i){ var x=parseInt(h.substr(i,2),16)/255; return x<=0.04045?x/12.92:Math.pow((x+0.055)/1.055,2.4); }); return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2]; }
+  function textOn(bg){ var lb=lumHex(bg), a=lumHex(c('--ink')), b=lumHex(c('--paper'));
+    function cr(x,y){ return (Math.max(x,y)+0.05)/(Math.min(x,y)+0.05); }
+    return cr(lb,a)>=cr(lb,b) ? c('--ink') : c('--paper'); }
+  function RAMP(){return [c('--s5'),c('--s4'),c('--s3'),c('--s2'),c('--s1'),c('--s1')];}
+
+  function offerFile(filename, blob, hintEl){
+    var viaViewer = (window.claude && typeof window.claude.use==='function')
+      ? window.claude.use('downloads') : Promise.resolve(null);
+    return viaViewer.then(function(dl){
+      if(dl) return dl.save({filename:filename, data:blob}).catch(function(err){
+        if(err && err.code==='declined') return;
+        if(hintEl) hintEl.textContent='O download não pôde ser concluído aqui ('+(err&&err.code||'erro')+'). Abra a página publicada no GitHub Pages ou o arquivo direto do disco.';
+      });
+      var a=document.createElement('a');
+      a.href=URL.createObjectURL(blob); a.download=filename;
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },800);
+    });
+  }
+
+  var tip=document.getElementById('tip');
+  function showTip(html,e){
+    tip.innerHTML=html; tip.hidden=false;
+    var x=e.clientX+14, y=e.clientY+14;
+    if(x+tip.offsetWidth>window.innerWidth-10) x=e.clientX-tip.offsetWidth-14;
+    if(y+tip.offsetHeight>window.innerHeight-10) y=e.clientY-tip.offsetHeight-14;
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+  }
+  function hideTip(){ tip.hidden=true; }
+  function clickHint(on){ return "<br><span style='opacity:.7'>"+(on?'clique para remover o filtro':'clique para filtrar')+"</span>"; }
+
+  function wireTips(el){
+    el.onmousemove=function(e){ var t=e.target.closest?e.target.closest('[data-tip]'):null; if(t) showTip(t.getAttribute('data-tip'),e); else hideTip(); };
+    el.onmouseleave=hideTip;
+    el.onclick=function(e){ var t=e.target.closest?e.target.closest('[data-flt]'):null; if(!t) return; hideTip(); toggleFlt(t.getAttribute('data-flt')); };
+  }
+  function toggleFlt(spec){
+    spec.split(';').forEach(function(p){
+      var k=p.slice(0,p.indexOf(':')), v=p.slice(p.indexOf(':')+1);
+      var val = k==='mtx' ? v : +v;
+      var arr=sel[k], j=arr.indexOf(val);
+      if(j>=0) arr.splice(j,1); else arr.push(val);
+    });
+    renderDash();
+  }
+
+  /* ================= DADOS DO PROJETO ================= */
+  var DADOS=JSON.parse(document.getElementById('dados-projeto').textContent);
+  var TIPO=DADOS.TIPO_LABELS, MOTIVO=DADOS.MOTIVO_LABELS, DIST=DADOS.DIST_LABELS, DIA=DADOS.DIA_LABELS, ESTACAO=DADOS.ESTACAO_LABELS;
+  var cubo=DADOS.cubo;
+  var FUNCIONARIOS=DADOS.funcionarios;
+  var paretoImp=DADOS.pareto_impacto_motivo.map(function(r){return [r.motivo,r.horas];});
+  var MESES_NT=DADOS.baseline.tabela_nao_temporal_por_mes;
+
+  var sel={ti:[],mo:[],di:[],da:[],es:[],mtx:[]};
+
+  function filtra(ex){
+    ex=ex||[];
+    function on(k){ return ex.indexOf(k)<0 && sel[k].length>0; }
+    return cubo.filter(function(r){
+      if(on('ti') && sel.ti.indexOf(r.ti)<0) return false;
+      if(on('mo') && sel.mo.indexOf(r.mo)<0) return false;
+      if(on('di') && sel.di.indexOf(r.di)<0) return false;
+      if(on('da') && sel.da.indexOf(r.da)<0) return false;
+      if(on('es') && sel.es.indexOf(r.es)<0) return false;
+      if(on('mtx') && sel.mtx.indexOf(r.ti+'|'+r.di)<0) return false;
+      return true;
+    });
+  }
+  function soma(rows){return rows.reduce(function(a,r){a.it+=r.it; a.h+=r.h; if(r.ti!==0) a.evit+=r.it; return a;},{it:0,h:0,evit:0});}
+  var TOTAL=soma(cubo), TXBASE=DADOS.baseline.prop_evitavel*100;
+
+  /* ================= dropdowns ================= */
+  var openDD=null;
+  function closeDD(){ if(openDD){ openDD.pan.hidden=true; openDD.btn.setAttribute('aria-expanded','false'); openDD=null; } }
+  function dropdown(hostId,key,labels,allLabel){
+    var host=document.getElementById(hostId); host.innerHTML='';
+    var arr=sel[key];
+    var btn=document.createElement('button');
+    btn.type='button'; btn.className='dd-btn'; btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-haspopup','true');
+    btn.textContent = arr.length===0 ? allLabel : (arr.length===1 ? labels[arr[0]] : arr.length+' de '+labels.length+' selecionados');
+    var pan=document.createElement('div'); pan.className='dd-panel'; pan.hidden=true;
+    var quick=document.createElement('div'); quick.className='dd-quick';
+    var bAll=document.createElement('button'); bAll.type='button'; bAll.textContent='Selecionar todos';
+    var bNone=document.createElement('button'); bNone.type='button'; bNone.textContent='Limpar';
+    function refresh(){
+      var a=sel[key];
+      btn.textContent = a.length===0 ? allLabel : (a.length===1 ? labels[a[0]] : a.length+' de '+labels.length+' selecionados');
+      Array.prototype.forEach.call(pan.querySelectorAll('.chk'),function(el,i){
+        var on=a.indexOf(i)>=0;
+        el.setAttribute('aria-pressed',String(on));
+        el.querySelector('.bx').textContent=on?'✓':'';
+      });
+      renderDash(true);
+    }
+    bAll.onclick=function(e){ e.stopPropagation(); sel[key]=labels.map(function(_,i){return i;}); refresh(); };
+    bNone.onclick=function(e){ e.stopPropagation(); sel[key]=[]; refresh(); };
+    quick.appendChild(bAll); quick.appendChild(bNone); pan.appendChild(quick);
+    labels.forEach(function(lab,i){
+      var b=document.createElement('button'); b.type='button'; b.className='chk';
+      var on=arr.indexOf(i)>=0;
+      b.setAttribute('aria-pressed',String(on));
+      b.innerHTML='<span class="bx">'+(on?'✓':'')+'</span><span>'+esc(lab)+'</span>';
+      b.onclick=function(e){ e.stopPropagation(); var j=sel[key].indexOf(i); if(j>=0) sel[key].splice(j,1); else sel[key].push(i); refresh(); };
+      pan.appendChild(b);
+    });
+    btn.onclick=function(e){ e.stopPropagation(); var was=!pan.hidden; closeDD(); if(was) return; pan.hidden=false; btn.setAttribute('aria-expanded','true'); openDD={pan:pan,btn:btn}; };
+    pan.onclick=function(e){ e.stopPropagation(); };
+    host.appendChild(btn); host.appendChild(pan);
+  }
+  document.addEventListener('click',closeDD);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeDD(); });
+
+  /* ================= gráficos ================= */
+  function barrasH(el,rows,o){
+    var W=470,rowH=32,L=168,R=68,T=4,H=T+rows.length*rowH+4,pw=W-L-R;
+    var max=Math.max.apply(null,rows.map(function(r){return r[1];}))||1;
+    var ramp=RAMP(), any=!!(o.selected&&o.selected.length);
+    var s=sv(W,H);
+    rows.forEach(function(r,i){
+      var y=T+i*rowH, bw=Math.max(2,(pw*r[1])/max);
+      var on = any ? o.selected.indexOf(r[3])>=0 : true;
+      var tp=esc(r[0])+'<br><b>'+esc(o.fmt(r[1]))+'</b>'+(r[2]?'<br>'+esc(r[2]):'')+(o.key?clickHint(any&&on):'');
+      var flt=o.key?' data-flt="'+o.key+':'+r[3]+'"':'';
+      s+='<text x="'+(L-10)+'" y="'+(y+rowH/2+4)+'" text-anchor="end" font-size="11" font-weight="'+(any&&on?600:400)+'" fill="'+(on?c('--ink-2'):c('--ink-3'))+'">'+esc(r[0])+'</text>';
+      s+='<rect x="'+L+'" y="'+(y+7)+'" width="'+bw.toFixed(1)+'" height="'+(rowH-15)+'" rx="3" fill="'+ramp[Math.min(i,ramp.length-1)]+'" fill-opacity="'+(on?1:0.25)+'"'+(any&&on?' stroke="'+c('--ink')+'" stroke-width="1.5"':'')+' data-tip="'+attr(tp)+'"'+flt+'/>';
+      s+='<text x="'+(L+bw+8).toFixed(1)+'" y="'+(y+rowH/2+4.5)+'" font-size="11" font-weight="600" font-family="JetBrains Mono,monospace" fill="'+(on?c('--ink'):c('--ink-3'))+'" pointer-events="none">'+esc(o.fmt(r[1]))+'</text>';
+    });
+    el.innerHTML=s+'</svg>'; wireTips(el);
+  }
+
+  function paretoAcum(el,rows){
+    var W=460,H=256,L=48,R=46,T=16,B=52;
+    var pw=W-L-R, ph=H-T-B, n=rows.length;
+    var tot=rows.reduce(function(a,r){return a+r[1];},0), max=rows[0][1];
+    var slot=pw/n, bw=Math.min(40,slot*0.6), acc=0, ramp=RAMP();
+    var s=sv(W,H);
+    [0,0.5,1].forEach(function(q){
+      var yy=T+ph-(ph*q);
+      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="9.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+nf(max*q,0)+'h</text>';
+      s+='<text x="'+(W-R+6)+'" y="'+(yy+3.5)+'" font-size="9.5" font-family="JetBrains Mono,monospace" fill="'+c('--crit')+'">'+(q*100)+'%</text>';
+      s+='<line x1="'+L+'" y1="'+yy+'" x2="'+(W-R)+'" y2="'+yy+'" stroke="'+c('--line')+'" stroke-width="1"/>';
+    });
+    var y80=T+ph*0.2;
+    s+='<line x1="'+L+'" y1="'+y80+'" x2="'+(W-R)+'" y2="'+y80+'" stroke="'+c('--line-2')+'" stroke-width="1.2" stroke-dasharray="4 3"/>';
+    var pts=[];
+    rows.forEach(function(r,i){
+      var x=L+slot*i+(slot-bw)/2, h=(ph*r[1])/max, y=T+ph-h;
+      acc+=r[1];
+      var tp=esc(r[0])+'<br><b>'+nf(r[1],0)+'h</b> de ausência<br>'+nf(100*r[1]/tot,1)+'% do total';
+      s+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+ramp[i]+'" data-tip="'+attr(tp)+'"/>';
+      pts.push([x+bw/2, T+ph-(ph*acc/tot), acc, r[0]]);
+      var palavras=r[0].split(' '), rotuloCurto=palavras[0]+(palavras[1]?' '+palavras[1].charAt(0).toUpperCase()+'.':'');
+      s+='<text x="'+(x+bw/2).toFixed(1)+'" y="'+(T+ph+14)+'" text-anchor="middle" font-size="9.5" fill="'+c('--ink-3')+'">'+esc(rotuloCurto)+'</text>';
+    });
+    var d=pts.map(function(p,i){return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join('');
+    s+='<path d="'+d+'" fill="none" stroke="'+c('--crit')+'" stroke-width="2" pointer-events="none"/>';
+    pts.forEach(function(p){
+      var tp='Somando até '+esc(p[3])+'<br><b>'+nf(100*p[2]/tot,0)+'%</b> do total<br>'+nf(p[2],0)+'h';
+      s+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="7" fill="transparent" data-tip="'+attr(tp)+'"/>';
+      s+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.4" fill="'+c('--crit')+'" pointer-events="none"/>';
+    });
+    el.innerHTML=s+'</svg>'; wireTips(el);
+  }
+
+  function mesBar(el,rows){
+    var W=880,H=248,L=42,R=100,T=32,B=30, n=rows.length, pw=W-L-R, ph=H-T-B;
+    function X(i){return L+pw*(i+0.5)/n;} var bw=Math.min(52,pw/n*0.62);
+    var s=sv(W,H);
+    for(var g=0;g<=100;g+=25){
+      var yy=T+ph-(ph*g)/100;
+      s+='<line x1="'+L+'" y1="'+yy+'" x2="'+(W-R)+'" y2="'+yy+'" stroke="'+c('--line')+'" stroke-width="1"/>';
+      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="10" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+g+'%</text>';
+    }
+    var yBase=T+ph-(ph*TXBASE)/100;
+    s+='<line x1="'+L+'" y1="'+yBase+'" x2="'+(W-R)+'" y2="'+yBase+'" stroke="'+c('--crit')+'" stroke-width="1.3" stroke-dasharray="5 4"/>';
+    s+='<text x="'+(W-R+8)+'" y="'+(yBase+3.5)+'" text-anchor="start" font-size="10" font-weight="600" font-family="JetBrains Mono,monospace" fill="'+c('--crit')+'">média geral<tspan x="'+(W-R+8)+'" dy="12">'+nf(TXBASE,1)+'%</tspan></text>';
+    rows.forEach(function(r,i){
+      var v=r.proporcao_B*100, x=X(i)-bw/2, h=(ph*v)/100, y=T+ph-h;
+      var tp='Mês (rótulo) '+r["Month of absence"]+'<br><b>'+nf(v,1)+'%</b> evitável<br>'+nf(r.n_eventos,0)+' eventos';
+      s+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+c('--s4')+'" data-tip="'+attr(tp)+'"/>';
+      s+='<text x="'+X(i).toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+r["Month of absence"]+'</text>';
+    });
+    s+='<text x="'+(L+pw/2)+'" y="12" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="0.04em" fill="'+c('--crit')+'">SEM ORDEM CRONOLÓGICA CONFIÁVEL — mistura 3 anos</text>';
+    el.innerHTML=s+'</svg>'; wireTips(el);
+  }
+
+  function funcBar(el,rows,meta){
+    var rowH=13, L=14, R=54, T=6, W=760, pw=W-L-R, H=T+rows.length*rowH+22;
+    var s=sv(W,H);
+    var xMeta=L+pw*meta;
+    rows.forEach(function(r,i){
+      var y=T+i*rowH, bw=pw*r.prop;
+      var cor = r.prop<=meta ? c('--good') : c('--s4');
+      var tp=esc(r.rotulo)+'<br><b>'+nf(r.prop*100,1)+'%</b> evitável<br>'+nf(r.n,0)+' eventos no total';
+      s+='<rect x="'+L+'" y="'+(y+1.5)+'" width="'+Math.max(1.5,bw).toFixed(1)+'" height="'+(rowH-3)+'" fill="'+cor+'" fill-opacity="0.9" data-tip="'+attr(tp)+'"/>';
+    });
+    s+='<line x1="'+xMeta.toFixed(1)+'" y1="'+T+'" x2="'+xMeta.toFixed(1)+'" y2="'+(T+rows.length*rowH)+'" stroke="'+c('--crit')+'" stroke-width="1.5" stroke-dasharray="4 3"/>';
+    s+='<text x="'+xMeta.toFixed(1)+'" y="'+(T+rows.length*rowH+14)+'" text-anchor="middle" font-size="10.5" font-weight="700" font-family="JetBrains Mono,monospace" fill="'+c('--crit')+'">meta '+nf(meta*100,0)+'%</text>';
+    el.innerHTML=s+'</svg>'; wireTips(el);
+  }
+
+  function matrizTD(el,rows,colLabels){
+    var W=620, L=210, R=14, T=26, rh=44, cw=(W-L-R)/colLabels.length, H=T+rows.length*rh+8;
+    var ramp=[c('--s1'),c('--s2'),c('--s3'),c('--s4'),c('--s5')];
+    var s=sv(W,H);
+    colLabels.forEach(function(lab,j){
+      var hi=sel.di.indexOf(j)>=0;
+      s+='<text x="'+(L+cw*j+cw/2)+'" y="16" text-anchor="middle" font-size="10" font-weight="'+(hi?700:600)+'" font-family="JetBrains Mono,monospace" fill="'+(hi?c('--ink'):c('--ink-3'))+'">'+esc(lab)+'</text>';
+    });
+    rows.forEach(function(r,i){
+      var y=T+i*rh, tiOn=!sel.ti.length||sel.ti.indexOf(r.ti)>=0;
+      s+='<text x="'+(L-12)+'" y="'+(y+rh/2+4)+'" text-anchor="end" font-size="11" font-weight="'+(sel.ti.indexOf(r.ti)>=0?600:400)+'" fill="'+(tiOn?c('--ink-2'):c('--ink-3'))+'">'+esc(r.k)+'</text>';
+      r.v.forEach(function(v,j){
+        var key=r.ti+'|'+j;
+        var picked=sel.mtx.indexOf(key)>=0;
+        var active=tiOn && (!sel.di.length||sel.di.indexOf(j)>=0) && (!sel.mtx.length||picked);
+        var idx=Math.min(4,Math.floor(5*v/100.001));
+        var tp=esc(r.k)+' · '+esc(colLabels[j])+'<br><b>'+nf(v,1)+'%</b> dos eventos desse grupo de distância<br>'+nf(r.n[j],0)+' eventos'+clickHint(picked);
+        s+='<rect x="'+(L+cw*j+2)+'" y="'+(y+2)+'" width="'+(cw-4)+'" height="'+(rh-4)+'" fill="'+ramp[idx]+'" fill-opacity="'+(active?1:0.28)+'"'+(picked?' stroke="'+c('--ink')+'" stroke-width="2.5"':'')+' data-tip="'+attr(tp)+'" data-flt="mtx:'+key+'"/>';
+        s+='<text x="'+(L+cw*j+cw/2)+'" y="'+(y+rh/2+4)+'" text-anchor="middle" font-size="12" font-weight="600" font-family="JetBrains Mono,monospace" fill="'+(active?textOn(ramp[idx]):c('--ink'))+'" fill-opacity="'+(active?1:0.5)+'" pointer-events="none">'+nf(v,1)+'</text>';
+      });
+    });
+    el.innerHTML=s+'</svg>'; wireTips(el);
+  }
+
+  function rivalChart(el){
+    var W=700,H=230,L=230,R=70,T=16,rowH=36,pw=W-L-R;
+    var a=DADOS.achados;
+    var rows=[
+      ['Todos os eventos (bruto)', a.H2_bruto_pp, false],
+      ['Cada funcionário conta 1 vez', a.H2_ponderado_pp, false],
+      ['Excluindo o funcionário mais frequente', a.H2_exclusoes[0], true],
+      ['Excluindo o 2º mais frequente', a.H2_exclusoes[1], true],
+      ['Excluindo o 3º mais frequente', a.H2_exclusoes[2], true]
+    ];
+    var max=Math.max.apply(null,rows.map(function(r){return r[1];}))*1.15;
+    var s=sv(W,H);
+    var xMin=L+pw*10/max;
+    rows.forEach(function(r,i){
+      var y=T+i*rowH, bw=(pw*r[1])/max;
+      s+='<text x="'+(L-12)+'" y="'+(y+rowH/2+5)+'" text-anchor="end" font-size="11.5" fill="'+(r[2]?c('--ink-2'):c('--ink'))+'">'+esc(r[0])+'</text>';
+      s+='<rect x="'+L+'" y="'+(y+8)+'" width="'+bw.toFixed(1)+'" height="'+(rowH-18)+'" rx="3" fill="'+(r[2]?c('--s3'):c('--accent'))+'" data-tip="'+attr(esc(r[0])+'<br><b>'+nf(r[1],1)+' pp</b>')+'"/>';
+      s+='<text x="'+(L+bw+9).toFixed(1)+'" y="'+(y+rowH/2+5)+'" font-size="12" font-weight="700" font-family="JetBrains Mono,monospace" fill="'+c('--ink')+'">'+nf(r[1],1)+' pp</text>';
+    });
+    s+='<line x1="'+xMin.toFixed(1)+'" y1="'+(T-2)+'" x2="'+xMin.toFixed(1)+'" y2="'+(T+rows.length*rowH)+'" stroke="'+c('--crit')+'" stroke-width="1.3" stroke-dasharray="4 3"/>';
+    s+='<text x="'+xMin.toFixed(1)+'" y="'+(T+rows.length*rowH+14)+'" text-anchor="middle" font-size="10" font-weight="700" font-family="JetBrains Mono,monospace" fill="'+c('--crit')+'">mínimo p/ agir: 10 pp</text>';
+    el.innerHTML=s+'</svg>'; wireTips(el);
+  }
+
+  /* ================= dashboard ================= */
+  var sortK='it', sortDir=-1, showAll=false, lastList=[];
+
+  function renderActive(){
+    var box=document.getElementById('active'), items=[];
+    function add(k,v,lab){ items.push('<button type="button" class="achip" data-k="'+k+'" data-v="'+attr(String(v))+'" title="Remover este filtro">'+esc(lab)+' <b>×</b></button>'); }
+    sel.ti.forEach(function(v){add('ti',v,TIPO[v]);});
+    sel.mo.forEach(function(v){add('mo',v,MOTIVO[v]);});
+    sel.di.forEach(function(v){add('di',v,DIST[v]);});
+    sel.da.forEach(function(v){add('da',v,DIA[v]);});
+    sel.es.forEach(function(v){add('es',v,ESTACAO[v]);});
+    sel.mtx.forEach(function(v){ var p=v.split('|'); add('mtx',v,TIPO[+p[0]]+' · '+DIST[+p[1]]); });
+    box.innerHTML = items.length ? items.join('') : '<span class="noflt">Nenhum filtro — mostrando tudo.</span>';
+    box.onclick=function(e){
+      var b=e.target.closest?e.target.closest('.achip'):null; if(!b) return;
+      var k=b.getAttribute('data-k'), v=b.getAttribute('data-v'), val=k==='mtx'?v:+v;
+      var j=sel[k].indexOf(val); if(j>=0) sel[k].splice(j,1);
+      renderDash();
+    };
+  }
+
+  function porDimPct(rows,total,labels,key){
+    return labels.map(function(lab,i){
+      var r=soma(rows.filter(function(x){return x[key]===i;}));
+      var v = total.it ? 100*r.it/total.it : 0;
+      return [lab, v, nf(r.it,0)+' eventos · '+nf(r.h,0)+'h', i, r.it];
+    });
+  }
+
+  function renderDash(fromMenu){
+    if(!fromMenu){
+      closeDD();
+      dropdown('dd-tipo','ti',TIPO,'Todos os tipos');
+      dropdown('dd-motivo','mo',MOTIVO,'Todos os motivos');
+      dropdown('dd-dist','di',DIST,'Qualquer distância');
+      dropdown('dd-dia','da',DIA,'Qualquer dia');
+      dropdown('dd-estacao','es',ESTACAO,'Qualquer estação');
+    }
+    renderActive();
+    document.getElementById('heat-clear').hidden = sel.mtx.length===0;
+
+    var rows=filtra(), t=soma(rows), vazio=t.it===0;
+    document.getElementById('d-empty').hidden=!vazio;
+    document.getElementById('fcount').innerHTML='<b>'+nf(t.it,0)+'</b> de '+nf(TOTAL.it,0)+' eventos';
+
+    var pct=function(v){return nf(v,1)+'%';};
+    var rTi=filtra(['ti']), tTi=soma(rTi);
+    barrasH(document.getElementById('d-tipo'),porDimPct(rTi,tTi,TIPO,'ti'),{fmt:pct,key:'ti',selected:sel.ti});
+
+    var rMo=filtra(['mo']), tMo=soma(rMo);
+    barrasH(document.getElementById('d-motivo'),porDimPct(rMo,tMo,MOTIVO,'mo').sort(function(a,b){return b[1]-a[1];}),{fmt:pct,key:'mo',selected:sel.mo});
+
+    var horasPorMotivo=MOTIVO.map(function(lab,i){
+      var r=soma(rMo.filter(function(x){return x.mo===i && x.ti===1;}));
+      return [lab,r.h,i];
+    }).filter(function(r){return r[1]>0;}).sort(function(a,b){return b[1]-a[1];});
+    barrasH(document.getElementById('d-motivo-horas'),horasPorMotivo.map(function(r){return [r[0],r[1],'',r[2]];}),{fmt:function(v){return nf(v,0)+'h';},key:'mo',selected:sel.mo});
+
+    var rh=filtra(['ti','di','mtx']);
+    matrizTD(document.getElementById('d-heat'),TIPO.map(function(lab,i){
+      var v=[],n=[];
+      DIST.forEach(function(_,j){
+        var celula=soma(rh.filter(function(x){return x.ti===i&&x.di===j;}));
+        var colTotal=soma(rh.filter(function(x){return x.di===j;}));
+        v.push(colTotal.it?100*celula.it/colTotal.it:0); n.push(celula.it);
+      });
+      return {k:lab,ti:i,v:v,n:n};
+    }),DIST);
+
+    funcBar(document.getElementById('d-func'),FUNCIONARIOS,DADOS.baseline.meta_interna);
+
+    var agg={};
+    rows.forEach(function(r){ var k=r.mo+'|'+r.di+'|'+r.da; (agg[k]=agg[k]||{mo:r.mo,di:r.di,da:r.da,it:0,h:0}); agg[k].it+=r.it; agg[k].h+=r.h; });
+    var list=Object.keys(agg).map(function(k){return agg[k];});
+    list.sort(function(a,b){
+      var A,B;
+      if(sortK==='mo'){A=MOTIVO[a.mo];B=MOTIVO[b.mo];} else if(sortK==='di'){A=DIST[a.di];B=DIST[b.di];} else if(sortK==='da'){A=DIA[a.da];B=DIA[b.da];} else {A=a[sortK];B=b[sortK];}
+      if(typeof A==='string') return sortDir*A.localeCompare(B,'pt-BR');
+      return sortDir*(A-B);
+    });
+    lastList=list;
+    var shown=showAll?list:list.slice(0,12);
+    document.getElementById('d-tabela').innerHTML = shown.length ? shown.map(function(r){
+      return '<tr><td>'+esc(MOTIVO[r.mo])+'</td><td>'+esc(DIST[r.di])+'</td><td>'+esc(DIA[r.da])+'</td><td style="text-align:right" class="mono">'+nf(r.it,0)+'</td><td style="text-align:right" class="mono">'+nf(r.h,0)+'</td></tr>';
+    }).join('') : '<tr><td colspan="5" style="color:var(--ink-3)">Nenhuma combinação no recorte.</td></tr>';
+    var tb=document.getElementById('t-all');
+    tb.hidden = list.length<=12;
+    tb.textContent = showAll ? 'Mostrar só as 12 primeiras' : 'Mostrar todas ('+list.length+')';
+    Array.prototype.forEach.call(document.querySelectorAll('#d-tab th.sortable'),function(th){
+      if(th.getAttribute('data-k')===sortK){ th.setAttribute('aria-sort',sortDir<0?'descending':'ascending'); th.querySelector('.arw').textContent=sortDir<0?'↓':'↑'; }
+      else { th.removeAttribute('aria-sort'); th.querySelector('.arw').textContent='↕'; }
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('#d-tab th.sortable'),function(th){
+    th.addEventListener('click',function(){
+      var k=th.getAttribute('data-k');
+      if(k===sortK) sortDir=-sortDir; else { sortK=k; sortDir=(k==='mo'||k==='di'||k==='da')?1:-1; }
+      renderDash();
+    });
+  });
+  document.getElementById('f-reset').addEventListener('click',function(){ sel={ti:[],mo:[],di:[],da:[],es:[],mtx:[]}; renderDash(); });
+  document.getElementById('heat-clear').addEventListener('click',function(){ sel.mtx=[]; renderDash(); });
+  document.getElementById('t-all').addEventListener('click',function(){ showAll=!showAll; renderDash(); });
+
+  /* ================= planilha .xlsx ================= */
+  function xe(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function cStr(ref,v,st){return '<c r="'+ref+'" t="inlineStr"'+(st?' s="'+st+'"':'')+'><is><t xml:space="preserve">'+xe(v)+'</t></is></c>';}
+  function filtrosTexto(){
+    var p=[];
+    if(sel.ti.length) p.push('Tipo: '+sel.ti.map(function(v){return TIPO[v];}).join(', '));
+    if(sel.mo.length) p.push('Motivo: '+sel.mo.map(function(v){return MOTIVO[v];}).join(', '));
+    if(sel.di.length) p.push('Distância: '+sel.di.map(function(v){return DIST[v];}).join(', '));
+    if(sel.da.length) p.push('Dia: '+sel.da.map(function(v){return DIA[v];}).join(', '));
+    if(sel.es.length) p.push('Estação: '+sel.es.map(function(v){return ESTACAO[v];}).join(', '));
+    if(sel.mtx.length) p.push('Células: '+sel.mtx.map(function(v){var q=v.split('|');return TIPO[+q[0]]+' × '+DIST[+q[1]];}).join(', '));
+    return p.length ? p.join(' | ') : 'Nenhum — base completa';
+  }
+  function buildXlsx(list){
+    if(!window.JSZip) return Promise.reject({code:'sem_biblioteca'});
+    var head=['Motivo','Distância','Dia da semana','Eventos','Horas'];
+    var widths=[26,26,16,12,12];
+    var L=['A','B','C','D','E'];
+    var rows='<row r="1">'+head.map(function(h,i){return cStr(L[i]+'1',h,1);}).join('')+'</row>';
+    list.forEach(function(r,k){
+      var n=k+2;
+      rows+='<row r="'+n+'">'+cStr('A'+n,MOTIVO[r.mo])+cStr('B'+n,DIST[r.di])+cStr('C'+n,DIA[r.da])+
+        '<c r="D'+n+'" s="2"><v>'+r.it+'</v></c><c r="E'+n+'" s="2"><v>'+r.h+'</v></c></row>';
+    });
+    var last=list.length+1, NSX='http://schemas.openxmlformats.org/spreadsheetml/2006/main';
+    var XH='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+    var sheet1=XH+'<worksheet xmlns="'+NSX+'"><dimension ref="A1:E'+last+'"/>'+
+      '<sheetViews><sheetView workbookViewId="0" tabSelected="1"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>'+
+      '<sheetFormatPr defaultRowHeight="15"/><cols>'+widths.map(function(w,i){return '<col min="'+(i+1)+'" max="'+(i+1)+'" width="'+w+'" customWidth="1"/>';}).join('')+'</cols>'+
+      '<sheetData>'+rows+'</sheetData><autoFilter ref="A1:E'+last+'"/></worksheet>';
+    var t=soma(filtra());
+    var info=[
+      ['Sobre esta planilha','',5],
+      ['',''],
+      ['Gerada em',new Date().toLocaleString('pt-BR')],
+      ['Filtros ativos',filtrosTexto()],
+      ['Combinações',String(list.length)],
+      ['Eventos no recorte',nf(t.it,0)],
+      ['Origem','Absenteeism at Work — UCI Machine Learning Repository. Transportadora em Brasília, jul/2007 a jul/2010.'],
+      ['Base','Cubo pré-agregado (tipo × motivo × distância × dia × estação). Não contém funcionário identificado.']
+    ];
+    var rows2=info.map(function(r,k){ var n=k+1; return '<row r="'+n+'">'+cStr('A'+n,r[0],r[2]||(k>1?6:0))+(r[1]?cStr('B'+n,r[1]):'')+'</row>'; }).join('');
+    var sheet2=XH+'<worksheet xmlns="'+NSX+'"><sheetViews><sheetView workbookViewId="0"/></sheetViews><sheetFormatPr defaultRowHeight="15"/>'+
+      '<cols><col min="1" max="1" width="22" customWidth="1"/><col min="2" max="2" width="96" customWidth="1"/></cols><sheetData>'+rows2+'</sheetData></worksheet>';
+    var styles=XH+'<styleSheet xmlns="'+NSX+'">'+
+      '<numFmts count="1"><numFmt numFmtId="164" formatCode="#,##0"/></numFmts>'+
+      '<fonts count="4"><font><sz val="11"/><name val="Calibri"/></font>'+
+      '<font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font>'+
+      '<font><b/><sz val="14"/><color rgb="FF4B0CD9"/><name val="Calibri"/></font>'+
+      '<font><b/><sz val="11"/><name val="Calibri"/></font></fonts>'+
+      '<fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill>'+
+      '<fill><patternFill patternType="solid"><fgColor rgb="FF4B0CD9"/><bgColor indexed="64"/></patternFill></fill></fills>'+
+      '<borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders>'+
+      '<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>'+
+      '<cellXfs count="7">'+
+        '<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>'+
+        '<xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1"/>'+
+        '<xf numFmtId="1" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>'+
+        '<xf numFmtId="10" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>'+
+        '<xf numFmtId="164" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>'+
+        '<xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1"/>'+
+        '<xf numFmtId="0" fontId="3" fillId="0" borderId="0" xfId="0" applyFont="1"/>'+
+      '</cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>';
+    var workbook=XH+'<workbook xmlns="'+NSX+'" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'+
+      '<bookViews><workbookView activeTab="0"/></bookViews><sheets><sheet name="Dados" sheetId="1" r:id="rId1"/><sheet name="Sobre" sheetId="2" r:id="rId2"/></sheets>'+
+      '<definedNames><definedName name="_xlnm._FilterDatabase" localSheetId="0" hidden="1">Dados!$A$1:$E$'+last+'</definedName></definedNames></workbook>';
+    var REL='http://schemas.openxmlformats.org/officeDocument/2006/relationships';
+    var wbRels=XH+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+      '<Relationship Id="rId1" Type="'+REL+'/worksheet" Target="worksheets/sheet1.xml"/>'+
+      '<Relationship Id="rId2" Type="'+REL+'/worksheet" Target="worksheets/sheet2.xml"/>'+
+      '<Relationship Id="rId3" Type="'+REL+'/styles" Target="styles.xml"/></Relationships>';
+    var rootRels=XH+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+      '<Relationship Id="rId1" Type="'+REL+'/officeDocument" Target="xl/workbook.xml"/></Relationships>';
+    var CT='application/vnd.openxmlformats-officedocument.spreadsheetml';
+    var types=XH+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'+
+      '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'+
+      '<Default Extension="xml" ContentType="application/xml"/>'+
+      '<Override PartName="/xl/workbook.xml" ContentType="'+CT+'.sheet.main+xml"/>'+
+      '<Override PartName="/xl/worksheets/sheet1.xml" ContentType="'+CT+'.worksheet+xml"/>'+
+      '<Override PartName="/xl/worksheets/sheet2.xml" ContentType="'+CT+'.worksheet+xml"/>'+
+      '<Override PartName="/xl/styles.xml" ContentType="'+CT+'.styles+xml"/></Types>';
+    var zip=new window.JSZip();
+    zip.file('[Content_Types].xml',types);
+    zip.file('_rels/.rels',rootRels);
+    zip.file('xl/workbook.xml',workbook);
+    zip.file('xl/_rels/workbook.xml.rels',wbRels);
+    zip.file('xl/styles.xml',styles);
+    zip.file('xl/worksheets/sheet1.xml',sheet1);
+    zip.file('xl/worksheets/sheet2.xml',sheet2);
+    return zip.generateAsync({type:'blob',mimeType:CT+'.sheet'});
+  }
+  document.getElementById('t-xlsx').addEventListener('click',function(){
+    var b=this, txt=b.textContent;
+    b.textContent='Gerando…'; b.disabled=true;
+    buildXlsx(lastList).then(function(blob){
+      return offerFile('ausencia-evitavel-recorte.xlsx', blob, document.getElementById('t-hint'));
+    }).catch(function(e){
+      document.getElementById('t-hint').textContent='Não foi possível gerar a planilha neste ambiente.';
+      if(window.console) console.error(e);
+    }).then(function(){ b.textContent=txt; b.disabled=false; });
+  });
+
+  /* ================= desenho geral ================= */
+  function draw(){
+    if(!document.getElementById('pane-relatorio').hidden){
+      mesBar(document.getElementById('rep-mes'),MESES_NT);
+      paretoAcum(document.getElementById('rep-pareto'),paretoImp);
+      rivalChart(document.getElementById('rep-rival'));
+    }
+    renderDash();
+  }
+
+  var modes=['dashboard','relatorio','slides'];
+  function setMode(m){
+    modes.forEach(function(k){
+      document.getElementById('pane-'+k).hidden=(k!==m);
+      document.getElementById('m-'+k).setAttribute('aria-pressed',String(k===m));
+    });
+    document.getElementById('side-filtros').hidden = (m!=='dashboard');
+    try{ history.replaceState(null,'','#'+m); }catch(e){}
+    hideTip(); draw();
+  }
+  modes.forEach(function(k){ document.getElementById('m-'+k).addEventListener('click',function(){ setMode(k); }); });
+  var initial=(location.hash||'').replace('#','');
+  setMode(modes.indexOf(initial)>=0?initial:'dashboard');
+  if(window.matchMedia){ var mq=window.matchMedia('(prefers-color-scheme: dark)'); if(mq.addEventListener) mq.addEventListener('change',draw); }
+  window.addEventListener('scroll',hideTip,{passive:true});
+
+  /* ================= slides ================= */
+  var frames=Array.prototype.slice.call(document.querySelectorAll('.frame'));
+  var cur=0, dots=document.getElementById('dots');
+  frames.forEach(function(){ dots.appendChild(document.createElement('i')); });
+  function show(i){
+    cur=Math.max(0,Math.min(frames.length-1,i));
+    frames.forEach(function(f,k){ f.classList.toggle('on',k===cur); });
+    Array.prototype.forEach.call(dots.children,function(d,k){ d.classList.toggle('on',k===cur); });
+    document.getElementById('prev').disabled=cur===0;
+    document.getElementById('next').disabled=cur===frames.length-1;
+  }
+  document.getElementById('prev').addEventListener('click',function(){show(cur-1);});
+  document.getElementById('next').addEventListener('click',function(){show(cur+1);});
+  document.addEventListener('keydown',function(e){
+    if(document.getElementById('pane-slides').hidden) return;
+    if(e.key==='ArrowRight') show(cur+1);
+    if(e.key==='ArrowLeft') show(cur-1);
+  });
+  show(0);
+
+  /* ================= relatório em PDF ================= */
+  document.getElementById('print-rel').addEventListener('click',function(){
+    var d=document.querySelector('#pane-relatorio details'); if(d) d.open=true;
+    var st=document.createElement('style');
+    st.textContent='@page{size:portrait; margin:16mm}';
+    document.head.appendChild(st); window.print();
+    setTimeout(function(){ if(st.parentNode) st.parentNode.removeChild(st); },800);
+  });
+
+  /* ================= .pptx ================= */
+  var PAL={accent:'4B0CD9',ink:'0E1618',ink2:'3B4B54',ink3:'6B7C86',rule:'AEBBC4'};
+  function buildPptx(){
+    var pptx=new window.PptxGenJS();
+    pptx.layout='LAYOUT_16x9'; pptx.title='Absenteísmo evitável — Transportadora Brasília';
+    frames.forEach(function(f,i){
+      var sl=pptx.addSlide(); sl.background={color:'FFFFFF'};
+      var eyebrow=f.querySelector('.eyebrow').textContent.trim().toUpperCase();
+      var h2=f.querySelector('h2').textContent.trim();
+      sl.addText(eyebrow,{x:.62,y:.45,w:8.8,h:.28,fontFace:'Consolas',fontSize:11,bold:true,charSpacing:1.6,color:PAL.ink3});
+      sl.addShape(pptx.ShapeType.line,{x:.62,y:.80,w:8.8,h:0,line:{color:PAL.rule,width:.75}});
+      sl.addText(h2,{x:.62,y:1.00,w:8.5,h:1.45,fontFace:'Georgia',fontSize:26,bold:true,color:PAL.ink,valign:'top',lineSpacingMultiple:1.05});
+      var stat=f.querySelector('.fstat'), yB=2.62;
+      if(stat){ sl.addText(stat.textContent.trim(),{x:.62,y:2.48,w:8.5,h:.95,fontFace:'Georgia',fontSize:42,bold:true,color:PAL.accent}); yB=3.50; }
+      var p=f.querySelector('p');
+      sl.addText(p?p.textContent.trim():'',{x:.62,y:yB,w:8.2,h:1.4,fontFace:'Calibri',fontSize:14,color:PAL.ink2,valign:'top',lineSpacingMultiple:1.25});
+      sl.addText((i+1)+' / '+frames.length,{x:8.3,y:5.05,w:1.1,h:.3,fontFace:'Consolas',fontSize:10,color:PAL.ink3,align:'right'});
+    });
+    return pptx.write({outputType:'blob'}).then(function(blob){
+      return offerFile('absenteismo-evitavel.pptx', blob, document.getElementById('pptx-hint'));
+    });
+  }
+  var btn=document.getElementById('dl-pptx');
+  if(typeof window.PptxGenJS==='undefined'){
+    btn.disabled=true; btn.style.opacity='.4'; btn.style.cursor='default';
+    document.getElementById('pptx-hint').innerHTML='A biblioteca de geração de <b>.pptx</b> não carregou.';
+  } else {
+    btn.addEventListener('click',function(){
+      var t=btn.textContent; btn.textContent='Gerando…'; btn.disabled=true;
+      Promise.resolve().then(buildPptx).catch(function(e){
+        document.getElementById('pptx-hint').textContent='Não foi possível gerar o arquivo neste ambiente. Abra a página publicada ou o arquivo direto do disco.';
+        if(window.console) console.error(e);
+      }).then(function(){ btn.textContent=t; btn.disabled=false; });
+    });
+  }
+})();
+</script>
+</body>
+</html>
