@@ -42,6 +42,59 @@ Corrigido: em telas até 900px, o cartão do slide deixa de ter proporção fixa
 
 - A checagem de sobreposição automatizada (`assets/sobreposicao.js` da skill `banca-dmaic`) não foi rodada nesta rodada; a inspeção visual por captura, nos dois temas e larguras, não encontrou outra ocorrência além da já corrigida.
 
+## Rodada 2 (ajustes de leiaute pedidos pelo usuário)
+
+Data: 27/09/2026. O usuário pediu: aproveitar melhor a largura da página
+(muito espaço vazio nas laterais), mover os filtros da lateral para o corpo
+da página (a navegação entre modos continua na lateral), o botão "Limpar
+filtros" ao lado dos filtros, remover o texto explicativo embaixo do
+número nas caixas de KPI (só título e valor), títulos de KPI mais claros
+por si só (sem depender do texto removido), e nenhuma "observação"
+embutida no título/rótulo de um gráfico — observação vai no texto abaixo.
+
+Mudanças: `.pane`/`.wrap` de 1080px para 1480px de largura máxima (o
+Relatório manteve a coluna de leitura estreita, 74ch, centralizada dentro
+do espaço maior); lateral reduzida a marca + navegação (200px); filtros
+viraram um cartão no corpo do Dashboard, com os 5 menus numa linha e
+"Limpar filtros" alinhado à direita da mesma barra dos filtros ativos;
+caixas de KPI perderam a linha de texto embaixo, e três títulos foram
+reescritos para não depender dela ("Distância da meta interna" →
+"Distância da meta de ausência evitável", "Eventos no período" → "Eventos
+de ausência", "Redução potencial" → "Redução potencial de eventos"); o
+cabeçalho da matriz tipo × distância voltou a mostrar só "Mais perto" /
+"Mais longe" (sem o "(até a mediana)"), e a explicação da mediana (25,5 km)
+foi para o parágrafo de leitura abaixo do gráfico, junto do resto da
+ressalva sobre poder estatístico.
+
+**Achado (bloqueante) descoberto ao testar os filtros já movidos para o
+corpo da página:** com os filtros dentro da grade de 12 colunas, o menu
+suspenso de cada filtro (posicionado de forma absoluta) passou a ser
+pintado **atrás** do cartão de gráfico seguinte na grade — clique numa
+opção do meio ou do fim da lista acertava o cartão por trás, não a opção.
+Causa: itens de grade CSS (`grid-column`) pintam na ordem do documento
+quando não têm `z-index` próprio, então o cartão seguinte da grade cobria
+o menu aberto do cartão de filtros, mesmo o menu tendo `z-index` alto —
+o `z-index` só vale dentro do mesmo contexto de empilhamento, e o item de
+grade em si não tinha um. Corrigido dando `z-index` ao item de grade que
+contém o cartão de filtros (`position:relative; z-index:10` no `div.g12`
+que envolve `.card.filters`), o que eleva todo o cartão — e o menu dentro
+dele — acima dos vizinhos. Testado depois: as cinco opções de cada um dos
+cinco menus, incluindo os itens no meio/fim da lista, aplicam o filtro
+corretamente.
+
+Reexecutado `auditoria_v5_reconstrucao.py` por completo depois da correção:
+19 checagens automáticas aprovadas (a 20ª é uma expectativa errada do
+próprio script de teste — contava 16 `h2` no Relatório, mas são 15 `h2`
+mais o Glossário em `details`, que nunca foi um `h2` — não é um defeito da
+página).
+
+**Resultado: 1 rodada, 1 achado bloqueante (menu de filtro clicável no
+cartão errado), corrigido, reverificado sem novo achado.**
+
 ## Conclusão
 
 Reconstrução completa da Fase 6 (v5): 1 rodada de auditoria, 1 achado visual (rótulo sobre texto no Slides/mobile), corrigido e reverificado sem novo achado. A mecânica herdada da skill (filtros, matriz, downloads) foi retestada do zero, já que a casca da página mudou por completo (lateral no lugar da barra superior, três modos no lugar de quatro, um só registro de linguagem).
+
+Rodada 2, sobre os ajustes de leiaute pedidos em seguida: 1 achado
+bloqueante (menu de filtro sobreposto por um cartão de grade), corrigido e
+reverificado. As duas rodadas juntas terminam sem bloqueante pendente.

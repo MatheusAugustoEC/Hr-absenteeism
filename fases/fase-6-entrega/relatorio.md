@@ -137,6 +137,39 @@ sem novo achado.
   captura, nos dois temas e larguras, não encontrou outra ocorrência além
   da já corrigida no Slides/mobile.
 
+## Adendo — ajustes de leiaute (27/09/2026)
+
+Depois da entrega, o usuário pediu quatro ajustes de leiaute, sem tocar em
+nenhum número: (1) aproveitar melhor a largura da tela — a página estava
+com muito espaço vazio nas laterais; (2) mover os filtros da lateral para
+o corpo da página, mantendo só a navegação entre modos na lateral; (3)
+"Limpar filtros" ao lado dos filtros; (4) tirar o texto explicativo de
+baixo das caixas de KPI (só título e valor) e tornar os títulos claros o
+bastante para dispensar esse texto; (5) nenhuma observação dentro do
+título/rótulo de um gráfico — explicação vai no texto abaixo dele, nunca
+dentro do desenho.
+
+Aplicado: largura máxima do conteúdo subiu de 1080px para 1480px (o
+Relatório manteve a coluna de leitura estreita, centralizada); a lateral
+ficou só com marca e navegação; os filtros viraram um cartão no Dashboard,
+com os 5 menus numa linha e "Limpar filtros" alinhado à direita da mesma
+barra; as caixas de KPI perderam a legenda embaixo e três títulos
+ficaram mais explícitos; o cabeçalho da matriz tipo × distância voltou a
+mostrar só "Mais perto"/"Mais longe", com a explicação da mediana (25,5 km)
+movida para o parágrafo de leitura abaixo do gráfico.
+
+Testando os filtros já no novo lugar, apareceu um defeito real: o menu
+suspenso de cada filtro, dentro da grade de 12 colunas, era pintado atrás
+do cartão de gráfico seguinte — cliques no meio/fim da lista de opções
+acertavam o cartão errado, não a opção do menu. Causa: itens de grade CSS
+sem `z-index` próprio pintam na ordem do documento, então o `z-index` alto
+do menu não bastava — precisava de um `z-index` no item de grade que
+contém o cartão de filtros. Corrigido, reverificado nas cinco opções dos
+cinco menus. Detalhe completo na Rodada 2 de
+`artefatos/relatorio-auditoria.md`.
+
+**Nenhum número mudou nesta rodada.**
+
 ## Para a próxima fase
 
 A Fase 7 (revisão por banca) recebe o link da página publicada — numa

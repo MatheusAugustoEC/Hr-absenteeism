@@ -16,7 +16,7 @@
   --s1:#9F78F8; --s2:#7C47F5; --s3:#5A17F2; --s4:#460BCB; --s5:#35099B;
   --band:#EFE9FC; --tipbg:#0E1618; --tipink:#FFFFFF;
   --radius:14px; --shadow:0 10px 28px -14px rgba(14,22,24,.18);
-  --sidebar-w:250px;
+  --sidebar-w:200px;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --paper:#07070E; --surface:rgba(255,255,255,.055); --sunk:rgba(255,255,255,.03); --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.18);
@@ -60,9 +60,11 @@ svg{display:block; width:100%; height:auto}
   border:1px solid transparent; background:transparent; color:var(--ink-2); cursor:pointer}
 .nav button:hover{background:var(--sunk)}
 .nav button[aria-pressed="true"]{background:var(--accent); color:var(--paper); box-shadow:var(--shadow)}
-.side-filtros{display:flex; flex-direction:column; gap:12px; padding-top:14px; border-top:1px solid var(--line)}
-.side-filtros .eyebrow{margin-bottom:2px}
-.dd{position:relative}
+
+/* filtros do Dashboard, agora no conteudo (nao mais na lateral) */
+.filters{display:flex; flex-direction:column; gap:12px}
+.ddrow{display:flex; gap:14px; flex-wrap:wrap}
+.dd{position:relative; flex:1 1 190px; min-width:170px}
 .dd-lab{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); display:block; margin-bottom:5px}
 .dd-btn{width:100%; text-align:left; font-family:inherit; font-size:13px; padding:9px 26px 9px 11px; border:1px solid var(--line-2); border-radius:var(--radius); background:var(--paper); color:var(--ink); cursor:pointer; position:relative}
 .dd-btn::after{content:"▾"; position:absolute; right:10px; top:50%; transform:translateY(-50%); color:var(--ink-3); font-size:10px}
@@ -75,17 +77,18 @@ svg{display:block; width:100%; height:auto}
 .chk .bx{width:15px; height:15px; border:1.5px solid var(--line-2); flex:0 0 15px; display:grid; place-items:center; font-size:11px; color:var(--paper); line-height:1}
 .chk[aria-pressed="true"] .bx{background:var(--accent); border-color:var(--accent)}
 .chk[aria-pressed="true"]{color:var(--ink); font-weight:500}
-.active{display:flex; gap:6px; flex-wrap:wrap}
+.fbar{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:2px; padding-top:12px; border-top:1px solid var(--line)}
+.active{display:flex; gap:6px; flex-wrap:wrap; flex:1 1 auto}
 .achip{font-family:inherit; font-size:11.5px; padding:5px 8px 5px 11px; border-radius:999px; background:var(--accent-soft); border:1px solid var(--line-2); color:var(--ink); display:inline-flex; gap:6px; align-items:center; cursor:pointer}
 .achip:hover{border-color:var(--accent)}
 .noflt{font-size:12px; color:var(--ink-3)}
-.reset{font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:600; padding:7px 12px; border:1px solid var(--line-2); border-radius:999px; background:transparent; color:var(--ink-2); cursor:pointer}
+.reset{font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:600; padding:7px 12px; border:1px solid var(--line-2); border-radius:999px; background:transparent; color:var(--ink-2); cursor:pointer; margin-left:auto}
 .fcount{font-size:12px; color:var(--ink-2)}
 .fcount b{color:var(--ink); font-family:"JetBrains Mono",monospace}
 
-.content{flex:1; min-width:0; padding:26px 28px 70px}
-.wrap{max-width:1080px; margin:0 auto}
-.pane{max-width:1080px; margin:0 auto}
+.content{flex:1; min-width:0; padding:26px 32px 70px}
+.wrap{max-width:1480px; margin:0 auto}
+.pane{max-width:1480px; margin:0 auto}
 
 .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; position:relative; transition:transform .2s ease}
 .card::before{content:''; position:absolute; left:16px; right:16px; top:0; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:.28; pointer-events:none; transition:opacity .2s ease; border-radius:var(--radius) var(--radius) 0 0}
@@ -109,7 +112,6 @@ svg{display:block; width:100%; height:auto}
 .kpi .k{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
 .kpi .v{font-family:Inter,sans-serif; font-weight:800; font-size:24px; margin-top:4px; color:var(--accent); font-variant-numeric:tabular-nums}
 .kpi.kpi-guard .v{color:var(--good)}
-.kpi .s{font-size:11.5px; color:var(--ink-3); margin-top:2px}
 
 .hero{display:flex; flex-direction:column; gap:6px}
 .bignum{font-family:Inter,sans-serif; font-weight:800; font-size:clamp(48px,8vw,74px); line-height:.95; letter-spacing:-.03em; color:var(--accent)}
@@ -152,7 +154,7 @@ th[aria-sort] .arw{opacity:1; color:var(--accent)}
 .disclaimer{margin-top:22px; border-left:3px solid var(--line-2); padding:2px 0 2px 14px; font-size:13px; color:var(--ink-3); max-width:74ch}
 
 /* relatorio */
-.report{max-width:70ch}
+.report{max-width:74ch; margin:0 auto}
 .report h1{font-size:clamp(27px,4.6vw,38px); margin-bottom:14px}
 .answer{font-size:clamp(17px,2.8vw,20px); line-height:1.45; font-family:Inter,sans-serif; font-weight:600; border-left:4px solid var(--accent); padding-left:16px; margin:0 0 22px; color:var(--ink)}
 .report h2{font-size:19px; margin:36px 0 10px; padding-top:20px; border-top:1px solid var(--line); scroll-margin-top:20px}
@@ -202,8 +204,9 @@ dd{margin:2px 0 0; color:var(--ink-2)}
   .sidebar{position:relative; width:100%; height:auto; flex-basis:auto; border-right:0; border-bottom:1px solid var(--line); flex-direction:row; flex-wrap:wrap; align-items:center; gap:12px 20px}
   .brandmark{flex:1 1 auto}
   .nav{flex-direction:row; flex-wrap:wrap}
-  .side-filtros{flex-basis:100%; border-top:1px solid var(--line)}
   .content{padding:20px 16px 60px}
+  .ddrow{gap:10px}
+  .reset{margin-left:0}
   .deck{aspect-ratio:auto; min-height:300px}
   .framenum{position:static; display:inline-block; margin-top:14px}
 }
@@ -233,17 +236,6 @@ dd{margin:2px 0 0; color:var(--ink-2)}
       <button id="m-relatorio" aria-pressed="false">Relatório</button>
       <button id="m-slides" aria-pressed="false">Slides</button>
     </nav>
-    <div class="side-filtros" id="side-filtros">
-      <div class="eyebrow">Filtrar o dashboard</div>
-      <div class="dd"><span class="dd-lab">Tipo de ausência</span><div id="dd-tipo"></div></div>
-      <div class="dd"><span class="dd-lab">Motivo</span><div id="dd-motivo"></div></div>
-      <div class="dd"><span class="dd-lab">Distância de casa ao trabalho</span><div id="dd-dist"></div></div>
-      <div class="dd"><span class="dd-lab">Dia da semana</span><div id="dd-dia"></div></div>
-      <div class="dd"><span class="dd-lab">Estação</span><div id="dd-estacao"></div></div>
-      <div class="active" id="active"></div>
-      <div class="fcount" id="fcount"></div>
-      <button class="reset" id="f-reset">Limpar filtros</button>
-    </div>
   </aside>
 
   <main class="content">
@@ -265,22 +257,36 @@ dd{margin:2px 0 0; color:var(--ink-2)}
             <div class="kpi kpi-guard">
               <div class="k">Atestado médico</div>
               <div class="v">35,7%</div>
-              <div class="s">esse número não deve cair</div>
             </div>
             <div class="kpi">
-              <div class="k">Distância da meta interna</div>
+              <div class="k">Distância da meta de ausência evitável</div>
               <div class="v">+30,9 pp</div>
-              <div class="s">meta = melhor quartil de funcionários (33,4%)</div>
             </div>
             <div class="kpi">
-              <div class="k">Eventos no período</div>
+              <div class="k">Eventos de ausência</div>
               <div class="v">733</div>
-              <div class="s">de 34 funcionários</div>
             </div>
             <div class="kpi">
-              <div class="k">Redução potencial</div>
+              <div class="k">Redução potencial de eventos</div>
               <div class="v">~6,3<span style="font-size:.6em">/mês</span></div>
-              <div class="s">eventos a menos, se todos estivessem no nível do melhor quartil</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g12" style="position:relative; z-index:10">
+          <div class="card filters">
+            <div class="eyebrow">Filtrar o dashboard</div>
+            <div class="ddrow">
+              <div class="dd"><span class="dd-lab">Tipo de ausência</span><div id="dd-tipo"></div></div>
+              <div class="dd"><span class="dd-lab">Motivo</span><div id="dd-motivo"></div></div>
+              <div class="dd"><span class="dd-lab">Distância de casa ao trabalho</span><div id="dd-dist"></div></div>
+              <div class="dd"><span class="dd-lab">Dia da semana</span><div id="dd-dia"></div></div>
+              <div class="dd"><span class="dd-lab">Estação</span><div id="dd-estacao"></div></div>
+            </div>
+            <div class="fbar">
+              <div class="active" id="active"></div>
+              <div class="fcount" id="fcount"></div>
+              <button class="reset" id="f-reset">Limpar filtros</button>
             </div>
           </div>
         </div>
@@ -328,7 +334,7 @@ dd{margin:2px 0 0; color:var(--ink-2)}
               <span><i class="lg-sel"></i>célula selecionada</span>
               <span><i class="lg-dim"></i>fora do filtro atual</span>
             </div>
-            <p class="insight">Sinal na direção esperada — mas testado com <b>poder estatístico muito baixo</b> (só 34 funcionários), e checado numa segunda amostra separada que apontou na mesma direção sem confirmar. Os detalhes completos, com margem de erro, estão no Relatório. <b>Clique numa célula para selecionar.</b></p>
+            <p class="insight">"Mais perto" e "mais longe" dividem os 34 funcionários pela mediana da distância até o trabalho (25,5 km). Sinal na direção esperada — mas testado com <b>poder estatístico muito baixo</b> (só 34 funcionários), e checado numa segunda amostra separada que apontou na mesma direção sem confirmar. Os detalhes completos, com margem de erro, estão no Relatório. <b>Clique numa célula para selecionar.</b></p>
           </div>
         </div>
 
@@ -375,10 +381,10 @@ dd{margin:2px 0 0; color:var(--ink-2)}
       <p class="answer">64% das ausências não têm atestado médico por trás. A maior parte é consulta, exame ou procedimento que poderia ser agendado fora do expediente; uma fatia menor é falta sem justificativa — e essa parte se mostrou, sobretudo, um atalho de registro administrativo, não indisciplina espalhada entre funcionários.</p>
 
       <div class="kpis" style="margin-top:6px">
-        <div class="kpi"><div class="k">Ausência evitável</div><div class="v">64,3%</div><div class="s">margem: 57,9% a 69,1%</div></div>
-        <div class="kpi kpi-guard"><div class="k">Atestado médico</div><div class="v">35,7%</div><div class="s">não deve cair</div></div>
-        <div class="kpi"><div class="k">Base</div><div class="v">733</div><div class="s">eventos de 34 funcionários</div></div>
-        <div class="kpi"><div class="k">Meta interna</div><div class="v">33,4%</div><div class="s">melhor quartil, sem referência de mercado</div></div>
+        <div class="kpi"><div class="k">Ausência evitável</div><div class="v">64,3%</div></div>
+        <div class="kpi kpi-guard"><div class="k">Atestado médico</div><div class="v">35,7%</div></div>
+        <div class="kpi"><div class="k">Eventos de ausência</div><div class="v">733</div></div>
+        <div class="kpi"><div class="k">Meta interna de ausência evitável</div><div class="v">33,4%</div></div>
       </div>
 
       <nav class="toc">
@@ -2993,6 +2999,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
   /* ================= DADOS DO PROJETO ================= */
   var DADOS=JSON.parse(document.getElementById('dados-projeto').textContent);
   var TIPO=DADOS.TIPO_LABELS, MOTIVO=DADOS.MOTIVO_LABELS, DIST=DADOS.DIST_LABELS, DIA=DADOS.DIA_LABELS, ESTACAO=DADOS.ESTACAO_LABELS;
+  var DIST_CURTO=DIST.map(function(lab){return lab.replace(/\s*\([^)]*\)/,'');}); // sem o parenteses da mediana - so no titulo do grafico, a explicacao vai na nota abaixo
   var cubo=DADOS.cubo;
   var FUNCIONARIOS=DADOS.funcionarios;
   var paretoImp=DADOS.pareto_impacto_motivo.map(function(r){return [r.motivo,r.horas];});
@@ -3261,7 +3268,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
         v.push(colTotal.it?100*celula.it/colTotal.it:0); n.push(celula.it);
       });
       return {k:lab,ti:i,v:v,n:n};
-    }),DIST);
+    }),DIST_CURTO);
 
     funcBar(document.getElementById('d-func'),FUNCIONARIOS,DADOS.baseline.meta_interna);
 
@@ -3417,7 +3424,6 @@ sob adesão de 80% ............................................. 18,1 horas evit
       document.getElementById('pane-'+k).hidden=(k!==m);
       document.getElementById('m-'+k).setAttribute('aria-pressed',String(k===m));
     });
-    document.getElementById('side-filtros').hidden = (m!=='dashboard');
     try{ history.replaceState(null,'','#'+m); }catch(e){}
     hideTip(); draw();
   }
