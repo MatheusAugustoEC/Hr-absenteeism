@@ -1,0 +1,89 @@
+{
+  "ids_confirmacao": [
+    1,
+    5,
+    8,
+    21,
+    25,
+    27,
+    29,
+    30
+  ],
+  "n_identidades_confirmacao": 8,
+  "distancias_confirmacao": {
+    "1": 11.0,
+    "5": 20.0,
+    "8": 35.0,
+    "21": 11.0,
+    "25": 16.0,
+    "27": 42.0,
+    "29": 15.0,
+    "30": 27.0
+  },
+  "mediana_distancia_global_34_identidades": 25.5,
+  "n_longe_confirmacao": 3,
+  "n_perto_confirmacao": 5,
+  "n_eventos_B2_confirmacao": 25,
+  "n_eventos_CID_confirmacao": 27,
+  "n_funcionarios_com_evento_B2_ou_CID": 7,
+  "distribuicao_por_funcionario": [
+    {
+      "ID": 1,
+      "n_b2": 10,
+      "n_cid": 10,
+      "longe": false
+    },
+    {
+      "ID": 5,
+      "n_b2": 1,
+      "n_cid": 3,
+      "longe": false
+    },
+    {
+      "ID": 21,
+      "n_b2": 0,
+      "n_cid": 2,
+      "longe": false
+    },
+    {
+      "ID": 25,
+      "n_b2": 5,
+      "n_cid": 5,
+      "longe": false
+    },
+    {
+      "ID": 27,
+      "n_b2": 4,
+      "n_cid": 2,
+      "longe": true
+    },
+    {
+      "ID": 29,
+      "n_b2": 2,
+      "n_cid": 2,
+      "longe": false
+    },
+    {
+      "ID": 30,
+      "n_b2": 3,
+      "n_cid": 3,
+      "longe": true
+    }
+  ],
+  "H1_confirmacao": {
+    "n_b2_longe": 7,
+    "n_b2_perto": 18,
+    "n_cid_longe": 5,
+    "n_cid_perto": 22,
+    "proporcao_longe_entre_B2": 0.28,
+    "proporcao_longe_entre_CID": 0.1852,
+    "efeito_pp": 9.48,
+    "ic_95_bootstrap_cluster": [
+      0.0,
+      32.16
+    ],
+    "n_replicas_bootstrap_validas": 5000,
+    "efeito_pre_registrado_exploracao_pp": 16.4,
+    "mesma_direcao": true
+  }
+}

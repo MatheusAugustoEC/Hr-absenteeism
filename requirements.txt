@@ -7,3 +7,4 @@ seaborn
 python-docx
 markdown
 xhtml2pdf
+pytest

@@ -8,7 +8,7 @@
 | 2B · Measure — baseline | concluída | APROVADO | [relatório](fase-2b-measure-baseline/relatorio.pdf) · [baseline congelado](fase-2b-measure-baseline/baseline-congelado.pdf) | 26/09/2026 |
 | 3 · Analyze | concluída | APROVADO | [relatório](fase-3-analyze/relatorio.pdf) | 26/09/2026 |
 | 4 · Improve | concluída | APROVADO | [relatório](fase-4-improve/relatorio.pdf) | 26/09/2026 |
-| 5 · Control | não iniciada | — | — | — |
+| 5 · Control | concluída | APROVADO com ressalva | [relatório](fase-5-control/relatorio.pdf) | 26/09/2026 |
 | 6 · Entrega | não iniciada | — | — | — |
 | 7 · Revisão por banca | não iniciada | — | — | — |
 | 8 · Fechamento | não iniciada | — | — | — |
@@ -64,3 +64,7 @@ flowchart LR
 | Ponto de indiferença de H1: 35,4% de adesão para empatar com custo de RH assumido (8h/mês, premissa ilustrativa) | Fase 4 · Improve | Número principal da recomendação — não o ganho bruto; substituir premissa por dado real antes de decisão de negócio |
 | Experimento formal de H1 (rota como unidade) exigiria ~550 unidades/grupo para 80% de poder — 32x mais que as 17 disponíveis | Fase 4 · Improve | Experimento controlado inviável nesta operação; via realista é o holdout observacional (mais fraco) da Control |
 | Guardrail do experimento: nenhuma queda em B2 pode vir com queda em CID (sinalizaria supressão de atestado médico) | Fase 4 · Improve | Critério de aceite obrigatório em qualquer avaliação de H1 na Control |
+| **HOLDOUT ABERTO** (semente 20260926, 26 exploração/8 confirmação): efeito de H1 na confirmação = 9,48 p.p. [IC 95% 0,0-32,2], mesma direção que a exploração (16,4 p.p.), IC muito largo | Fase 5 · Control | Reforço qualitativo, NÃO confirmação estatística — piloto de H1 continua condicional, sem mudança de status |
+| Decisão final sobre H1: não implementar como regra ativa; continuar coletando dados ou aceitar piloto informal com monitoramento cuidadoso do guardrail CID | Fase 5 · Control | Entrega/README devem apresentar H1 como candidato não confirmado, nunca como achado decidido |
+| 14 testes automáticos de qualidade (tests/test_qualidade.py) travam forma, domínio e volume (733 eventos, 34 identidades) da base final | Fase 5 · Control | Qualquer mudança futura no dado de entrada que quebre esses testes exige investigação antes de reusar os resultados |
+| Pendência de reprodutibilidade: requirements.txt sem versões pinadas; scripts das Fases 2A-4 não importam config.py (constantes duplicadas) | Fase 5 · Control | Resolver antes de reexecutar o pipeline em outra máquina/ambiente |
