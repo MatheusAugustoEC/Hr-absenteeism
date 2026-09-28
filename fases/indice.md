@@ -10,7 +10,7 @@
 | 4 · Improve | concluída | APROVADO | [relatório](fase-4-improve/relatorio.pdf) | 26/09/2026 |
 | 5 · Control | concluída | APROVADO com ressalva | [relatório](fase-5-control/relatorio.pdf) | 26/09/2026 |
 | 6 · Entrega | concluída | APROVADO (v5 — reconstrução do zero: sem Painel, sem registro dual, navegação lateral) | [relatório](fase-6-entrega/relatorio.pdf) · [página](fase-6-entrega/pagina/index.html) | 27/09/2026 |
-| 7 · Revisão por banca | concluída (2 rodadas + correções aplicadas) | APROVADO | [parecer r1](fase-7-revisao/parecer.pdf) · [parecer r2](fase-7-revisao/parecer-r2.pdf) · [correções](fase-7-revisao/correcoes.md) | 28/09/2026 |
+| 7 · Revisão por banca | concluída (3 rodadas + correções aplicadas) | APROVADO | [parecer r1](fase-7-revisao/parecer.pdf) · [parecer r2](fase-7-revisao/parecer-r2.pdf) · [parecer r3](fase-7-revisao/parecer-r3.pdf) · [correções](fase-7-revisao/correcoes.md) | 28/09/2026 |
 | 8 · Fechamento | não iniciada | — | — | — |
 
 ## Fluxo
@@ -82,3 +82,4 @@ flowchart LR
 | M5 (rodada 2, sugestão do responsável, aceita pela banca): mover o bloco "Por funcionário" do Dashboard para o fim, depois dos gráficos de dia/mês e antes da tabela detalhada — corrige a progressão agregado→granular | Fase 7 · Revisão por banca — rodada 2, adendo, 28/09/2026 | Aplicar junto com a correção de I1; replicar a mesma ordem no Relatório se a seção 3 espelhar a sequência do Dashboard |
 | I1 corrigido de fato na rodada 2: a correção da rodada 1 tinha piorado a sobreposição (2→4 colisões, nomes completos a -38° não cabiam). Corrigido com abreviação (última palavra, não a segunda) + rotação -60° + gráfico mais largo — 0 colisões medidas por `getBoundingClientRect()`, não inspeção visual, nos 3 cenários (claro, escuro, celular) | Fase 7 · Revisão por banca — rodada 2, 28/09/2026 | Lição registrada: sobreposição de rótulo rotacionado exige medição de retângulo, nunca só captura de tela — `fase-6-entrega/artefatos/checagem_sobreposicao_i1.py` fica como padrão reutilizável |
 | M5 aplicado: ordem do Dashboard passou a ser motivo → tempo perdido → distância → dia da semana → mês → por funcionário → tabela. Relatório não tinha bloco equivalente a "por funcionário" — nada para reordenar lá | Fase 7 · Revisão por banca — rodada 2, 28/09/2026 | Nenhuma mudança de número, só posição visual |
+| Banca (rodada 3, checagem final, 28/09/2026): confirmados I1 (0 ocorrências em `sobreposicao.md` nos 7 cenários testados) e M5 (ordem do Dashboard bate com o pedido) — nada quebrou. Veredito: APROVADO, sem ressalvas pendentes de correção pela banca | Fase 7 · Revisão por banca — rodada 3, 28/09/2026 | Parecer em fase-7-revisao/parecer-r3.md/.pdf. Só restam pendências humanas fora do escopo da banca: I4 (dados reais de autoria) |
