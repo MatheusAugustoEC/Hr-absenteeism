@@ -109,8 +109,22 @@ por_func = por_func.sort_values("prop").reset_index(drop=True)
 por_func["rotulo"] = ["Funcionário " + str(i + 1) for i in range(len(por_func))]
 funcionarios = por_func[["rotulo", "n", "prop"]].to_dict(orient="records")
 
+# [I7, pos-hoc 27/09/2026] mes x tipo - mesma base nao-temporal do M11 (sem
+# coluna de ano, mistura os 3 anos calendario), quebrada por tipo para o
+# grafico exploratorio de padrao de calendario (Carnaval cai em fevereiro
+# nos 3 anos cobertos - 2008, 2009, 2010 - verificado por calculo de Pascoa).
+mes_por_tipo = (
+    df.groupby(["Month of absence", "tipo"]).size().rename("it").reset_index()
+    .pivot(index="Month of absence", columns="tipo", values="it")
+    .reindex(columns=[0, 1, 2], fill_value=0)
+    .fillna(0).astype(int).reset_index()
+    .rename(columns={0: "atestado", 1: "administravel", 2: "sem_justificativa", "Month of absence": "mes"})
+    .to_dict(orient="records")
+)
+
 dados = {
     "TIPO_LABELS": TIPO_LABELS,
+    "mes_por_tipo": mes_por_tipo,
     "MOTIVO_LABELS": MOTIVO_LABELS,
     "DIST_LABELS": DIST_LABELS,
     "DIA_LABELS": DIA_LABELS,

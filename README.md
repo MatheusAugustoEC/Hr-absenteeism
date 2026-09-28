@@ -4,7 +4,7 @@
 
 Projeto de portfólio conduzido por DMAIC (Lean Seis Sigma) sobre o dataset
 público *Absenteeism at Work* (UCI Machine Learning Repository). Autor:
-Augusto — 26/09/2026.
+`<preencha: nome completo · URL do GitHub · URL do LinkedIn>` — 26/09/2026.
 
 ## Que pergunta este projeto responde
 
@@ -25,6 +25,17 @@ efeito grande (16,4 pontos percentuais) mas **não confirmado com significância
 estatística** na fase de análise, e a confirmação no holdout mostrou a mesma
 direção, com magnitude menor (9,5 p.p.) e intervalo de confiança muito largo —
 reforço qualitativo, não confirmação estatística formal.
+
+## Por que este ângulo, e não o de sempre
+
+Este é um dos datasets mais usados publicamente para prever "Absenteeism
+time in hours" por regressão — é a abordagem que a maioria dos notebooks
+públicos usa com este dataset, e não é o que este projeto faz. O ângulo
+aqui é outro: variação e estabilidade do processo, decomposição
+evitável/não-evitável por categoria de motivo, e o tratamento correto do
+agrupamento por funcionário (as 733 linhas são ~34 funcionários com
+múltiplos eventos, não 733 observações independentes) — que a maioria dos
+notebooks públicos ignora.
 
 ## Como rodar do zero
 

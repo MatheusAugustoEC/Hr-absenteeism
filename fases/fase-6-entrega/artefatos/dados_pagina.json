@@ -4,6 +4,80 @@
     "Ausência administrável",
     "Falta sem justificativa aceita"
   ],
+  "mes_por_tipo": [
+    {
+      "mes": 1,
+      "atestado": 14,
+      "administravel": 32,
+      "sem_justificativa": 3
+    },
+    {
+      "mes": 2,
+      "atestado": 18,
+      "administravel": 53,
+      "sem_justificativa": 1
+    },
+    {
+      "mes": 3,
+      "atestado": 36,
+      "administravel": 46,
+      "sem_justificativa": 5
+    },
+    {
+      "mes": 4,
+      "atestado": 23,
+      "administravel": 27,
+      "sem_justificativa": 3
+    },
+    {
+      "mes": 5,
+      "atestado": 30,
+      "administravel": 27,
+      "sem_justificativa": 7
+    },
+    {
+      "mes": 6,
+      "atestado": 23,
+      "administravel": 26,
+      "sem_justificativa": 5
+    },
+    {
+      "mes": 7,
+      "atestado": 27,
+      "administravel": 29,
+      "sem_justificativa": 11
+    },
+    {
+      "mes": 8,
+      "atestado": 19,
+      "administravel": 33,
+      "sem_justificativa": 2
+    },
+    {
+      "mes": 9,
+      "atestado": 10,
+      "administravel": 33,
+      "sem_justificativa": 9
+    },
+    {
+      "mes": 10,
+      "atestado": 20,
+      "administravel": 35,
+      "sem_justificativa": 14
+    },
+    {
+      "mes": 11,
+      "atestado": 27,
+      "administravel": 28,
+      "sem_justificativa": 8
+    },
+    {
+      "mes": 12,
+      "atestado": 15,
+      "administravel": 30,
+      "sem_justificativa": 4
+    }
+  ],
   "MOTIVO_LABELS": [
     "Atestado médico",
     "Consulta médica",

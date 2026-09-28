@@ -60,6 +60,15 @@ svg{display:block; width:100%; height:auto}
   border:1px solid transparent; background:transparent; color:var(--ink-2); cursor:pointer}
 .nav button:hover{background:var(--sunk)}
 .nav button[aria-pressed="true"]{background:var(--accent); color:var(--paper); box-shadow:var(--shadow)}
+.autor{margin-top:auto; padding-top:14px; border-top:1px solid var(--line); font-family:"JetBrains Mono",monospace; font-size:10px; line-height:1.6; color:var(--ink-3)}
+.reco{display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-top:16px; padding-top:14px; border-top:1px solid var(--line)}
+.reco-item{display:flex; align-items:baseline; gap:8px; font-size:13.5px; color:var(--ink-2)}
+.reco-dot{width:9px; height:9px; border-radius:50%; flex:0 0 9px; display:inline-block}
+.reco-dot.reco-ok{background:var(--good)}
+.reco-dot.reco-pend{background:var(--accent)}
+.reco-link{font-size:12.5px; font-weight:600; color:var(--accent); text-decoration:none; margin-left:auto; white-space:nowrap}
+.reco-link:hover{text-decoration:underline}
+@media (max-width:640px){ .reco-link{margin-left:0} }
 
 /* filtros do Dashboard, agora no conteudo (nao mais na lateral) */
 .filters{display:flex; flex-direction:column; gap:12px}
@@ -130,6 +139,8 @@ th .arw{opacity:.35; margin-left:4px}
 th[aria-sort] .arw{opacity:1; color:var(--accent)}
 
 .badge-promissor{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.05em; padding:3px 10px; border-radius:999px; background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent); text-transform:uppercase; white-space:nowrap}
+.badge-testado{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.05em; padding:3px 10px; border-radius:999px; background:var(--warn-soft); color:var(--warn); border:1px solid var(--warn); text-transform:uppercase; white-space:nowrap}
+.badge-exploratorio{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.05em; padding:3px 10px; border-radius:999px; background:var(--crit-soft); color:var(--crit); border:1px solid var(--crit); text-transform:uppercase; white-space:nowrap}
 .sevpill{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; padding:3px 10px; border-radius:999px}
 .sev-alta{background:var(--crit-soft); color:var(--crit)}
 .sev-media{background:var(--warn-soft); color:var(--warn)}
@@ -204,6 +215,7 @@ dd{margin:2px 0 0; color:var(--ink-2)}
   .sidebar{position:relative; width:100%; height:auto; flex-basis:auto; border-right:0; border-bottom:1px solid var(--line); flex-direction:row; flex-wrap:wrap; align-items:center; gap:12px 20px}
   .brandmark{flex:1 1 auto}
   .nav{flex-direction:row; flex-wrap:wrap}
+  .autor{flex-basis:100%; margin-top:0; border-top:0; padding-top:0}
   .content{padding:20px 16px 60px}
   .ddrow{gap:10px}
   .reset{margin-left:0}
@@ -236,6 +248,7 @@ dd{margin:2px 0 0; color:var(--ink-2)}
       <button id="m-relatorio" aria-pressed="false">Relatório</button>
       <button id="m-slides" aria-pressed="false">Slides</button>
     </nav>
+    <div class="autor">&lt;preencha: nome completo · URL do GitHub · URL do LinkedIn&gt;</div>
   </aside>
 
   <main class="content">
@@ -249,6 +262,11 @@ dd{margin:2px 0 0; color:var(--ink-2)}
             <div class="eyebrow">Quanto da ausência dá para evitar</div>
             <div class="bignum">64,3<span>%</span></div>
             <p style="margin-top:8px;max-width:62ch">Cerca de <b>6 em cada 10</b> ausências registradas nesta transportadora não têm atestado médico por trás. Essa medida tem uma margem de erro — o valor real está entre <b class="mono">57,9%</b> e <b class="mono">69,1%</b>. Base: <b class="mono">733</b> eventos de <b class="mono">34</b> funcionários, entre julho de 2007 e julho de 2010.</p>
+            <div class="reco">
+              <div class="reco-item"><span class="reco-dot reco-ok"></span><div><b>Trava no sistema</b> — pronta, sem custo real de implementação</div></div>
+              <div class="reco-item"><span class="reco-dot reco-pend"></span><div><b>Piloto de agendamento</b> — proposto, ainda não confirmado</div></div>
+              <a href="#s2" class="reco-link" id="reco-link">Ver a conta completa no Relatório →</a>
+            </div>
           </div>
         </div>
 
@@ -315,7 +333,7 @@ dd{margin:2px 0 0; color:var(--ink-2)}
             <h3>Horas por motivo</h3>
             <div id="d-motivo-horas"></div>
             <p class="cardnote">Só os motivos administráveis têm horas — "falta sem justificativa aceita" tem sempre 0h, por isso não aparece aqui.</p>
-            <p class="insight">Em horas, o ranking quase não muda: consulta médica e odontológica continuam liderando o tempo perdido.</p>
+            <p class="insight">Em horas, o ranking quase não muda: consulta médica e odontológica continuam liderando o tempo perdido. A liderança de consulta médica (31,3% das horas) não vem de poucos funcionários — testado excluindo os 3 com mais consultas, um de cada vez; detalhe no Relatório (seção 3).</p>
           </div>
         </div>
 
@@ -348,23 +366,48 @@ dd{margin:2px 0 0; color:var(--ink-2)}
         </div>
 
         <div class="g12">
-          <div class="tbox">
-            <table id="d-tab">
-              <thead><tr>
-                <th class="sortable" data-k="mo">Motivo<span class="arw">↕</span></th>
-                <th class="sortable" data-k="di">Distância<span class="arw">↕</span></th>
-                <th class="sortable" data-k="da">Dia<span class="arw">↕</span></th>
-                <th class="sortable" data-k="it" style="text-align:right">Eventos<span class="arw">↕</span></th>
-                <th class="sortable" data-k="h" style="text-align:right">Horas<span class="arw">↕</span></th>
-              </tr></thead>
-              <tbody id="d-tabela"></tbody>
-            </table>
+          <div class="card">
+            <div class="badge-testado">JÁ TESTADO — SEM EFEITO CONFIRMADO (H4)</div>
+            <div class="eyebrow" style="margin-top:10px">Padrão por dia da semana</div>
+            <h3>Atestado médico, administrável e sem justificativa, por dia</h3>
+            <div id="d-dia-tipo"></div>
+            <div class="legend" id="legend-dia-tipo"></div>
+            <p class="insight">Testado formalmente como hipótese pré-registrada (H4): efeito de 3,95 p.p., abaixo do mínimo de 8 p.p. para agir, p=0,555 — o gráfico acima é só descritivo, a diferença entre dias não é estatisticamente confiável. Dia da semana não entra como fator em nenhuma recomendação.</p>
           </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px">
-            <button type="button" class="mini" id="t-all">Mostrar todas</button>
-            <button type="button" class="mini" id="t-xlsx">Baixar planilha (.xlsx)</button>
-            <span class="hint" id="t-hint" style="margin:0">Clique no título de uma coluna para ordenar; de novo para inverter. A planilha abre no Excel já formatada, com os filtros aplicados descritos numa segunda aba.</span>
+        </div>
+
+        <div class="g12">
+          <div class="card">
+            <div class="badge-exploratorio">EXPLORATÓRIO — HIPÓTESE NOVA, NÃO TESTADA</div>
+            <div class="eyebrow" style="margin-top:10px">Padrão por mês do calendário</div>
+            <h3>Meses com datas fixas de calendário concentram mais ausência?</h3>
+            <div id="d-mes-tipo"></div>
+            <div class="legend" id="legend-mes-tipo"></div>
+            <p class="insight"><b>Hipótese nova (H5), nascida em 27/09/2026 ao revisar esta página — não estava no pré-registro da Fase 1, e vale menos como evidência por isso.</b> Fevereiro concentra o Carnaval nos três anos cobertos por este recorte (2008, 2009 e 2010, verificado por cálculo da data da Páscoa); dezembro concentra o Natal, todo ano. Sem ordem cronológica confiável (os rótulos de mês ainda misturam 3 anos calendário, M11) e sem amostra de confirmação restante — o holdout desta base já foi aberto na Fase 5 · Control. Leitura só sugestiva, nunca causal, e não vira recomendação de negócio sem uma rodada de confirmação que esta base não tem mais como fornecer.</p>
           </div>
+        </div>
+
+        <div class="g12">
+          <details>
+            <summary>Ver a tabela detalhada (motivo × distância × dia)</summary>
+            <div class="tbox" style="margin-top:14px">
+              <table id="d-tab">
+                <thead><tr>
+                  <th class="sortable" data-k="mo">Motivo<span class="arw">↕</span></th>
+                  <th class="sortable" data-k="di">Distância<span class="arw">↕</span></th>
+                  <th class="sortable" data-k="da">Dia<span class="arw">↕</span></th>
+                  <th class="sortable" data-k="it" style="text-align:right">Eventos<span class="arw">↕</span></th>
+                  <th class="sortable" data-k="h" style="text-align:right">Horas<span class="arw">↕</span></th>
+                </tr></thead>
+                <tbody id="d-tabela"></tbody>
+              </table>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px">
+              <button type="button" class="mini" id="t-all">Mostrar todas</button>
+              <button type="button" class="mini" id="t-xlsx">Baixar planilha (.xlsx)</button>
+              <span class="hint" id="t-hint" style="margin:0">Clique no título de uma coluna para ordenar; de novo para inverter. A planilha abre no Excel já formatada, com os filtros aplicados descritos numa segunda aba.</span>
+            </div>
+          </details>
         </div>
 
       </div>
@@ -419,13 +462,13 @@ dd{margin:2px 0 0; color:var(--ink-2)}
         <table>
           <thead><tr><th>Ação</th><th>Tipo</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td>Tirar o código administrativo da lista de motivos de ausência, forçando o uso do código oficial de "sem justificativa"</td><td>Trava no sistema</td><td><b>Pronta, sem custo real de implementação</b></td></tr>
+            <tr><td>Tirar o código administrativo da lista de motivos de ausência, forçando o uso do código oficial de "sem justificativa"<br><span style="font-size:12px;color:var(--ink-3)">Afeta até 39 eventos — 5,3% do total registrado (seção 7, H3)</span></td><td>Trava no sistema</td><td><b>Pronta, sem custo real de implementação</b></td></tr>
             <tr><td>Priorizar agendamento de consulta/exame fora do expediente para quem mora mais longe</td><td>Reduz a variação</td><td><b>Piloto proposto — depende de mais confirmação, não está ativa</b></td></tr>
           </tbody>
         </table>
       </div>
       <p>A primeira ataca uma causa já confirmada (seção 7): o código usado para falta sem justificativa é, na maior parte das vezes, um atalho de registro administrativo, disperso entre 20 funcionários — não concentrado em poucas pessoas. Tirar a opção errada da tela resolve isso sem depender de ninguém lembrar da regra.</p>
-      <p>A segunda ataca um sinal promissor, mas <b>ainda não confirmado</b>: funcionários que moram mais longe parecem ter mais ausência do tipo administrável. Por isso ela não é uma regra ativa — é uma proposta de piloto, condicionada ao que a segunda amostra de confirmação mostrar (ela já mostrou reforço na mesma direção, não confirmação — seção 13).</p>
+      <p>A segunda ataca um sinal promissor, mas <b>ainda não confirmado</b>: funcionários que moram mais longe parecem ter mais ausência do tipo administrável. Por isso ela não é uma regra ativa — é uma proposta de piloto, condicionada ao que a segunda amostra de confirmação mostrar (ela já mostrou reforço na mesma direção, não confirmação — seção 13). Ela também assume que a causa é a distância até o trabalho, não até serviços de saúde — a base não separa as duas (seção 14).</p>
       <p>Toda estimativa de ganho deve poder ser contestada linha a linha. Esta é a minha, só para a segunda recomendação:</p>
       <div class="calc">funcionários que moram mais longe da mediana ................ 17
 eventos administráveis desses funcionários, no período ....... 271
@@ -463,6 +506,22 @@ sob adesão de 80% ............................................. 18,1 horas evit
         </table>
       </div>
       <p><b>Falta sem justificativa aceita</b> é o segundo maior motivo em participação (15,3% dos eventos evitáveis) — mas <b>desaparece</b> de qualquer ranking feito só por horas, porque tem sempre 0 hora registrada. Um projeto que olhasse só o ranking de horas concluiria, errado, que esse motivo não importa. Para os motivos administráveis, os dois rankings concordam nos dois primeiros lugares (consulta médica e odontológica) — a recomendação pode mirar esses dois com confiança dupla.</p>
+      <p>"Consulta médica" sozinha já é quase um terço do problema administrável — isso é concentração real, ou vem de poucos funcionários com muitas consultas cada? Testei do mesmo jeito que testei a hipótese da distância (seção 8): excluí, um de cada vez, os 3 funcionários com mais eventos de consulta médica.</p>
+      <div class="keyfig">
+        <div class="eyebrow">A liderança não depende de poucos funcionários</div>
+        <div class="n mono">28,4%–33,8%</div>
+        <p>Excluindo cada um dos 3 funcionários com mais consultas médicas, a participação nas horas administráveis continua entre 28,4% e 33,8% (partindo de 31,3%) — e entre 27,2% e 33,1% na contagem de eventos (partindo de 31,0%). Em nenhuma das 3 exclusões a participação se aproxima da média das outras categorias (~15%). A liderança de "consulta médica" é distribuída entre muitos funcionários, não puxada por poucos.</p>
+      </div>
+
+      <h3>Existe um padrão por dia da semana?</h3>
+      <div class="badge-testado">JÁ TESTADO — SEM EFEITO CONFIRMADO (H4)</div>
+      <figure style="margin-top:10px"><div id="rep-dia-tipo"></div><div class="legend" id="legend-rep-dia-tipo"></div><figcaption>Atestado médico, administrável e sem justificativa, por dia da semana.</figcaption></figure>
+      <p>Testado formalmente como hipótese pré-registrada (H4): efeito de 3,95 p.p., abaixo do mínimo de 8 p.p. para agir, p=0,555 (mais detalhes nas Notas técnicas, seção 15). O gráfico acima é só descritivo — a diferença entre dias não é estatisticamente confiável, e dia da semana não entra como fator em nenhuma recomendação.</p>
+
+      <h3>E por mês do calendário?</h3>
+      <div class="badge-exploratorio">EXPLORATÓRIO — HIPÓTESE NOVA, NÃO TESTADA</div>
+      <figure style="margin-top:10px"><div id="rep-mes-tipo"></div><div class="legend" id="legend-rep-mes-tipo"></div><figcaption>Atestado médico, administrável e sem justificativa, por mês (rótulo 1–12, sem ordem cronológica confiável — mistura 3 anos calendário).</figcaption></figure>
+      <p><b>Hipótese nova (H5), nascida em 27/09/2026 ao revisar esta página — não estava no pré-registro da Fase 1, e vale menos como evidência causal por isso (regra 3 do contexto mestre).</b> A pergunta: meses com datas fixas de calendário (Carnaval, Natal) concentram mais ausência administrável ou sem justificativa? Fevereiro concentra o Carnaval nos três anos cobertos por este recorte — 2008 (5/fev), 2009 (24/fev) e 2010 (16/fev), verificado por cálculo da data da Páscoa, já que a data varia ano a ano; dezembro concentra o Natal, todo ano. Mesmo com essa coincidência resolvida, o gráfico continua sem ordem cronológica confiável entre os três anos (M11), e não há mais amostra de confirmação disponível — o holdout desta base já foi aberto na Fase 5 · Control. Esta leitura é só sugestiva, nunca causal, e não pode virar recomendação de negócio sem uma rodada de confirmação que esta base não tem mais como fornecer.</p>
 
       <h2 id="s4">4. De onde vêm os dados</h2>
       <p>Registros reais de ausência de uma transportadora de Brasília, entre julho de 2007 e julho de 2010 (base pública, UCI Machine Learning Repository). Cada linha é um evento de ausência de um funcionário — o mesmo funcionário aparece em várias linhas, com atributos fixos repetidos.</p>
@@ -579,6 +638,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
         <li><b>Nenhuma simulação de ganho tem como confirmar o resultado exato.</b> Não há como saber "o que teria acontecido sem a ausência" — por isso o número principal da recomendação de agendamento é o ponto de equilíbrio (35,4% de adesão), não um ganho prometido.</li>
         <li><b>O sinal sobre distância é pequeno demais na amostra para confirmar com total confiança</b> — foi checado de novo numa segunda amostra separada e apontou na mesma direção, o que reforça mas não confirma.</li>
         <li><b>A causalidade pode estar invertida.</b> É possível que funcionários que já geravam mais ausência evitável tenham sido alocados a rotas mais distantes antes — não o contrário. A base não tem como descartar isso.</li>
+        <li><b>Distância ao trabalho pode ser um substituto de distância a serviços de saúde, não a causa em si.</b> Quem mora mais longe do trabalho pode também morar mais longe de clínicas e postos de saúde — o que mudaria a duração ou frequência das consultas por um motivo diferente do deslocamento até a empresa. A base só tem a distância até o trabalho (nenhuma outra coluna de localização), então essa explicação concorrente não pode ser separada da hipótese principal. O piloto de agendamento (seção 2) assume que a causa é a distância até o trabalho — se for sobretudo a distância a serviços de saúde, ele mira a coisa errada.</li>
       </ul>
 
       <h2 id="s15">15. Notas técnicas</h2>
@@ -587,8 +647,10 @@ sob adesão de 80% ............................................. 18,1 horas evit
         <li><b>Margem de erro (IC 95%) do número principal:</b> 57,95%–69,13%, calculada reamostrando funcionários inteiros (não eventos) 5.000 vezes — bootstrap por cluster, não Wilson ingênuo sobre as 733 linhas. Reamostrar eventos trataria pessoas com muitos eventos como se fossem várias pessoas independentes.</li>
         <li><b>Hipótese da distância (H1):</b> efeito bruto de 16,39 pp (IC 95% 3,76–24,33 pp; p=0,0178, acima do α ajustado de Bonferroni de 0,0125). Poder de detecção estimado em ≈3% para o efeito mínimo pré-registrado de 10 pp, com 34 funcionários — por isso um resultado "não significativo" aqui é inconclusivo, não uma refutação.</li>
         <li><b>Hipótese rival estrutural (H2):</b> testada antes da principal, por desenho. Efeito ponderado por funcionário: 15,85 pp. Excluindo cada um dos 3 funcionários mais frequentes: 14,47 / 14,78 / 17,26 pp. Não refuta H1.</li>
+        <li><b>Concentração de "consulta médica" no Pareto administrável (pós-hoc, 27/09/2026):</b> baseline 31,26% das horas / 31,00% dos eventos evitáveis. Excluindo, um de cada vez, os 3 funcionários com mais eventos de consulta médica (IDs internos, não expostos): 28,38–33,80% das horas e 27,16–33,07% dos eventos. Mesmo desenho de H2, aplicado depois da Fase 6 por achado da banca (Fase 7) — não é hipótese pré-registrada, e o holdout não foi tocado.</li>
         <li><b>Hipótese do atalho de registro (H3):</b> 39 eventos com o código fora da lista oficial, 20 identidades distintas, top-5 = 48,72% (abaixo do limiar de 50% pré-registrado). Não refutada.</li>
         <li><b>Hipótese do dia da semana (H4):</b> efeito de 3,95 pp (p=0,5546), abaixo do mínimo pré-registrado de 8 pp. Descartada.</li>
+        <li><b>Hipótese de calendário (H5, pós-hoc, 27/09/2026):</b> não pré-registrada, não testada formalmente (só descritiva) — nasceu ao revisar a Entrega, não no Define. Carnaval cai em fevereiro nos 3 anos cobertos (2008, 2009, 2010), calculado a partir da data da Páscoa. Sem holdout restante para confirmação. Não vira recomendação de negócio.</li>
         <li><b>Confirmação no holdout:</b> 9,48 pp (IC 95% 0,0–32,16 pp), n=8 (3 longe, 5 perto). Bootstrap de cluster, mesma direção do efeito bruto — reforço qualitativo, não confirmação estatística.</li>
         <li><b>Sem carta de controle:</b> no máximo 13 rótulos de mês possíveis, abaixo do mínimo de 20–25 subgrupos exigido para limites confiáveis — mesmo sem considerar que cada rótulo mistura até 3 anos calendário.</li>
         <li><b>Experimento formal:</b> n necessário ≈550 por grupo (poder de 80%, α=0,0125, efeito mínimo 10 pp, via NormalIndPower) contra 17 rotas disponíveis — razão 32,4×.</li>
@@ -688,6 +750,80 @@ sob adesão de 80% ............................................. 18,1 horas evit
     "Atestado médico",
     "Ausência administrável",
     "Falta sem justificativa aceita"
+  ],
+  "mes_por_tipo": [
+    {
+      "mes": 1,
+      "atestado": 14,
+      "administravel": 32,
+      "sem_justificativa": 3
+    },
+    {
+      "mes": 2,
+      "atestado": 18,
+      "administravel": 53,
+      "sem_justificativa": 1
+    },
+    {
+      "mes": 3,
+      "atestado": 36,
+      "administravel": 46,
+      "sem_justificativa": 5
+    },
+    {
+      "mes": 4,
+      "atestado": 23,
+      "administravel": 27,
+      "sem_justificativa": 3
+    },
+    {
+      "mes": 5,
+      "atestado": 30,
+      "administravel": 27,
+      "sem_justificativa": 7
+    },
+    {
+      "mes": 6,
+      "atestado": 23,
+      "administravel": 26,
+      "sem_justificativa": 5
+    },
+    {
+      "mes": 7,
+      "atestado": 27,
+      "administravel": 29,
+      "sem_justificativa": 11
+    },
+    {
+      "mes": 8,
+      "atestado": 19,
+      "administravel": 33,
+      "sem_justificativa": 2
+    },
+    {
+      "mes": 9,
+      "atestado": 10,
+      "administravel": 33,
+      "sem_justificativa": 9
+    },
+    {
+      "mes": 10,
+      "atestado": 20,
+      "administravel": 35,
+      "sem_justificativa": 14
+    },
+    {
+      "mes": 11,
+      "atestado": 27,
+      "administravel": 28,
+      "sem_justificativa": 8
+    },
+    {
+      "mes": 12,
+      "atestado": 15,
+      "administravel": 30,
+      "sem_justificativa": 4
+    }
   ],
   "MOTIVO_LABELS": [
     "Atestado médico",
@@ -3083,7 +3219,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
   }
 
   function paretoAcum(el,rows){
-    var W=460,H=256,L=48,R=46,T=16,B=52;
+    var W=460,H=272,L=48,R=46,T=16,B=68;
     var pw=W-L-R, ph=H-T-B, n=rows.length;
     var tot=rows.reduce(function(a,r){return a+r[1];},0), max=rows[0][1];
     var slot=pw/n, bw=Math.min(40,slot*0.6), acc=0, ramp=RAMP();
@@ -3103,8 +3239,8 @@ sob adesão de 80% ............................................. 18,1 horas evit
       var tp=esc(r[0])+'<br><b>'+nf(r[1],0)+'h</b> de ausência<br>'+nf(100*r[1]/tot,1)+'% do total';
       s+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+ramp[i]+'" data-tip="'+attr(tp)+'"/>';
       pts.push([x+bw/2, T+ph-(ph*acc/tot), acc, r[0]]);
-      var palavras=r[0].split(' '), rotuloCurto=palavras[0]+(palavras[1]?' '+palavras[1].charAt(0).toUpperCase()+'.':'');
-      s+='<text x="'+(x+bw/2).toFixed(1)+'" y="'+(T+ph+14)+'" text-anchor="middle" font-size="9.5" fill="'+c('--ink-3')+'">'+esc(rotuloCurto)+'</text>';
+      var lx=(x+bw/2).toFixed(1), ly=T+ph+14;
+      s+='<text x="'+lx+'" y="'+ly+'" text-anchor="end" font-size="9.5" fill="'+c('--ink-3')+'" transform="rotate(-38 '+lx+' '+ly+')">'+esc(r[0])+'</text>';
     });
     var d=pts.map(function(p,i){return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join('');
     s+='<path d="'+d+'" fill="none" stroke="'+c('--crit')+'" stroke-width="2" pointer-events="none"/>';
@@ -3149,12 +3285,12 @@ sob adesão de 80% ............................................. 18,1 horas evit
       s+='<rect x="'+L+'" y="'+(y+1.5)+'" width="'+Math.max(1.5,bw).toFixed(1)+'" height="'+(rowH-3)+'" fill="'+cor+'" fill-opacity="0.9" data-tip="'+attr(tp)+'"/>';
     });
     s+='<line x1="'+xMeta.toFixed(1)+'" y1="'+T+'" x2="'+xMeta.toFixed(1)+'" y2="'+(T+rows.length*rowH)+'" stroke="'+c('--crit')+'" stroke-width="1.5" stroke-dasharray="4 3"/>';
-    s+='<text x="'+xMeta.toFixed(1)+'" y="'+(T+rows.length*rowH+14)+'" text-anchor="middle" font-size="10.5" font-weight="700" font-family="JetBrains Mono,monospace" fill="'+c('--crit')+'">meta '+nf(meta*100,0)+'%</text>';
+    s+='<text x="'+xMeta.toFixed(1)+'" y="'+(T+rows.length*rowH+14)+'" text-anchor="middle" font-size="10.5" font-weight="700" font-family="JetBrains Mono,monospace" fill="'+c('--crit')+'">meta '+nf(meta*100,1)+'%</text>';
     el.innerHTML=s+'</svg>'; wireTips(el);
   }
 
   function matrizTD(el,rows,colLabels){
-    var W=620, L=210, R=14, T=26, rh=44, cw=(W-L-R)/colLabels.length, H=T+rows.length*rh+8;
+    var W=620, L=210, R=14, T=26, rh=54, cw=(W-L-R)/colLabels.length, H=T+rows.length*rh+8;
     var ramp=[c('--s1'),c('--s2'),c('--s3'),c('--s4'),c('--s5')];
     var s=sv(W,H);
     colLabels.forEach(function(lab,j){
@@ -3171,11 +3307,81 @@ sob adesão de 80% ............................................. 18,1 horas evit
         var idx=Math.min(4,Math.floor(5*v/100.001));
         var tp=esc(r.k)+' · '+esc(colLabels[j])+'<br><b>'+nf(v,1)+'%</b> dos eventos desse grupo de distância<br>'+nf(r.n[j],0)+' eventos'+clickHint(picked);
         s+='<rect x="'+(L+cw*j+2)+'" y="'+(y+2)+'" width="'+(cw-4)+'" height="'+(rh-4)+'" fill="'+ramp[idx]+'" fill-opacity="'+(active?1:0.28)+'"'+(picked?' stroke="'+c('--ink')+'" stroke-width="2.5"':'')+' data-tip="'+attr(tp)+'" data-flt="mtx:'+key+'"/>';
-        s+='<text x="'+(L+cw*j+cw/2)+'" y="'+(y+rh/2+4)+'" text-anchor="middle" font-size="12" font-weight="600" font-family="JetBrains Mono,monospace" fill="'+(active?textOn(ramp[idx]):c('--ink'))+'" fill-opacity="'+(active?1:0.5)+'" pointer-events="none">'+nf(v,1)+'</text>';
+        s+='<text x="'+(L+cw*j+cw/2)+'" y="'+(y+rh/2-1)+'" text-anchor="middle" font-size="12" font-weight="600" font-family="JetBrains Mono,monospace" fill="'+(active?textOn(ramp[idx]):c('--ink'))+'" fill-opacity="'+(active?1:0.5)+'" pointer-events="none">'+nf(v,1)+'</text>';
+        s+='<text x="'+(L+cw*j+cw/2)+'" y="'+(y+rh/2+14)+'" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="'+(active?textOn(ramp[idx]):c('--ink'))+'" fill-opacity="'+(active?0.75:0.4)+'" pointer-events="none">n='+nf(r.n[j],0)+'</text>';
       });
     });
     el.innerHTML=s+'</svg>'; wireTips(el);
   }
+
+  /* Barras agrupadas genericas: uma categoria no eixo X, N series lado a
+     lado (percentual 0-100 dentro de cada categoria). Usado pelos dois
+     blocos pos-hoc [I7]: dia da semana x tipo, e mes x tipo. Sem zoom nem
+     crosshair - nao sao series temporais confiaveis (regra 18/M11). */
+  function agrupadas(el,catLabels,matriz,seriesLabels,seriesColors,ns){
+    var W=860,H=250,L=38,R=16,T=16,B=40;
+    var pw=W-L-R, ph=H-T-B, nCat=catLabels.length, nSer=seriesLabels.length;
+    var groupW=pw/nCat, barW=Math.min(30,groupW/(nSer+1.3));
+    var s=sv(W,H);
+    [0,25,50,75,100].forEach(function(g){
+      var yy=T+ph-(ph*g)/100;
+      s+='<text x="'+(L-7)+'" y="'+(yy+3.5)+'" text-anchor="end" font-size="9.5" font-family="JetBrains Mono,monospace" fill="'+c('--ink-3')+'">'+g+'%</text>';
+      s+='<line x1="'+L+'" y1="'+yy+'" x2="'+(W-R)+'" y2="'+yy+'" stroke="'+c('--line')+'" stroke-width="1"/>';
+    });
+    catLabels.forEach(function(lab,gi){
+      var gx=L+groupW*gi;
+      seriesLabels.forEach(function(_,si){
+        var v=matriz[gi][si], h=(ph*v)/100, y=T+ph-h;
+        var bx=gx+(groupW-nSer*barW)/2+si*barW;
+        var tp=esc(seriesLabels[si])+' · '+esc(lab)+'<br><b>'+nf(v,1)+'%</b>'+(ns?'<br>'+nf(ns[gi][si],0)+' eventos':'');
+        s+='<rect x="'+bx.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+(barW-2)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+seriesColors[si]+'" data-tip="'+attr(tp)+'"/>';
+      });
+      s+='<text x="'+(gx+groupW/2).toFixed(1)+'" y="'+(T+ph+18)+'" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="'+c('--ink-2')+'">'+esc(lab)+'</text>';
+    });
+    el.innerHTML=s+'</svg>'; wireTips(el);
+  }
+
+  var MES_LBL=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  var CORES_TIPO=null; // resolvido em runtime (getComputedStyle exige o documento pronto)
+  function coresTipo(){ return CORES_TIPO || (CORES_TIPO=[c('--good'),c('--accent'),c('--warn')]); }
+
+  function calcDiaPorTipo(){
+    var matriz=[], ns=[];
+    DIA.forEach(function(_,d){
+      var rows=cubo.filter(function(x){return x.da===d;});
+      var tot=soma(rows).it;
+      var linha=[], linhaN=[];
+      TIPO.forEach(function(_,t){
+        var sub=soma(rows.filter(function(x){return x.ti===t;}));
+        linha.push(tot?100*sub.it/tot:0); linhaN.push(sub.it);
+      });
+      matriz.push(linha); ns.push(linhaN);
+    });
+    return {cats:DIA, matriz:matriz, ns:ns};
+  }
+
+  function calcMesPorTipo(){
+    var matriz=[], ns=[];
+    (DADOS.mes_por_tipo||[]).forEach(function(r){
+      var tot=r.atestado+r.administravel+r.sem_justificativa;
+      matriz.push([tot?100*r.atestado/tot:0, tot?100*r.administravel/tot:0, tot?100*r.sem_justificativa/tot:0]);
+      ns.push([r.atestado,r.administravel,r.sem_justificativa]);
+    });
+    return {cats:MES_LBL, matriz:matriz, ns:ns};
+  }
+
+  function renderAgrupadaEm(elId,legId,dados){
+    var el=document.getElementById(elId); if(!el || !dados.matriz.length) return;
+    var cores=coresTipo();
+    agrupadas(el,dados.cats,dados.matriz,TIPO,cores,dados.ns);
+    var leg=legId&&document.getElementById(legId);
+    if(leg) leg.innerHTML=TIPO.map(function(lab,i){return '<span><i style="width:12px;height:10px;border-radius:2px;background:'+cores[i]+';display:inline-block"></i>'+esc(lab)+'</span>';}).join('');
+  }
+
+  function desenhaDiaTipo(){ renderAgrupadaEm('d-dia-tipo','legend-dia-tipo',calcDiaPorTipo()); }
+  function desenhaMesTipo(){ renderAgrupadaEm('d-mes-tipo','legend-mes-tipo',calcMesPorTipo()); }
+  function desenhaDiaTipoRel(){ renderAgrupadaEm('rep-dia-tipo','legend-rep-dia-tipo',calcDiaPorTipo()); }
+  function desenhaMesTipoRel(){ renderAgrupadaEm('rep-mes-tipo','legend-rep-mes-tipo',calcMesPorTipo()); }
 
   function rivalChart(el){
     var W=700,H=230,L=230,R=70,T=16,rowH=36,pw=W-L-R;
@@ -3414,7 +3620,9 @@ sob adesão de 80% ............................................. 18,1 horas evit
       mesBar(document.getElementById('rep-mes'),MESES_NT);
       paretoAcum(document.getElementById('rep-pareto'),paretoImp);
       rivalChart(document.getElementById('rep-rival'));
+      desenhaDiaTipoRel(); desenhaMesTipoRel();
     }
+    desenhaDiaTipo(); desenhaMesTipo();
     renderDash();
   }
 
@@ -3428,6 +3636,10 @@ sob adesão de 80% ............................................. 18,1 horas evit
     hideTip(); draw();
   }
   modes.forEach(function(k){ document.getElementById('m-'+k).addEventListener('click',function(){ setMode(k); }); });
+  document.getElementById('reco-link').addEventListener('click',function(e){
+    e.preventDefault(); setMode('relatorio');
+    setTimeout(function(){ var alvo=document.getElementById('s2'); if(alvo) alvo.scrollIntoView({behavior:'smooth'}); },50);
+  });
   var initial=(location.hash||'').replace('#','');
   setMode(modes.indexOf(initial)>=0?initial:'dashboard');
   if(window.matchMedia){ var mq=window.matchMedia('(prefers-color-scheme: dark)'); if(mq.addEventListener) mq.addEventListener('change',draw); }

@@ -10,9 +10,10 @@
 | artefatos/06_entrega_dados.py | cópia congelada do script | scripts/06_entrega_dados.py | prova de reprodutibilidade |
 | artefatos/dados_pagina.json | todos os números da página, consolidados | scripts/06_entrega_dados.py | pagina/index.html (embutido) |
 | artefatos/index.html, pptxgen.bundle.js | cópia congelada da página entregue | pagina/ | prova de reprodutibilidade |
-| artefatos/relatorio-auditoria.md | relatório da auditoria final (1 rodada, 1 achado corrigido) | auditoria com Playwright | este relatório |
-| artefatos/auditoria_v5_reconstrucao.py | script Playwright desta auditoria | escrito nesta fase | artefatos/relatorio-auditoria.md |
-| artefatos/capturas/*.png | capturas dos três modos (Dashboard claro/escuro/mobile, Relatório escuro, Slides desktop/mobile) | Playwright | artefatos/relatorio-auditoria.md |
+| artefatos/relatorio-auditoria.md | relatório da auditoria final (v5: 2 rodadas; +Rodada 7 pelas correções da banca) | auditoria com Playwright | este relatório |
+| artefatos/auditoria_v5_reconstrucao.py | script Playwright da reconstrução (v5) | escrito na v5 | artefatos/relatorio-auditoria.md |
+| artefatos/auditoria_v6_correcoes_banca.py | script Playwright das correções da banca (I1-I7, M1-M4) | escrito nesta rodada | artefatos/relatorio-auditoria.md |
+| artefatos/capturas/*.png | capturas dos três modos (Dashboard claro/escuro/mobile, Relatório escuro), atualizadas após as correções da banca | Playwright | artefatos/relatorio-auditoria.md |
 
 ## Dados de entrada (não copiados — arquivos já existentes, com hash)
 

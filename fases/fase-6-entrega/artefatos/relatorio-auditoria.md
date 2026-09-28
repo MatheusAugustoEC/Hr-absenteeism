@@ -91,10 +91,47 @@ página).
 **Resultado: 1 rodada, 1 achado bloqueante (menu de filtro clicável no
 cartão errado), corrigido, reverificado sem novo achado.**
 
+## Rodada 7 (v6 — correções da banca, Fase 7)
+
+Data: 27/09/2026. Escopo: os 7 achados importantes (I1-I7) e os 4 de
+acabamento (M1-M4) do parecer da banca (`fases/fase-7-revisao/parecer.md`,
+prompt executado em `fases/fase-7-revisao/prompt-correcao.md`). Detalhe
+item a item em `fases/fase-7-revisao/correcoes.md`.
+
+Script desta rodada: `auditoria_v6_correcoes_banca.py`. Checagens:
+
+- I1: rótulos do Pareto de horas do Relatório sem sobreposição (rotação
+  -38°, testado nos 3 temas).
+- I5: bloco de recomendação presente no Dashboard, link troca de modo e
+  rola até a seção 2 do Relatório.
+- I6: as 6 células da matriz mostram percentual e n juntos.
+- I7: os dois selos (âmbar "já testado", vermelho "exploratório") e os
+  dois gráficos novos (dia da semana, mês) renderizam no Dashboard E no
+  Relatório; a tabela bruta está dentro de um `<details>` recolhível, sem
+  deixar de alimentar o `.xlsx`.
+- I4: o rodapé de autoria aparece nos três modos (Dashboard, Relatório,
+  Slides).
+- Regressão completa da mecânica que já existia: filtro cruzado, seleção
+  de matriz (marca/desmarca), ordenação de coluna, "Limpar filtros",
+  download `.xlsx` e `.pptx` (>1 KB cada), navegação de slides até 9/9.
+- Busca literal de B1/B2/CID: zero ocorrências (nem no glossário desta
+  versão, que já descreve os termos sem citar os códigos internos).
+- Manchete (64,3%) idêntica em todos os pontos onde aparece.
+- Zero erros de console.
+- Capturas em tema claro, escuro e mobile — nenhum rótulo sobre dado nos
+  dois gráficos novos nem no rodapé de autoria.
+
+**Resultado: 1 rodada, 23/23 checagens aprovadas, 0 achados novos.** Nenhum
+defeito foi encontrado testando as correções da banca — diferente das
+rodadas 1-2 desta fase, que cada uma achou e corrigiu 1 problema.
+
 ## Conclusão
 
 Reconstrução completa da Fase 6 (v5): 1 rodada de auditoria, 1 achado visual (rótulo sobre texto no Slides/mobile), corrigido e reverificado sem novo achado. A mecânica herdada da skill (filtros, matriz, downloads) foi retestada do zero, já que a casca da página mudou por completo (lateral no lugar da barra superior, três modos no lugar de quatro, um só registro de linguagem).
 
 Rodada 2, sobre os ajustes de leiaute pedidos em seguida: 1 achado
 bloqueante (menu de filtro sobreposto por um cartão de grade), corrigido e
-reverificado. As duas rodadas juntas terminam sem bloqueante pendente.
+reverificado.
+
+Rodada 7, sobre as correções da banca (Fase 7): 23/23 checagens aprovadas,
+0 achados. As três rodadas juntas terminam sem bloqueante pendente.

@@ -170,6 +170,39 @@ cinco menus. Detalhe completo na Rodada 2 de
 
 **Nenhum número mudou nesta rodada.**
 
+## Adendo — correções da banca, Fase 7 (27/09/2026)
+
+A banca (Fase 7 · Revisão) devolveu 7 achados importantes (I1-I7) e 4 de
+acabamento (M1-M4) sobre esta página. Todos foram corrigidos, na ordem do
+prompt de correção. Detalhe item a item, com antes/depois, em
+`fases/fase-7-revisao/correcoes.md`. Resumo:
+
+- **I1** rótulos sobrepostos no Pareto de horas do Relatório — corrigido
+  (rotação, sem mudar número).
+- **I2** (pós-hoc, ⚑) concentração de "consulta médica" testada com o
+  mesmo desenho de H2 — não concentrada em poucos funcionários; baseline
+  (31,3%/31,0%) não mudou, faixa de robustez nova acrescentada.
+- **I3** limitação declarada: distância ao trabalho pode ser proxy de
+  distância a serviços de saúde — sem número novo.
+- **I4** rodapé de autoria nos três modos e no README — com placeholder,
+  porque os dados reais do autor não estavam disponíveis nesta conversa;
+  **pendência que precisa de ação humana antes de publicar**.
+- **I5** recomendação (as duas ações) agora também no Dashboard.
+- **I6** (⚑) n adicionado às 6 células da matriz de distância — percentuais
+  não mudaram.
+- **I7** tabela bruta do Dashboard virou `<details>` recolhível; dois
+  gráficos novos (dia da semana × tipo, mês × tipo) com selos de status
+  distintos ("já testado, sem efeito confirmado" / "exploratório, hipótese
+  nova"), espelhados no Relatório. H5 (calendário) registrada como
+  hipótese pós-hoc, não confirmada, não vira recomendação.
+- **M1-M4**: rótulo de meta com uma casa decimal, nota de efeito da ação 1,
+  contraste de ângulo no README, `requirements.txt` com versões fixas.
+
+O holdout não foi tocado. `scripts/06_entrega_dados.py` ganhou um agregado
+novo (mês × tipo) e foi reexecutado — nenhum agregado existente mudou.
+Auditoria reexecutada: 23/23 checagens aprovadas, 0 achados novos (Rodada 7
+de `artefatos/relatorio-auditoria.md`).
+
 ## Para a próxima fase
 
 A Fase 7 (revisão por banca) recebe o link da página publicada — numa
