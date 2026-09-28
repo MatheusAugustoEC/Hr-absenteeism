@@ -203,6 +203,22 @@ novo (mês × tipo) e foi reexecutado — nenhum agregado existente mudou.
 Auditoria reexecutada: 23/23 checagens aprovadas, 0 achados novos (Rodada 7
 de `artefatos/relatorio-auditoria.md`).
 
+## Adendo — correções da banca, rodada 2 (28/09/2026)
+
+A banca conferiu a rodada 1 numa segunda passada e **mediu**, em vez de só
+olhar, o gráfico de Pareto de horas do Relatório: a correção de I1 tinha
+piorado a sobreposição de rótulos (2 → 4 colisões), porque trocou rótulos
+abreviados por nomes completos sem testar se cabiam rotacionados a -38°.
+Corrigido com abreviação + rotação maior (-60°) + gráfico mais largo, e
+**verificado com um script que mede `getBoundingClientRect()` de cada
+rótulo e testa interseção de retângulo** (`checagem_sobreposicao_i1.py`) —
+0 colisões nos três cenários (desktop claro/escuro, celular), não mais
+"parece bom" numa captura. M5 (sugestão aceita pela banca) também entrou:
+o bloco "Por funcionário" foi movido para o fim do Dashboard, depois dos
+gráficos de dia/mês. Detalhe com a tabela de colisões antes/depois em
+`fases/fase-7-revisao/correcoes.md`, seção "Rodada 2". Nenhum número
+mudou. Auditoria: Rodada 8, 2 achados corrigidos, 0 achados novos.
+
 ## Para a próxima fase
 
 A Fase 7 (revisão por banca) recebe o link da página publicada — numa

@@ -160,3 +160,86 @@ markdown 3.11, xhtml2pdf 0.2.20, pytest 9.1.1.
 `<preencha: nome completo · URL do GitHub · URL do LinkedIn>` está na
 página (lateral, visível nos 3 modos) e no README — substituir pelos dados
 reais antes de publicar.
+
+---
+
+# Rodada 2 (28/09/2026)
+
+A banca conferiu a rodada 1 numa segunda passada. Confirmados como
+resolvidos sem precisar de nova mudança: I2, I3, I5, I6, I7 (e I4 segue
+como pendência humana esperada, não um defeito). Restaram dois pontos.
+
+## I1 (reaberto) — a correção da rodada 1 piorou a sobreposição
+
+**O que a rodada 1 fez:** trocou os rótulos abreviados ("Consulta M.",
+"Consulta O.") pelos nomes completos do motivo, e rotacionou os rótulos em
+-38°, sem medir se os nomes mais longos ("Consulta odontológica",
+"Acompanhamento") caberiam rotacionados sem colidir.
+
+**O que a banca mediu (rodada 2):** 4 pares de rótulos sobrepostos —
+Consulta médica × Consulta odontológica; Consulta odontológica ×
+Acompanhamento; Fisioterapia × Exame laboratorial; Exame laboratorial ×
+Doação de sangue. Contra 2 pares antes da correção da rodada 1. A correção
+piorou o problema que deveria resolver, porque só rodei uma checagem visual
+("parece bom" numa captura), não uma medição real de colisão.
+
+**Causa:** nomes completos (até 21 caracteres, "Consulta odontológica")
+rotacionados a só -38° ainda ocupam largura horizontal grande demais (a
+projeção horizontal de um texto rotacionado é
+`comprimento × cos(ângulo)` — a -38° isso ainda é ~79% do comprimento
+original), e o gráfico só tem 460px de largura para 6 categorias.
+
+**O que fiz desta vez:**
+1. Reintroduzi a abreviação (função `abreviaMotivo()`, nova, genérica: usa
+   a inicial da última palavra do nome, não da segunda — "Doação de
+   sangue" vira "Doação S.", não o inútil "Doação D." que uma abreviação
+   ingênua pela segunda palavra daria).
+2. Aumentei a rotação de -38° para -60° (projeção horizontal cai para
+   ~50% do comprimento).
+3. Aumentei a largura do gráfico de 460px para 500px e a margem inferior
+   de 68px para 76px, para dar folga à extensão vertical do texto mais
+   inclinado.
+4. Guardei o nome completo em `data-tip`, então passar o mouse no rótulo
+   ainda mostra "Consulta odontológica" por extenso — a abreviação não
+   perde informação, só ganha espaço.
+5. **Medi de verdade, não só olhei.** Script novo
+   `artefatos/checagem_sobreposicao_i1.py`: pega o `getBoundingClientRect()`
+   de cada rótulo do eixo X (que já reflete a rotação aplicada) e testa
+   interseção de retângulo par a par — não é inspeção visual, é geometria.
+
+**Evidência (antes/depois, mesma checagem):**
+
+| Cenário | Colisões antes desta correção | Colisões depois |
+|---|---|---|
+| Desktop, tema escuro | 2 (rodada 1, medição da banca) → 4 (medido nesta rodada, antes do fix) | **0** |
+| Desktop, tema claro | não medido pela banca | **0** |
+| Celular (390px) | não medido pela banca | **0** |
+
+Rodado com o Chromium real via Playwright, nos três cenários pedidos,
+depois do ajuste — `artefatos/checagem_sobreposicao_i1.py`, saída completa
+no log desta sessão.
+
+**Número:** nenhum mudou — só o rótulo (texto exibido) e o leiaute do
+gráfico `paretoAcum`.
+
+## M5 — "Por funcionário" movido para o fim do Dashboard
+
+**Antes:** motivo → tempo perdido → distância → **por funcionário** → dia
+da semana → mês → tabela.
+**Depois:** motivo → tempo perdido → distância → dia da semana → mês →
+**por funcionário** → tabela. Confirmado por leitura da ordem real do DOM
+depois da mudança (script de auditoria).
+**Relatório:** conferido — a seção 3 do Relatório **não tem** um bloco
+"por funcionário" equivalente ao `d-func` do Dashboard (é conteúdo
+exclusivo do Dashboard); não havia nada para reordenar lá.
+**Número:** nenhum — só posição visual.
+
+## Auditoria desta rodada
+
+`auditoria_v6_correcoes_banca.py` reexecutado por completo: 23/23
+checagens aprovadas (mecânica existente sem regressão, mais os itens já
+confirmados da rodada 1). `checagem_sobreposicao_i1.py` (novo, específico
+para I1): 0 colisões nos 3 cenários. Zero erros de console.
+
+**Resultado: rodada 2, 2 achados corrigidos (I1 reaberto, M5), 0 achados
+novos, verificado com medição real, não inspeção visual.**

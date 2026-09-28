@@ -3,7 +3,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 from playwright.sync_api import sync_playwright
 
 OUT = "C:/Users/Augusto/AppData/Local/Temp/claude/c--Users-Augusto-Desktop-Projetos-hr-absenteeism-dmaic/a644b0a9-03d7-4f22-8620-9bdd173194c9/scratchpad"
-URL = "http://localhost:8799/index.html"
+URL = "http://localhost:8800/index.html"
 errs = []
 def on_console(msg):
     if msg.type == "error": errs.append(msg.text)

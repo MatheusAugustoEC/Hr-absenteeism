@@ -134,4 +134,41 @@ bloqueante (menu de filtro sobreposto por um cartão de grade), corrigido e
 reverificado.
 
 Rodada 7, sobre as correções da banca (Fase 7): 23/23 checagens aprovadas,
-0 achados. As três rodadas juntas terminam sem bloqueante pendente.
+0 achados.
+
+## Rodada 8 (v6, rodada 2 da banca — I1 reaberto)
+
+Data: 28/09/2026. A banca conferiu a Rodada 7 numa segunda passada e
+mediu — não só olhou — o gráfico de Pareto de horas do Relatório: a
+correção de I1 na Rodada 7 tinha trocado rótulos abreviados por nomes
+completos sem testar se cabiam rotacionados, e o número de colisões **subiu**
+de 2 para 4. Corrigido com abreviação (função nova `abreviaMotivo()`,
+que abrevia pela última palavra do nome, não a segunda — evita o "Doação
+D." sem sentido que uma regra ingênua daria) + rotação maior (-38° → -60°)
++ gráfico mais largo (460px → 500px). Medido de novo com um script dedicado
+(`checagem_sobreposicao_i1.py`, `getBoundingClientRect()` de cada rótulo +
+teste de interseção de retângulo, não inspeção visual): **0 colisões** nos
+três cenários (desktop escuro, desktop claro, celular).
+
+M5 (sugestão do responsável, aceita pela banca) também entrou nesta
+rodada: bloco "Por funcionário" movido para depois dos gráficos de dia/mês,
+antes da tabela detalhada — confirmado lendo a ordem real do DOM.
+
+`auditoria_v6_correcoes_banca.py` reexecutado por completo: 23/23,
+zero regressão. Detalhe completo, com a tabela de colisões antes/depois,
+em `fases/fase-7-revisao/correcoes.md`, seção "Rodada 2".
+
+**Resultado: 1 rodada, 2 achados (I1 reaberto, M5), ambos corrigidos e
+verificados por medição, 0 achados novos.**
+
+## Conclusão (atualizada)
+
+Oito rodadas de auditoria ao longo da Fase 6 e das duas rodadas de revisão
+por banca: seis encontraram e corrigiram pelo menos 1 achado cada
+(rótulos de gráfico, contraste, sobreposição de painel, menu de filtro,
+correções de conteúdo da banca), duas terminaram limpas (0 achados). A
+lição que atravessa o projeto: sobreposição de rótulo rotacionado não se
+confirma "de olho" — as Rodadas 1, 2 e 8 encontraram exatamente esse tipo
+de defeito depois de uma inspeção visual que tinha parecido suficiente; só
+a medição de retângulo (`getBoundingClientRect()` + teste de interseção)
+pegou o problema de forma confiável.

@@ -358,15 +358,6 @@ dd{margin:2px 0 0; color:var(--ink-2)}
 
         <div class="g12">
           <div class="card">
-            <div class="eyebrow">Por funcionário (anonimizado)</div>
-            <h3>Quem está mais perto ou mais longe da meta</h3>
-            <div id="d-func"></div>
-            <p class="insight">Cada barra é um funcionário (numerado, nunca identificado). A linha marca a meta interna de 33,4% — os funcionários em verde já estão nela ou abaixo.</p>
-          </div>
-        </div>
-
-        <div class="g12">
-          <div class="card">
             <div class="badge-testado">JÁ TESTADO — SEM EFEITO CONFIRMADO (H4)</div>
             <div class="eyebrow" style="margin-top:10px">Padrão por dia da semana</div>
             <h3>Atestado médico, administrável e sem justificativa, por dia</h3>
@@ -384,6 +375,15 @@ dd{margin:2px 0 0; color:var(--ink-2)}
             <div id="d-mes-tipo"></div>
             <div class="legend" id="legend-mes-tipo"></div>
             <p class="insight"><b>Hipótese nova (H5), nascida em 27/09/2026 ao revisar esta página — não estava no pré-registro da Fase 1, e vale menos como evidência por isso.</b> Fevereiro concentra o Carnaval nos três anos cobertos por este recorte (2008, 2009 e 2010, verificado por cálculo da data da Páscoa); dezembro concentra o Natal, todo ano. Sem ordem cronológica confiável (os rótulos de mês ainda misturam 3 anos calendário, M11) e sem amostra de confirmação restante — o holdout desta base já foi aberto na Fase 5 · Control. Leitura só sugestiva, nunca causal, e não vira recomendação de negócio sem uma rodada de confirmação que esta base não tem mais como fornecer.</p>
+          </div>
+        </div>
+
+        <div class="g12">
+          <div class="card">
+            <div class="eyebrow">Por funcionário (anonimizado)</div>
+            <h3>Quem está mais perto ou mais longe da meta</h3>
+            <div id="d-func"></div>
+            <p class="insight">Cada barra é um funcionário (numerado, nunca identificado). A linha marca a meta interna de 33,4% — os funcionários em verde já estão nela ou abaixo.</p>
           </div>
         </div>
 
@@ -3218,8 +3218,14 @@ sob adesão de 80% ............................................. 18,1 horas evit
     el.innerHTML=s+'</svg>'; wireTips(el);
   }
 
+  function abreviaMotivo(nome){
+    var p=nome.split(' ');
+    if(p.length>1) return p[0]+' '+p[p.length-1].charAt(0).toUpperCase()+'.';
+    return p[0].length>7 ? p[0].slice(0,6)+'.' : p[0];
+  }
+
   function paretoAcum(el,rows){
-    var W=460,H=272,L=48,R=46,T=16,B=68;
+    var W=500,H=280,L=48,R=46,T=16,B=76;
     var pw=W-L-R, ph=H-T-B, n=rows.length;
     var tot=rows.reduce(function(a,r){return a+r[1];},0), max=rows[0][1];
     var slot=pw/n, bw=Math.min(40,slot*0.6), acc=0, ramp=RAMP();
@@ -3240,7 +3246,7 @@ sob adesão de 80% ............................................. 18,1 horas evit
       s+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+ramp[i]+'" data-tip="'+attr(tp)+'"/>';
       pts.push([x+bw/2, T+ph-(ph*acc/tot), acc, r[0]]);
       var lx=(x+bw/2).toFixed(1), ly=T+ph+14;
-      s+='<text x="'+lx+'" y="'+ly+'" text-anchor="end" font-size="9.5" fill="'+c('--ink-3')+'" transform="rotate(-38 '+lx+' '+ly+')">'+esc(r[0])+'</text>';
+      s+='<text x="'+lx+'" y="'+ly+'" text-anchor="end" font-size="9.5" fill="'+c('--ink-3')+'" transform="rotate(-60 '+lx+' '+ly+')" data-tip="'+attr(esc(r[0]))+'">'+esc(abreviaMotivo(r[0]))+'</text>';
     });
     var d=pts.map(function(p,i){return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join('');
     s+='<path d="'+d+'" fill="none" stroke="'+c('--crit')+'" stroke-width="2" pointer-events="none"/>';
