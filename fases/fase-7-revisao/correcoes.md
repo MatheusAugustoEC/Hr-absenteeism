@@ -161,6 +161,13 @@ markdown 3.11, xhtml2pdf 0.2.20, pytest 9.1.1.
 página (lateral, visível nos 3 modos) e no README — substituir pelos dados
 reais antes de publicar.
 
+**Resolvido em 28/09/2026** (Fase 8 · Fechamento): placeholder substituído
+por "Matheus Augusto da Silva", com links reais para GitHub
+(`github.com/MatheusAugustoEC`) e LinkedIn
+(`linkedin.com/in/matheusaugustodasilva98`), na página (lateral, 3 modos,
+`pagina/index.html` e `artefatos/index.html`) e no README. Nenhuma
+pendência humana restante.
+
 ---
 
 # Rodada 2 (28/09/2026)

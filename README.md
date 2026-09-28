@@ -4,9 +4,9 @@ Projeto de portfólio conduzido por DMAIC (Lean Seis Sigma) sobre o dataset
 público *Absenteeism at Work* (UCI Machine Learning Repository) — dados
 reais de uma transportadora em Brasília, julho/2007 a julho/2010.
 
-**Autor:** `<preencha: nome completo · URL do GitHub · URL do LinkedIn>`
+**Autor:** Matheus Augusto da Silva — [GitHub](https://github.com/MatheusAugustoEC) · [LinkedIn](https://linkedin.com/in/matheusaugustodasilva98/)
 
-📄 [Página de entrega completa](fases/fase-6-entrega/pagina/index.html) (Dashboard interativo, Relatório e Slides — baixe o repositório e abra o arquivo, ou ative o GitHub Pages deste repositório para acessar direto pelo navegador) · [Índice de todas as fases](fases/indice.md) · [Parecer da revisão por banca](fases/fase-7-revisao/)
+🔗 **[Abrir a página de entrega ao vivo](https://matheusaugustoec.github.io/Hr-absenteeism/fases/fase-6-entrega/pagina/index.html)** (Dashboard interativo, Relatório e Slides, publicado via GitHub Pages) · [código-fonte da página](fases/fase-6-entrega/pagina/index.html) · [Índice de todas as fases](fases/indice.md) · [Parecer da revisão por banca](fases/fase-7-revisao/)
 
 ---
 
